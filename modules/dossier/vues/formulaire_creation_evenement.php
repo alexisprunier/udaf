@@ -1,0 +1,31 @@
+<div id="ajouter_evenement">
+    <h3> Ajouter événement au dossier</h3>
+    <form id="form_creer_dossier" action="accueil.php?module=dossier&action=creer_dossier&ajout=evenement" method="post" enctype="multipart/form-data">
+        <fieldset class="ogconso">
+            <label for="date"class="lab_txt" >Date du rendez-vous <span class="require">*</span> :</label> 
+            <input type="text" name="date" class="datepicker inputfield" placeholder="Selectionner date" required id="date"/></input>
+
+            <label for="mode" class="lab_txt">Mode de contact <span class="require">*</span> :</label>   
+            <input type="text" class="inputfield" id="mode" name="mode" maxlength="45" required title="Mode de contact"/>
+
+            <label for="liste_utilisateur" class="lab_txt">Utilisateur concerné(e) <span class="require">*</span> :</label> 
+            
+            <select id="liste_utilisateur" name="liste_utilisateur" class="inputfield" required>
+                <option value=""></option> 
+                <?php
+                foreach ($tab_utilisateur as $key => $value) {
+                    echo utf8_encode('<option value="' . $tab_utilisateur[$key]->utilisateur_id . '" >' . $tab_utilisateur[$key]->nom . ' ' . $tab_utilisateur[$key]->prenom . '</option>');
+                }
+                ?>
+            </select>
+            
+            <label for="commentaire_event" class="lab_txt">Commentaire :</label>   
+            <textarea id="commentaire_event" name="commentaire_event" title="Commentaire sur l'évènement"></textarea>
+            <div id="bouton_ajouter_evenenement">
+            <input type="button" value="Retour" onclick="history.go(-1)"/>
+            <button type="submit">Valider</button>
+            </div>
+            
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,1136 @@
+@import url("buttons.css");
+@import url("icon.css");
+@import url("ui-custom.css");
+@import url("timepicker.css");
+@import url("../components/colorpicker/css/colorpicker.css");
+@import url("../components/elfinder/css/elfinder.css");
+@import url("../components/datatables/dataTables.css");
+@import url("../components/validationEngine/validationEngine.jquery.css");     
+@import url("../components/jscrollpane/jscrollpane.css");
+@import url("../components/fancybox/jquery.fancybox.css");
+@import url("../components/tipsy/tipsy.css");
+@import url("../components/editor/jquery.cleditor.css");
+@import url("../components/chosen/chosen.css");
+@import url("../components/confirm/jquery.confirm.css");
+@import url("../components/sourcerer/sourcerer.css");
+@import url("../components/fullcalendar/fullcalendar.css");
+@import url("../components/Jcrop/jquery.Jcrop.css");  
+@import url("fileupload.css");
+
+
+html {
+    margin:0;
+    padding:0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font : 12px/1.4 Arial,Helvetica,sans-serif;
+    color: #363636;
+
+
+}
+div.content{
+    margin : 42px 0 0 215px;
+
+}
+/*
+------------------------------------------------------------
+                  Message utilisateur
+------------------------------------------------------------
+*/
+.message{
+    width : 600px;
+    height : 30px;
+    color : #fff;
+    font-size : 16px;
+    box-shadow : 5px 5px 10px #555;
+    -moz-box-shadow: 5px 5px 10px #555;
+    -webkit-box-shadow: 5px 5px 10px #555;
+    padding : 6px 0 0 0;
+    margin : 0px auto 10px auto;
+    text-align : center;
+}
+.erreur{
+    background-image: linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -o-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -moz-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -webkit-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -ms-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+
+
+}
+
+.succes{
+    background-image: linear-gradient(top,#20b120 0,green 100%);
+    background-image: -o-linear-gradient(top,#20b120 0,green 100%);
+    background-image: -moz-linear-gradient(top,#20b120 0,green 100%);
+    background-image: -webkit-linear-gradient(top,#20b120 0,green 100%);
+    background-image: -ms-linear-gradient(top,#20b120 0,green 100%);
+}
+/*
+------------------------------------------------------------
+                  SCROLL TABLEAU
+------------------------------------------------------------
+*/
+tr.head_tab{
+    background-color: #cfcfcf;
+    font-weight: bold;
+    height: 40px;
+}
+.cell_result{
+
+}
+
+.cell_center{
+    text-align:center;
+}
+.even{
+background-color: rgba(87,126,220,0.4);
+padding:10px;
+}
+.odd{
+background-color: rgba(87,126,220,0.2);
+}
+.even:hover, .odd:hover{
+   background-color: rgba(87,126,220,1);
+    -webkit-transition: background-color .2s ease-out; 
+}
+/*
+------------------------------------------------------------
+                  Identification
+------------------------------------------------------------
+*/
+
+#logoAppli{
+    width : 200px;
+    margin-top : 15px;
+}
+
+#login{
+    padding-bottom : 10px;
+}
+
+h3{
+    padding-bottom : 10px;
+}
+
+.bandeau_login{
+    width : 286px;
+    height : 30px;
+    color : #fff;
+    font-size : 16px;
+    box-shadow : 5px 5px 10px #555;
+    -moz-box-shadow: 5px 5px 10px #555;
+    -webkit-box-shadow: 5px 5px 10px #555;
+    margin-right : auto;
+    margin-left : auto;
+    padding : 6px 0 0 0;
+    margin : -15px auto 15px auto;
+}
+
+#login_failed{	
+    background-image: linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -o-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -moz-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -webkit-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+    background-image: -ms-linear-gradient(top,#FF3B2B 0,#AF0605 100%);
+}
+
+#logout_sucess{	
+    background-image: linear-gradient(top,#20b120 0,green 100%);
+    background-image: -o-linear-gradient(top,#20b120 0,green 100%);
+    background-image: -moz-linear-gradient(top,#20b120 0,green 100%);
+    background-image: -webkit-linear-gradient(top,#20b120 0,green 100%);
+    background-image: -ms-linear-gradient(top,#20b120 0,green 100%);		
+}
+
+fieldset#login{	
+    margin-top : 7%;
+    border : none;
+    margin-left : auto;
+    margin-right : auto;
+    text-align : center;
+    background : url(../images/login_bgrepeat.jpg) repeat-x;
+    color : #666;
+    box-shadow : 5px 5px 40px #777; 
+    -moz-box-shadow: 5px 5px 40px #777; 
+    -webkit-box-shadow: 5px 5px 40px #777; 
+}
+
+.label_login{
+    width: 122px;
+    height: 36px;
+    margin: 10px 0 0 -7px;
+    border-top-left-radius : 5px;
+    position: absolute;
+}
+
+#lab_pass{
+    background:url(../images/logo_mdp.png) no-repeat;
+}
+
+#lab_id{
+    background: url(../images/logo_id.png) no-repeat;
+}
+
+#login .inputfield{
+    border : none;
+    border-width : 0.1em;
+    width: 286px;
+    height: 48px;
+    font-size: 20px;
+    padding-left: 134px;	
+    box-shadow : 5px 5px 12px #666;
+    -moz-box-shadow: 5px 5px 12px #666; 
+    -webkit-box-shadow: 5px 5px 12px #666;
+    color : #777;
+    border-radius : 0px;
+}
+
+.login_button{
+    margin-top : 10px;
+    border : none;
+    background : url(../images/bouton.png) no-repeat; 
+    width : 151px;
+    height : 36px;
+    box-shadow : 5px 5px 20px #777;
+    -moz-box-shadow: 5px 5px 20px #777; 
+    -webkit-box-shadow: 5px 5px 20px #777; 
+    margin-bottom : 30px;
+}
+
+.login_button:hover{
+    border : none;
+    background : url(../images/boutonhover.png) no-repeat; 
+    width : 151px;
+    height : 36px;
+    box-shadow : 2px 2px 30px #555;
+    -moz-box-shadow: 2px 2px 30px #555; 
+    -webkit-box-shadow: 2px 2px 30px #555; 
+}
+
+.login_button:active{
+    background : url(../images/boutonhover.png) no-repeat; 
+    -webkit-box-shadow: inset 0px 0px 12px 0px #000000;
+    -moz-box-shadow: inset 0px 0px 12px 0px #00000;
+    box-shadow: inset 0px 0px 12px 0px #00000;
+    border-radius : 3px;
+}
+/*
+------------------------------------------------------------
+                  header
+------------------------------------------------------------
+*/
+#header {
+    width: 100%;
+    height: 79px;
+    background: url(../images/top_bgrepeat.jpg) repeat-x;
+    text-shadow: 1px 0 0 #666666;
+    color: #ffffff;
+    display: inline; 
+    float : right;
+    z-index: 49;
+    -moz-box-shadow: 0px 2px 15px #333333;
+    -webkit-box-shadow: 0px 2px 15px #333333;
+    box-shadow: 0px 0px 20px #333;
+    min-width: 1280px;
+    overflow:visible;
+}
+
+#header a {
+    font-weight: normal;
+    color: #ffffff;
+
+}
+
+#header a:hover {
+    color: #ebebeb;
+}
+
+#header a:active {
+    color: #999999;
+}
+
+.account_info {
+    z-index:5000;
+    height : 80px;
+    float : right;
+    border-top-left-radius:40px;
+    border-bottom-left-radius:40px;
+    box-shadow: 0px 0px 12px;
+}
+
+#header #account_info_admin{
+    width: 350px;
+    background-image:url(../images/accbg_admin.png);
+
+}
+#header #account_info_user{
+    width: 200px;
+    background-image:url(../images/accbg.png);	
+}
+
+.logoUDAF{
+    z-index:45;
+    width : 100px;
+    margin : 15px 0 0 70px;
+    position : absolute;
+}
+
+#header .logoAppli{
+    height : 65px;
+
+    z-index:45px;
+    margin : 8px 0 0 300px;
+    position: absolute;
+}
+#header #account_info_admin .setting{
+    height : 20px;
+    width : 130px;
+    margin: 32px 0 0 20px;
+    padding-left:30px;
+    padding-top: 2px;
+    position:absolute;
+}
+
+.setting_icon{
+    margin: 31px 0 0 20px;
+    position:absolute;
+}
+
+#header #account_info_user .welcome{
+    height : 40px;
+    width :150px;
+    margin:10px 0 40px 60px;
+    position:absolute;
+}
+#header #account_info_admin .welcome{
+    height : 40px;
+    width :150px;
+    margin:10px 0 40px 200px;
+    position:absolute;
+}
+
+#header #account_info_user .logout{
+    position:absolute;
+    height : 20px;
+    width : 75px;
+    margin:50px 0 10px 60px;
+    padding-left: 30px
+}
+#header #account_info_admin .logout{
+    position:absolute;
+    height : 20px;
+    width : 75px;
+    margin:50px 0 10px 200px;
+    padding-left: 30px
+}
+
+#header .account_info div .red {
+    color: #ff8236;
+}
+
+#header #account_info_user .logout_icon {
+    position : absolute;
+    margin:49px 0 10px 60px;
+}
+#header #account_info_admin .logout_icon {
+    position : absolute;
+    margin:49px 0 10px 200px;
+}
+
+#shadowhead {
+    background-image: url(../images/bg/pick_bg.jpg);
+    height:58px;
+    background-repeat:repeat-x;
+    position: absolute;
+    top: 45px;
+    width:100%;
+    z-index:-5;
+    display: none;
+}
+/*
+------------------------------------------------------------
+                  Menu left  
+------------------------------------------------------------
+*/
+#left_menu {
+    background-color: #37508c;
+    float: left;
+    position:fixed;
+    left:5px;
+    top: 95px;
+    z-index: 48;
+    box-shadow: 5px 5px 12px #555;
+    border-radius : 8px;
+}
+
+.main_menu {
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 200px;
+    list-style: none;
+    display: block;
+}
+
+.main_menu li {
+    width: 100%;
+    display: block;
+    border-bottom : 1px solid #12275b;
+    text-transform: capitalize;
+    background-color:#37508c;
+}
+
+.limenu_first{
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+}
+
+.limenu_last{
+    border-bottom-left-radius:8px;
+    border-bottom-right-radius:8px;;
+}
+
+.main_menu li.active {
+    height: auto;
+}
+
+.main_menu li ul {
+    margin-bottom: 10px;
+    float: left;
+    display: block;
+    width: 150px;
+    border:1px #111111 solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top:-52px;
+    display: none;
+    clear: both;
+    background-position: right top;
+    list-style: none;
+    position: absolute;
+    left: 200px;
+    margin-left:5px;
+    -webkit-box-shadow: 2px 2px 3px 2px #333333;
+    -moz-box-shadow: 2px 2px 3px 2px #333333;
+    box-shadow: 2px 2px 3px 2px #333333;
+}
+
+.main_menu li:hover {
+    border-bottom: 1px #111111 solid;
+    border-top: 1px #333333 solid;
+    background-color:none;
+    -webkit-box-shadow: inset 0px 0px 30px 1px #000000;
+    -moz-box-shadow: inset 0px 0px 30px 1px #000000;
+    box-shadow: inset 0px 0px 30px 1px #000000;
+    list-style:none;
+    padding-left:0px;
+}
+
+.main_menu li a img {
+    margin-right: 15px;
+    border: 0;
+    margin-bottom: -3px;
+}
+
+.main_menu li.select {
+    background-image:url(../images/selectM.png);
+    background-repeat:no-repeat;
+    border-bottom: 1px #111111 solid;
+    border-top: 1px #000000 solid
+}
+
+.main_menu li a {
+    display: block;
+    text-decoration:none;
+    padding: 17px 5px 17px 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.main_menu li a:hover, .main_menu li:hover {
+    background-image: none;
+    text-shadow:0 1px 0 #000000;
+    color: #FFF;
+}
+
+.main_menu li:hover {
+    background-image: none;
+    text-shadow:0 1px 0 #000000;
+    color: #FFF;
+}
+/*
+------------------------------------------------------------
+                  Accueil  
+------------------------------------------------------------
+*/
+div#gauche_accueil{
+    display : inline-block;
+    width: 40%;
+    height: 100%;
+    vertical-align: top;
+}
+
+div#droite_accueil{
+    display: inline-block;
+    width: 59%;
+    max-height: 500px;
+    overflow: auto;
+    vertical-align: top;
+}
+
+div#droite_accueil tr{
+    height : 30px;
+    background-color: rgba(255,197,120, 0.8);
+    border-bottom:  1px solid #eee;
+}
+
+div#alertes_user{
+
+}
+
+div.alertes{
+    overflow-y : auto;
+    max-height: 220px;
+}
+
+div#droite_accueil td{
+    padding : 5px 30px;
+    font-weight: bold;
+}
+
+div#droite_accueil table{
+    border-collapse: collapse;
+    width: 100%;
+    color : #535353;
+    text-shadow : 0 0 5px #fff;
+}
+
+
+/*
+------------------------------------------------------------
+                  Creer dossier  
+------------------------------------------------------------
+*/
+.clear_form{
+    display : block;
+    width : 100%;
+    height : 5px;
+}
+
+form#form_creer_dossier{
+    display : inline-block;
+}
+
+div #creer_dossier{
+    width : 1135px;
+    margin: 0 auto;
+}
+
+div#gauche_dossier{
+    display: inline-block;
+    vertical-align: top;
+    width: 547px;
+    height: 100%;
+}
+
+div#identite_client{
+    vertical-align : top;
+    display : inline-block;
+    width : 248px;
+}
+
+div#identite_fournisseur{
+    vertical-align : top;
+    display : inline-block;
+    width : 248px;
+    margin-left : 22px;
+}
+
+div#creer_dossier .inputfield{
+    width : 48%;
+    color : #777;
+}
+
+.inputfield_cloture{
+    width :100%;
+}
+
+textarea#cloture{
+    width: 120px;
+    margin-top: 10px;
+    resize : none;
+    max-height : 150px;
+}
+
+button#btn_cloture{
+    width : 100%;
+    margin : 10 0 0 2px;
+    height : 30px;
+}
+
+fieldset.ogconso{
+    border-radius : 5px;	
+    border-style : solid;
+    border-color : rgba(150,150,150,0.3);
+}
+
+
+fieldset#client{
+    width: 100%;
+    height : 100%;
+}
+
+fieldset#fournisseur{
+    width: 100%;
+    height : 100%;
+}
+
+div #radio_button{
+    text-align : center;
+}
+
+div#radio_button  label{
+    padding : 0 10px 0 5px;
+}
+
+.lab_txt{
+    display : block;
+    width : 120px;
+    float : left;
+    padding-top : 12px;
+}
+
+.require {
+    color : red;
+}
+
+.submit_button{
+    height : 40px;
+    margin : 0 auto 0 7px;
+}
+
+select#liste_fournisseur{
+    display : inline;
+    margin : 10px 0 0 0;
+}
+
+select#liste_client{
+    display : inline;
+    margin : 10px 0 0 0;
+}
+
+textarea#commentaire_f{
+    width: 240px;
+    height : 40px;
+    resize : none;
+    max-height : 100px;
+}
+
+input{
+    margin : 10px 0 0 0;
+}
+
+
+
+div#problematique{
+
+}
+
+div#form_problematique{
+    width : 355px;
+    height : 30px;
+    margin : 0 auto 0 auto ;
+    padding : 0 0 10px 0;
+}
+
+div#form_problematique select{
+    margin-top : 9px;
+    width : 100px;
+}
+
+div#div_soustheme{
+    position : absolute;
+    margin : 0 0 0 255px;
+}
+
+div#div_theme{
+    position : absolute;
+    margin : 0 0 0 50px;
+}
+
+div#form_problematique label{
+
+    display : inline;
+}
+
+div#form_problematique label#soustheme{
+
+    margin-left : 50px; 
+}
+
+textarea#txt_problematique{
+    width: 515px;
+    resize : none;
+    height: 40px;
+    max-height : 200px;
+}
+
+div#gestion_fichier{
+
+}
+
+div#liste_fichiers{
+    display : inline-block;
+    width : 320px;
+}
+
+table#tab_fichier{
+    width : 100%;
+}
+
+div#bouton_fichier{
+    display : inline-block;
+    width : 179px;
+    vertical-align : top;
+}
+
+button.bouton_fichiers{
+    width : 180px;
+    height : 28px;
+}
+
+div#milieu{
+    display: inline-block;
+    vertical-align: top;
+    width: 156px;
+    margin-left : -4px;
+}
+
+div#website{
+    width : 100%;
+}
+
+table#head_sites{
+    margin-top : 5px;
+    width : 100%;
+}
+
+table#tab_sites {
+    width : 100%;
+    margin-top : -1px;
+}
+
+#tab_sites .tip{
+    margin-right : 13px;
+}
+
+
+
+a#ajouter_site{
+
+    width : 87px;
+    margin :10px auto 0 auto;
+
+}
+
+.td_nom{
+    text-align : left;
+}
+
+.td_gestion{
+    padding-left : 17px;
+    background : url(../images/icon/gray_18/close.png) no-repeat;
+    background-position : 50% 50%;
+    background-size : 15px;
+}
+
+.td_gestion:hover{
+    padding-left : 17px;
+    background : url(../images/icon/color_18/close.png) no-repeat;
+    background-position : 50% 50%;
+    background-size : 15px;
+}
+
+input#list_users{
+    width : 100%;
+}
+
+input#check_physique{
+    display: block;
+    margin-left: 115px;
+    margin-top: 13px;
+}
+a#exportPDF{
+    width: 80px;
+    margin : 10px 0 10px 4px;
+}
+div#droite_dossier{
+    display: inline-block;
+    width: 430px;
+    margin-left : -4px;
+    vertical-align : top;
+}
+
+textarea.comment_rdv{
+    width: 396px;
+    height: 40px;
+    resize : none;
+    max-height : 250px;
+}
+
+table#tab_event{
+    width : 100%;
+    border-top : 1px solid #ccc;
+    border-bottom : 1px solid #ccc;
+    border-collapse : collapse;
+}
+
+thead{
+    text-shadow: 1px 1px 1px #fff;
+    background-color : #cfcfcf;
+    height : 40px;
+}
+
+tr#head_tab_rdv{
+    height : 40px;
+    background-color : #cfcfcf;
+}
+
+input#check_rdv{
+    margin :10px;
+}
+
+#date_rdv{
+    text-align : center;
+}
+
+#mode_rdv{
+
+}
+
+#user_rdv{
+
+}
+
+.ligne_rdv{
+    border-top : 1px solid #efefef;
+    margin-top : 5px;
+
+}
+
+.entete_rdv:hover{
+    background-color : #577edd;
+    -webkit-transition: background-color .5s ease-out;
+}
+
+a#ajouter_evenement{
+
+    float : right;
+    margin-top : 10px;
+}
+
+td#deplier{
+    background : url(../images/icon/gray_18/directional_down.png) no-repeat;	
+    background-position : 50% 70% ;
+}
+
+td#deplier:hover{
+    background : url(../images/icon/color_18/directional_down.png) no-repeat;	
+    background-position : 50% 70% ;
+}
+
+td#deplier_ok{
+    background : url(../images/icon/gray_18/directional_up.png) no-repeat;	
+    background-position : 50% 70% ;
+}
+
+td#deplier_ok:hover{
+    background : url(../images/icon/color_18/directional_up.png) no-repeat;	
+    background-position : 50% 70% ;
+}
+
+a#lien_detail{
+    position: absolute;
+    width: 370px;
+    height: 39px;
+    margin: -15px 0 0 -315px;
+
+}
+div#ajouter_site, div#ajouter_evenement{
+    width: 350px;
+    margin: auto;
+    
+    margin-top: 10%;
+}
+div#ajouter_site input[type=button], 
+div#ajouter_site button,
+div#ajouter_evenement input[type=button], 
+div#ajouter_evenement button{
+    width: 125px;
+    height: 30px;
+    margin : 15px 0 0 0 ;
+}
+div#ajouter_evenement .lab_txt{
+    width: 145px;
+} 
+div#ajouter_evenement .inputfield{
+    width: 170px;
+}
+div#ajouter_evenement #liste_utilisateur{
+    margin-top: 10px;
+    width: 174px;
+    height: 22px;
+}
+div#ajouter_evenement textarea{
+    resize : none;
+    width : 318px;
+}
+#bouton_ajouter_evenenement{
+    width: 254px;
+    margin : auto;
+}
+------------------------------------------------------------
+                  Administration
+------------------------------------------------------------
+*/
+div#administration{
+    width : 100%;
+    margin: 5px auto;
+}
+
+div#gestion_gauche{
+    vertical-align : top;
+    display	: inline-block;
+    width : 49%;
+}
+
+div#gestion_droite{
+    display : inline-block;
+    vertical-align : top;
+    width : 49%;
+}
+
+div#tab_users{
+    height : 150px;
+    overflow-x : auto;
+    width: 100%;
+    margin: 0 auto;
+
+}
+div#tab_user .odd .even{
+    padding : 30px;
+}
+.user_nom{
+    padding-left: 10px;
+}
+
+div#tab_dossier{
+height : 150px;
+    overflow-x : auto;
+    width: 100%;
+    margin: 0 auto;	
+}
+
+div#tab_clients{
+    height : 150px;
+    overflow-x : auto;
+    width: 100%;
+    margin: 0 auto;
+}
+
+div#tab_fournisseur{
+    height : 150px;
+    overflow-x : auto;
+    width: 100%;
+    margin: 0 auto;	
+}
+
+.sup_admin{
+    display: block;
+    width: 150px;
+    height: 30px;
+    margin: 10px auto;
+}
+/*
+------------------------------------------------------------
+                 FORM MODIFIER USER  
+------------------------------------------------------------
+*/
+div#modifier_utilisateur{
+    width : 370px;
+    color : #777;
+    margin : 20px auto 0 auto;
+}
+
+div#form_modifier_utilisateur{
+    height: 250px;
+}
+
+div#modifier_utilisateur .lab_txt{
+    display : block;
+    width : 160px;
+    float : left;
+    padding-top : 20px;
+}
+
+div#modifier_utilisateur .inputfield{
+    display : block;
+    width : 200px;
+    height : 25px;
+    float : left;
+}
+
+div#btn_modifier_user{
+    width: 270px;
+    margin: auto
+}
+
+div.form_user{
+    height: 260px;
+}
+
+div.btn_form_user{
+    width: 100%;
+    display : block;
+    margin : 10px auto;
+}
+
+a.btn_annuler{
+   display: inline-block;
+    width: 100px;
+    padding: 7px;
+    background: rgba(255,0,0,0.45);
+    border-radius: 3px;
+    box-shadow: 1px 1px 10px #aaa;
+    text-align: center;
+}
+
+button#valider_user{
+    display: block;
+    width : 150px;
+    height: 30px;
+    margin : 10px auto;
+}
+
+button#modifier_user{
+    display: inline-block;
+    width : 150px;
+    height: 30px;
+    margin : 10px auto;
+}
+
+/*
+------------------------------------------------------------
+                  Rechercher + suivi dossier  
+------------------------------------------------------------
+*/
+div#champs_recherche{
+    margin : 5px auto 0 auto;
+    width : 1005px;
+    height : 125px;
+    background-color: rgba(200,200,200, 0.2);
+    box-shadow: 0px 5px 12px #555;
+    padding : 10px;
+}
+
+div.recherche h3{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    text-align: center;
+}
+
+.col{
+    width: 260px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div#col4{
+    width : 210px;
+}
+
+div#champs_recherche .inputfield{
+
+}
+
+div#champs_recherche .lab_txt{
+    width : 90px;
+}
+
+div#champs_recherche .inputfield_liste{
+    margin-top: 10px;
+    width: 152px;
+    height: 22px;
+}
+
+div#col4 .lab_txt{
+    width : 53px;
+}
+
+#btn_rechercher{
+    position: relative;
+    float: center;
+    height: 30px;
+    margin: 10px auto 0 25%;
+    width: 150px;
+
+}
+
+div#tab_recherche{
+    height : 350px;
+    overflow-x : auto;
+    width: 100%;
+    margin : 10px auto 0 auto;
+}
+
+
+
+
+
+
+
+.ouvert{
+    background-color : rgba(25,75,214, 0.2); 
+    border-top : 2px solid #ccc;
+}
+
+.ferme{
+    background-color : rgba(255,197,120, 0.5); 
+    border-top : 2px solid #ccc;	
+}
+
+.ouvert:hover, .odd.ouvert:hover{
+    background-color : rgba(25,75,214, 0.3); 
+    border-top : 2px solid #ccc;
+}
+
+.ferme:hover, .odd.ferme:hover {
+    background-color : rgba(255,197,120, 0.7); 
+    border-top : 2px solid #ccc;	
+}
+
+a.lien_dossier{
+    position: absolute;
+    width: 100%;
+    height: 38px;
+    left: 0px;
+    margin-top: -10px;
+}
+/*
+------------------------------------------------------------
+                  Calendrier
+------------------------------------------------------------
+*/
+div#calendar{
+    border-top : 1px solid #ddd;
+    margin-top : 20px;
+}
+
+.checkEvent{
+    background-color : red;
+}
