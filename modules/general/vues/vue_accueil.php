@@ -25,6 +25,43 @@
                                 <td width="19%"></td>
                             </tr>
                         <?php }} ?>
+                        <?php foreach ($lignes_tableau as &$ligne) {
+                            if ($ligne['id_utilisateur'] == $_SESSION['id']){
+                            ?>
+                            <tr>
+                                <td><img src="/images/icon/gray_18/clock.png"/></td>
+                                <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
+                                <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
+                                <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
+                                <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                <td width="19%"></td>
+                            </tr>
+                        <?php }} ?>
+                            <?php foreach ($lignes_tableau as &$ligne) {
+                            if ($ligne['id_utilisateur'] == $_SESSION['id']){
+                            ?>
+                            <tr>
+                                <td><img src="/images/icon/gray_18/clock.png"/></td>
+                                <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
+                                <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
+                                <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
+                                <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                <td width="19%"></td>
+                            </tr>
+                        <?php }} ?>
+                            <?php foreach ($lignes_tableau as &$ligne) {
+                            if ($ligne['id_utilisateur'] == $_SESSION['id']){
+                            ?>
+                            <tr>
+                                <td><img src="/images/icon/gray_18/clock.png"/></td>
+                                <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
+                                <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
+                                <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
+                                <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                <td width="19%"></td>
+                            </tr>
+                        <?php }} ?>
+
                     </tbody>
                 </table>
             </div>
@@ -49,7 +86,40 @@
                                         <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
                                         <td><?php echo utf8_encode($ligne['utilisateur']); ?></td>
                                     </tr>
-                            <?php } ?>                          
+                            <?php } ?> 
+                                    <?php foreach ($lignes_tableau as &$ligne) {
+                                ?>
+                                    <tr>
+                                        <td><img src="/images/icon/gray_18/clock.png"/></td>
+                                        <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['utilisateur']); ?></td>
+                                    </tr>
+                            <?php } ?> 
+                                    <?php foreach ($lignes_tableau as &$ligne) {
+                                ?>
+                                    <tr>
+                                        <td><img src="/images/icon/gray_18/clock.png"/></td>
+                                        <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['utilisateur']); ?></td>
+                                    </tr>
+                            <?php } ?> 
+                                    <?php foreach ($lignes_tableau as &$ligne) {
+                                ?>
+                                    <tr>
+                                        <td><img src="/images/icon/gray_18/clock.png"/></td>
+                                        <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                        <td><?php echo utf8_encode($ligne['utilisateur']); ?></td>
+                                    </tr>
+                            <?php } ?> 
 
                         </tbody>
                     </table>

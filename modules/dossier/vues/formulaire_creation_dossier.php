@@ -138,18 +138,7 @@ if(isset($_GET['id'])) {
 ?>
 <!--DIV gérant les popup-->
 <!--PopUp création site web-->
-<div id="dialog-form" title="Ajouter site WEB" style="display : none;">
-    <p class="validateTips">Tous les champs sont obligatoires</p>
 
-    <form>
-        <fieldset class="ogconso">
-            <label for="name">Nom du site : </label>
-            <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
-            <label for="url">URL du site : </label>
-            <input type="url" name="url" id="url" placeholer="http://www.exemple.com" class="text ui-widget-content ui-corner-all" />
-        </fieldset>
-    </form>
-</div>
 <div id="dialog-confirm" style="display : none;" title="Attention?">
     <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un site WEB du dossier. Etes vous s&ucirc;r?</p>
 </div>
@@ -412,36 +401,189 @@ if(isset($_GET['id'])) {
     <div id="droite_dossier">
         <fieldset class="ogconso">
             <legend>Ev&eacute;nement</legend>
-            <table id="tab_event">
-                <thead>
-                    <tr id="head_tab_rdv">
-                        <th>Trait&eacute;</th>
-                        <th>Date</th>
-                        <th align="left">Mode de contact</th>
-                        <th align="left">Utilisateur</th>
-                        <th>D&eacute;tails</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($tab_evenement as &$evenement) {
-                        if ( $evenement->dossier_id == $_SESSION['dossier_ref']) {
-                    ?>
-                            <tr class="entete_rdv">
-                                <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                <td id="date_rdv" class="ligne_rdv"><?php echo $evenement->date_event; ?></td>
-                                <td id="mode_rdv" class="ligne_rdv"><?php echo $evenement->mode_contact; ?></td>
-                                <td id="user_rdv" class="ligne_rdv"><?php echo $evenement->date_event; ?></td>
-                                <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                            </tr>
-                            <tr class="cacher">
-                                <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                            </tr>
-                    <?php
+            <div id="evenement_dossier">
+                <table id="tab_event" class="scroll_tab">
+                    <thead>
+                        <tr id="head_tab_rdv">
+                            <th>Trait&eacute;</th>
+                            <th>Date</th>
+                            <th align="left">Mode de contact</th>
+                            <th align="left">Utilisateur</th>
+                            <th>D&eacute;tails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($tab_evenement as &$evenement) {
+                            if ( $evenement->dossier_id == $_SESSION['dossier_ref']) {
+                        ?>
+                                <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv"><?php echo $evenement->date_event; ?></td>
+                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $evenement->mode_contact; ?></td>
+                                    <td id="user_rdv" class="ligne_rdv"><?php echo $evenement->date_event; ?></td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                        <?php
+                            }
                         }
-                    }
-                    ?>
-                </tbody>
-            </table>
+                        ?>
+
+                                <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                                 <tr class="entete_rdv">
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
+                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
+                                    <td id="user_rdv" class="ligne_rdv">admin</td>
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                </tr>
+                                <tr class="cacher">
+                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                </tr>
+                    </tbody>
+                </table>
+            </div>
             <a id="ajouter_evenement" class="btn" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement'));">Ajouter rendez-vous</a>
         </fieldset>
     </div>
