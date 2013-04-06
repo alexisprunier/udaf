@@ -542,7 +542,6 @@ div #creer_dossier{
 
 div#gauche_dossier{
     display: inline-block;
-    vertical-align: top;
     width: 547px;
     height: 100%;
 }
@@ -601,6 +600,7 @@ fieldset#fournisseur{
 
 div #radio_button{
     text-align : center;
+    margin : 10px 0 5px 0;
 }
 
 div#radio_button  label{
@@ -725,7 +725,13 @@ div#website{
     height: 193px;
 }
 div#website fieldset{
-    height: 93%;
+
+    padding: 0;
+    width: 148px;
+}
+div#tab_website{
+    height: 135px;
+    width: 148px;
 }
 
 table#head_sites{
@@ -747,7 +753,7 @@ table#tab_sites {
 a#ajouter_site{
 
     width : 87px;
-    margin :10px auto 0 auto;
+    margin :10px 0 0 10px;
 
 }
 
@@ -787,13 +793,13 @@ div#droite_dossier{
     width: 430px;
     margin-left : -4px;
     vertical-align : top;
-    height: 623px;
+    height: 654px;
 }
 div#droite_dossier fieldset{
     height: 100%;
 }
 div#evenement_dossier{
-    height: 567px;
+    height: 600px;
 }
 textarea.comment_rdv{
     width: 372px;
@@ -882,11 +888,11 @@ a#lien_detail{
     margin: -15px 0 0 -315px;
 
 }
-div#ajouter_site, div#ajouter_evenement{
+div#ajouter_site, div#ajouter_evenement, div#ajouter_fichier{
     width: 350px;
     margin: auto;
     
-    margin-top: 10%;
+    margin-top: 5%;
 }
 div#ajouter_site input[type=button], 
 div#ajouter_site button,
@@ -914,7 +920,7 @@ div#ajouter_evenement textarea{
 #bouton_ajouter_evenenement{
     width: 254px;
     margin : auto;
-}regarde ton ipad toi!!
+}
 
 ------------------------------------------------------------
                   Administration

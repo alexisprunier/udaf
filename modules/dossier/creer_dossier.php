@@ -15,6 +15,9 @@ include CHEMIN_MODELE . 'theme.php';
 include CHEMIN_MODELE . 'sstheme.php';
 include CHEMIN_MODELE . 'site.php';
 include CHEMIN_MODELE . 'evenement.php';
+include CHEMIN_MODELE . 'utilisateur.php';
+include CHEMIN_MODELE . 'fichier.php';
+
 
 $tab_personne = lister_personne_dans_bdd();
 $tab_fournisseur = lister_fournisseur_dans_bdd();
@@ -22,6 +25,8 @@ $tab_theme = lister_theme_dans_bdd();
 $tab_sstheme = lister_sstheme_dans_bdd();
 $tab_site = lister_site_dans_bdd();
 $tab_evenement = lister_evenement_dans_bdd();
+$tab_fichier = lister_fichier_dans_bdd();
+
 
 // Choix du nouvel ID du dossier
 unset($_SESSION['dossier_ref']);
@@ -41,6 +46,53 @@ if ($_GET["ajout"] == "evenement"){
             $_POST['comment'],
             $_POST['liste_utilisateur'],
             $_SESSION['dossier_ref']);
+}
+
+if ($_GET["ajout"] == "fichiers"){
+    //if(isset($_FILES['fichier']))
+    { 
+        //On devra vérifier l'extension && la taille
+        echo "test1";
+        // taille maximum (en octets)
+        $taille_maxi = 5000000; //5Mo deuxieme verification par sécurité
+        //Taille du fichier
+        $taille = filesize($_FILES['fichier']['tmp_name']);
+        //On fait un tableau contenant les extensions autorisées.
+        $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt');
+        $dossier = 'uploads/';
+        $fichier = basename($_FILES['fichier']['name']);
+        // récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
+        $extension = strrchr($_FILES['fichier']['name'], '.');
+        //Ensuite on teste tout
+        echo $extension;
+        
+        if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
+        {
+            $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
+                \n ou la taille (taille max : 5Mo)';
+            echo $erreur;
+        }
+        else{
+            echo "test3";
+            $fichier = strtr($fichier,
+                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+                'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); 
+            //On remplace les lettres accentutées par les non accentuées dans $fichier.
+            //Et on récupère le résultat dans fichier
+
+            //En dessous, il y a l'expression régulière qui remplace tout ce qui n'est pas une lettre non accentuées ou un chiffre
+            //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
+            $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
+            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+            {
+                ajouter_fichier_dans_bdd($fichier, $extension, 2);
+            }
+            else //Sinon (la fonction renvoie FALSE).
+            {
+                 echo 'Echec de l\'upload !';
+            }
+        }
+    }
 }
 
 

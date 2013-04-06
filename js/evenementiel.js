@@ -1,4 +1,17 @@
 $(document).ready( function () {
+    
+    function verifier_form_fichier(f)
+    {
+        alert("test");
+        var fichier=verifier(f.fichier);
+        return false;
+    }
+    function verifier_fichier(f)
+    {
+        alert(f.value);
+    }
+    
+    
                         // GESTION DES EVENEMENTS DROITE DE CREATION DOSSIER
                         $(".comment_rdv").hide();
 

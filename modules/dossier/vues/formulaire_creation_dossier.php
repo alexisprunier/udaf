@@ -298,18 +298,25 @@ if(isset($_GET['id'])) {
                             </tbody>
                         </table>
                     </div>
-
+                    
                     <div id="bouton_fichier">
-                        <span class="btn btn-primary fileinput-button" >
-                            <i class="icon-plus icon-white"></i>
-                            <span>Ajouter fichier...</span>
-                            <input type="file" name="files[]" multiple>
-                        </span>
-                        <button type="button" class=" btn btn-warning">
-                            <i class="icon-trash icon-white"></i>
-                            <span>Supprimer</span>
-                        </button>
+                       
+                           <!-- <span class="btn btn-primary fileinput-button" >
+                                <i class="icon-plus icon-white"></i>
+                                <span>Ajouter fichier...</span>
+                                <input type="file" name="fichier" >
+                                <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> <!--5Mo max
+                            </span> -->
+                            
+                            <button type="button" class=" btn btn-primary" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
+                                 <i class="icon-plus icon-white"></i>
+                                <span>Ajouter fichier...</span>
+                            </button>
+                        
+                       
+                     
                     </div>
+                    </form>
                 </fieldset>
             </div>
         </div>
@@ -317,46 +324,50 @@ if(isset($_GET['id'])) {
         <div id="milieu">
             <div id="website">
                 <fieldset class="ogconso">
-                    <legend>Site WEB</legend>
-					<form action="#" method="post">
+                    <legend style="margin-left:5px;">Site WEB</legend>
+                   
+                        <div id="tab_website">
+                        <table class="scroll_tab"  id="head_sites">
+                            <thead>
+                                <tr>
+                                    <th  align="left">Nom</th>
+                                    <th  align="left">Gestion</th>
+                                <tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <?php 
+                                $i = 0;
+                                foreach ($tab_site as &$site) {
+                                    if ($site->dossier_id == $_SESSION['dossier_ref']) {
+                                       if (($i % 2) == 0)
+                                        echo "<tr class=\"even\">";
+                                    else
+                                        echo "<tr class=\"odd\">";
+                                    $i += 1; 
+                                        
+                                ?>
+                                        
+                                        <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo $site->nom; ?></a></td>
+                                        <td class="td_gestion"/>											
+                                        </td>
+                                <?php
+                                    }
+                                }
+                                ?>
+                                </tr>
 
-						<table class="display data_table3"  id="head_sites">
-							<thead>
-								<tr>
-									<th  align="left">Nom</th>
-									<th  align="left">Gestion</th>
-							</thead>
-							<tbody>
-							<td colspan="2">
-								<div class="scroll_dossier">
-									<table class="display data_table3"  id="tab_sites">
-                                                                                <?php foreach ($tab_site as &$site) {
-                                                                                    if ($site->dossier_id == $_SESSION['dossier_ref']) {
-                                                                                ?>
-                                                                                        <tr class="odd">
-											<td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo $site->lien; ?></a></td>
-											<td class="td_gestion">											
-											</td>
-										</tr>
-                                                                                <?php
-                                                                                    }
-                                                                                }
-                                                                                ?>
-									</table>
-								</div>
-							</td>
-							</tbody>
-						</table>
-
-						<a id="ajouter_site" class="btn"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site'));">Ajouter</a>
-					</form>
+                            </tbody>
+                        </table>
+                        </div>
+                        <a id="ajouter_site" class="btn"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site'));">Ajouter</a>
+                   
                 </fieldset>			
             </div>
 			
             <div id="cloturer">
                 <fieldset class="ogconso">
                     <legend>Cl&ocirc;ture</legend>
-                    <form action="#" method="post">
                         <label for="list_cloture" class="lab_txt">Raison de la cl&ocirc;ture :</label>
                         <select id="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
                             <option>En cours</option> 
@@ -368,7 +379,7 @@ if(isset($_GET['id'])) {
                         <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="datecloture"/></input>
                         <label for="cloture" class="lab_txt">Commentaire :</label>
                         <textarea id="cloture" placeholder="(facultatif)"><?php if(isset($_GET['id'])) { echo $dossier_en_cours["comment_cloture"]; } ?></textarea>
-                    </form>
+                        <a style="width:70px;" class="btn" onClick="">Clôturer</a>
                 </fieldset>
             </div>
 			
@@ -413,174 +424,39 @@ if(isset($_GET['id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($tab_evenement as &$evenement) {
+                        <?php 
+                        $i=-1;
+                        foreach ($tab_evenement as &$evenement) {
+                            $i++;
+                             if (($i % 2) == 0)
+                                        echo "<tr class=\"even\">";
+                                    else
+                                        echo "<tr class=\"odd\">";
                             if ( $evenement->dossier_id == $_SESSION['dossier_ref']) {
+                               
+                                    
                         ?>
-                                <tr class="entete_rdv">
                                     <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
                                     <td id="date_rdv" class="ligne_rdv"><?php echo $evenement->date_event; ?></td>
                                     <td id="mode_rdv" class="ligne_rdv"><?php echo $evenement->mode_contact; ?></td>
                                     <td id="user_rdv" class="ligne_rdv"><?php echo $evenement->date_event; ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
                                 </tr>
-                                <tr class="cacher">
+                                <?php
+                                if (($i % 2) == 0)
+                                        echo "<tr class=\"even cacher\">";
+                                    else
+                                        echo "<tr class=\"odd cacher\">";
+                              ?>
                                     <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
                                 </tr>
                         <?php
+                        
                             }
                         }
                         ?>
 
-                                <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
-                                 <tr class="entete_rdv">
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv">10/11/2012</td>
-                                    <td id="mode_rdv" class="ligne_rdv">telephone</td>
-                                    <td id="user_rdv" class="ligne_rdv">admin</td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
-                                </tr>
-                                <tr class="cacher">
-                                    <td colspan="5" height = "5px"><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
-                                </tr>
+                               
                     </tbody>
                 </table>
             </div>
@@ -611,4 +487,5 @@ document.getElementById("theme").selectedIndex = readCookie("theme");
 document.getElementById("soustheme").value = readCookie("soustheme");
 document.getElementById("mail_f").value = readCookie("mail_f");
 document.getElementById("txt_problematique").value = readCookie("txt_problematique");
+
 </script>
