@@ -1,4 +1,7 @@
 $(document).ready( function () {
+    
+      
+    
                         // GESTION DES EVENEMENTS DROITE DE CREATION DOSSIER
                         $(".comment_rdv").hide();
 
@@ -56,12 +59,35 @@ $(document).ready( function () {
                                         $( this ).dialog( "close" );
                                     }
                                 }
-                            });             
-
+                            }); 
+                            var theHREF;
+                            $( "#dialog-confirm-fichier" ).dialog({
+                                
+                                resizable: false,
+                                height:200,
+                                width:500,
+                                autoOpen: false,
+                                modal: true,
+                                buttons: {
+                                    "Oui": function() {
+                                        $( this ).dialog( "close" );
+                                        window.location.href = theHREF;
+                                    },
+                                    "Annuler": function() {
+                                        $( this ).dialog( "close" );
+                                    }
+                                }
+                            });
+                            
                             $("a.supprimer_ligne").click(function(e) {
                                 e.preventDefault();
                                 theHREF = $(this).attr("href");
                                 $("#dialog-confirm_admin").dialog("open");
+                            });
+                            $("a.supprimer_ligne").click(function(e) {
+                                e.preventDefault();
+                                theHREF = $(this).attr("href");
+                                $("#dialog-confirm-fichier").dialog("open");
                             });
                            
         });

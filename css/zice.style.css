@@ -97,7 +97,9 @@ background-color: rgba(87,126,220,0.2);
    background-color: rgba(87,126,220,1);
     -webkit-transition: background-color .2s ease-out; 
 }
-/*
+a.supprimer_ligne{
+    display: block;
+}/*
 ------------------------------------------------------------
                   Identification
 ------------------------------------------------------------
@@ -468,19 +470,27 @@ fieldset#login{
                   Accueil  
 ------------------------------------------------------------
 */
+div#accueil{
+    height: 486px;
+}
 div#gauche_accueil{
     display : inline-block;
     width: 40%;
     height: 100%;
     vertical-align: top;
 }
-
+div#gauche_accueil fieldset{
+    height: 485px;
+}
 div#droite_accueil{
     display: inline-block;
     width: 59%;
-    max-height: 500px;
-    overflow: auto;
+    height: 100%;
     vertical-align: top;
+}
+div#droite_accueil fieldset{
+    height: 235px;
+
 }
 
 div#droite_accueil tr{
@@ -490,12 +500,13 @@ div#droite_accueil tr{
 }
 
 div#alertes_user{
-
+    overflow : auto;
+    height: 220px;
 }
 
 div.alertes{
-    overflow-y : auto;
-    max-height: 220px;
+  overflow: auto;
+  height: 220px;
 }
 
 div#droite_accueil td{
@@ -527,13 +538,12 @@ form#form_creer_dossier{
 }
 
 div #creer_dossier{
-    width : 1135px;
+    width : 1134px;
     margin: 0 auto;
 }
 
 div#gauche_dossier{
     display: inline-block;
-    vertical-align: top;
     width: 547px;
     height: 100%;
 }
@@ -592,6 +602,7 @@ fieldset#fournisseur{
 
 div #radio_button{
     text-align : center;
+    margin : 10px 0 5px 0;
 }
 
 div#radio_button  label{
@@ -687,6 +698,7 @@ div#gestion_fichier{
 div#liste_fichiers{
     display : inline-block;
     width : 320px;
+    height: 111px;
 }
 
 table#tab_fichier{
@@ -699,10 +711,11 @@ div#bouton_fichier{
     vertical-align : top;
 }
 
-button.bouton_fichiers{
-    width : 180px;
-    height : 28px;
+button#ajouter_fichier{
+    width: 100%;
+margin-top: 0;
 }
+
 
 div#milieu{
     display: inline-block;
@@ -713,6 +726,16 @@ div#milieu{
 
 div#website{
     width : 100%;
+    height: 193px;
+}
+div#website fieldset{
+
+    padding: 0;
+    width: 148px;
+}
+div#tab_website{
+    height: 135px;
+    width: 148px;
 }
 
 table#head_sites{
@@ -734,7 +757,7 @@ table#tab_sites {
 a#ajouter_site{
 
     width : 87px;
-    margin :10px auto 0 auto;
+    margin :10px 0 0 10px;
 
 }
 
@@ -743,15 +766,16 @@ a#ajouter_site{
 }
 
 .td_gestion{
+    cursor: pointer;
     padding-left : 17px;
-    background : url(../images/icon/gray_18/close.png) no-repeat;
+    background : url(../images/icon/icon_delete.png) no-repeat;
     background-position : 50% 50%;
     background-size : 15px;
 }
 
 .td_gestion:hover{
     padding-left : 17px;
-    background : url(../images/icon/color_18/close.png) no-repeat;
+    background : url(../images/icon/icon_delete.png) no-repeat;
     background-position : 50% 50%;
     background-size : 15px;
 }
@@ -774,10 +798,16 @@ div#droite_dossier{
     width: 430px;
     margin-left : -4px;
     vertical-align : top;
+    height: 654px;
 }
-
+div#droite_dossier fieldset{
+    height: 100%;
+}
+div#evenement_dossier{
+    height: 600px;
+}
 textarea.comment_rdv{
-    width: 396px;
+    width: 372px;
     height: 40px;
     resize : none;
     max-height : 250px;
@@ -836,22 +866,24 @@ a#ajouter_evenement{
 
 td#deplier{
     background : url(../images/icon/gray_18/directional_down.png) no-repeat;	
-    background-position : 50% 70% ;
+    background-position : 50% 50% ;
 }
 
 td#deplier:hover{
     background : url(../images/icon/color_18/directional_down.png) no-repeat;	
-    background-position : 50% 70% ;
+    background-position : 50% 50% ;
 }
 
 td#deplier_ok{
     background : url(../images/icon/gray_18/directional_up.png) no-repeat;	
-    background-position : 50% 70% ;
+        background-position : 50% 50% ;
+
 }
 
 td#deplier_ok:hover{
     background : url(../images/icon/color_18/directional_up.png) no-repeat;	
-    background-position : 50% 70% ;
+    background-position : 50% 50% ;
+
 }
 
 a#lien_detail{
@@ -861,11 +893,11 @@ a#lien_detail{
     margin: -15px 0 0 -315px;
 
 }
-div#ajouter_site, div#ajouter_evenement{
+div#ajouter_site, div#ajouter_evenement, div#ajouter_fichier{
     width: 350px;
     margin: auto;
     
-    margin-top: 10%;
+    margin-top: 5%;
 }
 div#ajouter_site input[type=button], 
 div#ajouter_site button,
@@ -894,6 +926,7 @@ div#ajouter_evenement textarea{
     width: 254px;
     margin : auto;
 }
+
 ------------------------------------------------------------
                   Administration
 ------------------------------------------------------------
@@ -917,7 +950,6 @@ div#gestion_droite{
 
 div#tab_users{
     height : 150px;
-    overflow-x : auto;
     width: 100%;
     margin: 0 auto;
 
@@ -964,7 +996,7 @@ div#tab_fournisseur{
 div#modifier_utilisateur{
     width : 370px;
     color : #777;
-    margin : 20px auto 0 auto;
+    margin : 50px auto 22px auto;
 }
 
 div#form_modifier_utilisateur{

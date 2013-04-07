@@ -139,7 +139,7 @@
                         <td  class="cell_result" ><?php echo $ligne['theme'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['fournisseur'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['user'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['date'] ?></td>
+                        <td  class="cell_result" align="center"><?php echo $ligne['date'] ?></td>
                         <td><a href="#" class="lien_dossier"></a></td>
                     </tr>
                     <?php
