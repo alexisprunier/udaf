@@ -32,16 +32,16 @@ function lister_fichier_dans_bdd() {
 
 function ajouter_fichier_dans_bdd($nom, $extension,$dossier_id) {
     $pdo = PDO2::getInstance();
-
     $requete = $pdo->prepare("INSERT INTO `fichier`(`nom`, `type_fichier`,`dossier_id`) 
         VALUES (:nom, :extension,:dossier_id);");
 
     $requete->bindValue(':nom', $nom);
-    $requete->bindValue(':type_fichier', $extension);
+    $requete->bindValue(':extension', $extension);
     $requete->bindValue(':dossier_id', $dossier_id);
     
     if ($requete->execute()) {
         /** si l'insertion c'est bien passe la methode retourne le dernier id du fichier inseré; */
+       
         return $pdo->lastInsertId();
     }
     /** sinon elle retourne une erreur */

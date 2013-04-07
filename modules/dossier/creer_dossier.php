@@ -53,7 +53,8 @@ if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))
     { 
         //On devra vérifier l'extension && la taille
-        echo "test1";
+        //
+        //
         // taille maximum (en octets)
         $taille_maxi = 5000000; //5Mo deuxieme verification par sécurité
         //Taille du fichier
@@ -65,7 +66,7 @@ if ($_GET["ajout"] == "fichiers"){
         // récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
         $extension = strrchr($_FILES['fichier']['name'], '.');
         //Ensuite on teste tout
-        echo $extension;
+    
         
         if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
         {
@@ -74,7 +75,7 @@ if ($_GET["ajout"] == "fichiers"){
             echo $erreur;
         }
         else{
-            echo "test3";
+            
             $fichier = strtr($fichier,
                 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
                 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); 
@@ -85,8 +86,9 @@ if ($_GET["ajout"] == "fichiers"){
             //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
             $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
             if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-            {
-                ajouter_fichier_dans_bdd($fichier, $extension, 2);
+            {   
+                $fichier = strstr($fichier,'.',true); //enleve l'extension du nom
+                ajouter_fichier_dans_bdd($fichier, $extension, $_SESSION['dossier_ref']);
             }
             else //Sinon (la fonction renvoie FALSE).
             {
@@ -95,8 +97,6 @@ if ($_GET["ajout"] == "fichiers"){
         }
     }
 }
-
-
 
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
 ?>

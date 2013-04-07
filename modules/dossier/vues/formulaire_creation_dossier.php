@@ -280,7 +280,7 @@ if(isset($_GET['id'])) {
                                 <tr>
                                     
                                     <th  align="left">Nom du fichier</th>
-                                    <th  align="center">Format</th>
+                                    <th  align="left">Format</th>
                                     <th align="center">Supprimer</th>
 
                             </thead>
@@ -302,7 +302,7 @@ if(isset($_GET['id'])) {
 
                                  ?>
                                     
-                                        <td align="left"><?php echo $fichier->nom ?></td>
+                                        <td align="left"><a href="uploads/<?php echo $fichier->nom . $fichier->type_fichier?>" target="_blank"><?php echo $fichier->nom ?></a></td>
                                         <td align="left"><?php echo $fichier->type_fichier ?></td>
                                         <td align="center">
                                             <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;action=supp_fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>
