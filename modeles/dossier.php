@@ -46,33 +46,25 @@ function generation_reference() {
  * @param	$sstheme			integer soustheme du dossier
  * @return   True en cas de succes, False en cas d'echec
  */
-function ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
+function ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
     $pdo = PDO2::getInstance();
 
     $requete = $pdo->prepare("INSERT INTO dossier SET
                         dossier_ref = :reference,
                         date_creation_d = :date_creation_d,
-                        problematique = :problematique,
-                        cloture = :cloture,
-                        raison_cloture = :raison_cloture,
-                        comment_cloture = :comment_cloture,
-                        dossier_physique = :doss_physique,
-                        date_cloture = :date_cloture,
-                        user_id = :createur_dossier,
-                        theme_id = :theme_id,
-                        soustheme_id = :soustheme_id,
+						problematique = :problematique,
+						dossier_physique = :doss_physique,
+						user_id = :createur_dossier,
+						theme_id = :theme_id,
+						soustheme_id = :soustheme_id,
                         fournisseur_id = :fournisseur_id,
                         personne_id = :personne_id"
     );
 
     $requete->bindValue(':reference', $reference);
-    $requete->bindValue(':date_creation_d', $date_crea_d);
+    $requete->bindValue(':date_creation', $date_crea_d);
     $requete->bindValue(':problematique', $problematique);
-    $requete->bindValue(':cloture', $cloture);
-    $requete->bindValue(':raison_cloture', $raison_cloture);
-    $requete->bindValue(':comment_cloture', $comment_cloture);
-    $requete->bindValue(':date_cloture', $date_cloture);
-    $requete->bindValue(':doss_physique', $doss_physique);
+	$requete->bindValue(':doss_physique', $doss_physique);
     $requete->bindValue(':createur_dossier', $createur_dossier);
     $requete->bindValue(':theme_id', $theme);
     $requete->bindValue(':soustheme_id', $sstheme);
@@ -373,7 +365,7 @@ function lister_dossier_admin_dans_bdd() {
 function modifier_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $problematique, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("UPDATE dossier SET
+    $requete = $pdo->prepare("INSERT INTO dossier SET
                         dossier_ref = :reference,
                         date_creation_d = :date_creation_d,
 						problematique = :problematique,
@@ -415,7 +407,7 @@ function modifier_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
 function cloturer_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture_d, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("UPDATE dossier SET
+    $requete = $pdo->prepare("INSERT INTO dossier SET
                         dossier_ref = :reference,
                         date_creation_d = :date_creation_d,
 						problematique = :problematique,
@@ -450,39 +442,6 @@ function cloturer_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
     $result = $requete->execute();
 
 	return $dossier_id;
-}
-
-/**
- * @brief      methode de selection la ligne avec l'id le plsu grand
- * 
- * @param
- * @return     la valeur max des dossier_ref
- * 
- */
-function selectionner_dossier_max_id_dans_bdd() {
-    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
-    $pdo = PDO2::getInstance();
-
-    /** on prepare notre requete avec les valeurs pass�s en parametre */
-    $requete = $pdo->prepare("SELECT * FROM dossier 
-            WHERE dossier_ref = ( SELECT max(dossier_ref) FROM dossier);
-            ");
-
-    /** j'execute cette requète */
-    $requete->execute();
-    /** j'initialise un tableau */
-    $tab = array();
-
-    /** pour chaque resultat retourné je l'ajoute dans mon tableau */
-    while ($result = $requete->fetch(PDO::FETCH_OBJ)) {
-
-        array_push($tab, $result);
-    }
-
-    $requete->closeCursor();
-    
-    /** je retourne un tableau d'objet news */
-    return $tab;
 }
 
 ?>

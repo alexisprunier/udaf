@@ -18,7 +18,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
     $pass = mysql_real_escape_string($_POST["password"]);
     $pass_crypt = sha1($pass);
    
-    $result = q("SELECT * FROM utilisateur WHERE ident = '$ident' AND pass = '$pass'");
+    $result = q("SELECT * FROM utilisateur WHERE ident = '$ident' AND pass = '$pass_crypt'");
 
     if (mysql_num_rows($result) == 0) {
         header('location: index.php?erreur=login');
@@ -53,8 +53,8 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
         <link rel="stylesheet" type="text/css" href="css/zice.style.css"/>
         <title>Identification OGconso</title>
         <!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
     </head>
     <body>
         <div id="identification">
