@@ -17,12 +17,13 @@
  * @param	$dossier_id			varchar dossier lie au site
  * @return   True en cas de succes, False en cas d'echec
  */
-function ajouter_site_dans_bdd($lien, $dossier_id) {
+function ajouter_site_dans_bdd($lien, $nom, $dossier_id) {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("INSERT INTO siteweb(`lien`, `dossier_id`) VALUES (:lien,:dossier_id)");
+    $requete = $pdo->prepare("INSERT INTO siteweb(`nom, `lien`, `dossier_id`) VALUES (:nom,:lien,:dossier_id)");
 
     $requete->bindValue(':lien', $lien);
+    $requete->bindValue(':nom', $nom);
     $requete->bindValue(':dossier_id', intval($dossier_id));
 
     if ($requete->execute()) {

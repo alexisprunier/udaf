@@ -288,6 +288,7 @@ if(isset($_GET['id'])) {
                                 
                                    <?php   
                                    $i=0;
+                                   
                                    foreach ($tab_fichier as &$fichier) {
                                        if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
@@ -295,6 +296,9 @@ if(isset($_GET['id'])) {
                                         echo "<tr class=\"odd\">";
                                     $i += 1;
                                     $id_fichier = $fichier->fichier_id; 
+                             
+                                    if($fichier->dossier_id == $_SESSION['dossier_ref'])
+                                    {
 
                                  ?>
                                     
@@ -305,7 +309,9 @@ if(isset($_GET['id'])) {
                                         </td>                                   
                                    
                                 </tr>
-                                <?php }?>
+                                <?php 
+                                    }
+                                }?>
                                 
                             </tbody>
                         </table>
