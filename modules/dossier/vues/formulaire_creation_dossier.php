@@ -139,8 +139,11 @@ if(isset($_GET['id'])) {
 <!--DIV gérant les popup-->
 <!--PopUp création site web-->
 
-<div id="dialog-confirm" style="display : none;" title="Attention?">
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un site WEB du dossier. Etes vous s&ucirc;r?</p>
+<div id="dialog-confirm-web" style="display : none;" title="Attention?">
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un site WEB. Etes vous s&ucirc;r?</p>
+</div>
+<div id="dialog-confirm-fichier" style="display : none;" title="Attention?">
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un fichier. Etes vous s&ucirc;r?</p>
 </div>
 <div id="creer_dossier">
 
@@ -290,6 +293,8 @@ if(isset($_GET['id'])) {
                                    $i=0;
                                    
                                    foreach ($tab_fichier as &$fichier) {
+                                       if($fichier->dossier_id == $_SESSION['dossier_ref'])
+                                    {
                                        if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
@@ -297,15 +302,14 @@ if(isset($_GET['id'])) {
                                     $i += 1;
                                     $id_fichier = $fichier->fichier_id; 
                              
-                                    if($fichier->dossier_id == $_SESSION['dossier_ref'])
-                                    {
+                                    
 
                                  ?>
                                     
                                         <td align="left"><a href="uploads/<?php echo $fichier->nom . $fichier->type_fichier?>" target="_blank"><?php echo $fichier->nom ?></a></td>
                                         <td align="left"><?php echo $fichier->type_fichier ?></td>
                                         <td align="center">
-                                            <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;action=supp_fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>
+                                            <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>
                                         </td>                                   
                                    
                                 </tr>
@@ -326,7 +330,7 @@ if(isset($_GET['id'])) {
                                 <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> <!--5Mo max
                             </span> -->
                             
-                            <button id="ajouter_fichier"type="button" class=" btn btn-primary" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
+                            <button id="ajouter_fichier"type="button" class=" btn" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
                                  <i class="icon-plus icon-white"></i>
                                 <span>Ajouter fichier...</span>
                             </button>

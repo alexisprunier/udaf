@@ -40,7 +40,7 @@ if ($_GET["ajout"] == "site"){
     ajouter_site_dans_bdd($_POST['url'],$_POST['name'], $_SESSION['dossier_ref']);
 }
 
-if ($_GET["ajout"] == "evenement"){
+else if ($_GET["ajout"] == "evenement"){
     ajouter_evenement_dans_bdd(
             $_POST['date'],
             $_POST['mode'],
@@ -49,7 +49,7 @@ if ($_GET["ajout"] == "evenement"){
             $_SESSION['dossier_ref']);
 }
 
-if ($_GET["ajout"] == "fichiers"){
+else if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))
     { 
         //On devra vérifier l'extension && la taille
@@ -97,6 +97,26 @@ if ($_GET["ajout"] == "fichiers"){
         }
     }
 }
+else if($_GET["suppr"] === "fichier"){
+     /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
+  
+
+    /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
+    $id_supp_fichier = supprimer_fichier_dans_bdd($_GET['id']);
+
+    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
+    if ($id_supp_fichier == true) {
+
+        /** On transforme la chaine en entier */
+        $id_supp_fichier = (int) $id_supp_fichier;
+
+        /** Affichage de la confirmation de suppression */
+        //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
+    } 
+      
+       
+}
+
 
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
 ?>

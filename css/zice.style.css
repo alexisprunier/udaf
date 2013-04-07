@@ -97,7 +97,9 @@ background-color: rgba(87,126,220,0.2);
    background-color: rgba(87,126,220,1);
     -webkit-transition: background-color .2s ease-out; 
 }
-/*
+a.supprimer_ligne{
+    display: block;
+}/*
 ------------------------------------------------------------
                   Identification
 ------------------------------------------------------------
@@ -764,15 +766,16 @@ a#ajouter_site{
 }
 
 .td_gestion{
+    cursor: pointer;
     padding-left : 17px;
-    background : url(../images/icon/gray_18/close.png) no-repeat;
+    background : url(../images/icon/icon_delete.png) no-repeat;
     background-position : 50% 50%;
     background-size : 15px;
 }
 
 .td_gestion:hover{
     padding-left : 17px;
-    background : url(../images/icon/color_18/close.png) no-repeat;
+    background : url(../images/icon/icon_delete.png) no-repeat;
     background-position : 50% 50%;
     background-size : 15px;
 }

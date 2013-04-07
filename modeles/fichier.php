@@ -47,4 +47,23 @@ function ajouter_fichier_dans_bdd($nom, $extension,$dossier_id) {
     /** sinon elle retourne une erreur */
     return $requete->errorInfo();
 }
+
+function supprimer_fichier_dans_bdd($id_fichier) {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prépare notre requete avec les valeurs passés en parametre */
+    $requete = $pdo->prepare("DELETE FROM fichier where fichier_id = :id_fichier");
+
+    $requete->bindValue(':id_fichier', $id_fichier);
+    $requete->execute();
+
+    if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+        print_r($result);
+        $requete->closeCursor();
+        return $result;
+    }
+    return $requete->errorInfo();
+}
 ?>
