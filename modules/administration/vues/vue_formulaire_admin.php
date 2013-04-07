@@ -172,8 +172,8 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                     <table class="scroll_tab"  id="head_dossiers">
                         <thead>
                             <tr class="head_tab">
-                                <th align="center">Date de cr&eacute;ation</th>
-                                <th align="center">Num&eacute;ro de dossier</th>
+                                <th align="left">Date de cr&eacute;ation</th>
+                                <th align="left">Num&eacute;ro de dossier</th>
                                 <th align="left">Nom client</th>
                                 <th >Supprimer</th>
                             </tr>
@@ -192,8 +192,8 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     $i += 1;
                                     $id_dossier = $liste_dossier[$key]->dossier_id;
                                     ?>
-                                    <td align ="center"><?php echo $liste_dossier[$key]->date_creation_d; ?></td>
-                                    <td align="center"><?php echo $liste_dossier[$key]->dossier_ref; ?></td>
+                                    <td><?php echo $liste_dossier[$key]->date_creation_d; ?></td>
+                                    <td><?php echo $liste_dossier[$key]->dossier_ref; ?></td>
                                     <td><?php echo $liste_dossier[$key]->nom . " " . $liste_dossier[$key]->prenom; ?></td>
 
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_dossier&id=<?php echo $id_dossier; ?>"><img src="images/icon/icon_delete.png"/></a></td>
@@ -212,7 +212,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                     <table class="scroll_tab"  id="head_fournisseurs">
                         <thead>
                             <tr class="head_tab">
-                                <th align="center">Date de cr&eacute;ation</th>
+                                <th align="left">Date de cr&eacute;ation</th>
                                 <th align="left">Nom (Raison sociale)</th>
                                 <th >Supprimer</th>
                             </tr>
@@ -231,7 +231,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     $i += 1;
                                     $id_fournisseur = $liste_fournisseur[$key]->fournisseur_id;
                                     ?>
-                                    <td align="center"><?php echo $liste_fournisseur[$key]->date_creation_f; ?></td>
+                                    <td><?php echo $liste_fournisseur[$key]->date_creation_f; ?></td>
                                     <td><?php
                                 if ($liste_fournisseur[$key]->nom == null)
                                     echo $liste_fournisseur[$key]->raison_sociale;
@@ -241,7 +241,6 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_fournisseur&id=<?php echo $id_fournisseur; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                                 </tr>
                             <?php } ?>
-                                
                         </tbody>	
                     </table>
                 </div>
