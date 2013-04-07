@@ -50,11 +50,17 @@ function lister_evenement_dans_bdd() {
 function ajouter_evenement_dans_bdd($date, $mode_contact, $comm_event, $user_id, $dossier_id) {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("INSERT INTO `evenement`(`date_event`, `mode_contact`, `traite`, `comm_event`, `user_id`, `dossier_id`) 
-        VALUES (:date, :mode_contact, 0, :comm_event, :user_id, :dossier_id);");
+    $requete = $pdo->prepare("INSERT INTO evenement SET
+				date_event = :date,
+				mode_contact = :mode_contact,
+				traite = :traite,
+				comm_event = :comm_event,
+				user_id = :user_id,
+				dossier_id = :dossier_id;");
 
     $requete->bindValue(':date', $date);
     $requete->bindValue(':mode_contact', $mode_contact);
+    $requete->bindValue(':traite', 0);
     $requete->bindValue(':comm_event', $comm_event);
     $requete->bindValue(':user_id', $user_id);
     $requete->bindValue(':dossier_id', $dossier_id);

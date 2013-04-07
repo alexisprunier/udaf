@@ -22,7 +22,6 @@
         <script type="text/javascript" src='components/elastic/jquery.elastic.source.js'></script>
         <script type='text/javascript' src='components/fullcalendar/fullcalendar.js'></script>
         <script type='text/javascript' src='components/fixed-header-table/jquery.fixedheadertable.js'></script>
-  
         
         <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="components/flot/excanvas.min.js"></script><![endif]--> 
     </head>        

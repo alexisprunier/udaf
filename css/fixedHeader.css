@@ -36,7 +36,7 @@
 	/* text */
 	font-size: 100%;
 	font: inherit;
-	vertical-align: middle;
+	vertical-align: top;
 	}
 
 .fht-table {
@@ -65,7 +65,7 @@
 	.fht-table-wrapper .fht-fixed-body .fht-tbody,
 	.fht-table-wrapper .fht-tbody {
 		/* appearance */
-	    overflow-y: auto;
+	    overflow: auto;
 		}
 
 		.fht-table-wrapper .fht-table .fht-cell {
