@@ -536,7 +536,7 @@ form#form_creer_dossier{
 }
 
 div #creer_dossier{
-    width : 1135px;
+    width : 1134px;
     margin: 0 auto;
 }
 
@@ -696,6 +696,7 @@ div#gestion_fichier{
 div#liste_fichiers{
     display : inline-block;
     width : 320px;
+    height: 111px;
 }
 
 table#tab_fichier{
@@ -708,10 +709,11 @@ div#bouton_fichier{
     vertical-align : top;
 }
 
-button.bouton_fichiers{
-    width : 180px;
-    height : 28px;
+button#ajouter_fichier{
+    width: 100%;
+margin-top: 0;
 }
+
 
 div#milieu{
     display: inline-block;

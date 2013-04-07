@@ -275,26 +275,38 @@ if(isset($_GET['id'])) {
                     <legend>Fichiers</legend>
                     <br />
                     <div id="liste_fichiers">
-                        <table class="display data_table3"  id="tab_fichier">
+                        <table class="scroll_tab"  id="tab_fichier">
                             <thead>
                                 <tr>
-                                    <th width="35"><input type="hidden" id="checkAll"  class="checkAll"/></th>
+                                    
                                     <th  align="left">Nom du fichier</th>
                                     <th  align="center">Format</th>
+                                    <th align="center">Supprimer</th>
 
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td  width="35" ><input type="checkbox" name="checkbox[]" class="chkbox"  id="check11"/></td>
-                                    <td align="left">file1</td>
-                                    <td align="left">PDF</td>
-                                </tr>
+                                
+                                   <?php   
+                                   $i=0;
+                                   foreach ($tab_fichier as &$fichier) {
+                                       if (($i % 2) == 0)
+                                        echo "<tr class=\"even\">";
+                                    else
+                                        echo "<tr class=\"odd\">";
+                                    $i += 1;
+                                    $id_fichier = $fichier->fichier_id; 
 
-                                <tr>
-                                    <td  width="35" ><input type="checkbox" name="checkbox[]" class="chkbox"  id="check11"/></td>
-                                    <td align="left">file2</td>
-                                    <td align="left">DOCX</td>
+                                 ?>
+                                    
+                                        <td align="left"><?php echo $fichier->nom ?></td>
+                                        <td align="left"><?php echo $fichier->type_fichier ?></td>
+                                        <td align="center">
+                                            <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;action=supp_fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>
+                                        </td>                                   
+                                   
                                 </tr>
+                                <?php }?>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -308,7 +320,7 @@ if(isset($_GET['id'])) {
                                 <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> <!--5Mo max
                             </span> -->
                             
-                            <button type="button" class=" btn btn-primary" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
+                            <button id="ajouter_fichier"type="button" class=" btn btn-primary" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
                                  <i class="icon-plus icon-white"></i>
                                 <span>Ajouter fichier...</span>
                             </button>
