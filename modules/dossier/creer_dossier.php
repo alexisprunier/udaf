@@ -36,9 +36,8 @@ $ref = sprintf("%04d", $count_id);
 $_SESSION['dossier_ref'] = $date . "" . $ref + 1;
 
 if ($_GET["ajout"] == "site"){
-    echo $_SESSION['dossier_ref'];
     
-    echo ajouter_site_dans_bdd($_POST['url'],$_POST['name'], $_SESSION['dossier_ref']);
+    ajouter_site_dans_bdd($_POST['url'],$_POST['name'], $_SESSION['dossier_ref']);
 }
 
 if ($_GET["ajout"] == "evenement"){
