@@ -113,7 +113,6 @@
                     <th  align="left"  >Fournisseur</th>
                     <th  align="left"  >Utilisateur</th>
                     <th  align="center"  >Date de cr&eacute;ation</th>
-                    <th  align="center"  >Editer</th>
                     <th align="center"></th>
 
                 </tr>
@@ -135,13 +134,13 @@
                         <td  class="cell_result cell_center" ><?php echo $ligne['n_dossier'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['nom'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['prenom'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['telephone'] ?></td>
+                        <td  class="cell_result" align="center" ><?php echo $ligne['telephone'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['mail'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['theme'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['fournisseur'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['user'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['date'] ?></td>
-                        <td align="center"><a href="accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['id_dossier']; ?>"><img src="images/icon/icon_edit.png"/></a></td>
+                        <td  align="center" ><?php echo $ligne['date'] ?></td>
+                        <td align="center"><a href="accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['n_dossier']; ?>" class="lien_dossier"></a></td>
                     </tr>
                     <?php
                 }

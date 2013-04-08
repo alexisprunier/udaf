@@ -29,15 +29,18 @@
 .fht-table td {
 	/* position */
     margin: 0;
-    
-    /* size */
-	padding : 5px;
+   
 
 	/* text */
 	font-size: 100%;
 	font: inherit;
 	vertical-align: middle;
 	}
+.fht-table th{
+	/*SIZE*/
+	padding: 10px 5px;
+}
+.fht-table td{padding: 5px ;}
 
 .fht-table {
 	/* appearance */

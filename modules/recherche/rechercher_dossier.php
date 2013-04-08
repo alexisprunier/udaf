@@ -15,11 +15,11 @@ $lignes_tableau = array();
 
 foreach ($tab_dossier as &$dossier) {
 
-    $personne = selectionner_personne_dans_bdd($dossier->user_id);
+    $personne = selectionner_personne_dans_bdd($dossier->personne_id);
     $theme = selectionner_theme_dans_bdd($dossier->theme_id);
     $fournisseur = selectionner_fournisseur_dans_bdd($dossier->fournisseur_id);
     $user = selectionner_utilisateur_dans_bdd($dossier->user_id);
-
+  
     $ligne = array(
         'n_dossier' => $dossier->dossier_ref,
         'nom' => $personne['nom'],
