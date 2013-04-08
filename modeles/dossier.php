@@ -452,4 +452,38 @@ function cloturer_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
 	return $dossier_ref;
 }
 
+
+/**
+ * @brief      methode de selection la ligne avec l'id le plsu grand
+ * 
+ * @param
+ * @return     la valeur max des dossier_ref
+ * 
+ */
+function selectionner_dossier_max_id_dans_bdd() {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prepare notre requete avec les valeurs pass�s en parametre */
+    $requete = $pdo->prepare("SELECT * FROM dossier 
+            WHERE dossier_ref = ( SELECT max(dossier_ref) FROM dossier);
+            ");
+
+    /** j'execute cette requète */
+    $requete->execute();
+    /** j'initialise un tableau */
+    $tab = array();
+
+    /** pour chaque resultat retourné je l'ajoute dans mon tableau */
+    while ($result = $requete->fetch(PDO::FETCH_OBJ)) {
+
+        array_push($tab, $result);
+    }
+
+    $requete->closeCursor();
+    
+    /** je retourne un tableau d'objet news */
+    return $tab;
+}
+
 ?>
