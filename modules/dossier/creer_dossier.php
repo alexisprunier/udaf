@@ -76,10 +76,15 @@ if ($_GET["ajout"] == "dossier"){
     $reference = $_SESSION['dossier_ref'];
     $problematique = mysql_escape_string($_POST['txt_problematique']); //mysql_escape_string : prevenir injection sql
     $cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
+    echo $cloture;
     $raison_cloture = $_POST['list_cloture'];
+    echo $raison_cloture;
     $comment_cloture = $_POST['comment_cloture'];
+    echo $comment_cloture;
     $date_cloture = $_POST['date_cloture'];
+    echo $date_cloture;
     $dossier_physique = $_POST['check_physique'];
+    echo $dossier_physique;
     $createur_dossier = $_POST['liste_user'];
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
@@ -124,24 +129,24 @@ if ($_GET["ajout"] == "fichiers"){
         //Ensuite on teste tout
     
         
-        if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
+         if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
         {
-            $erreur = 'Erreur lors du l\'envoi du fichier v�rifier l\'extension du fichier (autoris� seulement : png, gif, jpg, jpeg, txt ou doc...)
+            $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
                 \n ou la taille (taille max : 5Mo)';
             echo $erreur;
         }
         else{
             
             $fichier = strtr($fichier,
-                '����������������������������������������������������',
+                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
                 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); 
-            //On remplace les lettres accentut�es par les non accentu�es dans $fichier.
-            //Et on r�cup�re le r�sultat dans fichier
+            //On remplace les lettres accentutées par les non accentuées dans $fichier.
+            //Et on récupère le résultat dans fichier
 
-            //En dessous, il y a l'expression r�guli�re qui remplace tout ce qui n'est pas une lettre non accentu�es ou un chiffre
-            //dans $fichier par un underscore "_" et qui place le r�sultat dans $fichier.
+            //En dessous, il y a l'expression régulière qui remplace tout ce qui n'est pas une lettre non accentuées ou un chiffre
+            //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
             $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
-            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que �a a fonctionn�...
+            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
             {   
                 $fichier = strstr($fichier,'.',true); //enleve l'extension du nom
                 ajouter_fichier_dans_bdd($fichier, $extension, $_SESSION['dossier_ref']);
@@ -169,7 +174,26 @@ if($_GET["suppr"] === "fichier"){
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     } 
-      
+   header('Location: /accueil.php?module=dossier&action=creer_dossier');   
+       
+}
+if($_GET["suppr"] === "site"){
+     /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
+  
+
+    /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
+    $id_supp_site = supprimer_site_dans_bdd($_GET['id']);
+
+    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
+    if ($id_supp_site == true) {
+
+        /** On transforme la chaine en entier */
+        $id_supp_site = (int) $id_supp_site;
+
+        /** Affichage de la confirmation de suppression */
+        //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
+    } 
+   header('Location: /accueil.php?module=dossier&action=creer_dossier');   
        
 }
 

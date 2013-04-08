@@ -66,3 +66,22 @@ function lister_site_dans_bdd() {
     /** je retourne un tableau d'objet news */
     return $tab;
 }
+function supprimer_site_dans_bdd($id_site) {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prépare notre requete avec les valeurs passés en parametre */
+    $requete = $pdo->prepare("DELETE FROM siteweb where site_id = :id_site");
+
+    $requete->bindValue(':id_site', $id_site);
+    $requete->execute();
+
+    if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+        print_r($result);
+        $requete->closeCursor();
+        return $result;
+    }
+    return $requete->errorInfo();
+}
+?>

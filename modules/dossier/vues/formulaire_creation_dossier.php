@@ -388,11 +388,11 @@ foreach ($tab_fournisseur as $key => $value) {
                             echo $tab_theme["nom"];
                         }
                                 ?></option> 
-<?php
-foreach ($tab_theme as $key => $value) {
-    echo utf8_encode('<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>');
-}
-?>
+                                    <?php
+                                    foreach ($tab_theme as $key => $value) {
+                                        echo utf8_encode('<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>');
+                                    }
+                                    ?>
                             </select>
                         </div>
 
@@ -400,14 +400,15 @@ foreach ($tab_theme as $key => $value) {
                         <div id="div_soustheme">
                             <select class="liste_problematique" id="soustheme" name="soustheme" title="Choisir un sous-th&egrave;me" required >
                                 <option value="<?php
-if (isset($_GET['id'])) {
-    echo $tab_sstheme["soustheme_id"];
-}
-?>"><?php
-if (isset($_GET['id'])) {
-    echo $tab_sstheme["nom"];
-}
-?></option> 
+                                    if (isset($_GET['id'])) {
+                                        echo $tab_sstheme["soustheme_id"];
+                                    }
+                                    ?>"><?php
+                                    if (isset($_GET['id'])) {
+                                        echo $tab_sstheme["nom"];
+                                    }
+                                    ?>
+                                </option> 
                             </select>
                         </div>
                     </div>
@@ -495,35 +496,32 @@ if (isset($_SESSION['problematique']))
             <div id="website">
                 <fieldset class="ogconso">
                     <legend>Site WEB</legend>
-                    <table class="display data_table3"  id="head_sites">
+                    <div class="tab_site">
+                    <table class="scroll_tab"  id="head_sites">
                         <thead>
                             <tr>
                                 <th  align="left">Nom</th>
                                 <th  align="left">Gestion</th>
                         </thead>
-                        <tbody>
-                        <td colspan="2">
-                            <div class="scroll_dossier">
-                                <table class="display data_table3"  id="tab_sites">
-                    <?php
-                    foreach ($tab_site as &$site) {
-                        if ($site->dossier_id == $_SESSION['dossier_ref']) {
-                            ?>
-                                            <tr class="odd">
-                                                <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo $site->nom; ?></a></td>
-                                                <td class="td_gestion">											
-                                                </td>
-                                            </tr>
-        <?php
-    }
-}
-?>
-                                </table>
-                            </div>
-                        </td>
-                        </tbody>
+                        <tbody>                         
+                                <?php
+                                foreach ($tab_site as &$site) {
+                                    if ($site->dossier_id == $_SESSION['dossier_ref']) {
+                                        ?>
+                                        <tr class="odd">
+                                            <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo $site->nom; ?></a></td>
+                                            <td align="center">
+                                            <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=site&id=<?php echo $site->site_id; ?>"><img src="images/icon/icon_delete.png"/></a>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                        }
+                                    }
+                                    ?>                           
+                    
+                       </tbody>
                     </table>
-
+                    </div>
                     <a id="ajouter_site" class="btn"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site'));">Ajouter</a>
                 </fieldset>			
             </div>
@@ -550,7 +548,7 @@ if (isset($_SESSION['problematique']))
 
                     <legend>Validation</legend>
                     <label for="list_users" class="lab_txt">Propri&eacute;taire :</label>
-                    <select id="liste_user" class="inputfield">
+                    <select id="list_users" class="inputfield">
                         <option value=""></option> 
 <?php
 foreach ($tab_user as $key => $value) {
