@@ -103,50 +103,45 @@ if ($_GET["ajout"] == "dossier"){
         $id_dossier = (int) $id_dossier;
         $id_fournisseur = (int) $id_fournisseur;
 
+    }
 }
-
-
-
-
-
-
-else if ($_GET["ajout"] == "fichiers"){
+if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))
-    { 
-        //On devra vérifier l'extension && la taille
+    //{ 
+        //On devra vï¿½rifier l'extension && la taille
         //
         //
         // taille maximum (en octets)
-        $taille_maxi = 5000000; //5Mo deuxieme verification par sécurité
+        $taille_maxi = 5000000; //5Mo deuxieme verification par sï¿½curitï¿½
         //Taille du fichier
         $taille = filesize($_FILES['fichier']['tmp_name']);
-        //On fait un tableau contenant les extensions autorisées.
+        //On fait un tableau contenant les extensions autorisï¿½es.
         $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt');
         $dossier = 'uploads/';
         $fichier = basename($_FILES['fichier']['name']);
-        // récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
+        // rï¿½cupï¿½re la partie de la chaine ï¿½ partir du dernier . pour connaï¿½tre l'extension.
         $extension = strrchr($_FILES['fichier']['name'], '.');
         //Ensuite on teste tout
     
         
         if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
         {
-            $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
+            $erreur = 'Erreur lors du l\'envoi du fichier vï¿½rifier l\'extension du fichier (autorisï¿½ seulement : png, gif, jpg, jpeg, txt ou doc...)
                 \n ou la taille (taille max : 5Mo)';
             echo $erreur;
         }
         else{
             
             $fichier = strtr($fichier,
-                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+                'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
                 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); 
-            //On remplace les lettres accentutées par les non accentuées dans $fichier.
-            //Et on récupère le résultat dans fichier
+            //On remplace les lettres accentutï¿½es par les non accentuï¿½es dans $fichier.
+            //Et on rï¿½cupï¿½re le rï¿½sultat dans fichier
 
-            //En dessous, il y a l'expression régulière qui remplace tout ce qui n'est pas une lettre non accentuées ou un chiffre
-            //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
+            //En dessous, il y a l'expression rï¿½guliï¿½re qui remplace tout ce qui n'est pas une lettre non accentuï¿½es ou un chiffre
+            //dans $fichier par un underscore "_" et qui place le rï¿½sultat dans $fichier.
             $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
-            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ï¿½a a fonctionnï¿½...
             {   
                 $fichier = strstr($fichier,'.',true); //enleve l'extension du nom
                 ajouter_fichier_dans_bdd($fichier, $extension, $_SESSION['dossier_ref']);
@@ -156,9 +151,9 @@ else if ($_GET["ajout"] == "fichiers"){
                  echo 'Echec de l\'upload !';
             }
         }
-    }
+        header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
-else if($_GET["suppr"] === "fichier"){
+if($_GET["suppr"] === "fichier"){
      /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
   
 

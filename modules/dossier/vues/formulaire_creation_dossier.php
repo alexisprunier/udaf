@@ -441,14 +441,14 @@ if (isset($_SESSION['problematique']))
                                    $i=0;
                                    
                                    foreach ($tab_fichier as &$fichier) {
-                                       if($fichier->dossier_id == $_SESSION['dossier_ref'])
-                                    {
-                                       if (($i % 2) == 0)
+                                        if($fichier->dossier_id == $_SESSION['dossier_ref'])
+                                        {
+                                        if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
-                                    else
+                                        else
                                         echo "<tr class=\"odd\">";
-                                    $i += 1;
-                                    $id_fichier = $fichier->fichier_id; 
+                                        $i += 1;
+                                        $id_fichier = $fichier->fichier_id; 
                              
                                     
 
@@ -589,20 +589,20 @@ foreach ($tab_user as $key => $value) {
                     <tbody>
                         <?php 
                         $i=-1;
-                        foreach ($tableau_evenements as &$ligne_evenement) {
+                        foreach ($tab_evenement as &$ligne_evenement) {
                             $i++;
                              if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
                                         echo "<tr class=\"odd\">";
-                            if ( $evenement->dossier_id == $_SESSION['dossier_ref']) {
+                            if ( $ligne_evenement->dossier_id == $_SESSION['dossier_ref']) {
                                
                                     
                         ?>
                                     <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
-                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
-                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
+                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement->date_event; ?></td>
+                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement->mode_contact; ?></td>
+                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement->user_id; ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
                                 </tr>
                                 <?php
@@ -611,7 +611,7 @@ foreach ($tab_user as $key => $value) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $evenement->comm_event; ?></textarea></td>
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement->comm_event; ?></textarea></td>
                                 </tr>
                         <?php
                         
