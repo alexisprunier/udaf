@@ -733,6 +733,7 @@ div#website fieldset{
 
     padding: 0;
     width: 148px;
+    height: 100%;
 }
 div#tab_website{
     height: 135px;
@@ -781,7 +782,7 @@ a#ajouter_site{
     background-size : 15px;
 }
 
-input#list_users{
+select#liste_user{
     width : 100%;
 }
 
