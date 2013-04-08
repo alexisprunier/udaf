@@ -190,7 +190,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     else
                                         echo "<tr class=\"odd\">";
                                     $i += 1;
-                                    $id_dossier = $liste_dossier[$key]->dossier_id;
+                                    $id_dossier = $liste_dossier[$key]->dossier_ref;
                                     ?>
                                     <td align ="center"><?php echo $liste_dossier[$key]->date_creation_d; ?></td>
                                     <td align="center"><?php echo $liste_dossier[$key]->dossier_ref; ?></td>

@@ -1,12 +1,71 @@
-<div id="recherche">
+<script type="text/javascript">  
+/*function save_fields(){
+
+        if (document.getElementById('choix_numero_dossier').value != null)
+        {
+            document.cookie = "choix_numero_dossier="+document.getElementById('choix_numero_dossier').value;
+            if (document.getElementById('choix_nom').value != null)
+            {
+                document.cookie = "choix_nom="+document.getElementById('choix_nom').value;
+                if (document.getElementById('choix_prenom').value != null)
+                {
+                    document.cookie = "choix_prenom="+document.getElementById('choix_prenom').value;
+                    if (document.getElementById('telephone').value != null){
+                        document.cookie = "telephone="+document.getElementById('telephone').value;
+                        if (document.getElementById('choix_mail').value != null){
+                            document.cookie = "choix_mail="+document.getElementById('choix_mail').value;
+                            if (document.getElementById('theme').value != null){
+                                document.cookie = "theme="+document.getElementById('theme').value;
+                                if (document.getElementById('choix_fournisseur').value != null){
+                                document.cookie = "choix_fournisseur="+document.getElementById('choix_fournisseur').value;
+                                    if (document.getElementById('date_debut').value != null){
+                                    document.cookie = "date_debut="+document.getElementById('date_debut').value;
+                                    if (document.getElementById('date_fin').value != null){
+                                        document.cookie = "date_fin="+document.getElementById('date_fin').value;
+                                        return true;
+                                        }else{document.cookie = "date_fin=";}
+                                    }else{document.cookie = "date_debut=";}
+                                }else{document.cookie = "choix_fournisseur=";}
+                            }else{document.cookie = "theme=";}
+                        }else{document.cookie = "choix_mail=";}
+                    }else{document.cookie = "telephone=";}
+                }else{document.cookie = "choix_prenom=";}
+            }else{document.cookie = "choix_nom=";}
+        }else{document.cookie = "choix_numero_dossier=";}
+        return(false);
+  
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return "";
+    }
+    function effacercookies(){
+eraseCookie('date_fin');
+eraseCookie('date_debut');
+eraseCookie('choix_fournisseur');
+eraseCookie('theme');
+eraseCookie('choix_mail');
+eraseCookie('telephone');
+eraseCookie('choix_prenom');
+eraseCookie('choix_nom');
+eraseCookie('choix_numero_dossier');        
+    }*/
+</script>
+<div id="recherche" onunload="effacercookies()">
     <div id="champs_recherche" class="recherche">
         <h3>Recherche des dossiers</h3>
-        <form action="accueil.php?module=recherche&action=rechercher_dossier">
+        <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">
             <div id="col1" class="col">
                 <input type="hidden" name="module" value="recherche"/>
                 <input type="hidden" name="action" value="rechercher_dossier"/>
                 <label for="choix_numero_dossier" class="lab_txt" >N&deg; du dossier : </label>
-                <input type="text" name="choix_numero_dossier" id="choix_numero_dossier" list="numero_dossier" placeholder="ex : 20130001" class="inputfield"/>
+                <input type="text" name="choix_numero_dossier" id="choix_numero_dossier" value="<?php echo $_GET['choix_numero_dossier']; ?>" list="numero_dossier" placeholder="ex : 20130001" class="inputfield"/>
                 <datalist id="numero_dossier">
                     <?php
                     foreach ($datalist_dossier_ref as &$dossier_ref) {
@@ -18,7 +77,8 @@
                 </datalist>
 
                 <label for="choix_nom" class="lab_txt">Nom : </label>
-                <input type="text" name="choix_nom" id="choix_nom" list="nom" placeholder="Nom du client" class="inputfield"/>
+                <input type="text" name="choix_nom" id="choix_nom" list="nom" placeholder="Nom du client" class="inputfield" 
+                    value="<?php echo $_GET['choix_nom']; ?>"/>
                 <datalist id="nom">
                     <?php
                     foreach ($datalist_nom as $nom) {
@@ -30,7 +90,7 @@
                 </datalist>
 
                 <label for="choix_prenom" class="lab_txt">Pr&eacute;nom : </label>
-                <input type="text" name="choix_prenom" id="choix_prenom" list="prenom" placeholder="Pr&eacute;nom du client" class="inputfield"/>
+                <input type="text" name="choix_prenom" id="choix_prenom" list="prenom" value="<?php echo $_GET['choix_prenom']; ?>" placeholder="Pr&eacute;nom du client" class="inputfield"/>
                 <datalist id="prenom">
                     <?php
                     foreach ($datalist_prenom as $prenom) {
@@ -44,7 +104,7 @@
 
             <div id="col2" class="col">
                 <label for="telephone" class="lab_txt" >T&eacute;l&eacute;phone : </label>
-                <input type="text" name="choix_telephone" list="tel" id="telephone" placeholder="T&eacute;l&eacute;phone" class="inputfield"/>
+                <input type="text" name="choix_telephone" list="tel" id="telephone"  value="<?php echo $_GET['choix_telephone']; ?>" placeholder="T&eacute;l&eacute;phone" maxlength="10" class="inputfield"/>
                 <datalist id="tel">
                     <?php
                     foreach ($datalist_tel as $tel) {
@@ -55,7 +115,7 @@
                     ?>
                 </datalist>
                 <label for="choix_mail" class="lab_txt">Adresse mail : </label>
-                <input type="text" name="choix_mail" list="mail" id="choix_mail" placeholder="e-Mail du client" class="inputfield"/>
+                <input type="text" name="choix_mail" list="mail" id="choix_mail" value="<?php echo $_GET['choix_mail']; ?>" placeholder="e-Mail du client" class="inputfield"/>
                 <datalist id="mail">
                     <?php
                     foreach ($datalist_mail as $mail) {
@@ -70,8 +130,8 @@
 
             <div id="col3" class="col" >
                 <label for="theme" class="lab_txt">Th&egrave;me : </label>
-                <select class="inputfield_liste" id="theme" name="theme" title="Choisir un th&egrave;me">
-                    <option value=""></option> 
+                <select class="inputfield_liste" id="theme" name="theme" title="Choisir un th&egrave;me" value="test">
+                    <option value="<?php echo $_GET['theme']; ?>"><?php    ?></option> 
                     <?php
                     foreach ($tab_theme as $key => $value) {
                         echo utf8_encode('<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>');
@@ -79,7 +139,7 @@
                     ?>
                 </select>
                 <label for="choix_fournisseur" class="lab_txt">Fournisseur : </label>
-                <input type="text" name="choix_fournisseur" list="fournisseur"  placeholder="Nom ou Raison sociale" id="choix_fournisseur" class="inputfield"/>
+                <input type="text" name="choix_fournisseur" list="fournisseur"  value="<?php echo $_GET['choix_fournisseur']; ?>" placeholder="Nom ou Raison sociale" id="choix_fournisseur" class="inputfield"/>
                 <datalist id="fournisseur">
                     <?php
                     echo utf8_encode('<option value="' . $tab_fournisseur[$key]->fournisseur_id . '" >' . $tab_fournisseur[$key]->nom . ' ' . $tab_fournisseur[$key]->prenom . ' (' . $tab_fournisseur[$key]->raison_sociale . ')</option>');
@@ -89,13 +149,13 @@
 
             <div id="col4" class="col">
                 <label for="date_debut" class="lab_txt" >De : </label>
-                <input type="text" name="choix_date_debut" class="datepicker inputfield" placeholder="Selectionner date" id="date-debut"/></input>
+                <input type="text" name="choix_date_debut" class="datepicker inputfield" value="<?php echo $_GET['date_debut']; ?>" placeholder="Selectionner date" id="date-debut"/></input>
 
                 <label for="date_fin"class="lab_txt" >&Agrave; : </label>
-                <input type="text" name="choix_date_fin" class="datepicker inputfield" placeholder="Selectionner date" id="date_fin"/></input>
+                <input type="text" name="choix_date_fin" class="datepicker inputfield" value="<?php echo $_GET['date_fin']; ?>" placeholder="Selectionner date" id="date_fin"/></input>
 
 
-                <input type="submit" id="btn_rechercher" value="Appliquer filtres" >
+                <input type="submit" id="btn_rechercher"  value="Appliquer filtres"/>
             </div>
         </form>
     </div>
@@ -121,8 +181,10 @@
             <tbody>
 
                 <?php
+                
                 foreach ($lignes_tableau as $ligne) {
                     ?>
+                
                     <tr class="
                     <?php
                     if ($ligne['cloture'] == 1) {
@@ -134,7 +196,7 @@
                         <td  class="cell_result cell_center" ><?php echo $ligne['n_dossier'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['nom'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['prenom'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['telephone'] ?></td>
+                        <td  class="cell_result" align="center"><?php echo $ligne['telephone'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['mail'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['theme'] ?></td>
                         <td  class="cell_result" ><?php echo $ligne['fournisseur'] ?></td>
@@ -149,3 +211,16 @@
         </table>
     </div>
 </div>
+<script type="text/javascript">
+/*document.getElementById("choix_numero_dossier").value = readCookie("choix_numero_dossier");
+document.getElementById("choix_nom").value = readCookie("choix_nom");
+document.getElementById("choix_prenom").value = readCookie("choix_prenom");
+document.getElementById("telephone").value = readCookie("telephone");
+document.getElementById("choix_mail").value = readCookie("choix_mail");
+document.getElementById("theme").value = readCookie("theme");
+document.getElementById("choix_fournisseur").value = readCookie("choix_fournisseur");
+document.getElementById("date_debut").value = readCookie("date_debut");
+document.getElementById("date_fin").value = readCookie("date_fin");*/
+
+
+</script>

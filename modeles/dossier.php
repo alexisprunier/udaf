@@ -46,25 +46,33 @@ function generation_reference() {
  * @param	$sstheme			integer soustheme du dossier
  * @return   True en cas de succes, False en cas d'echec
  */
-function ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
+function ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
     $pdo = PDO2::getInstance();
 
     $requete = $pdo->prepare("INSERT INTO dossier SET
                         dossier_ref = :reference,
                         date_creation_d = :date_creation_d,
-						problematique = :problematique,
-						dossier_physique = :doss_physique,
-						user_id = :createur_dossier,
-						theme_id = :theme_id,
-						soustheme_id = :soustheme_id,
+                        problematique = :problematique,
+                        cloture = :cloture,
+                        raison_cloture = :raison_cloture,
+                        comment_cloture = :comment_cloture,
+                        dossier_physique = :doss_physique,
+                        date_cloture = :date_cloture,
+                        user_id = :createur_dossier,
+                        theme_id = :theme_id,
+                        soustheme_id = :soustheme_id,
                         fournisseur_id = :fournisseur_id,
                         personne_id = :personne_id"
     );
 
     $requete->bindValue(':reference', $reference);
-    $requete->bindValue(':date_creation', $date_crea_d);
+    $requete->bindValue(':date_creation_d', $date_crea_d);
     $requete->bindValue(':problematique', $problematique);
-	$requete->bindValue(':doss_physique', $doss_physique);
+    $requete->bindValue(':cloture', $cloture);
+    $requete->bindValue(':raison_cloture', $raison_cloture);
+    $requete->bindValue(':comment_cloture', $comment_cloture);
+    $requete->bindValue(':date_cloture', $date_cloture);
+    $requete->bindValue(':doss_physique', $doss_physique);
     $requete->bindValue(':createur_dossier', $createur_dossier);
     $requete->bindValue(':theme_id', $theme);
     $requete->bindValue(':soustheme_id', $sstheme);
@@ -275,14 +283,14 @@ function selectionner_utilisateur_du_dossier_dans_bdd($user_id) {
  * @return     un tableau de donn�es d'un dossier 
  * 
  */
-function selectionner_dossier_dans_bdd($dossier_id) {
+function selectionner_dossier_dans_bdd($dossier_ref) {
     /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
     $pdo = PDO2::getInstance();
 
     /** on prepare notre requete avec les valeurs pass�s en parametre */
-    $requete = $pdo->prepare("SELECT * FROM dossier WHERE dossier_id = :dossier_id");
+    $requete = $pdo->prepare("SELECT * FROM dossier WHERE dossier_ref = :dossier_ref");
 
-    $requete->bindValue(':dossier_id', $dossier_id);
+    $requete->bindValue(':dossier_ref', $dossier_ref);
 
     /** j'execute cette requete */
     $requete->execute();
@@ -303,14 +311,14 @@ function selectionner_dossier_dans_bdd($dossier_id) {
  * @param	   $id_user Integer Identifiant du dossier
  * 
  */
-function supprimer_dossier_dans_bdd($id_dossier) {
+function supprimer_dossier_dans_bdd($dossier_ref) {
     /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
     $pdo = PDO2::getInstance();
 
     /** on prépare notre requete avec les valeurs passés en parametre */
-    $requete = $pdo->prepare("DELETE FROM dossier where dossier_id = :id_dossier");
+    $requete = $pdo->prepare("DELETE FROM dossier where dossier_ref = :dossier_ref");
 
-    $requete->bindValue(':id_dossier', $id_dossier);
+    $requete->bindValue(':dossier_ref', $dossier_ref);
     $requete->execute();
 
     if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
@@ -362,7 +370,7 @@ function lister_dossier_admin_dans_bdd() {
  * @param	$sstheme			integer soustheme du dossier
  * @return   True en cas de succes, False en cas d'echec
  */
-function modifier_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $problematique, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
+function modifier_dossier_dans_bdd($dossier_ref, $reference, $date_crea_d, $problematique, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
     $pdo = PDO2::getInstance();
 
     $requete = $pdo->prepare("INSERT INTO dossier SET
@@ -376,9 +384,9 @@ function modifier_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
                         fournisseur_id = :fournisseur_id,
                         personne_id = :personne_id
 						WHERE
-						dossier_id = :dossier_id");
+						dossier_ref = :dossier_ref");
 
-	$requete->bindValue(':dossier_id', $dossier_id);
+	$requete->bindValue(':dossier_ref', $dossier_ref);
     $requete->bindValue(':reference', $reference);
     $requete->bindValue(':date_creation', $date_crea_d);
     $requete->bindValue(':problematique', $problematique);
@@ -391,7 +399,7 @@ function modifier_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
 
 	$result = $requete->execute();
 
-	return $dossier_id;
+	return $dossier_ref;
 }
 
 /**
@@ -407,7 +415,7 @@ function modifier_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
 function cloturer_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture_d, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("INSERT INTO dossier SET
+    $requete = $pdo->prepare("UPDATE dossier SET
                         dossier_ref = :reference,
                         date_creation_d = :date_creation_d,
 						problematique = :problematique,
@@ -424,7 +432,7 @@ function cloturer_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
 						WHERE
 						dossier_id = :dossier_id");
 
-	$requete->bindValue(':dossier_id', $dossier_id);
+	$requete->bindValue(':dossier_ref', $dossier_ref);
     $requete->bindValue(':reference', $reference);
     $requete->bindValue(':date_creation', $date_crea_d);
     $requete->bindValue(':problematique', $problematique);
@@ -441,7 +449,7 @@ function cloturer_dossier_dans_bdd($dossier_id, $reference, $date_crea_d, $probl
 
     $result = $requete->execute();
 
-	return $dossier_id;
+	return $dossier_ref;
 }
 
 ?>

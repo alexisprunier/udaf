@@ -20,7 +20,10 @@
 function ajouter_site_dans_bdd($lien, $nom, $dossier_id) {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("INSERT INTO siteweb(`nom, `lien`, `dossier_id`) VALUES (:nom,:lien,:dossier_id)");
+    $requete = $pdo->prepare("INSERT INTO siteweb SET
+				lien = :lien,
+                                nom = :nom,
+				dossier_id = :dossier_id");
 
     $requete->bindValue(':lien', $lien);
     $requete->bindValue(':nom', $nom);
