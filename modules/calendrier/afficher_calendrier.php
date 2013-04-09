@@ -8,7 +8,7 @@ $tab_evenement = lister_evenement_dans_bdd();
 $lignes_tableau = array();
 
 foreach ($tab_evenement as &$evenement){
-    
+    print 'x';
     if ($evenement->user_id == $_SESSION['id']){
         $dossier = selectionner_dossier_dans_bdd($evenement->dossier_id);
         $personne = selectionner_personne_dans_bdd($dossier['personne_id']);

@@ -103,17 +103,18 @@ echo '<pre>'.print_r($_POST,true).'</pre>';
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
     $problematique = mysql_escape_string($_POST['txt_problematique']); //mysql_escape_string : prevenir injection sql
-    $cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
-
+    /*$cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
     $raison_cloture = $_POST['list_cloture'];
-
     $comment_cloture = $_POST['comment_cloture'];
-
     $date_cloture = $_POST['date_cloture'];
-
-    $dossier_physique = $_POST['check_physique'];
-
-    $createur_dossier = $_POST['liste_user'];
+    $dossier_physique = $_POST['check_physique'];*/
+    $cloture = "";
+    $raison_cloture = "";
+    $comment_cloture = "";
+    $date_cloture = "";
+    $dossier_physique = "";
+     
+    $createur_dossier = $_POST['list_users'];
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
     
@@ -128,15 +129,16 @@ echo '<pre>'.print_r($_POST,true).'</pre>';
     /** Personne et fournisseur ajoutee, je cree le dossier, ajouter_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
     $id_dossier = ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
     
-    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
+    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) 
     if ($id_personne == true && $id_dossier == true && $id_fournisseur == true) {
 
-        /** On transforme la chaine en entier */
+        /** On transforme la chaine en entier 
         $id_personne = (int) $id_personne;
         $id_dossier = (int) $id_dossier;
         $id_fournisseur = (int) $id_fournisseur;
 
-    }
+    }*/
+    header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
 if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))

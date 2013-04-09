@@ -1,16 +1,20 @@
 <script type="text/javascript">
-   
-var lignes_tab = <?php echo json_encode($lignes_tableau) ?>;
-var event = []
+alert('non');
+lignes_tab = <?php echo json_encode($lignes_tableau) ?>;
+var event = [];
 
-for (var i = 0; i < lignes_tab.lenght; i++){
+for (var i = 0; i < lignes_tab.length; i++){
     var new_dict = {
         title: 'oui oui',
         start: new Date(
             lignes_tab['date'].substring(0, 2),
             lignes_tab['date'].substring(3, 2),
-            lignes_tab['date'].substring(6, 2)),
-    }
+            lignes_tab['date'].substring(6, 4))
+    };
+    alert("oui");
+    write(lignes_tab['date'].substring(0, 2));
+    write(lignes_tab['date'].substring(3, 2));
+    write(lignes_tab['date'].substring(6, 4));
     event[i] = new_dict;
 }
 
