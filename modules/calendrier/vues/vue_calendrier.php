@@ -1,29 +1,6 @@
 <script type="text/javascript">
-alert('non');
-lignes_tab = <?php echo json_encode($lignes_tableau) ?>;
-var event = [];
-
-for (var i = 0; i < lignes_tab.length; i++){
-    var new_dict = {
-        title: 'oui oui',
-        start: new Date(
-            lignes_tab['date'].substring(0, 2),
-            lignes_tab['date'].substring(3, 2),
-            lignes_tab['date'].substring(6, 4))
-    };
-    alert("oui");
-    write(lignes_tab['date'].substring(0, 2));
-    write(lignes_tab['date'].substring(3, 2));
-    write(lignes_tab['date'].substring(6, 4));
-    event[i] = new_dict;
-}
-
 $(document).ready(function() { 
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
+    
         $('#calendar').fullCalendar({
                 header: {
                         center: '',
@@ -31,30 +8,42 @@ $(document).ready(function() {
                         right: 'prev,next month,basicWeek,basicDay'
                 },
                 editable: false,
-
-                events: event
-                        
-               /*[
-                        {
-                                title: 'loliklol',
-                                start: new Date(y, m, 1)
-
-
-                        },
-                        {
-                                title: 'Long Event',
-                                start: new Date(y, m, d-5),
-                                end: new Date(y, m, d-2)
-                        },
-                        {
-                                id: 999,
-                                title: 'Repeating Event',
-                                start: new Date(y, m, d-3, 16, 0),
-                                allDay: false
-                        }
-                ]*/
+                events: <?php feed(); ?>
         });
 });	
 </script>
 <div id='calendar'>  
 </div>
+
+<?php
+function feed(){
+    $tab_evenement = lister_evenement_dans_bdd();
+
+    $lignes_tableau = array();
+
+    foreach ($tab_evenement as &$evenement){
+
+        //if ($evenement->user_id == $_SESSION['id']){
+            $dossier = selectionner_dossier_dans_bdd($evenement->dossier_id);
+            $personne = selectionner_personne_dans_bdd($dossier['personne_id']);
+            $utilisateur = selectionner_utilisateur_dans_bdd($evenement->user_id);
+
+            $ligne = array(
+                /*'n_dossier' => $dossier['dossier_ref'],
+                'nom' => $personne['nom'],
+                'prenom' => $personne['prenom'],
+                'mode_contact' => $evenement->mode_contact,*/
+
+                'title' => 'RDV de '.$utilisateur->ident.' avec '.$personne['nom'].' '.$personne['prenom'].' par '.$evenement->mode_contact,
+                'start' => substr($evenement->date_event, 6, 4)."-".substr($evenement->date_event, 3, 2)."-".substr($evenement->date_event, 0, 2)."T00:00:00Z",
+                'end' => substr($evenement->date_event, 6, 4)."-".substr($evenement->date_event, 3, 2)."-".substr($evenement->date_event, 0, 2)."T00:00:00Z",
+                'allDay' => false
+            );
+
+            array_push($lignes_tableau, $ligne);
+
+        //}
+    }
+    echo json_encode($lignes_tableau);
+}
+?>
