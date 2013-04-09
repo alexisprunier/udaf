@@ -506,8 +506,9 @@ div#alertes_user{
 }
 
 div.alertes{
-  overflow: auto;
+  overflow-y: auto;
   height: 220px;
+  overflow-x: hidden;
 }
 
 div#droite_accueil td{
@@ -727,7 +728,7 @@ div#milieu{
 
 div#website{
     width : 100%;
-    height: 193px;
+    height: 210px;
 }
 div#website fieldset{
 
@@ -744,16 +745,11 @@ table#head_sites{
     margin-top : 5px;
     width : 100%;
 }
-
-table#tab_sites {
+div.tab_site {
     width : 100%;
-    margin-top : -1px;
-}
+    height: 150px;
 
-#tab_sites .tip{
-    margin-right : 13px;
 }
-
 
 
 a#ajouter_site{
@@ -781,9 +777,10 @@ a#ajouter_site{
     background-position : 50% 50%;
     background-size : 15px;
 }
-
-select#liste_user{
-    width : 100%;
+div#cloturer{margin-top: 5px;}
+textarea#comment_cloture{width: 100%; height: 60px; max-height: 60px;}
+select#list_users{
+    width : 100%!important;
 }
 
 input#check_physique{

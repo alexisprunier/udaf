@@ -211,7 +211,7 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
                         ?>
                     </select>
 
-                    <div class="clear_form"></div>
+                    <!--<div class="clear_form"></div>-->
                     <label for="id_dossier" class="lab_txt">Num&eacute;ro du dossier :</label>   
                     <input type="text" class="inputfield" id="id_dossier" name="id_dossier" disabled maxlength="45" value="<?php if (isset($_SESSION['dossier_ref'])) echo $_SESSION['dossier_ref']; if (isset($_GET['id'])) echo $dossier_en_cours["dossier_ref"]; ?>"/>
 
@@ -296,7 +296,7 @@ foreach ($tab_fournisseur as $key => $value) {
 }
 ?>
                     </select>
-                    <div class="clear_form"></div>
+                    <!--<div class="clear_form"></div>-->
                     <label for="nom_f" class="lab_txt">Nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="nom_f" name="nom_f" maxlength="45" required title="Nom de famille du fournisseur" value="<?php
                            if (isset($_SESSION['nom_f']))
@@ -414,11 +414,12 @@ foreach ($tab_fournisseur as $key => $value) {
                     </div>
 
                     <textarea id="txt_problematique" name="txt_problematique" required placeholder="D&eacute;tail de la probl&eacute;matique des deux parties"><?php
-if (isset($_SESSION['problematique']))
-    echo $_SESSION['problematique']; if (isset($_GET['id'])) {
-    echo $dossier_en_cours["problematique"];
-}
-?></textarea>
+                        if (isset($_SESSION['problematique']))
+                            echo $_SESSION['problematique']; if (isset($_GET['id'])) {
+                            echo $dossier_en_cours["problematique"];
+                        }
+                        ?>
+                    </textarea>
                 </fieldset>
             </div>
 
@@ -548,7 +549,7 @@ if (isset($_SESSION['problematique']))
 
                     <legend>Validation</legend>
                     <label for="list_users" class="lab_txt">Propri&eacute;taire :</label>
-                    <select id="list_users" class="inputfield">
+                    <select id="list_users" name="list_users" class="inputfield">
                         <option value=""></option> 
 <?php
 foreach ($tab_user as $key => $value) {
@@ -563,7 +564,7 @@ foreach ($tab_user as $key => $value) {
 <?php if (isset($_GET['id'])) { ?>
                         <button type="submit" name="ok" class="submit_button" title="Valider">Modifier le dossier</button>
 <?php } else { ?>
-                        <button type="submit" name="ok" class="submit_button" title="Valider">Valider le dossier</button>	
+                        <button type="submit" name="ok" class="submit_button" title="Valider">Enregistrer dossier</button>	
 <?php } ?>					
                 </fieldset>
             </div> 
@@ -587,20 +588,20 @@ foreach ($tab_user as $key => $value) {
                     <tbody>
                         <?php 
                         $i=-1;
-                        foreach ($tab_evenement as &$ligne_evenement) {
+                        foreach ($tableau_evenement_user as &$ligne_evenement) {
                             $i++;
                              if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
                                         echo "<tr class=\"odd\">";
-                            if ( $ligne_evenement->dossier_id == $_SESSION['dossier_ref']) {
+                            if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
                                
                                     
                         ?>
                                     <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement->date_event; ?></td>
-                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement->mode_contact; ?></td>
-                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement->user_id; ?></td>
+                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
+                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
+                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
                                 </tr>
                                 <?php
@@ -609,7 +610,7 @@ foreach ($tab_user as $key => $value) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement->comm_event; ?></textarea></td>
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
                                 </tr>
                         <?php
                         

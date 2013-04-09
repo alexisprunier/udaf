@@ -28,6 +28,30 @@ $tab_fichier = lister_fichier_dans_bdd();
 $tab_evenement = lister_evenement_dans_bdd();
 $tab_user = lister_utilisateur_dans_bdd();
 
+
+//Permet d'avoir un tableau contenant le identifiant de l'utilisateur en fonction de l'evenement
+$tableau_evenement_user = array();
+
+// on récupère les informations tous les dossiers
+foreach ($tab_evenement as &$evenement) {
+    
+    $utilisateur = selectionner_utilisateur_dans_bdd($evenement->user_id);
+
+    $ligne = array(
+        'dossier_id' => $evenement->dossier_id,
+        'date_evenement' => $evenement->date_event,
+        'mode_contact' => $evenement->mode_contact,
+        'utilisateur' => $utilisateur['ident'],
+        'commentaire' => $evenement->comm_event,
+        
+       
+    );
+
+//On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
+    array_push($tableau_evenement_user, $ligne);
+}
+
+
 // Choix du nouvel ID du dossier
 unset($_SESSION['dossier_ref']);
 $dossier_max = selectionner_dossier_max_id_dans_bdd();
@@ -45,11 +69,15 @@ if ($_GET["ajout"] == "evenement"){
             $_POST['commentaire_event'],
             $_POST['liste_utilisateur'],
             $_SESSION['dossier_ref']);
+    
+    
     header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
 
 if ($_GET["ajout"] == "dossier"){
-    
+
+echo '<pre>'.print_r($_POST,true).'</pre>';
+
     // Personne    
     $sexe = $_POST['sexe'];
     $nom = $_POST['nom'];
@@ -76,15 +104,15 @@ if ($_GET["ajout"] == "dossier"){
     $reference = $_SESSION['dossier_ref'];
     $problematique = mysql_escape_string($_POST['txt_problematique']); //mysql_escape_string : prevenir injection sql
     $cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
-    echo $cloture;
+
     $raison_cloture = $_POST['list_cloture'];
-    echo $raison_cloture;
+
     $comment_cloture = $_POST['comment_cloture'];
-    echo $comment_cloture;
+
     $date_cloture = $_POST['date_cloture'];
-    echo $date_cloture;
+
     $dossier_physique = $_POST['check_physique'];
-    echo $dossier_physique;
+
     $createur_dossier = $_POST['liste_user'];
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
@@ -122,7 +150,8 @@ if ($_GET["ajout"] == "fichiers"){
         $taille = filesize($_FILES['fichier']['tmp_name']);
         //On fait un tableau contenant les extensions autoris�es.
         $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt');
-        $dossier = 'uploads/';
+        mkdir("uploads/".$_SESSION['dossier_ref'].'/', 0777);
+        $dossier = 'uploads/'.$_SESSION['dossier_ref'].'/';
         $fichier = basename($_FILES['fichier']['name']);
         // r�cup�re la partie de la chaine � partir du dernier . pour conna�tre l'extension.
         $extension = strrchr($_FILES['fichier']['name'], '.');
@@ -161,16 +190,20 @@ if ($_GET["ajout"] == "fichiers"){
 if($_GET["suppr"] === "fichier"){
      /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
   
+    $tab_fichier = selectionner_fichier_dans_bdd($_GET['id']);
+    
+    $nom_fic = $tab_fichier['nom'].$tab_fichier['type_fichier'];
 
+    unlink("uploads/".$_SESSION['dossier_ref'].'/'.$nom_fic);
     /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
     $id_supp_fichier = supprimer_fichier_dans_bdd($_GET['id']);
 
-    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
+    /** Si la suppression en bdd à réussis supprimer le fichier */
     if ($id_supp_fichier == true) {
-
+        
         /** On transforme la chaine en entier */
         $id_supp_fichier = (int) $id_supp_fichier;
-
+        
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     } 

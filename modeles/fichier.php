@@ -66,4 +66,26 @@ function supprimer_fichier_dans_bdd($id_fichier) {
     }
     return $requete->errorInfo();
 }
+function selectionner_fichier_dans_bdd($id_fichier){
+      /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prepare notre requete avec les valeurs pass�s en parametre */
+    $requete = $pdo->prepare("SELECT * FROM fichier WHERE fichier_id = :fichier_id");
+
+    $requete->bindValue(':fichier_id', $fichier_id);
+
+    /** j'execute cette requete */
+    $requete->execute();
+
+    if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+        $requete->closeCursor();
+        return $result;
+    }
+
+    /** je retourne un tableau d'objet personne */
+    return $tab;
+
+}
 ?>

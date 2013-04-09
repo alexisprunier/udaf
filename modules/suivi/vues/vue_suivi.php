@@ -121,7 +121,8 @@
             <tbody>
 
                 <?php
-                foreach ($lignes_tableau as $ligne) {
+                foreach ($lignes_tableau as &$ligne) {
+                    if($ligne['id_user'] === $_SESSION['id']){
                     ?>
                     <tr class="
                     <?php
@@ -143,6 +144,7 @@
                         <td align="center"><a href="accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['n_dossier']; ?>" class="lien_dossier"></a></td>
                     </tr>
                     <?php
+                    }
                 }
                 ?>
             </tbody>
