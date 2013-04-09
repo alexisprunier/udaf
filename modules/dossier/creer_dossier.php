@@ -122,7 +122,8 @@ if ($_GET["ajout"] == "fichiers"){
         $taille = filesize($_FILES['fichier']['tmp_name']);
         //On fait un tableau contenant les extensions autoris�es.
         $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt');
-        $dossier = 'uploads/';
+        mkdir("uploads/".$_SESSION['dossier_ref'].'/', 0777);
+        $dossier = 'uploads/'.$_SESSION['dossier_ref'].'/';
         $fichier = basename($_FILES['fichier']['name']);
         // r�cup�re la partie de la chaine � partir du dernier . pour conna�tre l'extension.
         $extension = strrchr($_FILES['fichier']['name'], '.');
@@ -161,16 +162,20 @@ if ($_GET["ajout"] == "fichiers"){
 if($_GET["suppr"] === "fichier"){
      /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
   
+    $tab_fichier = selectionner_fichier_dans_bdd($_GET['id']);
+    
+    $nom_fic = $tab_fichier['nom'].$tab_fichier['type_fichier'];
 
+    unlink("uploads/".$_SESSION['dossier_ref'].'/'.$nom_fic);
     /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
     $id_supp_fichier = supprimer_fichier_dans_bdd($_GET['id']);
 
-    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
+    /** Si la suppression en bdd à réussis supprimer le fichier */
     if ($id_supp_fichier == true) {
-
+        
         /** On transforme la chaine en entier */
         $id_supp_fichier = (int) $id_supp_fichier;
-
+        
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     } 

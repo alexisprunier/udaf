@@ -563,7 +563,7 @@ foreach ($tab_user as $key => $value) {
 <?php if (isset($_GET['id'])) { ?>
                         <button type="submit" name="ok" class="submit_button" title="Valider">Modifier le dossier</button>
 <?php } else { ?>
-                        <button type="submit" name="ok" class="submit_button" title="Valider">Valider le dossier</button>	
+                        <button type="submit" name="ok" class="submit_button" title="Valider">Enregistrer dossier</button>	
 <?php } ?>					
                 </fieldset>
             </div> 
