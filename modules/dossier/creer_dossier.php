@@ -70,12 +70,14 @@ if ($_GET["ajout"] == "evenement"){
             $_POST['liste_utilisateur'],
             $_SESSION['dossier_ref']);
     
-    echo $_POST['liste_utilisateur'];
+    
     header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
 
 if ($_GET["ajout"] == "dossier"){
-    
+
+echo '<pre>'.print_r($_POST,true).'</pre>';
+
     // Personne    
     $sexe = $_POST['sexe'];
     $nom = $_POST['nom'];
@@ -102,15 +104,15 @@ if ($_GET["ajout"] == "dossier"){
     $reference = $_SESSION['dossier_ref'];
     $problematique = mysql_escape_string($_POST['txt_problematique']); //mysql_escape_string : prevenir injection sql
     $cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
-    echo $cloture;
+
     $raison_cloture = $_POST['list_cloture'];
-    echo $raison_cloture;
+
     $comment_cloture = $_POST['comment_cloture'];
-    echo $comment_cloture;
+
     $date_cloture = $_POST['date_cloture'];
-    echo $date_cloture;
+
     $dossier_physique = $_POST['check_physique'];
-    echo $dossier_physique;
+
     $createur_dossier = $_POST['liste_user'];
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
