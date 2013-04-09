@@ -28,6 +28,30 @@ $tab_fichier = lister_fichier_dans_bdd();
 $tab_evenement = lister_evenement_dans_bdd();
 $tab_user = lister_utilisateur_dans_bdd();
 
+
+//Permet d'avoir un tableau contenant le identifiant de l'utilisateur en fonction de l'evenement
+$tableau_evenement_user = array();
+
+// on récupère les informations tous les dossiers
+foreach ($tab_evenement as &$evenement) {
+    
+    $utilisateur = selectionner_utilisateur_dans_bdd($evenement->user_id);
+
+    $ligne = array(
+        'dossier_id' => $evenement->dossier_id,
+        'date_evenement' => $evenement->date_event,
+        'mode_contact' => $evenement->mode_contact,
+        'utilisateur' => $utilisateur['ident'],
+        'commentaire' => $evenement->comm_event,
+        
+       
+    );
+
+//On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
+    array_push($tableau_evenement_user, $ligne);
+}
+
+
 // Choix du nouvel ID du dossier
 unset($_SESSION['dossier_ref']);
 $dossier_max = selectionner_dossier_max_id_dans_bdd();
@@ -45,6 +69,8 @@ if ($_GET["ajout"] == "evenement"){
             $_POST['commentaire_event'],
             $_POST['liste_utilisateur'],
             $_SESSION['dossier_ref']);
+    
+    echo $_POST['liste_utilisateur'];
     header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
 

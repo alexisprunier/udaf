@@ -587,20 +587,20 @@ foreach ($tab_user as $key => $value) {
                     <tbody>
                         <?php 
                         $i=-1;
-                        foreach ($tab_evenement as &$ligne_evenement) {
+                        foreach ($tableau_evenement_user as &$ligne_evenement) {
                             $i++;
                              if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
                                         echo "<tr class=\"odd\">";
-                            if ( $ligne_evenement->dossier_id == $_SESSION['dossier_ref']) {
+                            if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
                                
                                     
                         ?>
                                     <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
-                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement->date_event; ?></td>
-                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement->mode_contact; ?></td>
-                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement->user_id; ?></td>
+                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
+                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
+                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
                                 </tr>
                                 <?php
@@ -609,7 +609,7 @@ foreach ($tab_user as $key => $value) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement->comm_event; ?></textarea></td>
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
                                 </tr>
                         <?php
                         
