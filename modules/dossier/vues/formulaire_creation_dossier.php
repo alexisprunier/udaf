@@ -211,7 +211,7 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
                         ?>
                     </select>
 
-                    <div class="clear_form"></div>
+                    <!--<div class="clear_form"></div>-->
                     <label for="id_dossier" class="lab_txt">Num&eacute;ro du dossier :</label>   
                     <input type="text" class="inputfield" id="id_dossier" name="id_dossier" disabled maxlength="45" value="<?php if (isset($_SESSION['dossier_ref'])) echo $_SESSION['dossier_ref']; if (isset($_GET['id'])) echo $dossier_en_cours["dossier_ref"]; ?>"/>
 
@@ -296,7 +296,7 @@ foreach ($tab_fournisseur as $key => $value) {
 }
 ?>
                     </select>
-                    <div class="clear_form"></div>
+                    <!--<div class="clear_form"></div>-->
                     <label for="nom_f" class="lab_txt">Nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="nom_f" name="nom_f" maxlength="45" required title="Nom de famille du fournisseur" value="<?php
                            if (isset($_SESSION['nom_f']))
@@ -414,11 +414,12 @@ foreach ($tab_fournisseur as $key => $value) {
                     </div>
 
                     <textarea id="txt_problematique" name="txt_problematique" required placeholder="D&eacute;tail de la probl&eacute;matique des deux parties"><?php
-if (isset($_SESSION['problematique']))
-    echo $_SESSION['problematique']; if (isset($_GET['id'])) {
-    echo $dossier_en_cours["problematique"];
-}
-?></textarea>
+                        if (isset($_SESSION['problematique']))
+                            echo $_SESSION['problematique']; if (isset($_GET['id'])) {
+                            echo $dossier_en_cours["problematique"];
+                        }
+                        ?>
+                    </textarea>
                 </fieldset>
             </div>
 
@@ -548,7 +549,7 @@ if (isset($_SESSION['problematique']))
 
                     <legend>Validation</legend>
                     <label for="list_users" class="lab_txt">Propri&eacute;taire :</label>
-                    <select id="list_users" class="inputfield">
+                    <select id="list_users" name="list_users" class="inputfield">
                         <option value=""></option> 
 <?php
 foreach ($tab_user as $key => $value) {
