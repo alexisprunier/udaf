@@ -506,8 +506,9 @@ div#alertes_user{
 }
 
 div.alertes{
-  overflow: auto;
+  overflow-y: auto;
   height: 220px;
+  overflow-x: hidden;
 }
 
 div#droite_accueil td{

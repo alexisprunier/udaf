@@ -20,6 +20,7 @@ foreach ($tab_dossier as &$dossier) {
     $user = selectionner_utilisateur_dans_bdd($dossier->user_id);
     
     $ligne = array(
+        'id_user' => $user['user_id'],
         'id_dossier' => $dossier->dossier_id,
         'n_dossier' => $dossier->dossier_ref,
         'nom' => $personne['nom'],
