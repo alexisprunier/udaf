@@ -43,10 +43,11 @@ foreach ($tab_evenement as &$evenement) {
         'mode_contact' => $evenement->mode_contact,
         'utilisateur' => $utilisateur['ident'],
         'commentaire' => $evenement->comm_event,
+        'traite' => $evenement->traite,
         
        
     );
-
+//echo $ligne['traite'];
 //On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
     array_push($tableau_evenement_user, $ligne);
 }

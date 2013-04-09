@@ -598,7 +598,8 @@ foreach ($tab_user as $key => $value) {
                                
                                     
                         ?>
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox"/></td>
+                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox" <?php 
+                                    if($ligne_evenement['traite']==1) echo "checked disabled";?>/></td>
                                     <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
                                     <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
                                     <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
