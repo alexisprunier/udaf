@@ -480,7 +480,7 @@ foreach ($tab_fournisseur as $key => $value) {
                                 <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> <!--5Mo max
                             </span> -->
                             
-                            <button id="ajouter_fichier"type="button" class=" btn" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
+                            <button id="ajouter_fichier" type="button" class=" btn" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
                                  <i class="icon-plus icon-white"></i>
                                 <span>Ajouter fichier...</span>
                             </button>
@@ -537,7 +537,7 @@ foreach ($tab_fournisseur as $key => $value) {
                         <option value="transfere">Transfer&eacute;</option> 
                         <option valie="echec">Echec</option>
                     </select>
-                    <label for="date_cloture" class="lab_txt ">Date de cl&ocirc;ture :</label>
+                    <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
                     <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture"/></input>
                     <label for="comment_cloture" class="lab_txt">Commentaire :</label>
                     <textarea id="comment_cloture" placeholder="(facultatif)"></textarea>
@@ -549,7 +549,7 @@ foreach ($tab_fournisseur as $key => $value) {
 
                     <legend>Validation</legend>
                     <label for="list_users" class="lab_txt">Propri&eacute;taire :</label>
-                    <select id="list_users" name="list_users" class="inputfield">
+                    <select id="list_users" name="list_users" class="inputfield" required>
                         <option value=""></option> 
 <?php
 foreach ($tab_user as $key => $value) {
