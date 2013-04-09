@@ -1,63 +1,4 @@
-<script type="text/javascript">  
-/*function save_fields(){
-
-        if (document.getElementById('choix_numero_dossier').value != null)
-        {
-            document.cookie = "choix_numero_dossier="+document.getElementById('choix_numero_dossier').value;
-            if (document.getElementById('choix_nom').value != null)
-            {
-                document.cookie = "choix_nom="+document.getElementById('choix_nom').value;
-                if (document.getElementById('choix_prenom').value != null)
-                {
-                    document.cookie = "choix_prenom="+document.getElementById('choix_prenom').value;
-                    if (document.getElementById('telephone').value != null){
-                        document.cookie = "telephone="+document.getElementById('telephone').value;
-                        if (document.getElementById('choix_mail').value != null){
-                            document.cookie = "choix_mail="+document.getElementById('choix_mail').value;
-                            if (document.getElementById('theme').value != null){
-                                document.cookie = "theme="+document.getElementById('theme').value;
-                                if (document.getElementById('choix_fournisseur').value != null){
-                                document.cookie = "choix_fournisseur="+document.getElementById('choix_fournisseur').value;
-                                    if (document.getElementById('date_debut').value != null){
-                                    document.cookie = "date_debut="+document.getElementById('date_debut').value;
-                                    if (document.getElementById('date_fin').value != null){
-                                        document.cookie = "date_fin="+document.getElementById('date_fin').value;
-                                        return true;
-                                        }else{document.cookie = "date_fin=";}
-                                    }else{document.cookie = "date_debut=";}
-                                }else{document.cookie = "choix_fournisseur=";}
-                            }else{document.cookie = "theme=";}
-                        }else{document.cookie = "choix_mail=";}
-                    }else{document.cookie = "telephone=";}
-                }else{document.cookie = "choix_prenom=";}
-            }else{document.cookie = "choix_nom=";}
-        }else{document.cookie = "choix_numero_dossier=";}
-        return(false);
-  
-    }
-    function readCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return "";
-    }
-    function effacercookies(){
-eraseCookie('date_fin');
-eraseCookie('date_debut');
-eraseCookie('choix_fournisseur');
-eraseCookie('theme');
-eraseCookie('choix_mail');
-eraseCookie('telephone');
-eraseCookie('choix_prenom');
-eraseCookie('choix_nom');
-eraseCookie('choix_numero_dossier');        
-    }*/
-</script>
-<div id="recherche" onunload="effacercookies()">
+<div id="recherche">
     <div id="champs_recherche" class="recherche">
         <h3>Recherche des dossiers</h3>
         <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">
@@ -122,7 +63,7 @@ eraseCookie('choix_numero_dossier');
                         ?>
                         <option value="<?php echo $mail; ?>"/>
                         <?php
-                    } //boucle permettant d'afficher toute les noms des clients
+                    } //boucle permettant d'afficher toute les mail des clients
                     ?>
                 </datalist>
 
@@ -211,16 +152,3 @@ eraseCookie('choix_numero_dossier');
         </table>
     </div>
 </div>
-<script type="text/javascript">
-/*document.getElementById("choix_numero_dossier").value = readCookie("choix_numero_dossier");
-document.getElementById("choix_nom").value = readCookie("choix_nom");
-document.getElementById("choix_prenom").value = readCookie("choix_prenom");
-document.getElementById("telephone").value = readCookie("telephone");
-document.getElementById("choix_mail").value = readCookie("choix_mail");
-document.getElementById("theme").value = readCookie("theme");
-document.getElementById("choix_fournisseur").value = readCookie("choix_fournisseur");
-document.getElementById("date_debut").value = readCookie("date_debut");
-document.getElementById("date_fin").value = readCookie("date_fin");*/
-
-
-</script>
