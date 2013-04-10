@@ -34,7 +34,7 @@ function feed(){
                 'prenom' => $personne['prenom'],
                 'mode_contact' => $evenement->mode_contact,*/
 
-                'title' => 'RDV de '.$utilisateur->ident.' avec '.$personne['nom'].' '.$personne['prenom'].' par '.$evenement->mode_contact,
+                'title' => 'Contact de '.$utilisateur['ident'].' avec '.$personne['nom'].' '.$personne['prenom'].' par '.$evenement->mode_contact,
                 'start' => substr($evenement->date_event, 6, 4)."-".substr($evenement->date_event, 3, 2)."-".substr($evenement->date_event, 0, 2)."T00:00:00Z",
                 'end' => substr($evenement->date_event, 6, 4)."-".substr($evenement->date_event, 3, 2)."-".substr($evenement->date_event, 0, 2)."T00:00:00Z",
                 'allDay' => false
