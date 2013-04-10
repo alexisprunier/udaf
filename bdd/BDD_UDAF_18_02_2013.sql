@@ -55,7 +55,7 @@ INSERT INTO `dossier` (`dossier_id`, `dossier_ref`, `date_creation_d`, `problema
 (2, '20130002', '06/03/2013', 'Probleme avec une banque', NULL, NULL, NULL, '', NULL, 1, 4, 9, 2, 2),
 (3, '20130003', '10/03/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', NULL, 4, 10, 25, 3, 3),
 (4, '20130004', '14/03/2013', 'Probleme avec une banque', NULL, NULL, NULL, '', NULL, 4, 4, 9, 4, 4),
-(5, '20130005', '03/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 5, 5);
+(5, '20130005', '03/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 5, 5),
 (6, '20130006', '10/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 6, 6);
 
 -- --------------------------------------------------------
@@ -85,11 +85,11 @@ INSERT INTO `evenement` (`evenement_id`, `date_event`, `mode_contact`, `raison_s
 (1, '12/03/2013', 'Téléphone', NULL, 0, 'Appel téléphonique pour un prochain rdv', 1, 20130001),
 (2, '16/03/2012', 'Mail', NULL, 1, 'Envoie de la facture de concession', 2, 20130001),
 (3, '20/03/2013', 'Rendez-vous', NULL, 1, 'RDV de mis au point', 1, 20130001),
-(4, '20/102012', 'e-Mail', NULL, 0, 'Demande d info sur le fournisseur', 3, 20130002);
+(4, '20/102012', 'e-Mail', NULL, 0, 'Demande d info sur le fournisseur', 3, 20130002),
 (5, '12/10/2012', 'Téléphone', NULL, 0, 'Appel', 1, 20130003),
 (6, '12/11/2012', 'Mail', NULL, 1, 'Mail de rappel', 1, 20130003),
 (7, '12/01/2013', 'Rendez-vous', NULL, 1, 'test event traite', 1, 20130004),
-(8, '20/102012', 'e-Mail', NULL, 0, 'Sans commentaire ', 3, 20130005);
+(8, '20/102012', 'e-Mail', NULL, 0, 'Sans commentaire ', 3, 20130005),
 (9, '12/10/2012', 'Téléphone', NULL, 0, '', 1, 20130005),
 (10, '12/11/2012', 'Mail', NULL, 1, 'Demande d info sur le fournisseur', 1, 20130005),
 (11, '12/01/2013', 'Rendez-vous', NULL, 1, '', 1, 20130006),
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
 INSERT INTO `fournisseur` (`fournisseur_id`, `date_creation_f`, `nom`, `prenom`, `raison_sociale`, `adr_postale`, `code_postal`, `ville`, `tel`, `mail`, `comment_fournisseur`) VALUES
 (1, '05/03/2013', 'Afleche', 'Marc', 'Peugeot', 'Rue de la cour', 53000, 'Laval', 0654253698, 'mafleche@google.fr', 'Concession peugeot de Laval'),
 (2, '06/03/2013', 'Bon', 'Jean', 'BPO', 'Rue de la banque', 53000, 'Laval', 0685496325, 'jeanbon@yahoo.fr', 'Banque Populaire de l ouest'),
-(3, '10/03/2013', 'Raid', 'Aldo', 'EDF', 'Bouvelard du coin', 53000, 'Laval', 0654758963, 'aldoraid@email.com', 'Electricité');
+(3, '10/03/2013', 'Raid', 'Aldo', 'EDF', 'Bouvelard du coin', 53000, 'Laval', 0654758963, 'aldoraid@email.com', 'Electricité'),
 (4, '14/03/2013', 'Proviste', 'Alain', 'Credit mutuel', 'Impasse du cul-de-sac', 53100, 'Mayenne', 0243659874, 'alainproviste@yahoo.fr', 'Banque de mayenne'),
 (5, '03/04/2013', 'Aire', 'Axel', 'Bouch tout plomberie', 'Rue de la fuite', 53100, 'Mayenne', 0612012365, 'axelaire@google.com', 'Electricien'),
 (6, '10/04/2013', 'Bricot', 'Juda', 'Abri Pepiniere', 'Impasse de la forêt', 53100, 'Mayenne', 0611223344, 'judabricot@google.com', 'Pépinieriste du coin');
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
 INSERT INTO `personne` (`personne_id`, `date_creation_p`, `sexe`, `nom`, `prenom`, `adr_postale`, `code_postal`, `ville`, `tel_fixe`, `tel_port`, `mail`) VALUES
 (1, '05/03/2013', 1, 'Manvussa', 'Gerard', 'Rue de la surprise', '53000', 'Laval', '0621456963', '0221456963', 'gerardmanvussa@google.com'),
 (2, '06/03/2013', 1, 'Fassol', 'Rémi', 'Rue de la trompette', '53000', 'Laval', '0695323261', '0295323261', 'remifassol@gmail.com'),
-(3, '10/03/2013', 2, 'Onyme', 'Anne', 'Impasse de l inconnu', '53000', 'Laval', '0695323261', '0295323261', 'anneonyme@gmail.com');
+(3, '10/03/2013', 2, 'Onyme', 'Anne', 'Impasse de l inconnu', '53000', 'Laval', '0695323261', '0295323261', 'anneonyme@gmail.com'),
 (4, '14/03/2013', 1, 'Terrieur', 'Alain', 'Boulevard de Rennes', '53000', 'Laval', '0621456963', '0221456963', 'alainterrieur@yahoo.fr'),
 (5, '03/04/2013', 1, 'Demule', 'Yvan', 'Place du marché', '53000', 'Laval', '0695323261', '0295323261', 'yvandemule@google.com'),
 (6, '10/04/2013', 2, 'Vessel', 'Aude', 'Rue de l évier', '53000', 'Laval', '0695323261', '0295323261', 'audevessel@yahoo.fr');
