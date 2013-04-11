@@ -6,13 +6,16 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
+
 ?>
 <script type="text/javascript">
-
-    personnes = <?php echo json_encode($tab_personne) ?>;
+    //Préparation des données
+    
+    
+    personnes = <?php  echo json_encode($tab_personne) ?>;
     fournisseurs = <?php echo json_encode($tab_fournisseur) ?>;
     soustheme = <?php echo json_encode($tab_sstheme) ?>;
-
+    
     function changeSousTheme(selectedInd) {
         var form1 = document.getElementById("form_creer_dossier");
         document.form_creer_dossier.soustheme.options.length = 0;
@@ -27,7 +30,7 @@
     function changePersonne(selectedInd) {
         selectedInd = selectedInd - 1;
         window.document.getElementById("nom").value = personnes[selectedInd].nom;
-        window.document.getElementById("prenom").value = personnes[selectedInd].prenom;
+        window.document.getElementById("prenom").value =personnes[selectedInd].prenom;
         window.document.getElementById("adresse").value = personnes[selectedInd].adr_postale;
         window.document.getElementById("codepostal").value = personnes[selectedInd].code_postal;
         window.document.getElementById("ville").value = personnes[selectedInd].ville;
@@ -228,8 +231,8 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
                     <label for="prenom" class="lab_txt">Pr&eacute;nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="prenom" name="prenom" maxlength="45" required title="Pr&eacute;nom du client" value="<?php
                     if (isset($_SESSION['prenom_p']))
-                        echo $_SESSION['prenom_p']; if (isset($_GET['id'])) {
-                        echo $tab_personne["prenom"];
+                        echo utf8_encode($_SESSION['prenom_p']); if (isset($_GET['id'])) {
+                        echo utf8_encode($tab_personne["prenom"]);
                     }
                     ?>"/>
 
@@ -506,11 +509,18 @@ foreach ($tab_fournisseur as $key => $value) {
                         </thead>
                         <tbody>                         
                                 <?php
+                                $i=0;
                                 foreach ($tab_site as &$site) {
                                     if ($site->dossier_id == $_SESSION['dossier_ref']) {
+                                        
+                                        if (($i % 2) == 0)
+                                        echo "<tr class=\"even\">";
+                                        else
+                                        echo "<tr class=\"odd\">";
+                                        $i += 1;
                                         ?>
                                         <tr class="odd">
-                                            <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo $site->nom; ?></a></td>
+                                            <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo utf8_encode($site->nom); ?></a></td>
                                             <td align="center">
                                             <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=site&id=<?php echo $site->site_id; ?>"><img src="images/icon/icon_delete.png"/></a>
                                             </td>
@@ -600,9 +610,9 @@ foreach ($tab_user as $key => $value) {
                         ?>
                                     <td class="ligne_rdv"><input id="check_rdv" type="checkbox" <?php 
                                     if($ligne_evenement['traite']==1) echo "checked disabled";?>/></td>
-                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
-                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
-                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
+                                    <td id="date_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['date_evenement']); ?></td>
+                                    <td id="mode_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['mode_contact']); ?></td>
+                                    <td id="user_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['utilisateur']); ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
                                 </tr>
                                 <?php
@@ -611,7 +621,7 @@ foreach ($tab_user as $key => $value) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo utf8_encode($ligne_evenement['commentaire']); ?></textarea></td>
                                 </tr>
                         <?php
                         

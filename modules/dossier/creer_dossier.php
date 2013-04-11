@@ -59,16 +59,16 @@ $dossier_max = selectionner_dossier_max_id_dans_bdd();
 $_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
 
 if ($_GET["ajout"] == "site"){
-    ajouter_site_dans_bdd($_POST['url'], $_POST['name'], $_SESSION['dossier_ref']);
+    ajouter_site_dans_bdd($_POST['url'], utf8_decode($_POST['name']), $_SESSION['dossier_ref']);
     header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
 
 if ($_GET["ajout"] == "evenement"){
     ajouter_evenement_dans_bdd(
             $_POST['date'],
-            $_POST['mode'],
-            $_POST['commentaire_event'],
-            $_POST['liste_utilisateur'],
+            utf8_decode($_POST['mode']),
+            utf8_decode($_POST['commentaire_event']),
+            utf8_decode($_POST['liste_utilisateur']),
             $_SESSION['dossier_ref']);
     
     
@@ -81,29 +81,29 @@ echo '<pre>'.print_r($_POST,true).'</pre>';
 
     // Personne    
     $sexe = $_POST['sexe'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $adr_postale = $_POST['adresse'];
+    $nom = utf8_decode($_POST['nom']);
+    $prenom = utf8_decode($_POST['prenom']);
+    $adr_postale = utf8_decode($_POST['adresse']);
     $code_postal = $_POST['codepostal'];
-    $ville = $_POST['ville'];
+    $ville = utf8_decode($_POST['ville']);
     $mail = $_POST['mail'];
     $tel_fixe = $_POST['telephone'];
     $tel_port = $_POST['mobile'];
 
     // Fournisseur
-    $nom_f = $_POST['nom_f'];
-    $prenom_f = $_POST['prenom_f'];
-    $raison_f = $_POST['raison_sociale_f'];
-    $adr_postale_f = $_POST['adresse_f'];
+    $nom_f = utf8_decode($_POST['nom_f']);
+    $prenom_f = utf8_decode($_POST['prenom_f']);
+    $raison_f = utf8_decode($_POST['raison_sociale_f']);
+    $adr_postale_f = utf8_decode($_POST['adresse_f']);
     $code_postal_f = $_POST['codepostal_f'];
-    $ville_f = $_POST['ville_f'];
+    $ville_f = utf8_decode($_POST['ville_f']);
     $mail_f = $_POST['mail_f'];
     $tel_f = $_POST['telephone_f'];
-    $commentaire_f = mysql_escape_string($_POST['commentaire_f']); //mysql_escape_string : prevenir injection sql
+    $commentaire_f = mysql_escape_string(utf8_decode($_POST['commentaire_f'])); //mysql_escape_string : prevenir injection sql
     
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
-    $problematique = mysql_escape_string($_POST['txt_problematique']); //mysql_escape_string : prevenir injection sql
+    $problematique = mysql_escape_string(utf8_decode($_POST['txt_problematique'])); //mysql_escape_string : prevenir injection sql
     /*$cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
     $raison_cloture = $_POST['list_cloture'];
     $comment_cloture = $_POST['comment_cloture'];
