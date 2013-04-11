@@ -7,7 +7,7 @@ $dbname = "udaf";
 
 $prefix_table="";
 $link = mysql_connect($hostname,$username, $password);
-mysql_query("SET NAMES 'ISO-8859-1'");
+mysql_query('SET CHARACTER SET utf8');
 mysql_select_db($dbname);
 //------------------------------------------------------------
 

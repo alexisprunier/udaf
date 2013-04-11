@@ -132,15 +132,15 @@
                         echo "ouvert";
                     }
                     ?>">
-                        <td  class="cell_result cell_center" ><?php echo $ligne['n_dossier'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['nom'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['prenom'] ?></td>
-                        <td  class="cell_result" align="center" ><?php echo $ligne['telephone'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['mail'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['theme'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['fournisseur'] ?></td>
-                        <td  class="cell_result" ><?php echo $ligne['user'] ?></td>
-                        <td  align="center" ><?php echo $ligne['date'] ?></td>
+                        <td  class="cell_result cell_center" ><?php echo utf8_encode($ligne['n_dossier']); ?></td>
+                        <td  class="cell_result" ><?php echo utf8_encode($ligne['nom']); ?></td>
+                        <td  class="cell_result" ><?php echo utf8_encode($ligne['prenom']); ?></td>
+                        <td  class="cell_result" align="center"><?php echo utf8_encode($ligne['telephone']); ?></td>
+                        <td  class="cell_result" ><?php echo utf8_encode($ligne['mail']); ?></td>
+                        <td  class="cell_result" ><?php echo utf8_encode($ligne['theme']); ?></td>
+                        <td  class="cell_result" ><?php echo utf8_encode($ligne['fournisseur']); ?></td>
+                        <td  class="cell_result" ><?php echo utf8_encode($ligne['user']); ?></td>
+                        <td  class="cell_result" align="center"><?php echo utf8_encode( $ligne['date']); ?></td>
                         <td align="center"><a href="accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['n_dossier']; ?>" class="lien_dossier"></a></td>
                     </tr>
                     <?php
