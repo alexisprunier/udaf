@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `dossier` (
   `fournisseur_id` int(11) NOT NULL,
   `personne_id` int(11) NOT NULL,
   PRIMARY KEY (`dossier_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `dossier`
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `user_id` int(11) NOT NULL,
   `dossier_id` int(11) NOT NULL,
   PRIMARY KEY (`evenement_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `evenement`
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `fichier` (
   `type_fichier` varchar(5) DEFAULT NULL,
   `dossier_id` int(11) NOT NULL,
   PRIMARY KEY (`fichier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
   `mail` varchar(30) DEFAULT NULL,
   `comment_fournisseur` text,
   PRIMARY KEY (`fournisseur_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `fournisseur`
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `tel_port` varchar(10) NOT NULL DEFAULT '0600000000',
   `mail` varchar(45) NOT NULL DEFAULT 'personne@personne.fr',
   PRIMARY KEY (`personne_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `personne`
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `siteweb` (
   `lien` varchar(30) DEFAULT NULL,
   `dossier_id` int(11) NOT NULL,
   PRIMARY KEY (`site_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `soustheme` (
   `nom` varchar(60) DEFAULT NULL,
   `theme_id` int(11) NOT NULL,
   PRIMARY KEY (`soustheme_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Contenu de la table `soustheme`
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `theme_id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`theme_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `theme`
@@ -302,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `pass` varchar(255) DEFAULT NULL,
   `administrateur` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `utilisateur`
