@@ -6,7 +6,8 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
-
+echo "dossier : " . $dossier_select['user_id'];
+echo "session : " . $_SESSION['id'];
 ?>
 
 <script type="text/javascript">
@@ -591,7 +592,7 @@ foreach ($tab_user as $key => $value) {
 
 </div>
 <script type="text/javascript">
-     <?php if($dossier_select['user_id'] != $_SESSION['id']) { ?>
+     <?php if(($dossier_select['user_id'] != $_SESSION['id']) && $dossier_select['user_id'] != null ) { ?>
         var allInput = document.getElementById('creer_dossier').getElementsByTagName('input');
         var allTextarea = document.getElementById('creer_dossier').getElementsByTagName('textarea');
         var allSelect = document.getElementById('creer_dossier').getElementsByTagName('select');
