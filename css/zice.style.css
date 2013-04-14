@@ -715,7 +715,8 @@ div#bouton_fichier{
 
 button#ajouter_fichier{
     width: 100%;
-margin-top: 0;
+    margin-top: 0;
+    
 }
 
 
@@ -752,9 +753,9 @@ div.tab_site {
 }
 
 
-a#ajouter_site{
+button#ajouter_site{
 
-    width : 87px;
+    width : 128px;
     margin :10px 0 0 10px;
 
 }
@@ -857,10 +858,12 @@ input#check_rdv{
     -webkit-transition: background-color .5s ease-out;
 }
 
-a#ajouter_evenement{
+button#ajouter_evenement{
 
     float : right;
-    margin-top : 10px;
+    margin-top: 10px;
+    width: 170px;
+    
 }
 
 td#deplier{
