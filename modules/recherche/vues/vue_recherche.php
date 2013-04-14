@@ -143,7 +143,7 @@
                         <td  class="cell_result" ><?php echo utf8_encode($ligne['fournisseur']); ?></td>
                         <td  class="cell_result" ><?php echo utf8_encode($ligne['user']); ?></td>
                         <td  class="cell_result" align="center"><?php echo utf8_encode( $ligne['date']); ?></td>
-                        <td><a href="#" class="lien_dossier"></a></td>
+                        <td align="center"><a href="accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['n_dossier']; ?>" class="lien_dossier"></a></td>
                     </tr>
                     <?php
                 }

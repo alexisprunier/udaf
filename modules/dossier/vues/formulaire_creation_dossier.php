@@ -17,6 +17,8 @@
     fournisseurs = <?php echo json_encode($tab_fournisseur) ?>;
     soustheme = <?php echo json_encode($tab_sstheme) ?>;
     
+   
+    
     function changeSousTheme(selectedInd) {
         var form1 = document.getElementById("form_creer_dossier");
         document.form_creer_dossier.soustheme.options.length = 0;
@@ -425,7 +427,7 @@ foreach ($tab_fournisseur as $key => $value) {
                                 <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> <!--5Mo max
                             </span> -->
                             
-                            <button id="ajouter_fichier" type="button" class=" btn" onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
+                            <button id="ajouter_fichier" type="button" class="btn"  onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
                                  <i class="icon-plus icon-white"></i>
                                 <span>Ajouter fichier...</span>
                             </button>
@@ -475,7 +477,7 @@ foreach ($tab_fournisseur as $key => $value) {
                        </tbody>
                     </table>
                     </div>
-                    <a id="ajouter_site" class="btn"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site'));">Ajouter</a>
+                    <button id="ajouter_site" class="btn desactiver"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site'));">Ajouter</button>
                 </fieldset>			
             </div>
 
@@ -583,12 +585,26 @@ foreach ($tab_user as $key => $value) {
                     </tbody>
                 </table>
             </div>
-            <a id="ajouter_evenement" class="btn" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement'));">Ajouter rendez-vous</a>
+            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement'));">Ajouter rendez-vous</button>
         </fieldset>
     </div>
 
 </div>
 <script type="text/javascript">
+     <?php if($dossier_select['user_id'] != $_SESSION['id']) { ?>
+        var allInput = document.getElementById('creer_dossier').getElementsByTagName('input');
+        var allTextarea = document.getElementById('creer_dossier').getElementsByTagName('textarea');
+        var allSelect = document.getElementById('creer_dossier').getElementsByTagName('select');
+        var allButton = document.getElementById('creer_dossier').getElementsByTagName('button');
+        var allOther = document.getElementsByClassName('desactiver');
+        for(var i=0; i<allInput.length;i++){ allInput[i].disabled = true; }
+        for(var i=0; i<allTextarea.length;i++){ allTextarea[i].disabled = true; }
+        for(var i=0; i<allSelect.length;i++){ allSelect[i].disabled = true; }
+        for(var i=0; i<allButton.length;i++){ allButton[i].disabled = true; }
+        for(var i=0; i<allOther.length;i++){ allOther[i].style.visibility = hidden; }
+      
+
+    <?php } ?>
     if(document.cookie("nom") != "")document.getElementById("nom").value = readCookie("nom");
     if(document.cookie("prenom") != "")document.getElementById("prenom").value = readCookie("prenom");
     if(document.cookie("adresse") != "")document.getElementById("adresse").value = readCookie("adresse");
