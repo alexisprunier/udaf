@@ -232,7 +232,19 @@ if($_GET["suppr"] === "site"){
    header('Location: /accueil.php?module=dossier&action=creer_dossier');   
        
 }
+if(isset($_GET['id']))
+{
+   
+    $dossier_select = selectionner_dossier_dans_bdd($_GET['id']);
+    $fournisseur = selectionner_fournisseur_dans_bdd($dossier_select['fournisseur_id']);
+    $client = selectionner_personne_dans_bdd($dossier_select['personne_id']);
+    $utilisateur = selectionner_utilisateur_dans_bdd($dossier_select['user_id']);
+    $theme = selectionner_theme_dans_bdd($dossier_select['theme_id']);
+    $sstheme = selectionner_sstheme_dans_bdd($dossier_select['soustheme_id']);
+    $_SESSION['dossier_ref'] = $_GET['id'];
 
+   
 
+}
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
 ?>
