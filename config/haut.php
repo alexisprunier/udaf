@@ -58,7 +58,7 @@
                 <li class="limenu" ><a href="accueil.php?module=suivi&amp;action=suivi_dossier"><span class="ico gray shadow  bookmark"></span><b>Suivi dossiers</b> </a></li>
                 <li class="limenu" ><a href="accueil.php?module=general&amp;action=generer_dossier"><span class="ico gray shadow diskette"></span><b>Exporter dossier vierge</b> </a></li>
                 <li class="limenu" ><a href="accueil.php?module=calendrier&amp;action=afficher_calendrier"><span class="ico gray shadow calendar"></span><b>&eacute;v&eacute;nements</b></a></li>
-                <li class="limenu" ><a href="#"><span class="ico gray shadow stats_lines"></span><b>Statistiques</b> </a></li>
+                <li class="limenu" ><a href="accueil.php?module=statistique&amp;action=recuperer_stats"><span class="ico gray shadow stats_lines"></span><b>Statistiques</b> </a></li>
                 <li class="limenu" ><a href="accueil.php?module=general&amp;action=afficher_documentation"><span class="ico gray shadow  notepad"></span><b>Documentation</b></a></li>
                 <li class="limenu_last" ><a href="accueil.php?module=general&amp;action=afficher_apropos"><span class="ico gray shadow info"></span><b>&agrave; propos</b></a></li>
             </ul>
