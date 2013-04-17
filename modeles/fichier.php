@@ -66,7 +66,7 @@ function supprimer_fichier_dans_bdd($id_fichier) {
     }
     return $requete->errorInfo();
 }
-function selectionner_fichier_dans_bdd($id_fichier){
+function selectionner_fichier_dans_bdd($fichier_id){
       /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
     $pdo = PDO2::getInstance();
 
@@ -84,7 +84,7 @@ function selectionner_fichier_dans_bdd($id_fichier){
         return $result;
     }
 
-    /** je retourne un tableau d'objet personne */
+    /** je retourne un tableau d'objet fichier */
     return $tab;
 
 }

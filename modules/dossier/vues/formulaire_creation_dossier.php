@@ -6,8 +6,7 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
-echo "dossier : " . $dossier_select['user_id'];
-echo "session : " . $_SESSION['id'];
+
 ?>
 
 <script type="text/javascript">
@@ -404,7 +403,7 @@ foreach ($tab_fournisseur as $key => $value) {
 
                                  ?>
                                     
-                                        <td align="left"><a href="uploads/<?php echo $_SESSION['dossier_ref'] . '/' .  $fichier->nom . $fichier->type_fichier?>" target="_blank"><?php echo $fichier->nom ?></a></td>
+                                        <td align="left"><a href="uploads/<?php echo $_SESSION['dossier_ref'] . '/' .  $fichier->nom?>" target="_blank"><?php echo $fichier->nom ?></a></td>
                                         <td align="left"><?php echo $fichier->type_fichier ?></td>
                                         <td align="center">
                                             <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>

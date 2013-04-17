@@ -1,9 +1,10 @@
 $(document).ready( function () {
     
       
-    
+      
                         // GESTION DES EVENEMENTS DROITE DE CREATION DOSSIER
                         $(".comment_rdv").hide();
+                        
 
                         
 
