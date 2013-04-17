@@ -1168,3 +1168,20 @@ div#calendar{
 .checkEvent{
     background-color : red;
 }
+/*
+------------------------------------------------------------
+                  Documentation
+------------------------------------------------------------
+*/
+div#menu_doc{
+    display : inline-block;
+    width : 25%;
+    height: 100%;
+    vertical-align: top;
+}
+div#contenu_doc{
+    display: inline-block;
+    width : 70%;
+    height: 100%;
+    vertical-align: top;
+}

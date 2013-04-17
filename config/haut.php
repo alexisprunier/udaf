@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-<meta content="text/html; Charset=ISO-8859-1" http-equiv="Content-Type" />
+<meta content="text/html; Charset=UTF-8" http-equiv="Content-Type" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
         <title>OGconso - UDAF53</title>
 
@@ -59,7 +59,7 @@
                 <li class="limenu" ><a href="accueil.php?module=general&amp;action=generer_dossier"><span class="ico gray shadow diskette"></span><b>Exporter dossier vierge</b> </a></li>
                 <li class="limenu" ><a href="accueil.php?module=calendrier&amp;action=afficher_calendrier"><span class="ico gray shadow calendar"></span><b>&eacute;v&eacute;nements</b></a></li>
                 <li class="limenu" ><a href="#"><span class="ico gray shadow stats_lines"></span><b>Statistiques</b> </a></li>
-                <li class="limenu" ><a href="accueil.php?module=general&amp;action=afficher_documentation"><span class="ico gray shadow  notepad"></span><b>Documentation</b></a></li>
+                <li class="limenu" ><a href="accueil.php?module=documentation&amp;action=afficher_documentation"><span class="ico gray shadow  notepad"></span><b>Documentation</b></a></li>
                 <li class="limenu_last" ><a href="accueil.php?module=general&amp;action=afficher_apropos"><span class="ico gray shadow info"></span><b>&agrave; propos</b></a></li>
             </ul>
         </div>
