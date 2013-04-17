@@ -1,0 +1,44 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    var $contenu_div = $('#contenu');
+    var page = $('#nav li a:first').text(); // par défaut c'est Index
+     
+    // au clic sur un lien du menu
+    $('#nav li a').on('click', function() {
+        var url = $(this).attr('href'); // on récupère le href
+         
+        // on récupère le nom de la page demandée
+        var pageDemandee = $(this).text();
+ 
+        // si on appelle une page qui n est pas celle affichée
+        if(pageDemandee != page) { 
+         
+            // on met en mémoire la page
+            page = pageDemandee;
+             
+            // chargement dans la div
+            $.ajax({
+                url: url,
+                cache: false,
+                success: function(html) {
+                    $contenu_div.hide().html(html).fadeIn();
+                }
+            });
+        }
+        return false;
+    });
+});
+
+</script>
+<div id="menu">
+    <ul id="nav">
+        <li><a href="accueil.php?module=documentation&action=afficher_documentation&page=accueil">Accueil</a></li>
+        <li><a href="accueil.php?module=documentation&action=afficher_documentation&page=creer_dossier">Creer dossier</a></li>
+        <li><a href="accueil.php?module=documentation&action=afficher_documentation&page=evenement">Evenement</a></li>
+        <li><a href="accueil.php?module=documentation&action=afficher_documentation&page=stats">Statistiques</a></li>
+    </ul>
+</div>
+ 
+<div id="contenu">
+    <div>Contenu de la page "Index"</div>
+</div>
