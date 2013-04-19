@@ -37,7 +37,7 @@ function lister_personne_dans_bdd() {
     $requete->closeCursor();
 
     /** je retourne un tableau d'objet news */
-
+    
     return $tab;
 }
 
