@@ -915,11 +915,14 @@ div#ajouter_evenement .lab_txt{
 div#ajouter_evenement .inputfield{
     width: 170px;
 }
-div#ajouter_evenement #liste_utilisateur{
+div#ajouter_evenement #liste_utilisateur,
+div#ajouter_evenement #mode
+{
     margin-top: 10px;
     width: 174px;
     height: 22px;
 }
+
 div#ajouter_evenement textarea{
     resize : none;
     width : 318px;
