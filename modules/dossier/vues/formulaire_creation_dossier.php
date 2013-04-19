@@ -605,7 +605,7 @@ foreach ($tab_user as $key => $value) {
       
 
     <?php } ?>
-    if(document.cookie("nom") != "")document.getElementById("nom").value = readCookie("nom");
+    if(document.cookie("nom") != null)document.getElementById("nom").value = readCookie("nom");
     if(document.cookie("prenom") != "")document.getElementById("prenom").value = readCookie("prenom");
     if(document.cookie("adresse") != "")document.getElementById("adresse").value = readCookie("adresse");
     if(document.cookie("codepostal") != "")document.getElementById("codepostal").value = readCookie("codepostal");
