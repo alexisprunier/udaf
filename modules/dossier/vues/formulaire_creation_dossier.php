@@ -551,12 +551,14 @@ foreach ($tab_user as $key => $value) {
                         <?php 
                         $i=-1;
                         foreach ($tableau_evenement_user as &$ligne_evenement) {
-                            $i++;
-                             if (($i % 2) == 0)
+                            
+                             
+                            if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
+                                $i++;
+                                if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
                                         echo "<tr class=\"odd\">";
-                            if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
                                
                                     
                         ?>
