@@ -6,8 +6,12 @@
             <input type="text" name="date" class="datepicker inputfield" placeholder="Selectionner date" required id="date"/></input>
 
             <label for="mode" class="lab_txt">Mode de contact <span class="require">*</span> :</label>   
-            <input type="text" class="inputfield" id="mode" name="mode" maxlength="45" required title="Mode de contact"/>
-
+            
+            <select id="mode" name="mode" class="inputfield" required title="Mode de contact">
+                <option value="e-Mail">e-Mail</option>
+                <option value="Rendez-vous">Rendez-vous</option>
+                <option value="Téléphone">Téléphone</option>
+            </select>
             <label for="liste_utilisateur" class="lab_txt">Utilisateur concerné(e) <span class="require">*</span> :</label> 
             
             <select id="liste_utilisateur" name="liste_utilisateur" class="inputfield" required>

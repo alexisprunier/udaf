@@ -18,8 +18,7 @@
     soustheme = <?php echo json_encode($tab_sstheme) ?>;
     
    
-    
-    function changeSousTheme(selectedInd) {
+     function changeSousTheme(selectedInd) {
         var form1 = document.getElementById("form_creer_dossier");
         document.form_creer_dossier.soustheme.options.length = 0;
         y = 0;
@@ -30,10 +29,11 @@
             }
         }
     }
+    
     function changePersonne(selectedInd) {
         selectedInd = selectedInd - 1;
         window.document.getElementById("nom").value = personnes[selectedInd].nom;
-        window.document.getElementById("prenom").value =personnes[selectedInd].prenom;
+        window.document.getElementById("prenom").value = personnes[selectedInd].prenom;
         window.document.getElementById("adresse").value = personnes[selectedInd].adr_postale;
         window.document.getElementById("codepostal").value = personnes[selectedInd].code_postal;
         window.document.getElementById("ville").value = personnes[selectedInd].ville;
