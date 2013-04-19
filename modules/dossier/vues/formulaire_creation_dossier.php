@@ -604,27 +604,27 @@ foreach ($tab_user as $key => $value) {
         for(var i=0; i<allOther.length;i++){ allOther[i].style.visibility = hidden; }
       
 
-    <?php } ?>
-    if(document.cookie("nom") != null)document.getElementById("nom").value = readCookie("nom");
-    if(document.cookie("prenom") != "")document.getElementById("prenom").value = readCookie("prenom");
-    if(document.cookie("adresse") != "")document.getElementById("adresse").value = readCookie("adresse");
-    if(document.cookie("codepostal") != "")document.getElementById("codepostal").value = readCookie("codepostal");
-    if(document.cookie("ville") != "")document.getElementById("ville").value = readCookie("ville");
-    if(document.cookie("mail") != "")document.getElementById("mail").value = readCookie("mail");
-    if(document.cookie("telephone") != "")document.getElementById("telephone").value = readCookie("telephone");
-    if(document.cookie("mobile") != "")document.getElementById("mobile").value = readCookie("mobile");
-    if(document.cookie("nom_f") != "")document.getElementById("nom_f").value = readCookie("nom_f");
-    if(document.cookie("prenom_f") != "")document.getElementById("prenom_f").value = readCookie("prenom_f");
-    if(document.cookie("raison_sociale_f") != "")document.getElementById("raison_sociale_f").value = readCookie("raison_sociale_f");
-    if(document.cookie("adresse_f") != "")document.getElementById("adresse_f").value = readCookie("adresse_f");
-    if(document.cookie("codepostal_f") != "")document.getElementById("codepostal_f").value = readCookie("codepostal_f");
-    if(document.cookie("ville_f") != "")document.getElementById("ville_f").value = readCookie("ville_f");
-    if(document.cookie("mail_f") != "")document.getElementById("mail_f").value = readCookie("mail_f");
-    if(document.cookie("telephone_f") != "")document.getElementById("telephone_f").value = readCookie("telephone_f");
-    if(document.cookie("commentaire_f") != "")document.getElementById("commentaire_f").value = readCookie("commentaire_f");
-    if(document.cookie("theme") != "")document.getElementById("theme").selectedIndex = readCookie("theme");
-    if(document.cookie("soustheme") != "")document.getElementById("soustheme").value = readCookie("soustheme");
-    if(document.cookie("mail_f") != "")document.getElementById("mail_f").value = readCookie("mail_f");
-    if(document.cookie("txt_problematique") != "")document.getElementById("txt_problematique").value = readCookie("txt_problematique");
-        
+    <?php } else if(!isset($_GET['id'])) { ?>
+    document.getElementById("nom").value = readCookie("nom");
+    document.getElementById("prenom").value = readCookie("prenom");
+    document.getElementById("adresse").value = readCookie("adresse");
+    document.getElementById("codepostal").value = readCookie("codepostal");
+    document.getElementById("ville").value = readCookie("ville");
+    document.getElementById("mail").value = readCookie("mail");
+    document.getElementById("telephone").value = readCookie("telephone");
+    document.getElementById("mobile").value = readCookie("mobile");
+    document.getElementById("nom_f").value = readCookie("nom_f");
+    document.getElementById("prenom_f").value = readCookie("prenom_f");
+    document.getElementById("raison_sociale_f").value = readCookie("raison_sociale_f");
+    document.getElementById("adresse_f").value = readCookie("adresse_f");
+    document.getElementById("codepostal_f").value = readCookie("codepostal_f");
+    document.getElementById("ville_f").value = readCookie("ville_f");
+    document.getElementById("mail_f").value = readCookie("mail_f");
+    document.getElementById("telephone_f").value = readCookie("telephone_f");
+    document.getElementById("commentaire_f").value = readCookie("commentaire_f");
+    document.getElementById("theme").selectedIndex = readCookie("theme");
+    document.getElementById("soustheme").value = readCookie("soustheme");
+    document.getElementById("mail_f").value = readCookie("mail_f");
+    document.getElementById("txt_problematique").value = readCookie("txt_problematique");
+    <?php } ?>    
 </script>
