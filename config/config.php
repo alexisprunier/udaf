@@ -7,8 +7,8 @@ $dbname = "udaf";
 
 $prefix_table="";
 $link = mysql_connect($hostname,$username, $password);
-mysql_query('SET CHARACTER SET utf8');
 mysql_select_db($dbname);
+mysql_query("SET NAMES 'utf8'", $link);
 //------------------------------------------------------------
 
 // Identifiants pour la base de donn&eacute;es. N&eacute;cessaires a PDO2.
