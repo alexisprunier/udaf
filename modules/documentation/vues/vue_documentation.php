@@ -77,12 +77,16 @@
             <li><a href="afficher_rapport">Afficher le rapport annuel</a></li>
             <li><a href="exporter_rapport">Exporter le rapport annuel</a></li>
         </ul>
+         <?php
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+            ?>
         <li class='titre_menu_doc'>Gérer les utilisateur</li>
         <ul class="ssmenu_doc">
             <li><a href="ajouter_user">Ajouter un utilisateur</a></li>
             <li><a href="modifier_user">Modifier un utilisateur</a></li>
             <li><a href="supprimer_user">Supprimer un utilisateur</a></li>
         </ul>
+            <?php } ?>
         <li class='titre_menu_doc'>Gérer les évenements</li>
         <ul class="ssmenu_doc">
             <li><a href="calendrier">Consulter le calendrier</a></li>
@@ -103,7 +107,33 @@
      <?php } ?>
      
      <!--DOC GERER FIHCIERS-->
+    <div id="doc_stocker_fichier" class="contenu_doc">CONTENU PAGE STOCKER FICHIER</div>
+    <div id="doc_supprimer_fichier" class="contenu_doc">CONTENU PAGE SUPPRIMER FICHIER</div>
+    <div id="doc_telecharger_fichier" class="contenu_doc">CONTENU PAGE TELECHARGER FICHIER</div>
     
-    <div id="doc_evenement" class="contenu_doc">CONTENU PAGE EVENEMNT</div>
-    <div id="doc_stats" class="contenu_doc">CONTENU PAGE STATS</div>
+    <!--DOC GERER FOURNISSEURS-->
+    <div id="doc_ajouter_fournisseur" class="contenu_doc">CONTENU PAGE AJOUTER FOURNISSEUR</div>
+    <?php
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+            ?>
+    <div id="doc_supprimer_fournisseur" class="contenu_doc">CONTENU PAGE SUPPRIMER FOURNISSEUR</div>
+            <?php } ?>
+    
+    <!--DOC GERER SITE WEB-->
+    <div id="doc_ajouter_site" class="contenu_doc">CONTENU PAGE AJOUTER SITE</div>
+    <div id="doc_supprimer_site" class="contenu_doc">CONTENU PAGE SUPPRIMER SITE</div>
+    <div id="doc_visiter_site" class="contenu_doc">CONTENU PAGE VISITER SITE</div>
+    
+    <!--DOC GERER DOSSIER-->
+    <div id="doc_creer_dossier" class="contenu_doc">CONTENU PAGE CREER DOSSIER</div>
+    <div id="doc_suivi_dossier" class="contenu_doc">CONTENU PAGE SUIVI DOSSIER</div>
+    <div id="doc_rechercher_dossier" class="contenu_doc">CONTENU PAGE RECHERCHER DOSSIER</div>
+    <div id="doc_exporter_dossier" class="contenu_doc">CONTENU PAGE EXPORTER DOSSIER</div>
+    
+    <!--DOC RAPPORT ANNUEL-->
+    <div id="doc_afficher_rapport" class="contenu_doc">CONTENU PAGE AFFICHER RAPPORT</div>
+    <div id="doc_exporter_rapport" class="contenu_doc">CONTENU PAGE EXPORTER RAPPORT</div>
+    
+    
+    
 </div>
