@@ -6,8 +6,7 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
-echo "dossier : " . $dossier_select['user_id'];
-echo "session : " . $_SESSION['id'];
+
 ?>
 
 <script type="text/javascript">
@@ -19,8 +18,7 @@ echo "session : " . $_SESSION['id'];
     soustheme = <?php echo json_encode($tab_sstheme) ?>;
     
    
-    
-    function changeSousTheme(selectedInd) {
+     function changeSousTheme(selectedInd) {
         var form1 = document.getElementById("form_creer_dossier");
         document.form_creer_dossier.soustheme.options.length = 0;
         y = 0;
@@ -31,10 +29,11 @@ echo "session : " . $_SESSION['id'];
             }
         }
     }
+    
     function changePersonne(selectedInd) {
         selectedInd = selectedInd - 1;
         window.document.getElementById("nom").value = personnes[selectedInd].nom;
-        window.document.getElementById("prenom").value =personnes[selectedInd].prenom;
+        window.document.getElementById("prenom").value = personnes[selectedInd].prenom;
         window.document.getElementById("adresse").value = personnes[selectedInd].adr_postale;
         window.document.getElementById("codepostal").value = personnes[selectedInd].code_postal;
         window.document.getElementById("ville").value = personnes[selectedInd].ville;
@@ -404,7 +403,7 @@ foreach ($tab_fournisseur as $key => $value) {
 
                                  ?>
                                     
-                                        <td align="left"><a href="uploads/<?php echo $_SESSION['dossier_ref'] . '/' .  $fichier->nom . $fichier->type_fichier?>" target="_blank"><?php echo $fichier->nom ?></a></td>
+                                        <td align="left"><a href="uploads/<?php echo $_SESSION['dossier_ref'] . '/' .  $fichier->nom?>" target="_blank"><?php echo $fichier->nom ?></a></td>
                                         <td align="left"><?php echo $fichier->type_fichier ?></td>
                                         <td align="center">
                                             <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>
@@ -552,12 +551,14 @@ foreach ($tab_user as $key => $value) {
                         <?php 
                         $i=-1;
                         foreach ($tableau_evenement_user as &$ligne_evenement) {
-                            $i++;
-                             if (($i % 2) == 0)
+                            
+                             
+                            if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
+                                $i++;
+                                if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
                                         echo "<tr class=\"odd\">";
-                            if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
                                
                                     
                         ?>
@@ -605,27 +606,27 @@ foreach ($tab_user as $key => $value) {
         for(var i=0; i<allOther.length;i++){ allOther[i].style.visibility = hidden; }
       
 
-    <?php } ?>
-    if(document.cookie("nom") != "")document.getElementById("nom").value = readCookie("nom");
-    if(document.cookie("prenom") != "")document.getElementById("prenom").value = readCookie("prenom");
-    if(document.cookie("adresse") != "")document.getElementById("adresse").value = readCookie("adresse");
-    if(document.cookie("codepostal") != "")document.getElementById("codepostal").value = readCookie("codepostal");
-    if(document.cookie("ville") != "")document.getElementById("ville").value = readCookie("ville");
-    if(document.cookie("mail") != "")document.getElementById("mail").value = readCookie("mail");
-    if(document.cookie("telephone") != "")document.getElementById("telephone").value = readCookie("telephone");
-    if(document.cookie("mobile") != "")document.getElementById("mobile").value = readCookie("mobile");
-    if(document.cookie("nom_f") != "")document.getElementById("nom_f").value = readCookie("nom_f");
-    if(document.cookie("prenom_f") != "")document.getElementById("prenom_f").value = readCookie("prenom_f");
-    if(document.cookie("raison_sociale_f") != "")document.getElementById("raison_sociale_f").value = readCookie("raison_sociale_f");
-    if(document.cookie("adresse_f") != "")document.getElementById("adresse_f").value = readCookie("adresse_f");
-    if(document.cookie("codepostal_f") != "")document.getElementById("codepostal_f").value = readCookie("codepostal_f");
-    if(document.cookie("ville_f") != "")document.getElementById("ville_f").value = readCookie("ville_f");
-    if(document.cookie("mail_f") != "")document.getElementById("mail_f").value = readCookie("mail_f");
-    if(document.cookie("telephone_f") != "")document.getElementById("telephone_f").value = readCookie("telephone_f");
-    if(document.cookie("commentaire_f") != "")document.getElementById("commentaire_f").value = readCookie("commentaire_f");
-    if(document.cookie("theme") != "")document.getElementById("theme").selectedIndex = readCookie("theme");
-    if(document.cookie("soustheme") != "")document.getElementById("soustheme").value = readCookie("soustheme");
-    if(document.cookie("mail_f") != "")document.getElementById("mail_f").value = readCookie("mail_f");
-    if(document.cookie("txt_problematique") != "")document.getElementById("txt_problematique").value = readCookie("txt_problematique");
-        
+    <?php } else if(!isset($_GET['id'])) { ?>
+    document.getElementById("nom").value = readCookie("nom");
+    document.getElementById("prenom").value = readCookie("prenom");
+    document.getElementById("adresse").value = readCookie("adresse");
+    document.getElementById("codepostal").value = readCookie("codepostal");
+    document.getElementById("ville").value = readCookie("ville");
+    document.getElementById("mail").value = readCookie("mail");
+    document.getElementById("telephone").value = readCookie("telephone");
+    document.getElementById("mobile").value = readCookie("mobile");
+    document.getElementById("nom_f").value = readCookie("nom_f");
+    document.getElementById("prenom_f").value = readCookie("prenom_f");
+    document.getElementById("raison_sociale_f").value = readCookie("raison_sociale_f");
+    document.getElementById("adresse_f").value = readCookie("adresse_f");
+    document.getElementById("codepostal_f").value = readCookie("codepostal_f");
+    document.getElementById("ville_f").value = readCookie("ville_f");
+    document.getElementById("mail_f").value = readCookie("mail_f");
+    document.getElementById("telephone_f").value = readCookie("telephone_f");
+    document.getElementById("commentaire_f").value = readCookie("commentaire_f");
+    document.getElementById("theme").selectedIndex = readCookie("theme");
+    document.getElementById("soustheme").value = readCookie("soustheme");
+    document.getElementById("mail_f").value = readCookie("mail_f");
+    document.getElementById("txt_problematique").value = readCookie("txt_problematique");
+    <?php } ?>    
 </script>

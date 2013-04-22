@@ -18,7 +18,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
     $pass = mysql_real_escape_string($_POST["password"]);
     $pass_crypt = sha1($pass);
    
-    $result = q("SELECT * FROM utilisateur WHERE ident = '$ident' AND pass = '$pass_crypt'");
+    $result = q("SELECT * FROM utilisateur WHERE ident = '$ident' AND pass = '$pass'");
 
     if (mysql_num_rows($result) == 0) {
         header('location: index.php?erreur=login');
