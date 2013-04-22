@@ -6,7 +6,38 @@
  * @date      16 Avril 2013
  */
 ?>
+<div id="champs_recherche" class="recherche">
+    <h3>Légende</h3>
+    <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">
+        <div id="col1" class="col">
+            1. Alimentation-Agriculture</br>
+            2. Assurante</br>
+            3. Automobile-Transport</br>
+            4. Banque-Argent</br>
+        </div>
 
+        <div id="col2" class="col">
+            5. Commerce</br>
+            6. Consumerisme</br>
+            7. Droit-Justice</br>
+            8. Economie</br>
+        </div>
+
+        <div id="col3" class="col" >
+            9. Education-Société</br>
+            10. Energie(Electricité-Gaz)</br>
+            11. Environnement-Dévelopement durable</br>
+            12. Internet-Image-Son</br>
+        </div>
+
+        <div id="col4" class="col">
+            13. Logement-Immobilier</br>
+            14. Loisir-Tourisme</br>
+            15. Santé</br>
+            16. Sécurité domestique</br>
+        </div>
+    </form>
+</div>
 <div id="tab_stats">
     <table class="scroll_tab">
         <thead>
