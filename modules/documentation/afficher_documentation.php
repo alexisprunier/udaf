@@ -11,7 +11,7 @@
  */
 
 
- include CHEMIN_VUE . 'vue_documentation.html';
+ include CHEMIN_VUE . 'vue_documentation.php';
 
 ?>
 
