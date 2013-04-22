@@ -913,11 +913,14 @@ div#ajouter_evenement .lab_txt{
 div#ajouter_evenement .inputfield{
     width: 170px;
 }
-div#ajouter_evenement #liste_utilisateur{
+div#ajouter_evenement #liste_utilisateur,
+div#ajouter_evenement #mode
+{
     margin-top: 10px;
     width: 174px;
     height: 22px;
 }
+
 div#ajouter_evenement textarea{
     resize : none;
     width : 318px;
@@ -1165,4 +1168,80 @@ div#calendar{
 
 .checkEvent{
     background-color : red;
+}
+/*
+------------------------------------------------------------
+                  Documentation
+------------------------------------------------------------
+*/
+div#div_menu_doc{
+    display : inline-block;
+    width : 24%;
+    height: 100%;
+    vertical-align: top;
+}
+ul#menu_doc{
+    margin-left: -30px;
+    width: 80%;
+}
+ul.ssmenu_doc{margin-left: -40px}
+div#div_menu_doc li{
+    list-style: none;
+    
+}
+div#div_menu_doc a{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(255,197,120,0.7);
+    border-top: 1px solid rgba(150,150,150,0.8);
+    color : #aaa;
+    text-decoration: none;
+}
+div#div_menu_doc a:hover{
+
+    background-color: rgba(255,197,120,0.9);
+    color : #fff;
+    font-weight: bold;
+}
+li.titre_menu_doc{
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(87,126,220,0.7);
+    border-top: 1px solid rgba(150,150,150,0.8);
+    color : #fff;
+    box-shadow: 0 2px 5px #555;
+    border-top-right-radius:  5px;
+    border-top-left-radius: 5px;
+    margin-top: 3px;
+}
+li.titre_menu_doc:hover{
+    cursor : pointer;
+    background-color: rgba(87,126,220,0.9);
+}
+li.select_titre
+{
+    background-color: rgba(87,126,220,0.9);
+    box-shadow: inset 0 0px 20px 1px #000;   
+}
+a.select_sstitre{
+    background-color: rgba(255,197,120,0.9)!important;
+    color : #fff!important;
+    font-weight: bold!important;
+
+}
+ul#cacher{
+    margin-left: -40px;
+}
+div#contenu_doc{
+    display: inline-block;
+    width: 75%;
+    height: 500px;
+    box-shadow: 1px 1px 10px #333;
+    vertical-align: top;
+    border: 1px solid #aaa;
 }

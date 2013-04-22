@@ -9,6 +9,9 @@
  *
  * @details    Ce fichier est la partie controleur de la vue vue_documentation.php.
  */
-include CHEMIN_VUE . 'vue_documentation.php';
+
+
+ include CHEMIN_VUE . 'vue_documentation.php';
+
 ?>
 

@@ -158,6 +158,8 @@ if ($_GET["ajout"] == "fichiers"){
         $fichier = basename($_FILES['fichier']['name']);
         // r�cup�re la partie de la chaine � partir du dernier . pour conna�tre l'extension.
         $extension = strrchr($_FILES['fichier']['name'], '.');
+        $type_fichier = strtoupper(substr($extension, 1));
+  
         //Ensuite on teste tout
     
         
@@ -180,8 +182,8 @@ if ($_GET["ajout"] == "fichiers"){
             $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
             if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
             {   
-                $fichier = strstr($fichier,'.',true); //enleve l'extension du nom
-                ajouter_fichier_dans_bdd($fichier, $extension, $_SESSION['dossier_ref']);
+                
+                ajouter_fichier_dans_bdd($fichier, $type_fichier, $_SESSION['dossier_ref']);
             }
             else //Sinon (la fonction renvoie FALSE).
             {
@@ -195,9 +197,9 @@ if($_GET["suppr"] === "fichier"){
   
     $tab_fichier = selectionner_fichier_dans_bdd($_GET['id']);
     
-    $nom_fic = $tab_fichier['nom'].$tab_fichier['type_fichier'];
+    
 
-    unlink("uploads/".$_SESSION['dossier_ref'].'/'.$nom_fic);
+    unlink("uploads/".$_SESSION['dossier_ref'].'/'.$tab_fichier['nom']);
     /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
     $id_supp_fichier = supprimer_fichier_dans_bdd($_GET['id']);
 
@@ -205,11 +207,11 @@ if($_GET["suppr"] === "fichier"){
     if ($id_supp_fichier == true) {
         
         /** On transforme la chaine en entier */
-        $id_supp_fichier = (int) $id_supp_fichier;
+        //$id_supp_fichier = (int) $id_supp_fichier;
         
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
-    } 
+    }
    header('Location: /accueil.php?module=dossier&action=creer_dossier');   
        
 }
