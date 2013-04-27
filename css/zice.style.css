@@ -829,7 +829,7 @@ tr#head_tab_rdv{
     background-color : #cfcfcf;
 }
 
-input#check_rdv{
+input.check_rdv{
     margin :10px;
 }
 
@@ -888,9 +888,9 @@ td#deplier_ok:hover{
 
 a#lien_detail{
     position: absolute;
-    width: 370px;
-    height: 39px;
-    margin: -15px 0 0 -315px;
+width: 342px;
+height: 43px;
+margin: -21px 0 0 -290px;
 
 }
 div#ajouter_site, div#ajouter_evenement, div#ajouter_fichier{

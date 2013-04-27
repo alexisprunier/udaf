@@ -44,6 +44,7 @@ foreach ($tab_evenement as &$evenement) {
         'utilisateur' => $utilisateur['ident'],
         'commentaire' => $evenement->comm_event,
         'traite' => $evenement->traite,
+        'id_evenement' => $evenement->evenement_id,
         
        
     );
@@ -247,6 +248,16 @@ if(isset($_GET['id']))
 
    
 
+}
+if(isset($_GET['traite']))
+{
+    if($_GET['traite'] === "true"){
+        evenement_traite($_GET['id']);
+    }
+    else evenement_non_traite($_GET['id']);
+    
+
+    header('Location: /accueil.php?module=dossier&action=creer_dossier');
 }
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
 ?>
