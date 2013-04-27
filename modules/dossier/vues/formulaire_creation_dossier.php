@@ -10,6 +10,8 @@
 ?>
 
 <script type="text/javascript">
+    
+    $(document)
    //Préparation des données
     
     
@@ -562,7 +564,7 @@ foreach ($tab_user as $key => $value) {
                                
                                     
                         ?>
-                                    <td class="ligne_rdv"><input id="check_rdv" type="checkbox" <?php 
+                                    <td class="ligne_rdv"><input class="check_rdv" id="<?php echo $ligne_evenement['id_evenement'];?>" type="checkbox"<?php 
                                     if($ligne_evenement['traite']==1) echo "checked disabled";?>/></td>
                                     <td id="date_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['date_evenement']); ?></td>
                                     <td id="mode_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['mode_contact']); ?></td>

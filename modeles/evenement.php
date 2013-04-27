@@ -72,5 +72,40 @@ function ajouter_evenement_dans_bdd($date, $mode_contact, $comm_event, $user_id,
     /** sinon elle retourne une erreur */
     return $requete->errorInfo();
 }
+function evenement_traite($evenement_id)
+{
+    $pdo = PDO2::getInstance();
 
+    $requete = $pdo->prepare("UPDATE INTO evenement SET
+                        traite = :traite                        
+                                WHERE
+                                evenement_id = :evenement_id");
+
+    $requete->bindValue(':traite', 1);
+    $requete->bindValue(':evenement_id', $evenement_id);
+   
+
+	$requete->execute();
+         
+        return $evenement_id;
+        
+   
+}
+function evenement_non_traite($evenement_id)
+{
+    $pdo = PDO2::getInstance();
+
+    $requete = $pdo->prepare("INSERT INTO evenement SET
+                        traite = :traite                        
+                                WHERE
+                                evenement_id = :evenement_id");
+
+	$requete->bindValue(':traite', 0);
+    $requete->bindValue(':evenement_id', $evenement_id);
+   
+
+	$result = $requete->execute();
+
+	return $evenement_id;
+}
 ?>

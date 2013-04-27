@@ -1,7 +1,15 @@
 $(document).ready( function () {
     
-      
-      
+      $(".check_rdv").change(function(){
+          var val = $(this).is(":checked");
+          window.location.href = "accueil.php?module=dossier&action=creer_dossier&traite=" + val + "&id=" + $(this).attr("id");       
+          
+          
+      });
+                        
+                           
+ 
+                        
                         // GESTION DES EVENEMENTS DROITE DE CREATION DOSSIER
                         $(".comment_rdv").hide();
                         
@@ -91,7 +99,7 @@ $(document).ready( function () {
                                 $("#dialog-confirm-fichier").dialog("open");
                             });
                            
-        });
+});
 
       
 jQuery(function($){
