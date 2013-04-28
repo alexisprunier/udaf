@@ -257,7 +257,7 @@ if(isset($_GET['traite']))
     else evenement_non_traite($_GET['id']);
     
 
-    header('Location: /accueil.php?module=dossier&action=creer_dossier');
+   
 }
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
 ?>
