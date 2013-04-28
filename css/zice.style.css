@@ -751,9 +751,9 @@ div.tab_site {
 }
 
 
-button#ajouter_site{
+a#ajouter_site{
 
-    width : 128px;
+    width : 85px;
     margin :10px 0 0 10px;
 
 }
