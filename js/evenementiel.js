@@ -1,25 +1,6 @@
 $(document).ready( function () {
     
-      $(".check_rdv").change(function(){
-        var val = $(this).is(":checked");       
-        var eventId = $(this).attr("id");
-        var request = $.ajax({
-          url: "accueil.php?module=dossier&action=creer_dossier",
-          type: "GET",
-          data: {traite : val, id : eventId},
-          dataType: "html"
-        });
-      
-
-        request.done(function(msg) {
-          $("#evenement_dossier").append(msg);
-        });
- 
-        request.fail(function(jqXHR, textStatus) {
-          alert( "Erreur de la requete Ajax " + textStatus );
-        });
                         
-        });                   
  
                         
                         // GESTION DES EVENEMENTS DROITE DE CREATION DOSSIER
