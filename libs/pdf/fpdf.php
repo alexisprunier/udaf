@@ -1,12 +1,12 @@
 <?php 
 /**
- * @file      fpdf.php
+ * @file      fpdf.php 
  * @author    Olivier PLATHEY
  * @version   1.53
  * @date      31/12/2004
- * @brief     Définit les méthodes du module génération PDF.
+ * @brief     DÃ©finit les mÃ©thodes du module gÃ©nÃ©ration PDF.
  *
- * @details    Ce fichier permet de concentrer les méthodes pour la génération PDF. Vous pouvez utiliser et modifier ce logiciel comme vous le souhaitez.
+ * @details    Ce fichier permet de concentrer les mÃ©thodes pour la gÃ©nÃ©ration PDF. Vous pouvez utiliser et modifier ce logiciel comme vous le souhaitez.
  */
 if(!class_exists('FPDF'))
 {
@@ -377,7 +377,7 @@ function Header()
 	//$this->Image('images\avatar\apro.JPG',10,10,20,20);
 	//Police Arial gras 15
 	//$this->SetFont('Arial','B',12);
-	//Décalage à droite
+	//DÃ©calage Ã  droite
 	//$this->Cell(30);
 	//Titre
 	//$this->Cell(60,10,"Aprolliance",0,10,'L');
@@ -388,11 +388,11 @@ function Header()
 
 function Footer()
 {
-	//Positionnement à 1,5 cm du bas
+	//Positionnement Ã  1,5 cm du bas
 	//$this->SetY(-20);
 	//Police Arial italique 8
 	//$this->SetFont('Arial','',6);
-	//Numéro de page
+	//NumÃ©ro de page
 	//$this->MultiCell(190, 6 ,"FOOTER",0,'C');
 }
 
