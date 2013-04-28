@@ -11,7 +11,32 @@
 
 <script type="text/javascript">
     
-    $(document)
+    $(document).ready( function () {
+    
+      $(".check_rdv").change(function(){
+        var val = $(this).is(":checked");       
+        var eventId = $(this).attr("id");
+        var request = $.ajax({
+          url: "accueil.php?module=dossier&action=creer_dossier",
+          type: "GET",
+          data: {traite : val, id : eventId},
+          dataType: "html"
+        });
+      
+
+        request.done(function(msg) {
+          $(".check_rdv #"+eventId).fadeOut("fast");
+          $(msg).load("#evenement_dossier");
+          $(".check_rdv #"+eventId ).fadeIn("fast");
+          
+        });
+ 
+        request.fail(function(jqXHR, textStatus) {
+          alert( "Erreur de la requete Ajax " + textStatus );
+        });
+                        
+        });   
+    });
    //Préparation des données
     
     
