@@ -39,5 +39,29 @@ foreach ($tab_evenement as &$event){
     }
 }
 
+// CREATE PDF FILE
+
+require_once(CHEMIN_LIB.'pdf/phpToPDF.php');
+require_once(CHEMIN_LIB.'pdf/fpdf.php');
+require_once(CHEMIN_LIB.'pdf/pdfclass.php');
+
+$path = 'libs/pdf/export/statistiques.pdf';
+
+$pdf = new PDF();
+$pdf->AddPage('L');
+$pdf->SetFont('Arial','',20);
+
+$header = array('Date', 'RV', 'Tel', 'Mail', 'Total', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16');
+$pdf->Write(20, "Statistiques de ".$year." au ".date(d."-".m."-".Y)."\n");
+$pdf->SetFont('courier','',9);
+$pdf->Write(5, "1. Alimentation-Agriculture     5. Commerce                 9. Education-Société                         13. Logement-Immobilier\n");
+$pdf->Write(5, "2. Assurance                    6. Consumerisme             10 Energie(Electricité-Gaz)                  14. Loisir-tourisme\n");
+$pdf->Write(5, "3. Automobile-Transport         7. Droit-Justice            11. Environnement-Développement durable      15. Santé\n");
+$pdf->Write(5, "4. Banque-Argent                8. Economie                 12. Internet-Image-Son                       16. Sécurité Domestique\n");
+$pdf->Write(5, "\n");
+$pdf->SetFont('Arial','',10);
+$pdf->FancyTable($header, $tableau);
+$pdf->Output($path);
+
 include CHEMIN_VUE . 'vue_statistique.php';
 ?>

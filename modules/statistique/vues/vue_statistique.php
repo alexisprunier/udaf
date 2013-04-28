@@ -11,7 +11,7 @@
     <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">
         <div id="col1" class="col">
             1. Alimentation-Agriculture</br>
-            2. Assurante</br>
+            2. Assurance</br>
             3. Automobile-Transport</br>
             4. Banque-Argent</br>
         </div>
@@ -102,4 +102,5 @@
             ?>
         </tbody>
     </table>
+    <a href="libs/pdf/export/statistiques.pdf">Exporter au format PDF</a>
 </div>
