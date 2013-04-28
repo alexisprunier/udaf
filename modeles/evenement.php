@@ -76,7 +76,7 @@ function evenement_traite($evenement_id)
 {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("UPDATE INTO evenement SET
+    $requete = $pdo->prepare("UPDATE evenement SET
                         traite = :traite                        
                                 WHERE
                                 evenement_id = :evenement_id");
@@ -95,7 +95,7 @@ function evenement_non_traite($evenement_id)
 {
     $pdo = PDO2::getInstance();
 
-    $requete = $pdo->prepare("INSERT INTO evenement SET
+    $requete = $pdo->prepare("UPDATE evenement SET
                         traite = :traite                        
                                 WHERE
                                 evenement_id = :evenement_id");
