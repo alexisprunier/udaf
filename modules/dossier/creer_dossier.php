@@ -254,10 +254,21 @@ if(isset($_GET['traite']))
     if($_GET['traite'] === "true"){
         evenement_traite($_GET['id']);
     }
-    else evenement_non_traite($_GET['id']);
-    
-
-   
+    else evenement_non_traite($_GET['id']); 
 }
+
+// Génération du pdf
+
+require_once(CHEMIN_LIB.'pdf/phpToPDF.php');
+require_once(CHEMIN_LIB.'pdf/fpdf.php');
+require_once(CHEMIN_LIB.'pdf/pdfclass.php');
+
+$path = 'libs/pdf/export/dossier_'.$_SESSION['dossier_ref'].'.pdf';
+
+$pdf = new PDF();
+$pdf->AddPage('');
+$pdf->SetFont('Arial','',20);
+$pdf->Output($path);
+
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
 ?>

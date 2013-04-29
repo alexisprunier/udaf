@@ -551,7 +551,7 @@ foreach ($tab_user as $key => $value) {
                     <label for="check_physique" class="lab_txt">Dossier physique :</label>
                     <input id="check_physique" type="checkbox" title="Existe t-il un dossier physique?" 
                            <?php if(isset($_GET['id']) && ($dossier_select['dossier_physique'] == 1)) echo "checked" ?> ></input>
-                    <a id="exportPDF" class="btn" >Exporter au format PDF</a>
+                    <a id="exportPDF" class="btn" href="libs/pdf/export/dossier_<?php echo $_SESSION['dossier_ref'];?>.pdf" >Exporter au format PDF</a>
                     <!-- Bouton validation dossier -->
 <?php if (isset($_GET['id'])) { ?>
                         <button type="submit" name="ok" class="submit_button" title="Valider">Modifier le dossier</button>
