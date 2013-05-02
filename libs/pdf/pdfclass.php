@@ -12,9 +12,9 @@ function Header()
     // Police Arial gras 15
     $this->SetFont('Arial','B',15);
     // Décalage à droite
-    $this->Cell(80);
+    $this->Cell(100);
     // Titre
-    $this->Cell(80,10,'Dossier '.$_SESSION['dossier_ref'],1,0,'C');
+    $this->Cell(80,30,'Dossier '.$_SESSION['dossier_ref'],1,0,'C');
     // Saut de ligne
     $this->Ln(20);
 }
@@ -27,7 +27,7 @@ function Footer()
     // Police Arial italique 8
     $this->SetFont('Arial','I',8);
     // Numéro de page
-    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+    $this->Cell(0,10,'Page '.$this->PageNo().'',0,0,'C');
 }
 
 // Chargement des données
