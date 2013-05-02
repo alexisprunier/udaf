@@ -6,7 +6,7 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
-
+echo $_SESSION['id'];
 ?>
 
 <script type="text/javascript">
@@ -516,7 +516,9 @@ foreach ($tab_fournisseur as $key => $value) {
                     <legend>Cl&ocirc;ture</legend>
                     <label for="list_cloture" class="lab_txt">Raison de la cl&ocirc;ture :</label>
                     <select id="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
-                        <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
+<?php if(isset($_GET['id'])) {?>
+                            <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
+                        <?php } ?>
                         <option value="encours">En cours</option> 
                         <option value="termine">Termin&eacute;</option> 
                         <option value="transfere">Transfer&eacute;</option> 
@@ -539,12 +541,13 @@ foreach ($tab_fournisseur as $key => $value) {
                     <legend>Validation</legend>
                     <label for="list_users" class="lab_txt">Propri&eacute;taire :</label>
                     <select id="list_users" name="list_users" class="inputfield" required>
-                        <option value="<?php if(isset($_GET['id'])) echo $dossier_select['user_id']; ?>">
-                            <?php if(isset($_GET['id'])) echo $utilisateur['nom'] . " " . $utilisateur['prenom'];  ?>
-                        </option> 
+                       
 <?php
+if(isset($_GET['id'])) echo utf8_encode('<option value="' . $dossier_select['user_id'] . '" >' . $utilisateur['nom'] . ' ' . $utilisateur['prenom'] . '</option>');
+else echo utf8_encode('<option value="' . $_SESSION['id'] . '" >' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</option>'); 
 foreach ($tab_user as $key => $value) {
-    echo utf8_encode('<option value="' . $tab_user[$key]->user_id . '" >' . $tab_user[$key]->nom . ' ' . $tab_user[$key]->prenom . '</option>');
+    if($tab_user[$key]->user_id != $_SESSION['id'])
+        echo utf8_encode('<option value="' . $tab_user[$key]->user_id . '" >' . $tab_user[$key]->nom . ' ' . $tab_user[$key]->prenom . '</option>');
 }
 ?>
                     </select>
