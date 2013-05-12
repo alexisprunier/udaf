@@ -70,10 +70,11 @@ if ($_GET["ajout"] == "evenement"){
             utf8_decode($_POST['mode']),
             utf8_decode($_POST['commentaire_event']),
             utf8_decode($_POST['liste_utilisateur']),
-            $_SESSION['dossier_ref']);
+            $_GET['id']);
+  
     
-    
-    header('Location: /accueil.php?module=dossier&action=creer_dossier');
+    $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'];
+    header($path);
 }
 
 if ($_GET["ajout"] == "dossier"){
