@@ -1,6 +1,6 @@
 <div id="ajouter_evenement">
-    <h3> Ajouter événement au dossier</h3>
-    <form id="form_creer_dossier" action="accueil.php?module=dossier&action=creer_dossier&ajout=evenement" method="post" enctype="multipart/form-data">
+    <h3> Ajouter événement au dossier <?php echo $_SESSION['dossier_ref']; ?></h3>
+    <form id="form_creer_dossier" action="accueil.php?module=dossier&action=creer_dossier&ajout=evenement&id=<?php echo $_SESSION['dossier_ref']; ?>" method="post" enctype="multipart/form-data">
         <fieldset class="ogconso">
             <label for="date"class="lab_txt" >Date du rendez-vous <span class="require">*</span> :</label> 
             <input type="text" name="date" class="datepicker inputfield" placeholder="Selectionner date" required id="date"/></input>

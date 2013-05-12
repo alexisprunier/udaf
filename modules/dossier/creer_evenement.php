@@ -11,6 +11,7 @@
 include CHEMIN_MODELE . 'utilisateur.php';
 
 $tab_utilisateur = lister_utilisateur_dans_bdd();
+$_SESSION['dossier_ref'] = $_GET['id'];
 
 include CHEMIN_VUE . 'formulaire_creation_evenement.php';
 ?>

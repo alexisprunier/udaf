@@ -620,7 +620,7 @@ foreach ($tab_user as $key => $value) {
                     </tbody>
                 </table>
             </div>
-            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement'));">Ajouter rendez-vous</button>
+            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter rendez-vous</button>
         </fieldset>
     </div>
 
