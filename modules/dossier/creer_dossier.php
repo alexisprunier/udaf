@@ -79,8 +79,6 @@ if ($_GET["ajout"] == "evenement"){
 
 if ($_GET["ajout"] == "dossier"){
 
-
-
     // Personne    
     $sexe = $_POST['sexe'];
     $nom = utf8_decode($_POST['nom']);
@@ -111,11 +109,7 @@ if ($_GET["ajout"] == "dossier"){
     $comment_cloture = $_POST['comment_cloture'];
     $date_cloture = $_POST['date_cloture'];
     $dossier_physique = $_POST['check_physique'];
-    $cloture = "";
-    $raison_cloture = "";
-    $comment_cloture = "";
-    $date_cloture = "";
-    $dossier_physique = "";
+  
      
     $createur_dossier = $_POST['list_users'];
     $theme = $_POST['theme'];

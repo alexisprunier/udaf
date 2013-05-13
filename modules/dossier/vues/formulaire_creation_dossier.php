@@ -522,7 +522,7 @@ foreach ($tab_fournisseur as $key => $value) {
                 <fieldset class="ogconso">
                     <legend>Cl&ocirc;ture</legend>
                     <label for="list_cloture" class="lab_txt">Raison de la cl&ocirc;ture :</label>
-                    <select id="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
+                    <select id="list_cloture" name="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
 <?php if(isset($_GET['id'])) {?>
                             <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
                         <?php } ?>
@@ -532,11 +532,11 @@ foreach ($tab_fournisseur as $key => $value) {
                         <option valie="echec">Echec</option>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
-                    <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture"/>
+                    <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"/>
                         <?php if(isset($_GET['id'])) echo $dossier_select['date_cloture']; ?>
                     </input>
                     <label for="comment_cloture" class="lab_txt">Commentaire :</label>
-                    <textarea id="comment_cloture" placeholder="(facultatif)">
+                    <textarea id="comment_cloture" name="comment_cloture" placeholder="(facultatif)">
                     <?php if(isset($_GET['id'])) echo $dossier_select['comment_cloture']; ?>
                     </textarea>
                 </fieldset>
