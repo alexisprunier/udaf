@@ -79,7 +79,7 @@ if ($_GET["ajout"] == "evenement"){
 
 if ($_GET["ajout"] == "dossier"){
 
-echo '<pre>'.print_r($_POST,true).'</pre>';
+
 
     // Personne    
     $sexe = $_POST['sexe'];
@@ -141,7 +141,8 @@ echo '<pre>'.print_r($_POST,true).'</pre>';
         $id_fournisseur = (int) $id_fournisseur;
 
     }*/
-    header('Location: /accueil.php?module=dossier&action=creer_dossier');
+    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
+    header($path);
 }
 if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))
