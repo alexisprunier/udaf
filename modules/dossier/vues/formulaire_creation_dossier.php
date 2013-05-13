@@ -187,7 +187,6 @@
             document.cookie = "theme=";
         }
         if (document.getElementById("soustheme").selectedIndex != null) {
-            alert("ok");
             document.cookie = "soustheme=" + document.getElementById("soustheme").selectedIndex;
         } else {
             document.cookie = "soustheme=";
@@ -373,7 +372,7 @@ foreach ($tab_fournisseur as $key => $value) {
                     <legend>Probl&eacute;matique <span class="require">*</span> </legend>
 
                     <div id="form_problematique">
-                        <label id="theme" class="lab_txt">Th&egrave;me :</label>
+                        <label id="lab_theme" class="lab_txt">Th&egrave;me :</label>
                         <div id="div_theme">
                             <select class="liste_problematique" id="theme" name="theme" title="Choisir un th&egrave;me" onChange="changeSousTheme(this.selectedIndex)" required >
                                 <option value="<?php
@@ -388,7 +387,7 @@ foreach ($tab_fournisseur as $key => $value) {
                             </select>
                         </div>
 
-                        <label id="soustheme" class="lab_txt">Sous-Th&egrave;me :</label>
+                        <label id="lab_soustheme" class="lab_txt">Sous-Th&egrave;me :</label>
                         <div id="div_soustheme">
                             <select class="liste_problematique" id="soustheme" name="soustheme" title="Choisir un sous-th&egrave;me" required >
                                 <option value="<?php if (isset($_GET['id'])){echo $dossier_select["soustheme_id"];}?>">
@@ -673,7 +672,10 @@ foreach ($tab_user as $key => $value) {
     document.getElementById("telephone_f").value = readCookie("telephone_f");
     document.getElementById("commentaire_f").value = readCookie("commentaire_f");
     document.getElementById("theme").selectedIndex = readCookie("theme");
-    document.getElementById("soustheme").value = readCookie("soustheme");
+    if ( readCookie("theme") != null ){
+        changeSousTheme(readCookie("theme"));
+    }
+    document.getElementById("soustheme").selectedIndex = readCookie("soustheme");
     document.getElementById("mail_f").value = readCookie("mail_f");
     document.getElementById("txt_problematique").value = readCookie("txt_problematique");
     <?php } ?> 
