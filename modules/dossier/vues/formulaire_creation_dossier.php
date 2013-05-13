@@ -6,7 +6,6 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
-echo $_SESSION['id'];
 ?>
 
 <script type="text/javascript">
@@ -188,6 +187,7 @@ echo $_SESSION['id'];
             document.cookie = "theme=";
         }
         if (document.getElementById("soustheme").selectedIndex != null) {
+            alert("ok");
             document.cookie = "soustheme=" + document.getElementById("soustheme").selectedIndex;
         } else {
             document.cookie = "soustheme=";
