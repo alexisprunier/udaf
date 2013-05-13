@@ -88,7 +88,15 @@ echo $_SESSION['id'];
         window.document.getElementById("commentaire_f").value = fournisseurs[selectedInd].comment_fournisseur;
     }
     function save_fields(lien) {
-
+        if (document.getElementById('mr').checked == true || document.getElementById('mme').checked == true) {
+            if ( document.getElementById('mr').checked == true ){
+                document.cookie = "sexe=" + '0';
+            }else{
+                document.cookie = "sexe=" + '1';
+            }
+        } else {
+            document.cookie = "sexe=";
+        }
         if (document.getElementById('nom').value != null) {
             document.cookie = "nom=" + document.getElementById('nom').value;
         } else {
@@ -174,13 +182,13 @@ echo $_SESSION['id'];
         } else {
             document.cookie = "commentaire_f=";
         }
-        if (document.getElementById('theme').selectedIndex != null) {
-            document.cookie = "theme=" + document.getElementById('theme').selectedIndex;
+	if (document.getElementById("theme").selectedIndex != null) {
+            document.cookie = "theme=" + document.getElementById("theme").selectedIndex;
         } else {
             document.cookie = "theme=";
         }
-        if (document.getElementById('soustheme').value != null) {
-            document.cookie = "soustheme=" + document.getElementById('soustheme').value;
+        if (document.getElementById("soustheme").selectedIndex != null) {
+            document.cookie = "soustheme=" + document.getElementById("soustheme").selectedIndex;
         } else {
             document.cookie = "soustheme=";
         }
@@ -640,6 +648,13 @@ foreach ($tab_user as $key => $value) {
       
 
     <?php } else if(!isset($_GET['id'])) { ?>
+    var checked_radio = readCookie("sexe");
+    if ( checked_radio == '0' ){
+        document.getElementById('mr').checked = true;
+    }
+    if ( checked_radio == '1' ){
+        document.getElementById('mme').checked = true;
+    }
     document.getElementById("nom").value = readCookie("nom");
     document.getElementById("prenom").value = readCookie("prenom");
     document.getElementById("adresse").value = readCookie("adresse");
@@ -661,5 +676,5 @@ foreach ($tab_user as $key => $value) {
     document.getElementById("soustheme").value = readCookie("soustheme");
     document.getElementById("mail_f").value = readCookie("mail_f");
     document.getElementById("txt_problematique").value = readCookie("txt_problematique");
-    <?php } ?>    
+    <?php } ?> 
 </script>
