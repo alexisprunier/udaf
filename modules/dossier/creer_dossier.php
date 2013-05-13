@@ -106,11 +106,11 @@ if ($_GET["ajout"] == "dossier"){
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
     $problematique = mysql_escape_string(utf8_decode($_POST['txt_problematique'])); //mysql_escape_string : prevenir injection sql
-    /*$cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
+    $cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
     $raison_cloture = $_POST['list_cloture'];
     $comment_cloture = $_POST['comment_cloture'];
     $date_cloture = $_POST['date_cloture'];
-    $dossier_physique = $_POST['check_physique'];*/
+    $dossier_physique = $_POST['check_physique'];
     $cloture = "";
     $raison_cloture = "";
     $comment_cloture = "";
