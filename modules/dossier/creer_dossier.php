@@ -54,11 +54,14 @@ foreach ($tab_evenement as &$evenement) {
 }
 
 
-// Choix du nouvel ID du dossier
-unset($_SESSION['dossier_ref']);
-$dossier_max = selectionner_dossier_max_id_dans_bdd();
-$_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
-
+// Choix du nouvel ID du dossier si l'on arrive sur la page creer dossier sans vouloir effectuer un ajout
+if(!isset($_GET['ajout']) && !isset($_GET['modifier']))
+{
+    unset($_SESSION['dossier_ref']);
+    $dossier_max = selectionner_dossier_max_id_dans_bdd();
+    if($dossier_max[0]==0) $_SESSION['dossier_ref']= 20130000;
+    else $_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
+}
 if ($_GET["ajout"] == "site"){
     ajouter_site_dans_bdd($_POST['url'], utf8_decode($_POST['name']), $_SESSION['dossier_ref']);
     header('Location: /accueil.php?module=dossier&action=creer_dossier');
@@ -77,8 +80,8 @@ if ($_GET["ajout"] == "evenement"){
     header($path);
 }
 
-if ($_GET["ajout"] == "dossier"){
-
+if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
+    print_r($_POST);
     // Personne    
     $sexe = $_POST['sexe'];
     $nom = utf8_decode($_POST['nom']);
@@ -99,13 +102,15 @@ if ($_GET["ajout"] == "dossier"){
     $ville_f = utf8_decode($_POST['ville_f']);
     $mail_f = $_POST['mail_f'];
     $tel_f = $_POST['telephone_f'];
-    $commentaire_f = mysql_escape_string(utf8_decode($_POST['commentaire_f'])); //mysql_escape_string : prevenir injection sql
+    $commentaire_f = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", utf8_decode($_POST['commentaire_f'])));
+    $commentaire_f = mysql_real_escape_string(utf8_decode($commentaire_f)); //mysql_escape_string : prevenir injection sql
     
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
-    $problematique = mysql_escape_string(utf8_decode($_POST['txt_problematique'])); //mysql_escape_string : prevenir injection sql
-    $cloture = $_POST['list_cloture'] == 'encours' ? 0 : 1;
-    $raison_cloture = $_POST['list_cloture'];
+    $problematique = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", utf8_decode($_POST['txt_problematique'])));
+    $problematique = mysql_real_escape_string(utf8_decode($problematique)); //mysql_escape_string : prevenir injection sql
+    $cloture = $_POST['list_cloture'] == 'En cours' ? 0 : 1;
+    $raison_cloture = utf8_encode($_POST['list_cloture']);
     $comment_cloture = $_POST['comment_cloture'];
     $date_cloture = $_POST['date_cloture'];
     $dossier_physique = $_POST['check_physique'];
@@ -118,25 +123,33 @@ if ($_GET["ajout"] == "dossier"){
     $date_crea_p = date("d/m/Y");
     $date_crea_d = date("d/m/Y");
     $date_crea_f = date("d/m/Y");
-
+    
+    if(isset($_GET['ajout'])) //on ajoute en BDD
+    {
+        echo "ajout";
     /** ajouter_personne_dans_bdd() et ajouter_fournisseur_dans_bdd() sont defini dans ~/modeles/dossier.php */
     $id_personne = ajouter_personne_dans_bdd($date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
     $id_fournisseur = ajouter_fournisseur_dans_bdd($date_crea_f, $nom_f, $prenom_f, $raison_f, $adr_postale_f, $code_postal_f, $ville_f, $tel_f, $mail_f, $commentaire_f);
     
     /** Personne et fournisseur ajoutee, je cree le dossier, ajouter_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
     $id_dossier = ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
+    }
+    elseif (isset ($_GET['modifier'])) //on met a jour en BDD 
+    {
+       
+        $dossier_select = selectionner_dossier_dans_bdd($reference);
+       
+       
+        $id_personne = modifier_personne_dans_bdd($dossier_select['personne_id'], $date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
+        $id_fournisseur = modifier_fournisseur_dans_bdd($dossier_select['fournisseur_id'], $date_crea_f, $nom_f, $prenom_f, $raison_f, $adr_postale_f, $code_postal_f, $ville_f, $tel_f, $mail_f, $commentaire_f);
     
-    /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) 
-    if ($id_personne == true && $id_dossier == true && $id_fournisseur == true) {
+        /** Personne et fournisseur ajoutee, je cree le dossier, ajouter_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
+        $id_dossier = modifier_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
 
-        /** On transforme la chaine en entier 
-        $id_personne = (int) $id_personne;
-        $id_dossier = (int) $id_dossier;
-        $id_fournisseur = (int) $id_fournisseur;
-
-    }*/
-    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
-    header($path);
+    }
+   
+   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
+   header($path);
 }
 if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))
