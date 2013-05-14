@@ -53,13 +53,12 @@ function supprimer_fichier_dans_bdd($id_fichier) {
     $pdo = PDO2::getInstance();
 
     /** on prépare notre requete avec les valeurs passés en parametre */
-    $requete = $pdo->prepare("DELETE FROM fichier where fichier_id = :id_fichier");
+    $requete = $pdo->prepare("DELETE FROM fichier WHERE fichier_id = :id_fichier");
 
     $requete->bindValue(':id_fichier', $id_fichier);
     $requete->execute();
 
     if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
-
         print_r($result);
         $requete->closeCursor();
         return $result;
@@ -79,7 +78,7 @@ function selectionner_fichier_dans_bdd($fichier_id){
     $requete->execute();
 
     if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
-
+        print_r($result);
         $requete->closeCursor();
         return $result;
     }

@@ -459,7 +459,7 @@ foreach ($tab_fournisseur as $key => $value) {
                                 <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> <!--5Mo max
                             </span> -->
                             
-                            <button id="ajouter_fichier" type="button" class="btn"  onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier'));">
+                            <button id="ajouter_fichier" type="button" class="btn"  onclick="javascript:void(save_fields('accueil.php?module=dossier&action=uploader_fichier&id=<?php echo $_SESSION['dossier_ref']; ?>'));">
                                  <i class="icon-plus icon-white"></i>
                                 <span>Ajouter fichier...</span>
                             </button>
@@ -509,7 +509,7 @@ foreach ($tab_fournisseur as $key => $value) {
                        </tbody>
                     </table>
                     </div>
-                    <a id="ajouter_site" class="btn desactiver"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site'));">Ajouter</a>
+                    <a id="ajouter_site" class="btn desactiver"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter</a>
                 </fieldset>			
             </div>
 

@@ -63,16 +63,18 @@ if(!isset($_GET['ajout']) && !isset($_GET['modifier']))
     else $_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
 }
 if ($_GET["ajout"] == "site"){
-    ajouter_site_dans_bdd($_POST['url'], utf8_decode($_POST['name']), $_SESSION['dossier_ref']);
-    header('Location: /accueil.php?module=dossier&action=creer_dossier');
+    ajouter_site_dans_bdd($_POST['url'], $_POST['name'], $_SESSION['dossier_ref']);
+   
+    $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'];
+    header($path);
 }
 
 if ($_GET["ajout"] == "evenement"){
     ajouter_evenement_dans_bdd(
             $_POST['date'],
-            utf8_decode($_POST['mode']),
-            utf8_decode($_POST['commentaire_event']),
-            utf8_decode($_POST['liste_utilisateur']),
+            $_POST['mode'],
+            $_POST['commentaire_event'],
+            $_POST['liste_utilisateur'],
             $_GET['id']);
   
     
@@ -84,31 +86,31 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     print_r($_POST);
     // Personne    
     $sexe = $_POST['sexe'];
-    $nom = utf8_decode($_POST['nom']);
-    $prenom = utf8_decode($_POST['prenom']);
-    $adr_postale = utf8_decode($_POST['adresse']);
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $adr_postale = $_POST['adresse'];
     $code_postal = $_POST['codepostal'];
-    $ville = utf8_decode($_POST['ville']);
+    $ville = $_POST['ville'];
     $mail = $_POST['mail'];
     $tel_fixe = $_POST['telephone'];
     $tel_port = $_POST['mobile'];
 
     // Fournisseur
-    $nom_f = utf8_decode($_POST['nom_f']);
-    $prenom_f = utf8_decode($_POST['prenom_f']);
-    $raison_f = utf8_decode($_POST['raison_sociale_f']);
-    $adr_postale_f = utf8_decode($_POST['adresse_f']);
+    $nom_f = $_POST['nom_f'];
+    $prenom_f = $_POST['prenom_f'];
+    $raison_f = $_POST['raison_sociale_f'];
+    $adr_postale_f = $_POST['adresse_f'];
     $code_postal_f = $_POST['codepostal_f'];
-    $ville_f = utf8_decode($_POST['ville_f']);
+    $ville_f = $_POST['ville_f'];
     $mail_f = $_POST['mail_f'];
     $tel_f = $_POST['telephone_f'];
-    $commentaire_f = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", utf8_decode($_POST['commentaire_f'])));
-    $commentaire_f = mysql_real_escape_string(utf8_decode($commentaire_f)); //mysql_escape_string : prevenir injection sql
+    $commentaire_f = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", $_POST['commentaire_f']));
+    $commentaire_f = mysql_real_escape_string($commentaire_f); //mysql_escape_string : prevenir injection sql
     
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
-    $problematique = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", utf8_decode($_POST['txt_problematique'])));
-    $problematique = mysql_real_escape_string(utf8_decode($problematique)); //mysql_escape_string : prevenir injection sql
+    $problematique = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", $_POST['txt_problematique']));
+    $problematique = mysql_real_escape_string($problematique); //mysql_escape_string : prevenir injection sql
     $cloture = $_POST['list_cloture'] == 'En cours' ? 0 : 1;
     $raison_cloture = $_POST['list_cloture'];
     $comment_cloture = $_POST['comment_cloture'];
@@ -166,41 +168,46 @@ if ($_GET["ajout"] == "fichiers"){
         mkdir("uploads/".$_SESSION['dossier_ref'].'/', 0777);
         $dossier = 'uploads/'.$_SESSION['dossier_ref'].'/';
         $fichier = basename($_FILES['fichier']['name']);
-        // r�cup�re la partie de la chaine � partir du dernier . pour conna�tre l'extension.
-        $extension = strrchr($_FILES['fichier']['name'], '.');
-        $type_fichier = strtoupper(substr($extension, 1));
-  
-        //Ensuite on teste tout
-    
-        
-         if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
+        if(strlen($fichier)<50)
         {
-            $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
-                \n ou la taille (taille max : 5Mo)';
-            echo $erreur;
-        }
-        else{
-            
-            $fichier = strtr($fichier,
-                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-                'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); 
-            //On remplace les lettres accentutées par les non accentuées dans $fichier.
-            //Et on récupère le résultat dans fichier
+            // r�cup�re la partie de la chaine � partir du dernier . pour conna�tre l'extension.
+            $extension = strrchr($_FILES['fichier']['name'], '.');
+            $type_fichier = strtoupper(substr($extension, 1));
 
-            //En dessous, il y a l'expression régulière qui remplace tout ce qui n'est pas une lettre non accentuées ou un chiffre
-            //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
-            $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
-            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-            {   
-                
-                ajouter_fichier_dans_bdd($fichier, $type_fichier, $_SESSION['dossier_ref']);
-            }
-            else //Sinon (la fonction renvoie FALSE).
+            //Ensuite on teste tout
+
+
+             if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
             {
-                 echo 'Echec de l\'upload !';
+                $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
+                    \n ou la taille (taille max : 5Mo)';
+                echo $erreur;
             }
+            else{
+
+               /*$fichier = strtr($fichier,
+                    'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+                    'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); */
+               //On remplace les lettres accentutées par les non accentuées dans $fichier.
+                //Et on récupère le résultat dans fichier
+
+                //En dessous, il y a l'expression régulière qui remplace tout ce qui n'est pas une lettre non accentuées ou un chiffre
+                //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
+               // $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
+                if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . utf8_decode($fichier))) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+                {   
+
+                    ajouter_fichier_dans_bdd($fichier, $type_fichier, $_SESSION['dossier_ref']);
+                }
+                else //Sinon (la fonction renvoie FALSE).
+                {
+                     echo 'Echec de l\'upload !';
+                }
+            }
+            $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
+            header($path);
         }
-        header('Location: /accueil.php?module=dossier&action=creer_dossier');
+        else echo "ERREUR NOM DU FICHIER TROP LONG max 50 caractere";
 }
 if($_GET["suppr"] === "fichier"){
      /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
@@ -209,7 +216,7 @@ if($_GET["suppr"] === "fichier"){
     
     
 
-    unlink("uploads/".$_SESSION['dossier_ref'].'/'.$tab_fichier['nom']);
+    unlink("uploads/".$tab_fichier['dossier_id'].'/'.utf8_decode($tab_fichier['nom']));
     /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
     $id_supp_fichier = supprimer_fichier_dans_bdd($_GET['id']);
 
@@ -222,7 +229,8 @@ if($_GET["suppr"] === "fichier"){
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     }
-   header('Location: /accueil.php?module=dossier&action=creer_dossier');   
+   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $tab_fichier['dossier_id'];
+   header($path);   
        
 }
 if($_GET["suppr"] === "site"){
@@ -241,7 +249,8 @@ if($_GET["suppr"] === "site"){
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     } 
-   header('Location: /accueil.php?module=dossier&action=creer_dossier');   
+   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
+   header($path);   
        
 }
 if(isset($_GET['id']))
