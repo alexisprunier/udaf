@@ -1,20 +1,20 @@
 <?php
 /**
- * Classe implémentant le singleton pour PDO
+ * Classe implï¿½mentant le singleton pour PDO
  */
 class PDO2 extends PDO {
 
 	private static $_instance;
 	
 	/**
-	 * @brief      Constructeur : héritage public obligatoire par héritage de PDO
+	 * @brief      Constructeur : hï¿½ritage public obligatoire par hï¿½ritage de PDO
 	 */
 	public function __construct( ) 
 	{
 	}
 
 	/**
-	 * @brief      Le getInstance nous permet d'accéder à l'instrance de notre objet instance
+	 * @brief      Le getInstance nous permet d'accï¿½der ï¿½ l'instrance de notre objet instance
 	 *
 	 * @return  	L'instance de PDO
 	 */
@@ -24,7 +24,7 @@ class PDO2 extends PDO {
 		{	
 			try 
 			{
-				self::$_instance = new PDO(SQL_DSN, SQL_USERNAME, SQL_PASSWORD);
+				self::$_instance = new PDO(SQL_DSN, SQL_USERNAME, SQL_PASSWORD, array (PDO::MYSQL_ATTR_INIT_COMMAND=>'SET NAMES utf8', PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 			} 
 			catch (PDOException $e) 
 			{

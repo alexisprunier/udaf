@@ -249,7 +249,7 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
                         <option value=""></option> 
                         <?php
                         foreach ($tab_personne as $key => $value) {
-                            echo utf8_encode('<option value="' . $tab_personne[$key]->personne_id . '" >' . $tab_personne[$key]->nom . ' ' . $tab_personne[$key]->prenom . '</option>');
+                            echo '<option value="' . $tab_personne[$key]->personne_id . '" >' . $tab_personne[$key]->nom . ' ' . $tab_personne[$key]->prenom . '</option>';
                         }
                         ?>
                     </select>
@@ -267,41 +267,41 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
 
                     <label for="nom" class="lab_txt">Nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="nom" name="nom" maxlength="45" required title="Nom de famille du client"
-                           value="<?php if(isset($_GET['id'])) echo utf8_encode($client['nom'])?> "/>
+                           value="<?php if(isset($_GET['id'])) echo $client['nom']?> "/>
 
                     <label for="prenom" class="lab_txt">Pr&eacute;nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="prenom" name="prenom" maxlength="45" required title="Pr&eacute;nom du client" 
-                           value="<?php if(isset($_GET['id'])) echo utf8_encode ($client['prenom'])?> "/>
+                           value="<?php if(isset($_GET['id'])) echo $client['prenom']?> "/>
                     
                  
                     <label for="adresse" class="lab_txt">Adresse :</label>   
                     <input type="text" class="inputfield" id="adresse" name="adresse" maxlength="80" title="Adresse du client" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($client['adr_postale'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['adr_postale']?> "/>
 
 
                     <label for="codepostal" class="lab_txt">Code Postal :</label>   
                     <input type="text" class="inputfield" id="codepostal" name="codepostal" maxlength="5" title="Code postale du client" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($client['code_postal'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['code_postal']?> "/>
 
 
                     <label for="ville" class="lab_txt">Ville :</label>   
                     <input type="text" class="inputfield" id="ville" name="ville" maxlength="45" title="Ville du client" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($client['ville'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['ville']?> "/>
   
 
                     <label for="mail" class="lab_txt">Mail :</label>   
                     <input type="text" class="inputfield" id="mail" name="mail" maxlength="45" title="Adresse mail du client" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($client['mail'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['mail']?> "/>
                            
 
                     <label for="telephone" class="lab_txt">T&eacute;l&eacute;phone <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="telephone" name="telephone" maxlength="10" required title="T&eacute;l&eacute;phone du client" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($client['tel_fixe'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['tel_fixe']?> "/>
                     
 
                     <label for="mobile" class="lab_txt">T&eacute;l&eacute;phone Mobile :</label>   
                     <input type="text" class="inputfield" id="mobile" name="mobile" maxlength="10" title="Autre numero de t&eacute;l&eacute;phone du client" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($client['tel_port'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['tel_port']?> "/>
                         
                 </fieldset >
             </div>
@@ -315,53 +315,53 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
                         <option value=""></option> 
 <?php
 foreach ($tab_fournisseur as $key => $value) {
-    echo utf8_encode('<option value="' . $tab_fournisseur[$key]->fournisseur_id . '" >' . $tab_fournisseur[$key]->nom . ' ' . $tab_fournisseur[$key]->prenom . ' (' . $tab_fournisseur[$key]->raison_sociale . ')</option>');
+    echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '" >' . $tab_fournisseur[$key]->nom . ' ' . $tab_fournisseur[$key]->prenom . ' (' . $tab_fournisseur[$key]->raison_sociale . ')</option>';
 }
 ?>
                     </select>
                     <!--<div class="clear_form"></div>-->
                     <label for="nom_f" class="lab_txt">Nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="nom_f" name="nom_f" maxlength="45" required title="Nom de famille du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['nom'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['nom']?> "/>
                            
 
                     <label for="prenom_f" class="lab_txt">Pr&eacute;nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="prenom_f" name="prenom_f" maxlength="45" required title="Pr&eacute;nom du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['prenom'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['prenom']?> "/>
 
 
                     <label for="raison_sociale_f" class="lab_txt">Raison Sociale <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="raison_sociale_f" name="raison_sociale_f" maxlength="45" required title="Raison sociale du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['raison_sociale'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['raison_sociale']?> "/>
                           
 
                     <label for="adresse_f" class="lab_txt">Adresse :</label>   
                     <input type="text" class="inputfield" id="adresse_f" name="adresse_f" maxlength="80" title="Adresse du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['adr_postale'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['adr_postale']?> "/>
                       
 
                     <label for="codepostal_f" class="lab_txt">Code Postal :</label>   
                     <input type="text" class="inputfield" id="codepostal_f" name="codepostal_f" maxlength="5" title="Code postale du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['code_postal'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['code_postal']?> "/>
                        
 
                     <label for="ville_f" class="lab_txt">Ville :</label>   
                     <input type="text" class="inputfield" id="ville_f" name="ville_f" maxlength="45" title="Ville du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['ville'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['ville']?> "/>
                                
 
                     <label for="mail_f" class="lab_txt">Mail :</label>   
                     <input type="text" class="inputfield" id="mail_f" name="mail_f" maxlength="45" title="Adresse e-mail du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['mail'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['mail']?> "/>
                                 
 
                     <label for="telephone_f" class="lab_txt">T&eacute;l&eacute;phone :</label>   
                     <input type="text" class="inputfield" id="telephone_f" name="telephone_f" maxlength="10" title="T&eacute;l&eacute;phone du fournisseur"
-                        value="<?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['tel'])?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['tel']?> "/>
                                         
 
                     <label for="commentaire_f" class="lab_txt">Commentaire :</label>   
-                    <textarea class="comment" rows="4" cols="50" id="commentaire_f" name="commentaire_f" title="Commentaire sur le fournisseur"><?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['comment_fournisseur']) ?></textarea>
+                    <textarea class="comment" rows="4" cols="50" id="commentaire_f" name="commentaire_f" title="Commentaire sur le fournisseur"><?php if(isset($_GET['id'])) echo $fournisseur['comment_fournisseur'] ?></textarea>
                 </fieldset>
             </div>
 
@@ -375,11 +375,11 @@ foreach ($tab_fournisseur as $key => $value) {
                             <select class="liste_problematique" id="theme" name="theme" title="Choisir un th&egrave;me" onChange="changeSousTheme(this.selectedIndex)" required >
                                 <option value="<?php
                                     if (isset($_GET['id'])){echo $dossier_select["theme_id"];}?>">
-                                        <?php if (isset($_GET['id'])){echo utf8_encode($theme["nom"]);}?>
+                                        <?php if (isset($_GET['id'])){echo $theme["nom"];}?>
                                 </option> 
                                     <?php
                                     foreach ($tab_theme as $key => $value) {
-                                        echo utf8_encode('<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>');
+                                        echo '<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>';
                                     }
                                     ?>
                             </select>
@@ -389,7 +389,7 @@ foreach ($tab_fournisseur as $key => $value) {
                         <div id="div_soustheme">
                             <select class="liste_problematique" id="soustheme" name="soustheme" title="Choisir un sous-th&egrave;me" required >
                                 <option value="<?php if (isset($_GET['id'])){echo $dossier_select["soustheme_id"];}?>">
-                                        <?php if (isset($_GET['id'])){echo utf8_encode($sstheme["nom"]);}?>                                        
+                                        <?php if (isset($_GET['id'])){echo $sstheme["nom"];}?>                                        
                                 </option> 
                                 
 
@@ -398,7 +398,7 @@ foreach ($tab_fournisseur as $key => $value) {
                         </div>
                     </div>
 
-                    <textarea id="txt_problematique" name="txt_problematique" required placeholder="D&eacute;tail de la probl&eacute;matique des deux parties"><?php echo utf8_encode($dossier_select['problematique'])?></textarea>
+                    <textarea id="txt_problematique" name="txt_problematique" required placeholder="D&eacute;tail de la probl&eacute;matique des deux parties"><?php echo $dossier_select['problematique']?></textarea>
                 </fieldset>
             </div>
 
@@ -496,7 +496,7 @@ foreach ($tab_fournisseur as $key => $value) {
                                         $i += 1;
                                         ?>
                                         <tr class="odd">
-                                            <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo utf8_encode($site->nom); ?></a></td>
+                                            <td class="td_nom"><a href="<?php echo $site->lien; ?>" target="_blank"><?php echo $site->nom; ?></a></td>
                                             <td align="center">
                                             <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=site&id=<?php echo $site->site_id; ?>"><img src="images/icon/icon_delete.png"/></a>
                                             </td>
@@ -519,12 +519,12 @@ foreach ($tab_fournisseur as $key => $value) {
                     <label for="list_cloture" class="lab_txt">Raison de la cl&ocirc;ture :</label>
                     <select id="list_cloture" name="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
 <?php if(isset($_GET['id'])) {?>
-                        <option value="<?php echo utf8_decode($dossier_select['raison_cloture']);?>"><?php echo utf8_decode($dossier_select['raison_cloture']);?></option>
+                        <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
                         <?php } ?>
-                        <?php if(utf8_decode($dossier_select['raison_cloture']) != "En cours"){ ?><option value="En cours">En cours</option><?php } ?>
-                        <?php if(utf8_decode($dossier_select['raison_cloture']) != "Terminé") { ?><option value="Termin&eacute;">Termin&eacute;</option><?php } ?>
-                        <?php if(utf8_decode($dossier_select['raison_cloture'])!= "Transferé") { ?><option value="Transfer&eacute;">Transfer&eacute;</option><?php } ?> 
-                        <?php if(utf8_decode($dossier_select['raison_cloture']) != "Echec") { ?><option valie="Echec">Echec</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture'] != "En cours"){ ?><option value="En cours">En cours</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture'] != "Terminé") { ?><option value="Termin&eacute;">Termin&eacute;</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture']!= "Transferé") { ?><option value="Transfer&eacute;">Transfer&eacute;</option><?php } ?> 
+                        <?php if($dossier_select['raison_cloture'] != "Echec") { ?><option valie="Echec">Echec</option><?php } ?>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
                     <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"/>
@@ -543,11 +543,11 @@ foreach ($tab_fournisseur as $key => $value) {
                     <select id="list_users" name="list_users" class="inputfield" required>
                        
 <?php
-if(isset($_GET['id'])) echo utf8_encode('<option value="' . $dossier_select['user_id'] . '" >' . $utilisateur['nom'] . ' ' . $utilisateur['prenom'] . '</option>');
-else echo utf8_encode('<option value="' . $_SESSION['id'] . '" >' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</option>'); 
+if(isset($_GET['id'])) echo '<option value="' . $dossier_select['user_id'] . '" >' . $utilisateur['nom'] . ' ' . $utilisateur['prenom'] . '</option>';
+else echo '<option value="' . $_SESSION['id'] . '" >' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</option>'; 
 foreach ($tab_user as $key => $value) {
     if($tab_user[$key]->user_id != $_SESSION['id'])
-        echo utf8_encode('<option value="' . $tab_user[$key]->user_id . '" >' . $tab_user[$key]->nom . ' ' . $tab_user[$key]->prenom . '</option>');
+        echo '<option value="' . $tab_user[$key]->user_id . '" >' . $tab_user[$key]->nom . ' ' . $tab_user[$key]->prenom . '</option>';
 }
 ?>
                     </select>
@@ -597,9 +597,9 @@ foreach ($tab_user as $key => $value) {
                         ?>
                                     <td class="ligne_rdv"><input class="check_rdv" id="<?php echo $ligne_evenement['id_evenement'];?>" type="checkbox"<?php 
                                     if($ligne_evenement['traite']==1) echo "checked";?>/></td>
-                                    <td id="date_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['date_evenement']); ?></td>
-                                    <td id="mode_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['mode_contact']); ?></td>
-                                    <td id="user_rdv" class="ligne_rdv"><?php echo utf8_encode($ligne_evenement['utilisateur']); ?></td>
+                                    <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
+                                    <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
+                                    <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
                                 </tr>
                                 <?php
@@ -608,7 +608,7 @@ foreach ($tab_user as $key => $value) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo utf8_encode($ligne_evenement['commentaire']); ?></textarea></td>
+                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
                                 </tr>
                         <?php
                         
