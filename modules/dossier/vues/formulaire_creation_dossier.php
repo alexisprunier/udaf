@@ -237,7 +237,7 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
 
 <div id="creer_dossier">
 
-    <form id="form_creer_dossier" name="form_creer_dossier" action="accueil.php?module=dossier&amp;action=creer_dossier&ajout=dossier" method="post" enctype="multipart/form-data">
+    <form id="form_creer_dossier" name="form_creer_dossier" action="accueil.php?module=dossier&amp;action=creer_dossier&<?php if(isset($_GET['id'])) echo "modifier"; else echo 'ajout';?>=dossier" method="post" enctype="multipart/form-data">
         <div id="gauche_dossier">
 
             <div id="identite_client">        
@@ -361,9 +361,7 @@ foreach ($tab_fournisseur as $key => $value) {
                                         
 
                     <label for="commentaire_f" class="lab_txt">Commentaire :</label>   
-                    <textarea class="comment" rows="4" cols="50" id="commentaire_f" name="commentaire_f" title="Commentaire sur le fournisseur">
-                        <?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['comment_fournisseur']) ?>
-                    </textarea>
+                    <textarea class="comment" rows="4" cols="50" id="commentaire_f" name="commentaire_f" title="Commentaire sur le fournisseur"><?php if(isset($_GET['id'])) echo utf8_encode($fournisseur['comment_fournisseur']) ?></textarea>
                 </fieldset>
             </div>
 
@@ -400,10 +398,7 @@ foreach ($tab_fournisseur as $key => $value) {
                         </div>
                     </div>
 
-                    <textarea id="txt_problematique" name="txt_problematique" required placeholder="D&eacute;tail de la probl&eacute;matique des deux parties">
-                        <?php echo utf8_encode($dossier_select['problematique'])?>
-                        
-                    </textarea>
+                    <textarea id="txt_problematique" name="txt_problematique" required placeholder="D&eacute;tail de la probl&eacute;matique des deux parties"><?php echo utf8_encode($dossier_select['problematique'])?></textarea>
                 </fieldset>
             </div>
 
@@ -524,21 +519,19 @@ foreach ($tab_fournisseur as $key => $value) {
                     <label for="list_cloture" class="lab_txt">Raison de la cl&ocirc;ture :</label>
                     <select id="list_cloture" name="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
 <?php if(isset($_GET['id'])) {?>
-                            <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
+                        <option value="<?php echo utf8_decode($dossier_select['raison_cloture']);?>"><?php echo utf8_decode($dossier_select['raison_cloture']);?></option>
                         <?php } ?>
-                        <option value="encours">En cours</option> 
-                        <option value="termine">Termin&eacute;</option> 
-                        <option value="transfere">Transfer&eacute;</option> 
-                        <option valie="echec">Echec</option>
+                        <?php if(utf8_decode($dossier_select['raison_cloture']) != "En cours"){ ?><option value="En cours">En cours</option><?php } ?>
+                        <?php if(utf8_decode($dossier_select['raison_cloture']) != "Terminé") { ?><option value="Termin&eacute;">Termin&eacute;</option><?php } ?>
+                        <?php if(utf8_decode($dossier_select['raison_cloture'])!= "Transferé") { ?><option value="Transfer&eacute;">Transfer&eacute;</option><?php } ?> 
+                        <?php if(utf8_decode($dossier_select['raison_cloture']) != "Echec") { ?><option valie="Echec">Echec</option><?php } ?>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
                     <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"/>
                         <?php if(isset($_GET['id'])) echo $dossier_select['date_cloture']; ?>
                     </input>
                     <label for="comment_cloture" class="lab_txt">Commentaire :</label>
-                    <textarea id="comment_cloture" name="comment_cloture" placeholder="(facultatif)">
-                    <?php if(isset($_GET['id'])) echo $dossier_select['comment_cloture']; ?>
-                    </textarea>
+                    <textarea id="comment_cloture" name="comment_cloture" placeholder="(facultatif)"><?php if(isset($_GET['id'])) echo $dossier_select['comment_cloture']; ?></textarea>
                 </fieldset>
             </div>
 

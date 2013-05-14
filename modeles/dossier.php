@@ -87,7 +87,47 @@ function ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $clo
     /** sinon elle retourne une erreur */
     return $requete->errorInfo();
 }
+function modifier_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
+    $pdo = PDO2::getInstance();
 
+    $requete = $pdo->prepare("UPDATE dossier SET                        
+                        date_creation_d = :date_creation_d,
+                        problematique = :problematique,
+                        cloture = :cloture,
+                        raison_cloture = :raison_cloture,
+                        comment_cloture = :comment_cloture,
+                        dossier_physique = :doss_physique,
+                        date_cloture = :date_cloture,
+                        user_id = :createur_dossier,
+                        theme_id = :theme_id,
+                        soustheme_id = :soustheme_id,
+                        fournisseur_id = :fournisseur_id,
+                        personne_id = :personne_id
+                            WHERE dossier_ref = :reference"
+    );
+
+    $requete->bindValue(':reference', $reference);
+    $requete->bindValue(':date_creation_d', $date_crea_d);
+    $requete->bindValue(':problematique', $problematique);
+    $requete->bindValue(':cloture', $cloture);
+    $requete->bindValue(':raison_cloture', $raison_cloture);
+    $requete->bindValue(':comment_cloture', $comment_cloture);
+    $requete->bindValue(':date_cloture', $date_cloture);
+    $requete->bindValue(':doss_physique', $doss_physique);
+    $requete->bindValue(':createur_dossier', $createur_dossier);
+    $requete->bindValue(':theme_id', $theme);
+    $requete->bindValue(':soustheme_id', $sstheme);
+    $requete->bindValue(':fournisseur_id', $fournisseur);
+    $requete->bindValue(':personne_id', $personne);
+
+
+    if ($requete->execute()) {
+        /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
+        return $reference;
+    }
+    /** sinon elle retourne une erreur */
+    return $requete->errorInfo();
+}
 /**
  * @brief      Permet l'ajout d'une personne dans la base de donnees
  * 
@@ -131,6 +171,41 @@ function ajouter_personne_dans_bdd($date_crea_p, $nom, $prenom, $sexe, $adr_post
     if ($requete->execute()) {
         /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
         return $pdo->lastInsertId();
+    }
+    /** sinon elle retourne une erreur */
+    return $requete->errorInfo();
+}
+function modifier_personne_dans_bdd($personne_id, $date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail) {
+    $pdo = PDO2::getInstance();
+
+    $requete = $pdo->prepare("UPDATE personne SET
+            date_creation_p = :date_creation_p,
+            nom = :nom,
+            prenom = :prenom,
+            sexe = :sexe,
+            adr_postale = :adr_postale,
+            code_postal = :code_postal,
+            ville = :ville,
+            tel_fixe = :tel_fixe,
+            tel_port = :tel_port,
+            mail = :mail
+                WHERE personne_id = :personne_id");
+
+    $requete->bindValue(':date_creation_p', $date_crea_p);
+    $requete->bindValue(':nom', $nom);
+    $requete->bindValue(':prenom', $prenom);
+    $requete->bindValue(':sexe', $sexe);
+    $requete->bindValue(':adr_postale', $adr_postale);
+    $requete->bindValue(':code_postal', $code_postal);
+    $requete->bindValue(':ville', $ville);
+    $requete->bindValue(':tel_fixe', $tel_fixe);
+    $requete->bindValue(':tel_port', $tel_port);
+    $requete->bindValue(':mail', $mail);
+    $requete->bindValue(':personne_id', $personne_id);
+
+    if ($requete->execute()) {
+        /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
+        return $personne_id;
     }
     /** sinon elle retourne une erreur */
     return $requete->errorInfo();
@@ -209,6 +284,41 @@ function ajouter_fournisseur_dans_bdd($date_crea_f, $nom, $prenom, $raison, $adr
     if ($requete->execute()) {
         /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
         return $pdo->lastInsertId();
+    }
+    /** sinon elle retourne une erreur */
+    return $requete->errorInfo();
+}
+function modifier_fournisseur_dans_bdd($fournisseur_id, $date_crea_f, $nom, $prenom, $raison, $adr_postale, $code_postal, $ville, $tel, $mail, $commentaire) {
+    $pdo = PDO2::getInstance();
+
+    $requete = $pdo->prepare("UPDATE fournisseur SET
+            date_creation_f = :date_creation_f,
+            nom = :nom,
+            prenom = :prenom,
+            raison_sociale = :raison_sociale,
+            adr_postale = :adr_postale,
+            code_postal = :code_postal,
+            ville = :ville,
+            tel = :tel,
+            mail = :mail,
+            comment_fournisseur = :comment
+                WHERE fournisseur_id = :fournisseur_id");
+
+    $requete->bindValue(':date_creation_f', $date_crea_f);
+    $requete->bindValue(':nom', $nom);
+    $requete->bindValue(':prenom', $prenom);
+    $requete->bindValue(':raison_sociale', $raison);
+    $requete->bindValue(':adr_postale', $adr_postale);
+    $requete->bindValue(':code_postal', $code_postal);
+    $requete->bindValue(':ville', $ville);
+    $requete->bindValue(':tel', $tel);
+    $requete->bindValue(':mail', $mail);
+    $requete->bindValue(':comment', $commentaire);
+    $requete->bindValue(':fournisseur_id', $fournisseur_id);
+
+    if ($requete->execute()) {
+        /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
+        return $fournisseur_id;
     }
     /** sinon elle retourne une erreur */
     return $requete->errorInfo();
@@ -358,48 +468,6 @@ function lister_dossier_admin_dans_bdd() {
 
     /** je retourne un tableau d'objet news */
     return $tab;
-}
-
-/**
- * @brief      Permet la modification d'un dossier dans la base de donnees
- * 
- * @param	$reference			integer reference dossier
- * @param	$problematique		varchar problematique du dossier
- * @param	$createur_dossier	integer proprietaire du dossier
- * @param	$theme				integer theme du dossier
- * @param	$sstheme			integer soustheme du dossier
- * @return   True en cas de succes, False en cas d'echec
- */
-function modifier_dossier_dans_bdd($dossier_ref, $reference, $date_crea_d, $problematique, $doss_physique, $createur_dossier, $theme, $sstheme, $fournisseur, $personne) {
-    $pdo = PDO2::getInstance();
-
-    $requete = $pdo->prepare("INSERT INTO dossier SET
-                        dossier_ref = :reference,
-                        date_creation_d = :date_creation_d,
-						problematique = :problematique,
-						dossier_physique = :doss_physique,
-						user_id = :createur_dossier,
-						theme_id = :theme_id,
-						soustheme_id = :soustheme_id,
-                        fournisseur_id = :fournisseur_id,
-                        personne_id = :personne_id
-						WHERE
-						dossier_ref = :dossier_ref");
-
-	$requete->bindValue(':dossier_ref', $dossier_ref);
-    $requete->bindValue(':reference', $reference);
-    $requete->bindValue(':date_creation', $date_crea_d);
-    $requete->bindValue(':problematique', $problematique);
-	$requete->bindValue(':doss_physique', $doss_physique);
-    $requete->bindValue(':createur_dossier', $createur_dossier);
-    $requete->bindValue(':theme_id', $theme);
-    $requete->bindValue(':soustheme_id', $sstheme);
-    $requete->bindValue(':fournisseur_id', $fournisseur);
-    $requete->bindValue(':personne_id', $personne);
-
-	$result = $requete->execute();
-
-	return $dossier_ref;
 }
 
 /**
