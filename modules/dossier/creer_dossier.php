@@ -249,7 +249,7 @@ if($_GET["suppr"] === "site"){
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     } 
-   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
+   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_GET['id'];
    header($path);   
        
 }

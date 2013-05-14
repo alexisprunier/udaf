@@ -583,7 +583,8 @@ foreach ($tab_user as $key => $value) {
                     <tbody>
                         <?php 
                         $i=-1;
-                        foreach ($tableau_evenement_user as &$ligne_evenement) {
+                        $tab_reverse = array_reverse($tableau_evenement_user, true);
+                        foreach ($tab_reverse as &$ligne_evenement) {
                             
                              
                             if ( $ligne_evenement['dossier_id'] == $_SESSION['dossier_ref']) {
