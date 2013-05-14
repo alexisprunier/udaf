@@ -187,6 +187,7 @@ INSERT INTO `personne` (`personne_id`, `date_creation_p`, `sexe`, `nom`, `prenom
 DROP TABLE IF EXISTS `siteweb`;
 CREATE TABLE IF NOT EXISTS `siteweb` (
   `site_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) DEFAULT NULL,
   `lien` varchar(30) DEFAULT NULL,
   `dossier_id` int(11) NOT NULL,
   PRIMARY KEY (`site_id`)
