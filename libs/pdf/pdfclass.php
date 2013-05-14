@@ -10,6 +10,7 @@ function Header()
     // Logo
     //$this->Image('images/logo/LogoOGconsov0.1.png',10,6,30);
     // Police Arial gras 15
+    $this->Image('images/logo/LogoOGconso_fond_blanc.png', 25, 15, 60); 
     $this->SetFont('Arial','B',15);
     // Décalage à droite
     $this->Cell(100);
