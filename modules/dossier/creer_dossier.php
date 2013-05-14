@@ -110,7 +110,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $problematique = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", utf8_decode($_POST['txt_problematique'])));
     $problematique = mysql_real_escape_string(utf8_decode($problematique)); //mysql_escape_string : prevenir injection sql
     $cloture = $_POST['list_cloture'] == 'En cours' ? 0 : 1;
-    $raison_cloture = utf8_encode($_POST['list_cloture']);
+    $raison_cloture = $_POST['list_cloture'];
     $comment_cloture = $_POST['comment_cloture'];
     $date_cloture = $_POST['date_cloture'];
     $dossier_physique = $_POST['check_physique'];

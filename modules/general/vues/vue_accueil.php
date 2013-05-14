@@ -18,10 +18,10 @@
                             ?>
                             <tr>
                                 <td><img src="/images/icon/gray_18/clock.png"/></td>
-                                <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
-                                <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
-                                <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
-                                <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
+                                <td><?php echo $ligne['date_evenement']; ?></td>
+                                <td><?php echo $ligne['mode_contact']; ?></td>
+                                <td><?php echo $ligne['personne_nom']; ?></td>
+                                <td><?php echo $ligne['personne_prenom']; ?></td>
                                 <td width="19%"></td>
                             </tr>
                         <?php }} ?>
@@ -43,11 +43,11 @@
                                 ?>
                                     <tr>
                                         <td><img src="/images/icon/gray_18/clock.png"/></td>
-                                        <td><?php echo utf8_encode($ligne['date_evenement']); ?></td>
-                                        <td><?php echo utf8_encode($ligne['mode_contact']); ?></td>
-                                        <td><?php echo utf8_encode($ligne['personne_nom']); ?></td>
-                                        <td><?php echo utf8_encode($ligne['personne_prenom']); ?></td>
-                                        <td><?php echo utf8_encode($ligne['utilisateur']); ?></td>
+                                        <td><?php echo $ligne['date_evenement']; ?></td>
+                                        <td><?php echo $ligne['mode_contact']; ?></td>
+                                        <td><?php echo $ligne['personne_nom']; ?></td>
+                                        <td><?php echo $ligne['personne_prenom']; ?></td>
+                                        <td><?php echo $ligne['utilisateur']; ?></td>
                                     </tr>
                             <?php } ?>                          
 

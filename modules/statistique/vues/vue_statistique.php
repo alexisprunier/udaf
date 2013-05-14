@@ -73,29 +73,29 @@
                 $ligne = $tableau[$i];
             ?>
                 <tr>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['date']!=null ? utf8_encode($ligne['date']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['rdv']!=null ? utf8_encode($ligne['rdv']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['tel']!=null ? utf8_encode($ligne['tel']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['mail']!=null ? utf8_encode($ligne['mail']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['total']!=null ? utf8_encode($ligne['total']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['1']!=null ? utf8_encode($ligne['1']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['2']!=null ? utf8_encode($ligne['2']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['3']!=null ? utf8_encode($ligne['3']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['4']!=null ? utf8_encode($ligne['4']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['5']!=null ? utf8_encode($ligne['5']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['6']!=null ? utf8_encode($ligne['6']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['7']!=null ? utf8_encode($ligne['7']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['8']!=null ? utf8_encode($ligne['8']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['9']!=null ? utf8_encode($ligne['9']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['10']!=null ? utf8_encode($ligne['10']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['11']!=null ? utf8_encode($ligne['11']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['12']!=null ? utf8_encode($ligne['12']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['13']!=null ? utf8_encode($ligne['13']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['14']!=null ? utf8_encode($ligne['14']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['15']!=null ? utf8_encode($ligne['15']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['16']!=null ? utf8_encode($ligne['16']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['17']!=null ? utf8_encode($ligne['17']) : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['18']!=null ? utf8_encode($ligne['18']) : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['date']!=null ? $ligne['date'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['rdv']!=null ? $ligne['rdv'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['tel']!=null ? $ligne['tel'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['mail']!=null ? $ligne['mail'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['total']!=null ? $ligne['total'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['1']!=null ? $ligne['1'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['2']!=null ? $ligne['2'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['3']!=null ? $ligne['3'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['4']!=null ? $ligne['4'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['5']!=null ? $ligne['5'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['6']!=null ? $ligne['6'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['7']!=null ? $ligne['7'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['8']!=null ? $ligne['8'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['9']!=null ? $ligne['9'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['10']!=null ? $ligne['10'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['11']!=null ? $ligne['11'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['12']!=null ? $ligne['12'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['13']!=null ? $ligne['13'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['14']!=null ? $ligne['14'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['15']!=null ? $ligne['15'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['16']!=null ? $ligne['16'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['17']!=null ? $ligne['17'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['18']!=null ? $ligne['18'] : '0' ); ?></td>
                 </tr>
             <?php
             }

@@ -78,15 +78,15 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
 
                                 $user_ident = $liste_utilisateur[$key]->user_id;
                                 ?>
-                            <td><?php echo utf8_encode($liste_utilisateur[$key]->nom); ?></td>
-                                <td><?php echo utf8_encode($liste_utilisateur[$key]->prenom); ?></td>
+                            <td><?php echo $liste_utilisateur[$key]->nom; ?></td>
+                                <td><?php echo $liste_utilisateur[$key]->prenom; ?></td>
                                 <td align="center"><?php
                             if ($liste_utilisateur[$key]->administrateur == 0)
                                 echo 'non';
                             else
                                 echo 'oui';
                                 ?></td>
-                                <td align="center"><a href="accueil.php?module=administration&amp;action=visualiser_utilisateur&id=<?php echo utf8_encode($user_ident); ?>" ><img src="images/icon/icon_edit.png"/></a></td>
+                                <td align="center"><a href="accueil.php?module=administration&amp;action=visualiser_utilisateur&id=<?php echo $user_ident; ?>" ><img src="images/icon/icon_edit.png"/></a></td>
                                 <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_user&id=<?php echo $user_ident; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                             </tr>
                             <?php
@@ -153,8 +153,8 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     $id_personne = $liste_personne[$key]->personne_id;
                                     ?>
                                     <td><?php if ($liste_personne[$key]->sexe == 1) echo "Mr"; else echo "Mme" ?></td>
-                                    <td><?php echo utf8_encode($liste_personne[$key]->nom); ?></td>
-                                    <td><?php echo utf8_encode($liste_personne[$key]->prenom); ?></td>
+                                    <td><?php echo $liste_personne[$key]->nom; ?></td>
+                                    <td><?php echo $liste_personne[$key]->prenom; ?></td>
                                     <td><?php echo $liste_personne[$key]->mail; ?></td>
 
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_perso&id=<?php echo $id_personne; ?>"><img src="images/icon/icon_delete.png"/></a></td>
@@ -194,7 +194,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     ?>
                                     <td align ="center"><?php echo $liste_dossier[$key]->date_creation_d; ?></td>
                                     <td align="center"><?php echo $liste_dossier[$key]->dossier_ref; ?></td>
-                                    <td><?php echo utf8_encode($liste_dossier[$key]->nom) . " " . utf8_encode($liste_dossier[$key]->prenom); ?></td>
+                                    <td><?php echo $liste_dossier[$key]->nom . " " . $liste_dossier[$key]->prenom; ?></td>
 
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_dossier&id=<?php echo $id_dossier; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                                 </tr>
@@ -234,9 +234,9 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     <td align="center"><?php echo $liste_fournisseur[$key]->date_creation_f; ?></td>
                                     <td><?php
                                 if ($liste_fournisseur[$key]->nom == null)
-                                    echo utf8_encode($liste_fournisseur[$key]->raison_sociale);
+                                    echo $liste_fournisseur[$key]->raison_sociale;
                                 else
-                                    echo utf8_encode($liste_fournisseur[$key]->nom) . " " . utf8_encode($liste_fournisseur[$key]->prenom);
+                                    echo $liste_fournisseur[$key]->nom . " " . $liste_fournisseur[$key]->prenom;
                                     ?></td>
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_fournisseur&id=<?php echo $id_fournisseur; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                                 </tr>

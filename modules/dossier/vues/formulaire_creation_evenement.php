@@ -18,7 +18,7 @@
                 <option value=""></option> 
                 <?php
                 foreach ($tab_utilisateur as $key => $value) {
-                    echo utf8_encode('<option value="' . $tab_utilisateur[$key]->user_id . '" >' . $tab_utilisateur[$key]->nom . ' ' . $tab_utilisateur[$key]->prenom . '</option>');
+                    echo '<option value="' . $tab_utilisateur[$key]->user_id . '" >' . $tab_utilisateur[$key]->nom . ' ' . $tab_utilisateur[$key]->prenom . '</option>';
                 }
                 ?>
             </select>
