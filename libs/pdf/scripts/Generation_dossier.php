@@ -32,9 +32,9 @@ $pdf->MultiCell(80,7,html_entity_decode(utf8_decode('
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(50, 60);
 $pdf->MultiCell(80,7,html_entity_decode(utf8_decode('
-  proprio
-  theme
-  soustheme
+  '.$utilisateur['prenom'].' '.$utilisateur['nom'].'
+  '.$theme['nom'].'
+  '.$soustheme['nom'].'
 ')),0);
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(25, 95);
