@@ -91,6 +91,39 @@ $(document).ready( function () {
                                 theHREF = $(this).attr("href");
                                 $("#dialog-confirm-fichier").dialog("open");
                             });
+                            /**********************************************
+                             * Dialog message de suppression/creation/maj
+                             * 
+                             */
+                            
+                            $( ".dialog_admin" ).dialog({
+                                modal: true,
+                                buttons: {
+                                  Ok: function() {
+                                    $( this ).dialog( "close" );
+                                  }
+                                }
+                              });
+                            $( "#dialog_dossier_cree" ).dialog({
+                                modal: true,
+                                buttons: {
+                                  Ok: function() {
+                                    $( this ).dialog( "close" );
+                                  }
+                                }
+                              });
+                              $( "#dialog_maj_event" ).dialog({
+                                modal: true,
+                                autoOpen: false,
+                                buttons: {
+                                  Ok: function() {
+                                    $( this ).dialog( "close" );
+                                  }
+                                }
+                              });
+                            
+                              
+                            
                            
 });
 

@@ -10,44 +10,72 @@
 
 if (isset($_GET['erreur']) && $_GET['erreur'] == 'differentmdp') {
     ?>	
-    <div class="erreur message">Le contenu des champs 'Mot de passe' et 'Confirmer le mot de passe' sont différents !</div>	
-    <?php
+   <div class="dialog_admin" title="Attention!">
+        <p>
+          Les champs 'Mot de passe' et 'Confirmer le mot de passe' sont différents !
+        </p>
+    </div> 
+   <?php
 }
 if (isset($_GET['ajout_utilisateur']) && $_GET['ajout_utilisateur'] == 'ok') {
     ?>	
-    <div class="succes message">Utilisateur cr&eacute;e avec succ&egrave;s !</div>	
+    <div class="dialog_admin" title="Utilisateur créé">
+        <p>
+          Utilisateur créé avec succès !
+        </p>
+    </div>
     <?php
 }
 if (isset($_GET['sup_utilisateur']) && $_GET['sup_utilisateur'] == 'ok') {
     ?>	
-    <div class="succes message">Utilisateur supprim&eacute; avec succ&egrave;s !</div>	
+    <div class="dialog_admin" title="Utilisateur supprimé">
+        <p>
+          Utilisateur supprimé avec succès !
+        </p>
+    </div>	
     <?php
 }
 if (isset($_GET['upd_user']) && $_GET['upd_user'] == 'ok') {
     ?>	
-    <div class="succes message">Utilisateur modifi&eacute; avec succ&egrave;s !</div>	
+    <div class="dialog_admin" title="Utilisateur modifié">
+        <p>
+          Utilisateur modifié avec succès !
+        </p>
+    </div>
     <?php
 }
 if (isset($_GET['sup_personne']) && $_GET['sup_personne'] == 'ok') {
     ?>	
-    <div class="succes message">Client supprim&eacute; avec succ&egrave;s !</div>	
+    <div class="dialog_admin" title="Client supprimé">
+        <p>
+          Client supprimé avec succès !
+        </p>
+    </div>
     <?php
 }
 if (isset($_GET['sup_dossier']) && $_GET['sup_dossier'] == 'ok') {
     ?>	
-    <div class="succes message">Dossier supprim&eacute; avec succ&egrave;s !</div>	
+   <div class="dialog_admin" title="Dossier supprimé">
+        <p>
+          Dossier supprimé avec succès !
+        </p>
+    </div>
     <?php
 }
 if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
     ?>	
-    <div class="succes message">Fournisseur supprim&eacute; avec succ&egrave;s !</div>	
+    <div class="dialog_admin" title="Fournisseur supprimé">
+        <p>
+          Fournisseur supprimé avec succès !
+        </p>
+    </div>
     <?php
 }
 ?>
 
 <div id="administration">
-    <div id="dialog-confirm_admin"  title="Attention?">
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer une ligne. Etes vous s&ucirc;r?</p>
+    <div id="dialog-confirm_admin"  title="Attention!">
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer une ligne. Etes vous sûr?</p>
 </div>
     <div id="gestion_gauche">
         <fieldset class="ogconso">

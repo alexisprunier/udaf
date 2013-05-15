@@ -68,6 +68,33 @@ function selectionner_fournisseur_dans_bdd($id_fournisseur) {
     /** je retourne un tableau d'objet theme */
     return $tab;
 }
+function selectionner_fournisseur_dans_bdd_nom($nom, $prenom, $raison_sociale) {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prepare notre requete avec les valeurs passes en parametre */
+    $requete = $pdo->prepare("SELECT * FROM fournisseur WHERE nom = :nom AND prenom = :prenom AND raison_sociale=:raison_sociale");
+
+    $requete->bindValue(':nom', $nom);
+    $requete->bindValue(':prenom', $prenom);
+    $requete->bindValue(':raison_sociale', $raison_sociale);
+    /** j'execute cette requète */
+    $requete->execute();
+    /** j'initialise un tableau */
+    $tab = array();
+
+    /** pour chaque resultat retourné je l'ajoute dans mon tableau */
+    while ($result = $requete->fetch(PDO::FETCH_OBJ)) {
+
+        array_push($tab, $result);
+    }
+
+    $requete->closeCursor();
+
+    /** je retourne un tableau d'objet news */
+    
+    return $tab;
+}
 
 /**
  * @brief      methode de suppression des fournisseurs dans la base de donnees

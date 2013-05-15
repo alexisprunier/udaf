@@ -341,15 +341,20 @@ function selectionner_personne_du_dossier_dans_bdd($personne_id) {
     $requete->bindValue(':personne_id', $personne_id);
 
     /** j'execute cette requete */
+      /** j'execute cette requète */
     $requete->execute();
+    /** j'initialise un tableau */
+    $tab = array();
 
-    if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+    /** pour chaque resultat retourné je l'ajoute dans mon tableau */
+    while ($result = $requete->fetch(PDO::FETCH_OBJ)) {
 
-        $requete->closeCursor();
-        return $result;
+        array_push($tab, $result);
     }
 
-    /** je retourne un tableau d'objet personne */
+    $requete->closeCursor();
+
+    /** je retourne un tableau d'objet news */
     return $tab;
 }
 
@@ -385,6 +390,8 @@ function selectionner_utilisateur_du_dossier_dans_bdd($user_id) {
     /** je retourne un tableau d'objet news */
     return $tab;
 }
+
+
 
 /**
  * @brief      methode de selection du dossier dans la base de donn�es
@@ -422,9 +429,9 @@ function selectionner_dossier_dans_bdd($dossier_ref) {
  * 
  */
 function supprimer_dossier_dans_bdd($dossier_ref) {
+   
     /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
     $pdo = PDO2::getInstance();
-
     /** on prépare notre requete avec les valeurs passés en parametre */
     $requete = $pdo->prepare("DELETE FROM dossier where dossier_ref = :dossier_ref");
 

@@ -27,6 +27,8 @@
           $(".check_rdv #"+eventId).fadeOut("fast");
           $(msg).load("#evenement_dossier");
           $(".check_rdv #"+eventId ).fadeIn("fast");
+          //$("#dialog_maj_event").dialog("open");
+          alert("Événement mis a jour.");
             
           
         });
@@ -213,9 +215,13 @@
     }
 </script>
 <?php
-if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
+if (isset($_GET['new'])) {
     ?>	
-    <div id="create_success" class="create_folder">Dossier cr&eacute;e avec succ&egrave;s !</div>	
+    <div id="dialog_dossier_cree" title="Dossier créé">
+        <p>
+          Dossier créé avec succès !
+        </p>
+    </div>
     <?php
 }
 /* Edition de fichier suite au clic de editer sur suivie dossier
@@ -225,6 +231,11 @@ if (isset($_GET['ajout']) && $_GET['ajout'] == 'ok') {
   var_dump($tab_fournisseur);
   } */
 ?>
+ <div id="dialog_maj_event" title="Evenement mis à jour">
+        <p>
+          Mise a jour de l'evenement pris en compte.
+        </p>
+    </div>
 <!--DIV gérant les popup-->
 <!--PopUp création site web-->
 
