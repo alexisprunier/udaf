@@ -1,5 +1,4 @@
-
-<div id="accueil">		
+<div id="accueil">
     <div id="gauche_accueil">		
         <fieldset class="ogconso">
             <legend>Information</legend>

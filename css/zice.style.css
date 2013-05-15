@@ -930,7 +930,7 @@ div#ajouter_evenement textarea{
     margin : auto;
 }
 
-------------------------------------------------------------
+/*------------------------------------------------------------
                   Administration
 ------------------------------------------------------------
 */
@@ -1010,7 +1010,7 @@ div#modifier_utilisateur .lab_txt{
     display : block;
     width : 160px;
     float : left;
-    padding-top : 20px;
+    padding-top : 17px;
 }
 
 div#modifier_utilisateur .inputfield{

@@ -128,11 +128,18 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
 } else if (isset($_GET["act"]) && $_GET["act"] == "supp_dossier") {
     /** On veut utiliser le modele du dossier (~/modeles/dossier.php) */
     include CHEMIN_MODELE . 'dossier.php';
-
+    include CHEMIN_MODELE . 'personne.php';
+    
+    $tab_dossier = selectionner_dossier_dans_bdd($_GET['id']);
+    $tab_dossier_personne = selectionner_personne_du_dossier_dans_bdd($tab_dossier['personne_id']);
+    if(count($tab_dossier_personne)==1)
+    {
+        supprimer_personne_dans_bdd ($tab_dossier['personne_id']);
+    }
+    
     /** supprimer_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
     $id_supp_dossier = supprimer_dossier_dans_bdd($_GET['id']);
 
-    echo $id_supp_dossier;
 
     /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
     if ($id_supp_dossier == true) {

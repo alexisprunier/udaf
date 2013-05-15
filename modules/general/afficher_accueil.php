@@ -38,6 +38,7 @@ foreach ($tab_evenement as &$evenement) {
     array_push($lignes_tableau, $ligne);
 }
 
+
 include CHEMIN_VUE . 'vue_accueil.php';
 ?>
 
