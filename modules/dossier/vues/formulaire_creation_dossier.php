@@ -39,7 +39,35 @@
                         
         });
         
+        
+        $("#form_creer_dossier").submit(function(){
+        
+            if((($("#nom_f").val()=="") && ($("#prenom_f").val()=="")) || ($("#raison_sociale_f").val()==""))  {
+                alert("Le nom et le prenom du fournisseur ou sa raison sociale doit être rempli");
+                $("#nom_f, #prenom_f, #raison_sociale_f").css("border","1px solid #aa0000");
+                $("#nom_f, #prenom_f, #raison_sociale_f").css("box-shadow","0px 0px 5px 1px #ff0000");
+                return(false);
+            }
+            return(true);
+        });
+        
     });
+    
+    function verifierInfoFournisseur(){
+            
+        }
+           
+           /* if(($("#nom_f").val() == "") && ($("#prenom_f").val() == "") && ($("#raison_social_f").val() == ""))
+            {
+               alert("Vous devez remplir le nom et le prénom du fournisseur ou sa raison sociale");
+               return(false);
+            }
+            if(($("#nom_f").val() != "" && $("#prenom_f").val() != "") || $("#raison_social_f").val() != "")
+            {              
+              return(true);
+            }*/
+                    
+        
    //Préparation des données
     
     
@@ -248,7 +276,7 @@ if (isset($_GET['new'])) {
 
 <div id="creer_dossier">
 
-    <form id="form_creer_dossier" name="form_creer_dossier" action="accueil.php?module=dossier&amp;action=creer_dossier&<?php if(isset($_GET['id'])) echo "modifier"; else echo 'ajout';?>=dossier" method="post" enctype="multipart/form-data">
+    <form id="form_creer_dossier" name="form_creer_dossier" action="accueil.php?module=dossier&amp;action=creer_dossier&<?php if(isset($_GET['id'])) echo "modifier"; else echo 'ajout';?>=dossier" method="post" onsubmit="return verifierInfoFournisseur();" enctype="multipart/form-data">
         <div id="gauche_dossier">
 
             <div id="identite_client">        
@@ -332,17 +360,17 @@ foreach ($tab_fournisseur as $key => $value) {
                     </select>
                     <!--<div class="clear_form"></div>-->
                     <label for="nom_f" class="lab_txt">Nom <span class="require">*</span> :</label>   
-                    <input type="text" class="inputfield" id="nom_f" name="nom_f" maxlength="45" required title="Nom de famille du fournisseur" 
+                    <input type="text" class="inputfield" id="nom_f" name="nom_f" maxlength="45" title="Obligatoire si pas de raison sociale" 
                         value="<?php if(isset($_GET['id'])) echo $fournisseur['nom']?> "/>
                            
 
                     <label for="prenom_f" class="lab_txt">Pr&eacute;nom <span class="require">*</span> :</label>   
-                    <input type="text" class="inputfield" id="prenom_f" name="prenom_f" maxlength="45" required title="Pr&eacute;nom du fournisseur" 
+                    <input type="text" class="inputfield" id="prenom_f" name="prenom_f" maxlength="45" title="Obligatoire si pas de raison sociale" 
                         value="<?php if(isset($_GET['id'])) echo $fournisseur['prenom']?> "/>
 
 
                     <label for="raison_sociale_f" class="lab_txt">Raison Sociale <span class="require">*</span> :</label>   
-                    <input type="text" class="inputfield" id="raison_sociale_f" name="raison_sociale_f" maxlength="45" required title="Raison sociale du fournisseur" 
+                    <input type="text" class="inputfield" id="raison_sociale_f" name="raison_sociale_f" maxlength="45" title="Obligatoire si le nom et/ou le prénom vide" 
                         value="<?php if(isset($_GET['id'])) echo $fournisseur['raison_sociale']?> "/>
                           
 
