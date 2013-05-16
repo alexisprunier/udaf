@@ -83,6 +83,7 @@ if ($_GET["ajout"] == "evenement"){
 }
 
 if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
+   
     // Personne    
     $sexe = $_POST['sexe'];
     $nom = $_POST['nom'];
@@ -129,17 +130,20 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     {
     
      $tab_same_personne = selectionner_personne_dans_bdd_nom($nom, $prenom);
-     print_r($tab_same_personne);
+     //print_r($tab_same_personne);
+     //echo "nombre d'lement :" . count($tab_same_personne);
      $tab_same_fournisseur = selectionner_fournisseur_dans_bdd_nom($nom_f, $prenom_f, $raison_f); 
-     print_r($tab_same_fournisseur);
+     //print_r($tab_same_fournisseur);
+     //echo "nombre d'lement :" . count($tab_same_fournisseur);
     /** ajouter_personne_dans_bdd() et ajouter_fournisseur_dans_bdd() sont defini dans ~/modeles/dossier.php */
-    if(count($tab_same_personne)<1) //si la personne existe deja en BDD pas besoin de l'ajouter
+    if(count($tab_same_personne)<1) //si la personne n'existe pas en BDD pas besoin de l'ajouter
         $id_personne = ajouter_personne_dans_bdd($date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
-    elseif(count($tab_same_personne) == 1) $id_personne = $tab_same_personne['personne_id'];
+    elseif(count($tab_same_personne) >= 1) $id_personne = $tab_same_personne[0]->personne_id;
     if(count($tab_same_fournisseur)<1)
         $id_fournisseur = ajouter_fournisseur_dans_bdd($date_crea_f, $nom_f, $prenom_f, $raison_f, $adr_postale_f, $code_postal_f, $ville_f, $tel_f, $mail_f, $commentaire_f);
-    elseif(count($tab_same_fournisseur) == 1) $id_fournisseur = $tab_same_fournisseur['fournisseur_id'];
-    
+    elseif(count($tab_same_fournisseur) >= 1) $id_fournisseur = $tab_same_fournisseur[0]->fournisseur_id;
+    echo "id_personne = ".$id_personne;
+    echo "id_fournisseur = ".$id_fournisseur;
     /** Personne et fournisseur ajoutee, je cree le dossier, ajouter_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
     $id_dossier = ajouter_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
     }
@@ -164,7 +168,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
    {
        $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
    }
-   //header($path);
+   header($path);
 }
 if ($_GET["ajout"] == "fichiers"){
     //if(isset($_FILES['fichier']))
