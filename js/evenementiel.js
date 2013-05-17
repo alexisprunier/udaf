@@ -80,17 +80,34 @@ $(document).ready( function () {
                                     }
                                 }
                             });
-                            
+                            $( "#dialog-confirm_dossier" ).dialog({
+                                
+                                resizable: false,
+                                height:200,
+                                width:500,
+                                autoOpen: false,
+                                modal: true,
+                                buttons: {
+                                    "Continuer": function() {
+                                        $( this ).dialog( "close" );
+                                        window.location.href = theHREF;
+                                    },
+                                    "Annuler": function() {
+                                        $( this ).dialog( "close" );
+                                    }
+                                }
+                            }); 
                             $("a.supprimer_ligne").click(function(e) {
                                 e.preventDefault();
                                 theHREF = $(this).attr("href");
                                 $("#dialog-confirm_admin").dialog("open");
                             });
-                            $("a.supprimer_ligne").click(function(e) {
+                            $("a#menu_creer_dossier").click(function(e) {
                                 e.preventDefault();
                                 theHREF = $(this).attr("href");
-                                $("#dialog-confirm-fichier").dialog("open");
+                                $("#dialog-confirm_dossier").dialog("open");
                             });
+                            
                             /**********************************************
                              * Dialog message de suppression/creation/maj
                              * 

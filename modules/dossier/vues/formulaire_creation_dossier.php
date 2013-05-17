@@ -274,6 +274,7 @@ if (isset($_GET['new'])) {
     <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un fichier. Etes vous s&ucirc;r?</p>
 </div>
 
+
 <div id="creer_dossier">
 
     <form id="form_creer_dossier" name="form_creer_dossier" action="accueil.php?module=dossier&amp;action=creer_dossier&<?php if(isset($_GET['id'])) echo "modifier"; else echo 'ajout';?>=dossier" method="post" onsubmit="return verifierInfoFournisseur();" enctype="multipart/form-data">
