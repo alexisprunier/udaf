@@ -22,10 +22,35 @@
         <script type="text/javascript" src='components/elastic/jquery.elastic.source.js'></script>
         <script type='text/javascript' src='components/fullcalendar/fullcalendar.js'></script>
         <script type='text/javascript' src='components/fixed-header-table/jquery.fixedheadertable.js'></script>
-  
+        <script type="text/javascript">
+            $(document).ready( function () {
+                $( "#dialog-confirm_dossier" ).dialog({                                
+                    resizable: false,
+                    height:200,
+                    width:500,
+                    autoOpen: false,
+                    modal: true,
+                    buttons: {
+                        "Continuer": function() {
+                            $( this ).dialog( "close" );
+                            window.location.href = theHREF;
+                        },
+                        "Annuler": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                }); 
+                $("a#menu_creer_dossier").click(function(e) {
+                    e.preventDefault();
+                    theHREF = $(this).attr("href");
+                    $("#dialog-confirm_dossier").dialog("open");
+                });
+            });
+        </script>
         
         <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="components/flot/excanvas.min.js"></script><![endif]--> 
-    </head>        
+    </head> 
+ 
     <body class="dashborad"> <!-- onBeforeUnload="return('Avez vous sauvegarder toutes les données?')" -->
 
         <!-- Header -->
@@ -49,8 +74,8 @@
                 </div>
             </div>
         </div><!-- End Header -->
-<div id="dialog-confirm_dossier" style="display : none;" title="Attention?">
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Si vous continuer cela va entrainer la creation d'un nouveau dossier.</p>
+<div id="dialog-confirm_dossier" class="dialog-confirm-ogconso"style="display : none;" title="Attention?">
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Si vous continuer, cela va entrainer la creation d'un nouveau dossier.</p>
 </div>
         <div id="left_menu">
             <ul id="main_menu" class="main_menu">

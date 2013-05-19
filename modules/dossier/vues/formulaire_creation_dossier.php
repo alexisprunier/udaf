@@ -11,7 +11,37 @@
 <script type="text/javascript">
     
     $(document).ready( function () {
-    
+        var theHREF;
+        $( "#dialog-confirm-dossier" ).dialog({
+            resizable: false,
+            height:200,
+            width:500,
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                "Oui": function() {
+                    $( this ).dialog( "close" );
+                    window.location.href = theHREF;
+                },
+                "Annuler": function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+        $( "#dialog_dossier_cree" ).dialog({
+                                modal: true,
+                                buttons: {
+                                  Ok: function() {
+                                    $( this ).dialog( "close" );
+                                  }
+                                }
+                              });
+        
+        $("a.supprimer_ligne").click(function(e) {
+            e.preventDefault();
+            theHREF = $(this).attr("href");
+            $("#dialog-confirm-dossier").dialog("open");
+        });
       $(".check_rdv").change(function(){
         var val = $(this).is(":checked");       
         var eventId = $(this).attr("id");
@@ -27,7 +57,14 @@
           $(".check_rdv #"+eventId).fadeOut("fast");
           $(msg).load("#evenement_dossier");
           $(".check_rdv #"+eventId ).fadeIn("fast");
-          //$("#dialog_maj_event").dialog("open");
+          /*$( "#dialog_maj_event" ).dialog({
+                                modal: true,
+                                buttons: {
+                                  Ok: function() {
+                                    $( this ).dialog( "close" );
+                                  }
+                                }
+                              });*/
           alert("Événement mis a jour.");
             
           
@@ -243,13 +280,14 @@
     }
 </script>
 <?php
-if (isset($_GET['new'])) {
+if (isset($_GET['info'])) {
     ?>	
-    <div id="dialog_dossier_cree" title="Dossier créé">
+    <div id="dialog_dossier_cree" title="Dossier mis à jour" style="display : none;">
         <p>
-          Dossier créé avec succès !
+          Dossier mis à jour avec succès !
         </p>
     </div>
+
     <?php
 }
 /* Edition de fichier suite au clic de editer sur suivie dossier
@@ -259,20 +297,18 @@ if (isset($_GET['new'])) {
   var_dump($tab_fournisseur);
   } */
 ?>
- <div id="dialog_maj_event" title="Evenement mis à jour">
-        <p>
-          Mise a jour de l'evenement pris en compte.
-        </p>
-    </div>
+ <div id="dialog_maj_event" title="Evenement mis à jour" style="display : none;">
+    <p>
+      Mise a jour de l'evenement pris en compte.
+    </p>
+</div>
 <!--DIV gérant les popup-->
 <!--PopUp création site web-->
 
-<div id="dialog-confirm-web" style="display : none;" title="Attention?">
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un site WEB. Etes vous s&ucirc;r?</p>
+<div id="dialog-confirm-dossier" style="display : none;" title="Attention?">
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer la ligne. Etes vous s&ucirc;r?</p>
 </div>
-<div id="dialog-confirm-fichier" style="display : none;" title="Attention?">
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer un fichier. Etes vous s&ucirc;r?</p>
-</div>
+
 
 
 <div id="creer_dossier">

@@ -1,6 +1,6 @@
 
 <div id="ajouter_site">
-    <h3> Ajouter site web au dossier</h3>
+    <h3> Ajouter site web au dossier <?php echo $_SESSION['dossier_ref']; ?></h3>
 
         <form id="form_creer_dossier" action="accueil.php?module=dossier&action=creer_dossier&ajout=site&id=<?php echo $_SESSION['dossier_ref']; ?>"  method="post" enctype="multipart/form-data">
             <fieldset class="ogconso">
