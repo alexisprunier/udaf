@@ -1,4 +1,39 @@
+<script text="text/javascript">
+    $(document).ready( function () {
+        $( ".dialog_admin" ).dialog({
+            modal: true,
+            buttons: {
+              Ok: function() {
+                $( this ).dialog( "close" );
+              }
+            }
+        });
+        var theHREF;
+        $( "#dialog-confirm-admin" ).dialog({
 
+            resizable: false,
+            height:200,
+            width:500,
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                "Oui": function() {
+                    $( this ).dialog( "close" );
+                    window.location.href = theHREF;
+                },
+                "Annuler": function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        }); 
+        $("a.supprimer_ligne").click(function(e) {
+            e.preventDefault();
+            theHREF = $(this).attr("href");            
+            $("#dialog-confirm-admin").dialog("open");
+        });
+        
+    });
+</script>
 <?php
 /**
  * @file      vue_formulaire_admin.php
@@ -60,6 +95,7 @@ if (isset($_GET['sup_dossier']) && $_GET['sup_dossier'] == 'ok') {
           Dossier supprimé avec succès !
         </p>
     </div>
+  
     <?php
 }
 if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
@@ -74,7 +110,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
 ?>
 
 <div id="administration">
-    <div id="dialog-confirm_admin"  title="Attention!">
+    <div id="dialog-confirm-admin"  title="Attention!">
     <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer une ligne. Etes vous sûr?</p>
 </div>
     <div id="gestion_gauche">

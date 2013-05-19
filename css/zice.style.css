@@ -35,6 +35,9 @@ div.content{
     margin : 42px 0 0 215px;
 
 }
+legend{
+    font-weight: bold;
+}
 /*
 ------------------------------------------------------------
                   Message utilisateur

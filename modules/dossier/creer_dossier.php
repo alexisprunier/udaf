@@ -48,21 +48,12 @@ foreach ($tab_evenement as &$evenement) {
         
        
     );
-//echo $ligne['traite'];
+
 //On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
     array_push($tableau_evenement_user, $ligne);
 }
 
 
-// Choix du nouvel ID du dossier si l'on arrive sur la page creer dossier sans vouloir effectuer un ajout
-if(!isset($_GET['modifier']))
-{
-    unset($_SESSION['dossier_ref']);
-    $dossier_max = selectionner_dossier_max_id_dans_bdd();
-    $annee_en_cours = date("Y");
-    if($dossier_max[0]==0) $_SESSION['dossier_ref']= $annee_en_cours . "0001";
-    else $_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
-}
 if ($_GET["ajout"] == "site"){
     ajouter_site_dans_bdd($_POST['url'], $_POST['name'], $_SESSION['dossier_ref']);
    
@@ -84,8 +75,16 @@ if ($_GET["ajout"] == "evenement"){
 }
 
 if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
-
-    // Personne    
+    // Choix du nouvel ID du dossier si l'on arrive sur la page creer dossier sans vouloir effectuer un ajout
+    if(!isset($_GET['modifier'])) 
+    { 
+        unset($_SESSION['dossier_ref']);
+        $dossier_max = selectionner_dossier_max_id_dans_bdd();
+        $annee_en_cours = date("Y");
+        if($dossier_max[0]==0) $_SESSION['dossier_ref']= $annee_en_cours . "0001";
+        else $_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
+    }    
+// Personne    
     $sexe = $_POST['sexe'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -110,7 +109,6 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
-    echo $reference;
     $problematique = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", $_POST['txt_problematique']));
     $problematique = mysql_real_escape_string($problematique); //mysql_escape_string : prevenir injection sql
     $cloture = $_POST['list_cloture'] == 'En cours' ? 0 : 1;
@@ -121,7 +119,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
   
      
     $createur_dossier = $_SESSION['id'];
-    echo $createur_dossier;
+   
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
     
@@ -132,19 +130,22 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     
     if (isset ($_GET['modifier'])) //on met a jour en BDD 
     {
+        print_r($_POST);
         $dossier_select = selectionner_dossier_dans_bdd($reference);
         if($nom != "" && prenom !="")
         {
             $tab_same_personne = selectionner_personne_dans_bdd_nom($nom, $prenom);
             $tab_same_fournisseur = selectionner_fournisseur_dans_bdd_nom($nom_f, $prenom_f, $raison_f);
-            
+            print_r($tab_same_fournisseur);
+            print_r($tab_same_personne);
+
             if(count($tab_same_personne)==0) //si la personne n'existe pas en BDD donc besoin de l'ajouter
                 $id_personne = ajouter_personne_dans_bdd($date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
             else
             {
                 $id_personne = $tab_same_personne[0]->personne_id;
-                $id_personne = modifier_personne_dans_bdd($dossier_select['personne_id'], $date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
-
+                $id_personne = modifier_personne_dans_bdd($id_personne, $date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
+                echo $id_personne;
             }
             
             if(count($tab_same_fournisseur)==0)
@@ -152,18 +153,18 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
             else
             {
                 $id_fournisseur = $tab_same_fournisseur[0]->fournisseur_id;
-                $id_fournisseur = modifier_fournisseur_dans_bdd($dossier_select['fournisseur_id'], $date_crea_f, $nom_f, $prenom_f, $raison_f, $adr_postale_f, $code_postal_f, $ville_f, $tel_f, $mail_f, $commentaire_f);
-
+                $id_fournisseur = modifier_fournisseur_dans_bdd($id_fournisseur, $date_crea_f, $nom_f, $prenom_f, $raison_f, $adr_postale_f, $code_postal_f, $ville_f, $tel_f, $mail_f, $commentaire_f);
+                echo $id_fournisseur;
             }
             $id_dossier = modifier_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
-              echo "dossier modifier en bd";
+           
         }
       
      }
      else
      {
         $id_dossier = ajouter_dossier_dans_bdd($reference, "", $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);
-        echo "dossier ajouter en bd";
+
      }
          
        
@@ -174,7 +175,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
    
 
    
-    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
+    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference . '&info=maj';
    
     header($path);
 }
@@ -206,7 +207,8 @@ if ($_GET["ajout"] == "fichiers"){
             {
                 $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
                     \n ou la taille (taille max : 5Mo)';
-                echo $erreur;
+                $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . 'erreur=taille_extension';
+                
             }
             else{
 
@@ -226,15 +228,18 @@ if ($_GET["ajout"] == "fichiers"){
                 }
                 else //Sinon (la fonction renvoie FALSE).
                 {
-                     echo 'Echec de l\'upload !';
+                    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . 'erreur=ulpoad';
                 }
             }
             $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
             header($path);
         }
-        else echo "ERREUR NOM DU FICHIER TROP LONG max 50 caractere";
+        else $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . 'erreur=nom';
+
+        
+    header($path);
 }
-if($_GET["suppr"] === "fichier"){
+if($_GET["suppr"] == "fichier"){
      /** On veut utiliser le modele du dossier (~/modeles/fichier.php) */
   
     $tab_fichier = selectionner_fichier_dans_bdd($_GET['id']);
@@ -274,7 +279,7 @@ if($_GET["suppr"] === "site"){
         /** Affichage de la confirmation de suppression */
         //header('location: accueil.php?module=administration&action=gestion_administration&sup_utilisateur=ok');
     } 
-   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_GET['id'];
+   $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
    header($path);   
        
 }
