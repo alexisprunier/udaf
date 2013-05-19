@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * @file      creer_dossier.php
  * @author    Alexis PRUNIER
@@ -104,13 +104,11 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $ville_f = $_POST['ville_f'];
     $mail_f = $_POST['mail_f'];
     $tel_f = $_POST['telephone_f'];
-    $commentaire_f = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", $_POST['commentaire_f']));
-    $commentaire_f = mysql_real_escape_string($commentaire_f); //mysql_escape_string : prevenir injection sql
+    $problematique = htmlspecialchars(stripslashes($_POST['txt_problematique']));
     
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
-    $problematique = trim(preg_replace('#[\n|\r]{2,}#', "\n\n", $_POST['txt_problematique']));
-    $problematique = mysql_real_escape_string($problematique); //mysql_escape_string : prevenir injection sql
+    $problematique = htmlspecialchars(stripslashes($_POST['txt_problematique']));   
     $cloture = $_POST['list_cloture'] == 'En cours' ? 0 : 1;
     $raison_cloture = $_POST['list_cloture'];
     $comment_cloture = $_POST['comment_cloture'];
@@ -159,12 +157,12 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
             $id_dossier = modifier_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
            
         }
-      
+        $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference . '&info=maj';
      }
      else
      {
         $id_dossier = ajouter_dossier_dans_bdd($reference, "", $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);
-
+        $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
      }
          
        
@@ -175,7 +173,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
    
 
    
-    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference . '&info=maj';
+    
    
     header($path);
 }

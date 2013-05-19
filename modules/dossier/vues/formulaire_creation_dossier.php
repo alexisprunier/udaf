@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * @file      formulaire_creation_client.php
  * @author    Jocelyn SIMON
@@ -463,7 +463,7 @@ foreach ($tab_fournisseur as $key => $value) {
 
                         <label id="lab_soustheme" class="lab_txt">Sous-Th&egrave;me :</label>
                         <div id="div_soustheme">
-                            <select class="liste_problematique" id="soustheme" name="soustheme" title="Choisir un sous-th&egrave;me" required >
+                            <select class="liste_problematique" id="soustheme" name="soustheme" title="Choisir un sous-th&egrave;me" >
                                 <option value="<?php if (isset($_GET['id'])){echo $dossier_select["soustheme_id"];}?>">
                                         <?php if (isset($_GET['id'])){echo $sstheme["nom"];}?>                                        
                                 </option> 
