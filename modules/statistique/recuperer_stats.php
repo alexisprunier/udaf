@@ -43,7 +43,7 @@ foreach ($tab_evenement as &$event){
 
 require_once(CHEMIN_LIB.'pdf/phpToPDF.php');
 require_once(CHEMIN_LIB.'pdf/fpdf.php');
-require_once(CHEMIN_LIB.'pdf/pdfclass.php');
+require_once(CHEMIN_LIB.'pdf/pdfclass_stats.php');
 
 $path = 'libs/pdf/export/statistiques.pdf';
 
@@ -52,7 +52,7 @@ $pdf->AddPage('L');
 $pdf->SetFont('Arial','',20);
 
 $header = array('Date', 'RV', 'Tel', 'Mail', 'Total', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16');
-$pdf->Write(50, "Statistiques de ".$year." au ".date(d."-".m."-".Y)."\n");
+$pdf->Write(30, "                                         Statistiques de ".$year." au ".date(d."-".m."-".Y)."\n");
 $pdf->SetFont('courier','',9);
 $pdf->Write(5, html_entity_decode(utf8_decode("1. Alimentation-Agriculture     5. Commerce                 9. Education-Société                         13. Logement-Immobilier\n")));
 $pdf->Write(5, html_entity_decode(utf8_decode("2. Assurance                    6. Consumerisme             10 Energie(Electricité-Gaz)                  14. Loisir-tourisme\n")));
