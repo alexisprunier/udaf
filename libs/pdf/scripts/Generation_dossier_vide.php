@@ -1,8 +1,7 @@
-
 <?php
 
 // Génération du dossier en pdf
-
+unset($_SESSION['dossier_ref']);
 require_once(CHEMIN_LIB.'pdf/phpToPDF.php');
 require_once(CHEMIN_LIB.'pdf/fpdf.php');
 require_once(CHEMIN_LIB.'pdf/pdfclass.php');
@@ -13,7 +12,7 @@ $pdf = new PDF();
 
 $pdf->SetDrawColor(200 , 200, 200);
 $pdf->AddPage('');
-$pdf->Image('images/logo/LogoUDAF_fond_blanc.png', 30, 100, 150); 
+$pdf->Image('images/logo/LogoUDAF_fond_blanc.png', 30, 100, 150);
 $pdf->SetFont('arial','B',14);
 $pdf->SetXY(20, 50);
 $pdf->MultiCell(170,5,html_entity_decode(utf8_decode('
@@ -250,3 +249,4 @@ $pdf->MultiCell(150,6,html_entity_decode(utf8_decode('
 
 $pdf->Output($path);
 ?>
+
