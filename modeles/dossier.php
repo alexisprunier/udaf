@@ -290,7 +290,7 @@ function ajouter_fournisseur_dans_bdd($date_crea_f, $nom, $prenom, $raison, $adr
 }
 function modifier_fournisseur_dans_bdd($fournisseur_id, $date_crea_f, $nom, $prenom, $raison, $adr_postale, $code_postal, $ville, $tel, $mail, $commentaire) {
     $pdo = PDO2::getInstance();
-
+    
     $requete = $pdo->prepare("UPDATE fournisseur SET
             date_creation_f = :date_creation_f,
             nom = :nom,
@@ -301,7 +301,7 @@ function modifier_fournisseur_dans_bdd($fournisseur_id, $date_crea_f, $nom, $pre
             ville = :ville,
             tel = :tel,
             mail = :mail,
-            comment_fournisseur = :comment
+            comment_fournisseur = :comment_fournisseur
                 WHERE fournisseur_id = :fournisseur_id");
 
     $requete->bindValue(':date_creation_f', $date_crea_f);
@@ -313,7 +313,7 @@ function modifier_fournisseur_dans_bdd($fournisseur_id, $date_crea_f, $nom, $pre
     $requete->bindValue(':ville', $ville);
     $requete->bindValue(':tel', $tel);
     $requete->bindValue(':mail', $mail);
-    $requete->bindValue(':comment', $commentaire);
+    $requete->bindValue(':comment_fournisseur', $commentaire);
     $requete->bindValue(':fournisseur_id', $fournisseur_id);
 
     if ($requete->execute()) {
@@ -445,36 +445,6 @@ function supprimer_dossier_dans_bdd($dossier_ref) {
         return $result;
     }
     return $requete->errorInfo();
-}
-
-/**
- * @brief      methode de selection des dossiers dans la base de donn�es
- * 
- * @return    un tableau de dossiers 
- * 
- */
-function lister_dossier_admin_dans_bdd() {
-    /** on instancie une nouvelle connexion a la base de données via la classe PDO2 */
-    $pdo = PDO2::getInstance();
-
-    /** on prépare notre requète avec les valeurs passés en paramêtre */
-    $requete = $pdo->prepare("SELECT * FROM dossier AS d, personne AS p WHERE d.personne_id = p.personne_id");
-
-    /** j'execute cette requète */
-    $requete->execute();
-    /** j'initialise un tableau */
-    $tab = array();
-
-    /** pour chaque resultat retourné je l'ajoute dans mon tableau */
-    while ($result = $requete->fetch(PDO::FETCH_OBJ)) {
-
-        array_push($tab, $result);
-    }
-
-    $requete->closeCursor();
-
-    /** je retourne un tableau d'objet news */
-    return $tab;
 }
 
 /**

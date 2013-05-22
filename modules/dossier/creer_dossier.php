@@ -57,7 +57,7 @@ foreach ($tab_evenement as &$evenement) {
 if ($_GET["ajout"] == "site"){
     ajouter_site_dans_bdd($_POST['url'], $_POST['name'], $_SESSION['dossier_ref']);
    
-    $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'];
+    $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'] . '&from=site';
     header($path);
 }
 
@@ -70,12 +70,13 @@ if ($_GET["ajout"] == "evenement"){
             $_GET['id']);
   
     
-    $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'];
+    $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'] . '&from=event';
     header($path);
 }
 
 if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     // Choix du nouvel ID du dossier si l'on arrive sur la page creer dossier sans vouloir effectuer un ajout
+   //print_r($_POST);
     if(!isset($_GET['modifier'])) 
     { 
         unset($_SESSION['dossier_ref']);
@@ -104,8 +105,9 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $ville_f = $_POST['ville_f'];
     $mail_f = $_POST['mail_f'];
     $tel_f = $_POST['telephone_f'];
-    $problematique = htmlspecialchars(stripslashes($_POST['txt_problematique']));
-    
+    $commentaire_f = htmlspecialchars(stripslashes($_POST['commentaire_f']));
+    //echo $tel_f;
+    //echo $commentaire_f;
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
     $problematique = htmlspecialchars(stripslashes($_POST['txt_problematique']));   
@@ -128,14 +130,13 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     
     if (isset ($_GET['modifier'])) //on met a jour en BDD 
     {
-        print_r($_POST);
+        
         $dossier_select = selectionner_dossier_dans_bdd($reference);
         if($nom != "" && prenom !="")
         {
             $tab_same_personne = selectionner_personne_dans_bdd_nom($nom, $prenom);
             $tab_same_fournisseur = selectionner_fournisseur_dans_bdd_nom($nom_f, $prenom_f, $raison_f);
-            print_r($tab_same_fournisseur);
-            print_r($tab_same_personne);
+            
 
             if(count($tab_same_personne)==0) //si la personne n'existe pas en BDD donc besoin de l'ajouter
                 $id_personne = ajouter_personne_dans_bdd($date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
@@ -143,7 +144,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
             {
                 $id_personne = $tab_same_personne[0]->personne_id;
                 $id_personne = modifier_personne_dans_bdd($id_personne, $date_crea_p, $nom, $prenom, $sexe, $adr_postale, $code_postal, $ville, $tel_fixe, $tel_port, $mail);
-                echo $id_personne;
+                
             }
             
             if(count($tab_same_fournisseur)==0)
@@ -152,7 +153,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
             {
                 $id_fournisseur = $tab_same_fournisseur[0]->fournisseur_id;
                 $id_fournisseur = modifier_fournisseur_dans_bdd($id_fournisseur, $date_crea_f, $nom_f, $prenom_f, $raison_f, $adr_postale_f, $code_postal_f, $ville_f, $tel_f, $mail_f, $commentaire_f);
-                echo $id_fournisseur;
+               
             }
             $id_dossier = modifier_dossier_dans_bdd($reference, $date_crea_d, $problematique, $cloture, $raison_cloture, $comment_cloture, $date_cloture, $dossier_physique, $createur_dossier, $theme, $sstheme, $id_fournisseur, $id_personne);
            
@@ -161,7 +162,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
      }
      else
      {
-        $id_dossier = ajouter_dossier_dans_bdd($reference, "", $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);
+        $id_dossier = ajouter_dossier_dans_bdd($reference, date("d/m/Y"), $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);
         $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
      }
          
@@ -226,13 +227,13 @@ if ($_GET["ajout"] == "fichiers"){
                 }
                 else //Sinon (la fonction renvoie FALSE).
                 {
-                    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . 'erreur=ulpoad';
+                    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file&erreur=ulpoad';
                 }
             }
-            $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'];
+            $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file';
             header($path);
         }
-        else $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . 'erreur=nom';
+        else $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file&erreur=nom';
 
         
     header($path);

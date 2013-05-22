@@ -78,8 +78,7 @@
         
         
         $("#form_creer_dossier").submit(function(){
-        
-            if((($("#nom_f").val()=="") && ($("#prenom_f").val()=="")) || ($("#raison_sociale_f").val()==""))  {
+            if(!(($("#nom_f").val()!="" && $("#prenom_f").val()!="") || $("#raison_sociale_f").val()!=""))  {
                 alert("Le nom et le prenom du fournisseur ou sa raison sociale doit être rempli");
                 $("#nom_f, #prenom_f, #raison_sociale_f").css("border","1px solid #aa0000");
                 $("#nom_f, #prenom_f, #raison_sociale_f").css("box-shadow","0px 0px 5px 1px #ff0000");
@@ -343,41 +342,41 @@ if (isset($_GET['info'])) {
 
                     <label for="nom" class="lab_txt">Nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="nom" name="nom" maxlength="45" required title="Nom de famille du client"
-                           value="<?php if(isset($_GET['id'])) echo $client['nom']?> "/>
+                           value="<?php if(isset($_GET['id'])) echo $client['nom']?>"/>
 
                     <label for="prenom" class="lab_txt">Pr&eacute;nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="prenom" name="prenom" maxlength="45" required title="Pr&eacute;nom du client" 
-                           value="<?php if(isset($_GET['id'])) echo $client['prenom']?> "/>
+                           value="<?php if(isset($_GET['id'])) echo $client['prenom']?>"/>
                     
                  
                     <label for="adresse" class="lab_txt">Adresse :</label>   
                     <input type="text" class="inputfield" id="adresse" name="adresse" maxlength="80" title="Adresse du client" 
-                        value="<?php if(isset($_GET['id'])) echo $client['adr_postale']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['adr_postale']?>"/>
 
 
                     <label for="codepostal" class="lab_txt">Code Postal :</label>   
                     <input type="text" class="inputfield" id="codepostal" name="codepostal" maxlength="5" title="Code postale du client" 
-                        value="<?php if(isset($_GET['id'])) echo $client['code_postal']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['code_postal']?>"/>
 
 
                     <label for="ville" class="lab_txt">Ville :</label>   
                     <input type="text" class="inputfield" id="ville" name="ville" maxlength="45" title="Ville du client" 
-                        value="<?php if(isset($_GET['id'])) echo $client['ville']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['ville']?>"/>
   
 
                     <label for="mail" class="lab_txt">Mail :</label>   
-                    <input type="text" class="inputfield" id="mail" name="mail" maxlength="45" title="Adresse mail du client" 
-                        value="<?php if(isset($_GET['id'])) echo $client['mail']?> "/>
+                    <input type="email" class="inputfield" id="mail" name="mail" maxlength="45" title="Adresse mail du client (exemple@exemple.ex)" 
+                        value="<?php if(isset($_GET['id'])) echo $client['mail']?>"/>
                            
 
                     <label for="telephone" class="lab_txt">T&eacute;l&eacute;phone <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="telephone" name="telephone" maxlength="10" required title="T&eacute;l&eacute;phone du client" 
-                        value="<?php if(isset($_GET['id'])) echo $client['tel_fixe']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['tel_fixe']?>"/>
                     
 
                     <label for="mobile" class="lab_txt">T&eacute;l&eacute;phone Mobile :</label>   
                     <input type="text" class="inputfield" id="mobile" name="mobile" maxlength="10" title="Autre numero de t&eacute;l&eacute;phone du client" 
-                        value="<?php if(isset($_GET['id'])) echo $client['tel_port']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $client['tel_port']?>"/>
                         
                 </fieldset >
             </div>
@@ -398,42 +397,42 @@ foreach ($tab_fournisseur as $key => $value) {
                     <!--<div class="clear_form"></div>-->
                     <label for="nom_f" class="lab_txt">Nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="nom_f" name="nom_f" maxlength="45" title="Obligatoire si pas de raison sociale" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['nom']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['nom']?>"/>
                            
 
                     <label for="prenom_f" class="lab_txt">Pr&eacute;nom <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="prenom_f" name="prenom_f" maxlength="45" title="Obligatoire si pas de raison sociale" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['prenom']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['prenom']?>"/>
 
 
                     <label for="raison_sociale_f" class="lab_txt">Raison Sociale <span class="require">*</span> :</label>   
                     <input type="text" class="inputfield" id="raison_sociale_f" name="raison_sociale_f" maxlength="45" title="Obligatoire si le nom et/ou le prénom vide" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['raison_sociale']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['raison_sociale']?>"/>
                           
 
                     <label for="adresse_f" class="lab_txt">Adresse :</label>   
                     <input type="text" class="inputfield" id="adresse_f" name="adresse_f" maxlength="80" title="Adresse du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['adr_postale']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['adr_postale']?>"/>
                       
 
                     <label for="codepostal_f" class="lab_txt">Code Postal :</label>   
                     <input type="text" class="inputfield" id="codepostal_f" name="codepostal_f" maxlength="5" title="Code postale du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['code_postal']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['code_postal']?>"/>
                        
 
                     <label for="ville_f" class="lab_txt">Ville :</label>   
                     <input type="text" class="inputfield" id="ville_f" name="ville_f" maxlength="45" title="Ville du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['ville']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['ville']?>"/>
                                
 
                     <label for="mail_f" class="lab_txt">Mail :</label>   
-                    <input type="text" class="inputfield" id="mail_f" name="mail_f" maxlength="45" title="Adresse e-mail du fournisseur" 
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['mail']?> "/>
+                    <input type="email" class="inputfield" id="mail_f" name="mail_f" maxlength="45" title="Adresse e-mail du fournisseur (exemple@exemple.ex)" 
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['mail']?>"/>
                                 
 
                     <label for="telephone_f" class="lab_txt">T&eacute;l&eacute;phone :</label>   
                     <input type="text" class="inputfield" id="telephone_f" name="telephone_f" maxlength="10" title="T&eacute;l&eacute;phone du fournisseur"
-                        value="<?php if(isset($_GET['id'])) echo $fournisseur['tel']?> "/>
+                        value="<?php if(isset($_GET['id'])) echo $fournisseur['tel']?>"/>
                                         
 
                     <label for="commentaire_f" class="lab_txt">Commentaire :</label>   
@@ -716,7 +715,7 @@ foreach ($tab_user as $key => $value) {
         for(var i=0; i<allOther.length;i++){ allOther[i].style.visibility = hidden; }
       
 
-    <?php } else if(!isset($_GET['id'])) { ?>
+    <?php } else if(isset($_GET['from'])) { ?>
     var checked_radio = readCookie("sexe");
     if ( checked_radio == '0' ){
         document.getElementById('mr').checked = true;
