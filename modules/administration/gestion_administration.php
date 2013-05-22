@@ -205,7 +205,8 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     
     /** On veut utiliser le modele dossier (~/modeles/dossier.php) */
     include CHEMIN_MODELE . 'dossier.php';
-    $liste_dossier = lister_dossier_admin_dans_bdd();
+    $liste_dossier = lister_dossier_dans_bdd();
+    print_r($liste_dossier);
     
     /** On veut utiliser le modele fournisseur (~/modeles/fournisseur.php) */
     include CHEMIN_MODELE . 'fournisseur.php';
