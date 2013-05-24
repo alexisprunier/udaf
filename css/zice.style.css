@@ -542,7 +542,7 @@ form#form_creer_dossier{
 
 div #creer_dossier{
     width : 1134px;
-    margin: 0 auto;
+    margin: -17px auto 0;
 }
 
 div#gauche_dossier{
@@ -1247,4 +1247,8 @@ div#contenu_doc{
     box-shadow: 1px 1px 10px #333;
     vertical-align: top;
     border: 1px solid #aaa;
+}
+div#contenu_doc p{
+    font-size: 15px;
+    margin : 30px;
 }
