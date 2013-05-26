@@ -31,6 +31,14 @@
 </script>
 <div id="div_menu_doc">
     <ul id="menu_doc">
+        <li class='titre_menu_doc'>Gerer les dossier</li>
+        <ul class="ssmenu_doc">
+            <li><a href="creer_dossier">Creer un nouveau dossier</a></li>
+            <li><a href="suivi_dossier">Modifier les informations d'un de ses dossier</a></li>
+            <li><a href="rechercher_dossier">Consulter les information d'un dossier</a></li>
+            <li><a href="exporter_dossier">Exporter une fiche de dossier vierge</a></li>
+            <li><a href="transferer_client">Transférer un dossier à un autre utilisateur</a></li>
+        </ul>
         <li class='titre_menu_doc'>Gérer un client</li>
         <ul class="ssmenu_doc">
             <li><a href="modifier_client">Modifier un client</a></li>
@@ -60,15 +68,6 @@
             <li><a href="ajouter_site">Ajouter un site internet</a></li>
             <li><a href="supprimer_site">Supprimer un site internet</a></li>
             <li><a href="visiter_site">Visiter un site internet du dossier</a></li>
-        </ul>
-        <li class='titre_menu_doc'>Gerer les dossier</li>
-        <ul class="ssmenu_doc">
-            <li><a href="creer_dossier">Creer un nouveau dossier</a></li>
-            <li><a href="suivi_dossier">Modifier les informations d'un de ses dossier</a></li>
-            <li><a href="rechercher_dossier">Consulter les information d'un dossier</a></li>
-            <li><a href="exporter_dossier">Exporter une fiche de dossier vierge</a></li>
-            <li><a href="transferer_client">Transférer un dossier à un autre utilisateur</a></li>
-
         </ul>
         <li class='titre_menu_doc'>Générer un rapport annuel</li>
         <ul class="ssmenu_doc">
@@ -163,8 +162,22 @@
     <div id="doc_visiter_site" class="contenu_doc">CONTENU PAGE VISITER SITE</div>
     
     <!--DOC GERER DOSSIER-->
-    <div id="doc_creer_dossier" class="contenu_doc">CONTENU PAGE CREER DOSSIER</div>
-    <div id="doc_suivi_dossier" class="contenu_doc">CONTENU PAGE SUIVI DOSSIER</div>
+    <div id="doc_creer_dossier" class="contenu_doc">
+        <p>Pour créer un nouveau dossier, il vous suffit de cliquer sur le menu "Créer Dossier".</p>
+        <p>Une pop-up s'affichera pour vous demander si vous confirmez cette création de dossier.</p>
+        <p>Dans le cas où vous confirmerez cette création, vous serez dirigé vers la page de création avec de multiples champs pour enregistrer les informations.</p>
+        <p>Une fois les champs remplies, vous pouvez valider votre dossier en cliquant sur le bouton "Modifier le dossier". Les données sont alors enregistrées et vous vous retrouverez sur la page avec les informations du dossier que vous venez de modifier.</p>
+    </div>
+    <div id="doc_suivi_dossier" class="contenu_doc">
+        <p>Pour modifier un dossier, vous devez vous assurer que ce dossier vous appartient. Dans le cas contraire, vous ne pourrez que le consulter.</p>
+        <p>Tout d'abord, il faut sélectionner le menu "Suivre Dossier".</p>
+        <p>Vous retrouverez donc un tableau avec l'ensemble de vos dossiers.</p>
+        <p>Il est possible d'utiliser les filtres pour trouver le dossier plus facilement. Pour cela, il faut remplir les différents champs à vos souhaits et cliquer sur le bouton "Appliquer les filtres". Les dossiers qui respectent les critères que vous aurez remplie seront donc dans le tableau</p>
+        <p>Une fois que vous avez trouvé le dossier à modifier, vous pouvez cliquer sur celui-ci.</p>
+        <p>Vous serez donc rediriger sur une page avec tous les champs dans lesquels il y a les informations déjà enregistrées.</p>
+        <p>Vous pouvez donc modifier les différentes informations, et valider en cliquant sur "Modifier le dossier"</p>
+        <p>Les informations sont donc enregistrées et une pop-up s'affichera pour vous confirmez que la manipulation est un succès. Vous serez donc ensuite redirigé sur la même page avec les nouvelles informations.</p>
+    </div>
     <div id="doc_rechercher_dossier" class="contenu_doc">CONTENU PAGE RECHERCHER DOSSIER</div>
     <div id="doc_exporter_dossier" class="contenu_doc">CONTENU PAGE EXPORTER DOSSIER</div>
     
