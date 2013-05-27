@@ -31,37 +31,19 @@
 </script>
 <div id="div_menu_doc">
     <ul id="menu_doc">
-        <li class='titre_menu_doc'>Gerer les dossier</li>
+        <li class='titre_menu_doc'>Gérer un dossier</li>
         <ul class="ssmenu_doc">
-            <li><a href="creer_dossier">Creer un nouveau dossier</a></li>
+            <li><a href="creer_dossier">Créer un nouveau dossier</a></li>
             <li><a href="suivi_dossier">Modifier les informations d'un de ses dossier</a></li>
-            <li><a href="rechercher_dossier">Consulter les information d'un dossier</a></li>
-            <li><a href="exporter_dossier">Exporter une fiche de dossier vierge</a></li>
+            <li><a href="rechercher_dossier">Consulter les informations d'un dossier</a></li>
             <li><a href="transferer_client">Transférer un dossier à un autre utilisateur</a></li>
-        </ul>
-        <li class='titre_menu_doc'>Gérer un client</li>
-        <ul class="ssmenu_doc">
-            <li><a href="modifier_client">Modifier un client</a></li>
-            <?php
-            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-            ?>
-            <li><a href="supprimer_client">Supprimer un client</a></li>
-            <?php } ?>
+            <li><a href="export_dossier">Exporter un dossier en PDF</a></li>
         </ul>
         <li class='titre_menu_doc'>Gérer les fichiers liés à un dossier</li>
         <ul class="ssmenu_doc">
             <li><a href="stocker_fichier">Stocker un fichier</a></li>
             <li><a href="supprimer_fichier">Supprimer un fichier</a></li>
             <li><a href="telecharger_fichier">Télécharger un fichier</a></li>
-        </ul>
-        <li class='titre_menu_doc'>Gérer les fournisseurs</li>
-        <ul class="ssmenu_doc">
-            <li><a href="ajouter_fournisseur">Modifier fournisseur du dossier</a></li>
-             <?php
-            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-            ?>
-            <li><a href="supprimer_fournisseur">Supprimer un fournisseur</a></li>
-            <?php } ?>
         </ul>
         <li class='titre_menu_doc'>Gérer les site internet d'un dossier</li>
         <ul class="ssmenu_doc">
@@ -94,30 +76,25 @@
 <div id="contenu_doc">
     <!--DOC GERER UN CLIENT-->
    <div id="doc_suivi_dossier" class="contenu_doc">
-        <p>
-        La modification d'un dossier est possible si et seulement si vous êtes proprietaire du dossier. Les dossiers dont vous êtes le propriétaire se trouve dans l'espace "Suivi Dossiers"
-        .</p> 
-        <p>Pour modifier un dossier cliquez sur l'élément du menu "Suivi Dossiers" :</p>
+        <p>La modification d'un dossier est possible si et seulement si vous êtes proprietaire du dossier. Les dossiers dont vous êtes le propriétaire se trouve dans l'espace "Suivi Dossier".</p> 
+        <p>Pour modifier un dossier cliquez sur l'élément du menu "Suivi Dossier" :</p>
         <img src="images/doc/suivi_dossier.jpg">
-        <p>Vous pouvez dans cette page filtrer les dossier a afficher. Pour cela remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <p>Dans cette page, vous pouvez filtrer les dossiers à afficher. Pour cela, remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
         <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
-        <p>Lorsque le dossier désiré est affiché cliquez sur la ligne, vous êtes redirigé vers la page créer dossier ou toute les info sont remplient.</p>
-        <p>Dans cet espace on trouve deux fonctionnement :<br>
-        Le premier, les champs d'information client, fournisseur, theme, sous theme, problématique, l'espace cloture et l'espace proprietaire nécéssite un enregristrement du dossier<br>
-        Cela signifie que lorsque l'une ou plusieurs de ces informations sont modifiées il faudra cliquer sur le bouton "Modifier dossier" afin que les données modifier soit enregistrées.<br>
-        <br>
-        Le deuxieme, les espace gestion fichiers, gestion sites et gestion des événements quant à eux ne necessite pas de cliquer sur le bouton "Modifier le dossier" en effet ces informations sont enregistrer lorsque l'on revient sur la page créer dossier.</p>
-        
+        <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
+        <p>Vous êtes maintenant en mesure de modifier les champs à votre guise. Pour enregistrer les informations, il vous suffit de cliquer sur le bouton "Modifier le dossier"</p>
     </div>
    
     <div id="doc_transferer_client" class="contenu_doc">
-        <p>
-        La modification d'un dossier créé par un autre utilisateur n'est pas possible. Pour pouvoir le modifier il faut que le 
-        proprietaire du dossier indique que le dossier appartient maintenant à un autre utilisateur.</p> 
-        <p>Pour cela le proprietaire du dossier doit aller sur la page d'edition du dossier puis choisir l'utilisateur qu'il veut nommer 
-            proprietaire.</p>        
+        <p>Vous pouvez transférer un dossier à un autre utilisateur de l'application OGCONSO. Vous devez donc être le propriétaire du dossier à transférer.</p> 
+        <p>Cliquez sur l'élément du menu "Suivi Dossier" :</p>
+        <img src="images/doc/suivi_dossier.jpg">
+        <p>Dans cette page, vous pouvez filtrer les dossiers à afficher. Pour cela, remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
+        <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
+        <p>A partir d'ici, il vous suffit de changer l'utilisateur de la liste déroulante appelée "Propriétaire" de la catégorie "Validation"</p>
         <img src="images/doc/transferer_dossier.jpg" align="center">
-        <p>Cliquer ensuite sur le bouton "Modifier dossier" pour enregistrer les modification apporté au dossier.</p>
+        <p>Cliquer ensuite sur le bouton "Modifier dossier" pour enregistrer les modifications apportées au dossier.</p>
         
     </div>
      <?php
@@ -128,26 +105,27 @@
      
      <!--DOC GERER FIHCIERS-->
     <div id="doc_stocker_fichier" class="contenu_doc">
-        <p>L'application offre la possibilité de joindre des fichier (word, pdf, ...) au dossier.</p>
-        <p>Pour cela rendez-vous sur le dossier ou vous voulez ajouter un fichier. Ensuite dans l'espace 
-            "Gestion fichiers" cliquer sur le bouton "Ajouter fichier...", vous êtes redirigé vers une page 
+        <p>L'application offre la possibilité de joindre des fichiers (word, pdf, ...) à un dossier.</p>
+        <p>Pour cela rendez-vous sur le dossier auquel vous voulez ajouter un fichier. Ensuite dans l'espace 
+            "Gestion fichiers", cliquez sur le bouton "Ajouter fichier...". Vous êtes redirigé vers une page 
             ou l'on vous demande de choisir un fichier. Cliquez sur le bouton "Choisir un fichier" puis 
-            selectionner le fichier à ajouter se trouvant sur votre ordinateur.</p>
-          
-        <p>Cliquez ensuite sur le bouton "Valider", vous êtes redirigé vers le dossier précédemment afficher où le fichier ajouté précédemment est affiché à présent.</p>
+            selectionnez le fichier à ajouter se trouvant sur votre ordinateur.</p>
+        <p>Cliquez ensuite sur le bouton "Valider", vous êtes redirigé vers le dossier auquel le fichier a été ajouté.</p>
         <img src="images/doc/doc_fichiers.jpg" style="width : 90%;">
     </div>
     <div id="doc_supprimer_fichier" class="contenu_doc">
-        <p>Vous pouvez supprimer les fichiers qui ont été joints par erreur.</p>
+        <p>Vous pouvez supprimer les fichiers qui sont liés à un dossier.</p>
         <p>Pour cela rendez-vous sur le dossier ou un fichier à été ajouté. Ensuite dans l'espace 
-            "Gestion fichiers" cliquer sur l'icone "sens-interdit" permettant de supprimer le fichier, 
-            une fenêtre s'ouvre vous demandant de valider la suppression cliquer sur oui. La fenêtre disparait et le fichier est bien supprimé</p>
-          <img src="images/doc/doc_fichiers_suppr.jpg" >  
+            "Gestion fichiers" cliquer sur l'icône de suppression de couleur rouge permettant de supprimer le fichier.</p>
+        <img src="images/doc/doc_fichiers_suppr.jpg" >  
+        <p>Une fenêtre s'ouvre pour confirmer la suppression du fichier.</p>
+        <p>Dans le cas ou vous validez, le fichier sera supprimé du dossier.</p>
+        
     </div>
     <div id="doc_telecharger_fichier" class="contenu_doc">
         <p>Vous pouvez télécharger les fichiers ajoutés au dossier.</p>
-        <p>Pour cela rendez-vous sur le dossier ou un fichier à été ajouté. Ensuite dans l'espace 
-            "Gestion fichiers" cliquer sur le nom du fichier afin de télécharger le fichier voulu</p>
+        <p>Pour cela, rendez-vous sur le dossier auquel le fichier a été attribué. Ensuite dans l'espace 
+            "Gestion fichiers" cliquer sur le nom du fichier afin de télécharger le télécharger.</p>
          <img src="images/doc/doc_fichiers_dl.jpg" >
             
     </div>
@@ -168,7 +146,9 @@
     <!--DOC GERER DOSSIER-->
     <div id="doc_creer_dossier" class="contenu_doc">
         <p>Pour créer un nouveau dossier, il vous suffit de cliquer sur le menu "Créer Dossier".</p>
-        <p>Une pop-up s'affichera pour vous demander si vous confirmez cette création de dossier.</p>
+        <img src="images/doc/creer_dossier.jpg" > 
+        <p>Une pop-up s'affichera pour confirmer cette création de dossier.</p>
+        <img src="images/doc/creation_dossier.jpg" width="500px">
         <p>Dans le cas où vous confirmerez cette création, vous serez dirigé vers la page de création avec de multiples champs pour enregistrer les informations.</p>
         <p>Une fois les champs remplies, vous pouvez valider votre dossier en cliquant sur le bouton "Modifier le dossier". Les données sont alors enregistrées et vous vous retrouverez sur la page avec les informations du dossier que vous venez de modifier.</p>
     </div>
@@ -182,7 +162,14 @@
         <p>Vous pouvez donc modifier les différentes informations, et valider en cliquant sur "Modifier le dossier"</p>
         <p>Les informations sont donc enregistrées et une pop-up s'affichera pour vous confirmez que la manipulation est un succès. Vous serez donc ensuite redirigé sur la même page avec les nouvelles informations.</p>
     </div>
-    <div id="doc_rechercher_dossier" class="contenu_doc">CONTENU PAGE RECHERCHER DOSSIER</div>
+    <div id="doc_rechercher_dossier" class="contenu_doc">
+        <p>Vous pouvez consulter l'ensemble des dossiers enregistrés en base.</p> 
+        <p>Pour cela, cliquez sur le menu "Rechercher Dossier".</p>
+        <img src="images/doc/rechercher_dossier.jpg">
+        <p>Dans cette page, vous pouvez filtrer les dossiers à afficher. Remplissez donc les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
+        <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
+    </div>
     <div id="doc_exporter_dossier" class="contenu_doc">CONTENU PAGE EXPORTER DOSSIER</div>
     
     <!--DOC RAPPORT ANNUEL-->
