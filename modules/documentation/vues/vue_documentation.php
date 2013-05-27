@@ -45,7 +45,7 @@
             <li><a href="supprimer_fichier">Supprimer un fichier</a></li>
             <li><a href="telecharger_fichier">Télécharger un fichier</a></li>
         </ul>
-        <li class='titre_menu_doc'>Gérer les site internet d'un dossier</li>
+        <li class='titre_menu_doc'>Gérer les sites internet d'un dossier</li>
         <ul class="ssmenu_doc">
             <li><a href="ajouter_site">Ajouter un site internet</a></li>
             <li><a href="supprimer_site">Supprimer un site internet</a></li>
@@ -59,7 +59,7 @@
          <?php
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
             ?>
-        <li class='titre_menu_doc'>Gérer les utilisateur</li>
+        <li class='titre_menu_doc'>Gérer les utilisateurs</li>
         <ul class="ssmenu_doc">
             <li><a href="ajouter_user">Ajouter un utilisateur</a></li>
             <li><a href="modifier_user">Modifier un utilisateur</a></li>
@@ -84,9 +84,6 @@
         <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
         <p>Vous êtes maintenant en mesure de modifier les champs à votre guise. Pour enregistrer les informations, il vous suffit de cliquer sur le bouton "Modifier le dossier"</p>
     </div>
-    
-    
-   
     <div id="doc_transferer_client" class="contenu_doc">
         <p>Vous pouvez transférer un dossier à un autre utilisateur de l'application OGCONSO. Vous devez donc être le propriétaire du dossier à transférer.</p> 
         <p>Cliquez sur l'élément du menu "Suivi Dossier" :</p>
@@ -98,6 +95,15 @@
         <img src="images/doc/transferer_dossier.jpg" align="center">
         <p>Cliquer ensuite sur le bouton "Modifier dossier" pour enregistrer les modifications apportées au dossier.</p>
         
+    </div>
+    <div id="export_dossier" class="contenu_doc">
+        <p>Il est possible d'exporter les informations d'un document dans un format pdf.</p> 
+        <p>Il faut tout d'abord aller sur le dossier concerné. Pour cela, cliquez sur l'élément du menu "Rechercher Dossier" :</p>
+        <img src="images/doc/rechercher_dossier.jpg">
+        <p>Dans cette page, vous pouvez filtrer les dossiers à afficher. Pour cela, remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
+        <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
+        <p>A partir d'ici, il vous suffit de cliquer sur le bouton "Exporter au format PDF" et le fichier se trouvera sur votre ordinateur.</p>
     </div>
      <?php
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
@@ -117,7 +123,7 @@
     </div>
     <div id="doc_supprimer_fichier" class="contenu_doc">
         <p>Vous pouvez supprimer les fichiers qui sont liés à un dossier.</p>
-        <p>Pour cela rendez-vous sur le dossier ou un fichier à été ajouté. Ensuite dans l'espace 
+        <p>Pour cela rendez-vous sur la page du dossier auquel appartient le fichier. Ensuite dans l'espace 
             "Gestion fichiers" cliquer sur l'icône de suppression de couleur rouge permettant de supprimer le fichier.</p>
         <img src="images/doc/doc_fichiers_suppr.jpg" >  
         <p>Une fenêtre s'ouvre pour confirmer la suppression du fichier.</p>
@@ -175,11 +181,20 @@
     <div id="doc_exporter_dossier" class="contenu_doc">CONTENU PAGE EXPORTER DOSSIER</div>
     
     <!--DOC RAPPORT ANNUEL-->
-    <div id="doc_afficher_rapport" class="contenu_doc">CONTENU PAGE AFFICHER RAPPORT</div>
-    <div id="doc_exporter_rapport" class="contenu_doc">CONTENU PAGE EXPORTER RAPPORT</div>
+    <div id="doc_afficher_rapport" class="contenu_doc">
+        <p>Vous pouvez consulter le rapport annuel des dossiers traité dans l'année courante.</p> 
+        <p>Il suffit juste de cliquer sur l'élément du menu "Statistiques".</p>
+        <img src="images/doc/statistiques.jpg">
+    </div>
+    <div id="doc_exporter_rapport" class="contenu_doc">
+        <p>Le rapport annuel peut être exporter au format PDF.</p> 
+        <p>Vous devez vous rendre sur la page du rapport annuel en cliquant sur l'élément "Statistiques" du menu.</p>
+        <img src="images/doc/statistiques.jpg">
+        <p>Ensuite, cliquez sur le bouton "Exporter au format PDF" et le fichier sera donc sur votre ordinateur</p>
+    </div>
     <!--DOC GESTION UTILISATEURS-->
     <div id="doc_ajouter_user" class="contenu_doc">
-        <p>Les compte ayant les droit administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour créer un utilisateur aller dans l'espace administration.</p>
+        <p>Les comptes ayant les droits administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour créer un utilisateur aller dans l'espace administration.</p>
         <img src="images/doc/espace_admin.jpg">
         <p>Remplissez ensuite les champs selon l'utilisateur à ajouter puis cliquez sur "Validez" : </p>
         <img src="images/doc/ajout_user.jpg">        
@@ -187,7 +202,7 @@
         <img src="images/doc/create_user_success.jpg">
     </div>
     <div id="doc_modifier_user" class="contenu_doc">
-        <p>Les compte ayant les droit administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour modifier un utilisateur aller dans l'espace administration.</p>
+        <p>Les comptes ayant les droits administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour modifier un utilisateur aller dans l'espace administration.</p>
         <img src="images/doc/espace_admin.jpg">
         <p>Cliquez ensuite sur le petit crayon de l'utilisateur voulu : </p>
         <img src="images/doc/edit_user.jpg">        
@@ -197,7 +212,7 @@
          <img src="images/doc/edit_user_success.jpg">
     </div>
     <div id="doc_supprimer_user" class="contenu_doc">
-        <p>Les compte ayant les droit administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour supprimer un utilisateur aller dans l'espace administration.</p>
+        <p>Les comptes ayant les droits administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour supprimer un utilisateur aller dans l'espace administration.</p>
         <img src="images/doc/espace_admin.jpg">
         <p>Cliquez ensuite sur le petit sens-interdit de l'utilisateur à supprimer : </p>
         <img src="images/doc/supprimer_user.jpg">        
@@ -206,5 +221,9 @@
         <p>Une deuxieme fenêtre vous informe que l'utilisateur à bien été supprimé</p>
         <img src="images/doc/suppr_user_success.jpg">
     </div>
-    
+    <div id="calendrier" class="contenu_doc">
+        <p>Vous pouvez consulter l'ensemble de vos évènements sur un calendrier. Si vous être administrateur, vous verrez tous les évènements enregistrés en base.</p>
+        <p>Pour accéder à ce calendrier, vous devez cliquer sur l'élément du menu "Evénements".</p>
+        <img src="images/doc/evenements.jpg">
+    </div>
 </div>
