@@ -97,15 +97,16 @@
         <p>
         La modification d'un dossier est possible si et seulement si vous êtes proprietaire du dossier. Les dossiers dont vous êtes le propriétaire se trouve dans l'espace "Suivi Dossiers"
         .</p> 
-        <p>Pour modifier un dossier cliquez sur l'élément du menu "Suivi Dossiers" :<br/>
-            Vous pouvez dans cette page filtrer les dossier a afficher. Pour cela remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <p>Pour modifier un dossier cliquez sur l'élément du menu "Suivi Dossiers" :</p>
+        <img src="images/doc/suivi_dossier.jpg">
+        <p>Vous pouvez dans cette page filtrer les dossier a afficher. Pour cela remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
         <p>Lorsque le dossier désiré est affiché cliquez sur la ligne, vous êtes redirigé vers la page créer dossier ou toute les info sont remplient.</p>
         <p>Dans cet espace on trouve deux fonctionnement :<br>
-        Le premier, les champs d'information client, fournisseur, theme, sous theme, problématique, l'espace cloture et l'espace proprietaire.<br>
+        Le premier, les champs d'information client, fournisseur, theme, sous theme, problématique, l'espace cloture et l'espace proprietaire nécéssite un enregristrement du dossier<br>
         Cela signifie que lorsque l'une ou plusieurs de ces informations sont modifiées il faudra cliquer sur le bouton "Modifier dossier" afin que les données modifier soit enregistrées.<br>
         <br>
         Le deuxieme, les espace gestion fichiers, gestion sites et gestion des événements quant à eux ne necessite pas de cliquer sur le bouton "Modifier le dossier" en effet ces informations sont enregistrer lorsque l'on revient sur la page créer dossier.</p>
-        <img src="">Image remplissage info client</img>
         
     </div>
    
@@ -115,7 +116,7 @@
         proprietaire du dossier indique que le dossier appartient maintenant à un autre utilisateur.</p> 
         <p>Pour cela le proprietaire du dossier doit aller sur la page d'edition du dossier puis choisir l'utilisateur qu'il veut nommer 
             proprietaire.</p>        
-        <img src="">Image remplissage info client</img>
+        <img src="images/doc/transferer_dossier.jpg" align="center">
         <p>Cliquer ensuite sur le bouton "Modifier dossier" pour enregistrer les modification apporté au dossier.</p>
         
     </div>
@@ -131,20 +132,23 @@
         <p>Pour cela rendez-vous sur le dossier ou vous voulez ajouter un fichier. Ensuite dans l'espace 
             "Gestion fichiers" cliquer sur le bouton "Ajouter fichier...", vous êtes redirigé vers une page 
             ou l'on vous demande de choisir un fichier. Cliquez sur le bouton "Choisir un fichier" puis 
-            selectionner le fichier à ajouter se trouvant sur votre ordinateur.<br>
-        Cliquez ensuite sur le bouton "Valider", vous êtes redirigé vers le dossier précédemment afficher où le fichier ajouté précédemment est affiché à présent.</p>
+            selectionner le fichier à ajouter se trouvant sur votre ordinateur.</p>
+          
+        <p>Cliquez ensuite sur le bouton "Valider", vous êtes redirigé vers le dossier précédemment afficher où le fichier ajouté précédemment est affiché à présent.</p>
+        <img src="images/doc/doc_fichiers.jpg" style="width : 90%;">
     </div>
     <div id="doc_supprimer_fichier" class="contenu_doc">
         <p>Vous pouvez supprimer les fichiers qui ont été joints par erreur.</p>
         <p>Pour cela rendez-vous sur le dossier ou un fichier à été ajouté. Ensuite dans l'espace 
             "Gestion fichiers" cliquer sur l'icone "sens-interdit" permettant de supprimer le fichier, 
             une fenêtre s'ouvre vous demandant de valider la suppression cliquer sur oui. La fenêtre disparait et le fichier est bien supprimé</p>
-            
+          <img src="images/doc/doc_fichiers_suppr.jpg" >  
     </div>
     <div id="doc_telecharger_fichier" class="contenu_doc">
         <p>Vous pouvez télécharger les fichiers ajoutés au dossier.</p>
         <p>Pour cela rendez-vous sur le dossier ou un fichier à été ajouté. Ensuite dans l'espace 
             "Gestion fichiers" cliquer sur le nom du fichier afin de télécharger le fichier voulu</p>
+         <img src="images/doc/doc_fichiers_dl.jpg" >
             
     </div>
     

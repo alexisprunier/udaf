@@ -1243,12 +1243,16 @@ ul#cacher{
 div#contenu_doc{
     display: inline-block;
     width: 75%;
-    height: 500px;
+    height : auto;
+    min-height: 500px;
     box-shadow: 1px 1px 10px #333;
     vertical-align: top;
     border: 1px solid #aaa;
+    text-align: center;
 }
 div#contenu_doc p{
     font-size: 15px;
     margin : 30px;
+    text-align : justify;
 }
+
