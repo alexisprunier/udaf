@@ -84,6 +84,8 @@
         <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
         <p>Vous êtes maintenant en mesure de modifier les champs à votre guise. Pour enregistrer les informations, il vous suffit de cliquer sur le bouton "Modifier le dossier"</p>
     </div>
+    
+    
    
     <div id="doc_transferer_client" class="contenu_doc">
         <p>Vous pouvez transférer un dossier à un autre utilisateur de l'application OGCONSO. Vous devez donc être le propriétaire du dossier à transférer.</p> 
@@ -175,7 +177,34 @@
     <!--DOC RAPPORT ANNUEL-->
     <div id="doc_afficher_rapport" class="contenu_doc">CONTENU PAGE AFFICHER RAPPORT</div>
     <div id="doc_exporter_rapport" class="contenu_doc">CONTENU PAGE EXPORTER RAPPORT</div>
-    
-    
+    <!--DOC GESTION UTILISATEURS-->
+    <div id="doc_ajouter_user" class="contenu_doc">
+        <p>Les compte ayant les droit administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour créer un utilisateur aller dans l'espace administration.</p>
+        <img src="images/doc/espace_admin.jpg">
+        <p>Remplissez ensuite les champs selon l'utilisateur à ajouter puis cliquez sur "Validez" : </p>
+        <img src="images/doc/ajout_user.jpg">        
+        <p>Une fenêtre vous informe que l'utilisateur a bien été créé puis vous le voyer ensuite dans le tableau des utilisateurs</p>
+        <img src="images/doc/create_user_success.jpg">
+    </div>
+    <div id="doc_modifier_user" class="contenu_doc">
+        <p>Les compte ayant les droit administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour modifier un utilisateur aller dans l'espace administration.</p>
+        <img src="images/doc/espace_admin.jpg">
+        <p>Cliquez ensuite sur le petit crayon de l'utilisateur voulu : </p>
+        <img src="images/doc/edit_user.jpg">        
+        <p>Vous êtes redirigé vers un formulaire prérempli modifier le a vos souhait puis valider : </p>
+        <img src="images/doc/valider_edit_user.jpg">
+        <p>Vous êtes ensuite rediriger vers la page d'administration où une fenêtre vous informe que la modification de l'utilisateur à bien été prise en compte :ous êtes ensuite rediriger vers la page d'administration où une fenêtre vous informe que la modification de l'utilisateur à bien été prise en compte :</p>
+         <img src="images/doc/edit_user_success.jpg">
+    </div>
+    <div id="doc_supprimer_user" class="contenu_doc">
+        <p>Les compte ayant les droit administrateurs peuvent accéder a la gestion des utilisateurs de l'application, pour supprimer un utilisateur aller dans l'espace administration.</p>
+        <img src="images/doc/espace_admin.jpg">
+        <p>Cliquez ensuite sur le petit sens-interdit de l'utilisateur à supprimer : </p>
+        <img src="images/doc/supprimer_user.jpg">        
+        <p>Une fenêtre vous demande de confirmer la suppression</p>
+        <img src="images/doc/suppression_ligne.jpg">
+        <p>Une deuxieme fenêtre vous informe que l'utilisateur à bien été supprimé</p>
+        <img src="images/doc/suppr_user_success.jpg">
+    </div>
     
 </div>
