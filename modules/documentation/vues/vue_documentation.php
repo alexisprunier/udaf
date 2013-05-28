@@ -59,7 +59,6 @@
         <li class='titre_menu_doc'>Gérer les événements d'un dossier</li>
         <ul class="ssmenu_doc">
             <li><a href="ajouter_evenement">Ajouter un événement</a></li>
-            <li><a href="supprimer_evenement">Supprimer un événement</a></li>
         </ul>
         <li class='titre_menu_doc'>Générer un rapport annuel</li>
         <ul class="ssmenu_doc">
@@ -88,6 +87,21 @@
 </div>
  
 <div id="contenu_doc">
+    <!--DOC GERER EVENT-->
+   <div id="doc_ajouter_evenement" class="contenu_doc">
+        <p>L'application offre la possibilité d'ajouter des événement des un dossier dont on est le propriétaire</p> 
+        <p>Pour Ajouter un événement vous devez vous rendre sur un de vos dossier, cliquez sur l'élément du menu "Suivi Dossier" :</p>
+        <img src="images/doc/suivi_dossier.jpg">
+        <p>Dans cette page, vous pouvez filtrer les dossiers à afficher. Pour cela, remplissez les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
+        <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
+        <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
+        <p>Aller ensuite dans la partit événement puis cliquer sur le bouton "Ajouter un Rendez vous"</p>
+        <img src="images/doc/ajouter_event.png">
+        <p>Remplissez ensuite le formulaire puis cliquez sur "Valider</p>
+        <img src="images/doc/valider_event.png">
+        <p>Pour le passer à l'état en cours, cliquez dans la case à coché correpondant au rendez vous, cela est automatiquement sauvegardé. Cela vous est indiqué par la fenêtre qui s'ouvre vous informant que le changement d'état à bien été pris en compte</p>
+        <img src="images/doc/maj_event.png">
+   </div>
     <!--DOC GERER UN CLIENT-->
    <div id="doc_suivi_dossier" class="contenu_doc">
         <p>La modification d'un dossier est possible si et seulement si vous êtes proprietaire du dossier. Les dossiers dont vous êtes le propriétaire se trouve dans l'espace "Suivi Dossier".</p> 
@@ -97,7 +111,9 @@
         <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
         <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
         <p>Vous êtes maintenant en mesure de modifier les champs à votre guise. Pour enregistrer les informations, il vous suffit de cliquer sur le bouton "Modifier le dossier"</p>
-    </div>
+        <p>Seuls les modifications apportées au Client, fournisseur, theme, sous theme, problématique, cloture et propriétaire necessite l'appui sur le bouton</p>
+        <img src="images/doc/modifier_dossier.jpg">
+   </div>
     <div id="doc_transferer_client" class="contenu_doc">
         <p>Vous pouvez transférer un dossier à un autre utilisateur de l'application OGCONSO. Vous devez donc être le propriétaire du dossier à transférer.</p> 
         <p>Cliquez sur l'élément du menu "Suivi Dossier" :</p>
@@ -108,7 +124,7 @@
         <p>A partir d'ici, il vous suffit de changer l'utilisateur de la liste déroulante appelée "Propriétaire" de la catégorie "Validation"</p>
         <img src="images/doc/transferer_dossier.jpg" align="center">
         <p>Cliquer ensuite sur le bouton "Modifier dossier" pour enregistrer les modifications apportées au dossier.</p>
-        
+        <img src="images/doc/modifier_dossier.jpg">
     </div>
     <div id="doc_export_dossier" class="contenu_doc">
         <p>Il est possible d'exporter les informations d'un document dans un format pdf.</p> 
@@ -118,6 +134,8 @@
         <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
         <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
         <p>A partir d'ici, il vous suffit de cliquer sur le bouton "Exporter au format PDF" et le fichier se trouvera sur votre ordinateur.</p>
+        <img src="images/doc/exporter_dossier.jpg">
+
     </div>
      <?php
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
@@ -153,18 +171,34 @@
     </div>
     
     <!--DOC GERER FOURNISSEURS-->
-    <div id="doc_ajouter_fournisseur" class="contenu_doc">CONTENU PAGE AJOUTER FOURNISSEUR</div>
+    <div id="doc_ajouter_fournisseur" class="contenu_doc">
+        <p>L'ajout d'un fournisseur se fait lors de l'enregistrement d'un dossier</p>
+        <p>ATTENTION un fournisseur est avant tout reconnu par son nom, prénom et raison sociale cela signifie que si vous ajouter un fournisseur qui à le même nom,prénom et raison sociale qu'un fournisseur existant cela modifiera alors le fournisseur existant</p>
+    </div>
     <?php
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
             ?>
-    <div id="doc_supprimer_fournisseur" class="contenu_doc">CONTENU PAGE SUPPRIMER FOURNISSEUR</div>
+    <div id="doc_supprimer_fournisseur" class="contenu_doc">
+        <p>L'espace administration offe la possibilité de supprimer un fournisseur créé par erreur par exemple.</p>
+        <p>Pour cela allez dans l'espace administration : </p>
+        <img src="images/doc/espace_admin.jpg">
+        <p>Puis dans l'espace cliquer sur le sens interdit du fournisseur a supprimer</p>
+        <img src="images/doc/espace_admin.jpg">
+        <p>Une fenêtre vous demande de confirmer la suppression :</p>
+        <img src="images/doc/suppression_ligne.jpg">
+        <p>Si vous avez confirmer la suppression de la ligne alors une fenêtre vous informe que le fournisseur à bien été supprimée</p>
+        <img src="images/doc/suppr_fournisseur_success.jpg">
+        
+    </div>
             <?php } ?>
     
     <!--DOC GERER SITE WEB-->
     <div id="doc_ajouter_site" class="contenu_doc">
         <p>L'application offre la possibilité de joindre un site web à un dossier.</p>
         <p>Pour cela rendez-vous sur le dossier auquel vous voulez ajouter ce site. Ensuite dans l'espace 
-            "Site WEB", cliquez sur le bouton "Ajouter". Vous êtes redirigé sur une page avec un formulaire vous demandant le nom du site web et son lien.</p>
+            "Site WEB", cliquez sur le bouton "Ajouter". </p>
+        <img src="images/doc/ajouter_site.png">
+            <p>Vous êtes redirigé sur une page avec un formulaire vous demandant le nom du site web et son lien.</p>
         <img src="images/doc/ajout_site.jpg">
         <p>Cliquez ensuite sur le bouton "Valider", vous êtes redirigé vers le dossier auquel le site a été ajouté.</p>
     </div>
@@ -177,8 +211,9 @@
         <img src="images/doc/creation_site.jpg" >
         <p>Dans le cas ou vous validez, le site sera supprimé du dossier.</p>
     </div>
-    <div id="doc_visiter_site" class="contenu_doc">CONTENU PAGE VISITER SITE</div>
-    
+    <div id="doc_visiter_site" class="contenu_doc"><p>Pour visiter un site web précédemment ajouter au dossier, il suffit de cliquer sur le nom du site</p>
+        <img src="images/doc/clic_site.png">
+    </div>
     <!--DOC GERER DOSSIER-->
     <div id="doc_creer_dossier" class="contenu_doc">
         <p>Pour créer un nouveau dossier, il vous suffit de cliquer sur le menu "Créer Dossier".</p>
@@ -188,16 +223,7 @@
         <p>Dans le cas où vous confirmerez cette création, vous serez dirigé vers la page de création avec de multiples champs pour enregistrer les informations.</p>
         <p>Une fois les champs remplies, vous pouvez valider votre dossier en cliquant sur le bouton "Modifier le dossier". Les données sont alors enregistrées et vous vous retrouverez sur la page avec les informations du dossier que vous venez de modifier.</p>
     </div>
-    <div id="doc_suivi_dossier" class="contenu_doc">
-        <p>Pour modifier un dossier, vous devez vous assurer que ce dossier vous appartient. Dans le cas contraire, vous ne pourrez que le consulter.</p>
-        <p>Tout d'abord, il faut sélectionner le menu "Suivre Dossier".</p>
-        <p>Vous retrouverez donc un tableau avec l'ensemble de vos dossiers.</p>
-        <p>Il est possible d'utiliser les filtres pour trouver le dossier plus facilement. Pour cela, il faut remplir les différents champs à vos souhaits et cliquer sur le bouton "Appliquer les filtres". Les dossiers qui respectent les critères que vous aurez remplie seront donc dans le tableau</p>
-        <p>Une fois que vous avez trouvé le dossier à modifier, vous pouvez cliquer sur celui-ci.</p>
-        <p>Vous serez donc rediriger sur une page avec tous les champs dans lesquels il y a les informations déjà enregistrées.</p>
-        <p>Vous pouvez donc modifier les différentes informations, et valider en cliquant sur "Modifier le dossier"</p>
-        <p>Les informations sont donc enregistrées et une pop-up s'affichera pour vous confirmez que la manipulation est un succès. Vous serez donc ensuite redirigé sur la même page avec les nouvelles informations.</p>
-    </div>
+  
     <div id="doc_rechercher_dossier" class="contenu_doc">
         <p>Vous pouvez consulter l'ensemble des dossiers enregistrés en base.</p> 
         <p>Pour cela, cliquez sur le menu "Rechercher Dossier".</p>
@@ -205,6 +231,17 @@
         <p>Dans cette page, vous pouvez filtrer les dossiers à afficher. Remplissez donc les quelques champs afin d'optimiser le temps de recherche du dossier désiré</p>
         <img src="images/doc/filtre_recherche.jpg" style="width : 90%;">
         <p>Lorsque le dossier désiré est affiché, vous pouvez cliquer sur la ligne le présentant. Vous serez ensuite redirigé vers la page où se trouve l'ensemble des informations concernant le dossier.</p>
+    </div>
+    <div id="doc_supprimer_dossier" class="contenu_doc">
+        <p><i>Note : Si le client du dossier supprimé appartient à aucun autre dossier alors le client sera supprimé aussi.</i></p>
+
+        <p>Vous pouvez supprimer un dossier, créé par erreur par exemple.</p> 
+        <p>Pour cela, allez dans l'espace administration puis dans la gestion des dossier cliquer sur le sens interdit du dossier a supprimer.</p>
+        <img src="images/doc/supprimer_fournisseur.jpg">
+        <p>Une fenêtre vous demande de confirmer la suppression</p>
+        <img src="images/doc/suppression_ligne.jpg">
+        <p>Une fenêtre vous informe ensuite que le dossier à bien été supprimé.</p>
+        
     </div>
     <div id="doc_exporter_dossier" class="contenu_doc">CONTENU PAGE EXPORTER DOSSIER</div>
     
