@@ -247,18 +247,19 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                             <tr>
                                 <?php
                                 $i = 0;
-                                foreach (array_reverse($liste_dossier, true) as $key => $value) {
+                                
+                                foreach ($lignes_tableau as &$ligne) {
 
                                     if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
                                     else
                                         echo "<tr class=\"odd\">";
                                     $i += 1;
-                                    $id_dossier = $liste_dossier[$key]->dossier_ref;
+                                    
                                     ?>
-                                    <td align ="center"><?php echo $liste_dossier[$key]->date_creation_d; ?></td>
-                                    <td align="center"><?php echo $liste_dossier[$key]->dossier_ref; ?></td>
-                                    <td><?php echo $liste_dossier[$key]->nom . " " . $liste_dossier[$key]->prenom; ?></td>
+                                    <td align ="center"><?php echo $ligne['date_creation']; ?></td>
+                                    <td align="center"><?php echo $ligne['dossier_ref']; ?></td>
+                                    <td><?php echo $ligne['personne_nom'] . " " . $ligne['personne_prenom']; ?></td>
 
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_dossier&id=<?php echo $id_dossier; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                                 </tr>
