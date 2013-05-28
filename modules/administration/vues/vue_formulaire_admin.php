@@ -262,7 +262,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     <td align="center"><?php echo $ligne['dossier_ref']; ?></td>
                                     <td><?php echo $ligne['personne_nom'] . " " . $ligne['personne_prenom']; ?></td>
 
-                                    <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_dossier&id=<?php echo $id_dossier; ?>"><img src="images/icon/icon_delete.png"/></a></td>
+                                    <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_dossier&id=<?php echo $ligne['dossier_ref']; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
