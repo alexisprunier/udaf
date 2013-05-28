@@ -279,6 +279,7 @@
     }
 </script>
 <?php
+
 if (isset($_GET['info'])) {
     ?>	
     <div id="dialog_dossier_cree" title="Dossier mis à jour" style="display : none;">
@@ -289,13 +290,58 @@ if (isset($_GET['info'])) {
 
     <?php
 }
-/* Edition de fichier suite au clic de editer sur suivie dossier
-  if(isset($_GET['id'])) {
-  var_dump($dossier_en_cours);
-  var_dump($tab_personne);
-  var_dump($tab_fournisseur);
-  } */
 ?>
+<?php
+if (isset($_GET['erreur']) && $_GET['erreur']=="upload") {
+    ?>	
+    <div id="dialog_dossier_cree" title="Erreur upload fichier" style="display : none;">
+        <p>
+          Erreur lors de l'envoi du fichier! Veuillez rééssayer.
+        </p>
+    </div>
+
+    <?php
+}
+?>
+<?php
+if (isset($_GET['erreur']) && $_GET['erreur']=="nom") {
+    ?>	
+    <div id="dialog_dossier_cree" title="Erreur upload fichier" style="display : none;">
+        <p>
+          Une erreur est survenue lors de l'envoi du fichier, vérifier que le nom du fichier n'excède pas 50 caractères.
+        </p>
+    </div>
+
+    <?php
+}
+?>
+<?php
+if (isset($_GET['erreur']) && $_GET['erreur']=="taille") {
+    ?>	
+    <div id="dialog_dossier_cree" title="Erreur upload fichier" style="display : none;">
+        <p>
+          Une erreur est survenue lors de l'envoi du fichier.
+          Vérifier la taille de votre fichier (maximum : 5Mo).
+        </p>
+    </div>
+
+    <?php
+}
+?>
+<?php
+if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
+    ?>	
+    <div id="dialog_dossier_cree" title="Erreur upload fichier" style="display : none;">
+        <p>
+          Une erreur est survenue lors de l'envoi du fichier.
+          Type de fichier pris en compte : ('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt').
+        </p>
+    </div>
+
+    <?php
+}
+?>
+
  <div id="dialog_maj_event" title="Evenement mis à jour" style="display : none;">
     <p>
       Mise a jour de l'evenement pris en compte.

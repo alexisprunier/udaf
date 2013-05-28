@@ -32,7 +32,7 @@
                     <input type="checkbox" class="inputfield" id="user_admin" name="user_admin" <?php if ($id_select_utilisateur['administrateur'] == 1) echo 'checked="checked"'; ?>/>
             </div>
             <div id="btn_modifier_user">
-                <a class="btn_annuler" href="accueil.php?module=administration&amp;action=gestion_administration">Retour</a>
+                <input type="button" value="Retour" onclick="history.go(-1)"/>
                 <button id="modifier_user" onClick="modifier_user" type="submit">Modifier l'utilisateur</button>
 
             </div>
