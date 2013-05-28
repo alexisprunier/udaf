@@ -185,11 +185,12 @@ if ($_GET["ajout"] == "fichiers"){
         //
         //
         // taille maximum (en octets)
-        $taille_maxi = 5000000; //5Mo deuxieme verification par s�curit�
+        $taille_maxi = (int) 5000000; //5Mo deuxieme verification par s�curit�
         //Taille du fichier
         $taille = filesize($_FILES['fichier']['tmp_name']);
+        
         //On fait un tableau contenant les extensions autoris�es.
-        $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt');
+        $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf','.xls','.xlsx','.doc', '.docx','.txt', '.zip');
         mkdir("uploads/".$_SESSION['dossier_ref'].'/', 0777);
         $dossier = 'uploads/'.$_SESSION['dossier_ref'].'/';
         $fichier = basename($_FILES['fichier']['name']);
@@ -199,39 +200,33 @@ if ($_GET["ajout"] == "fichiers"){
             $extension = strrchr($_FILES['fichier']['name'], '.');
             $type_fichier = strtoupper(substr($extension, 1));
 
-            //Ensuite on teste tout
+           
+            if($taille>$taille_maxi) $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&erreur=taille';
 
 
-             if((!in_array($extension, $extensions)) || ($taille>$taille_maxi)) //Si l'extension n'est pas dans le tableau
+            if((!in_array($extension, $extensions))) //Si l'extension n'est pas dans le tableau
             {
                 $erreur = 'Erreur lors du l\'envoi du fichier vérifier l\'extension du fichier (autorisé seulement : png, gif, jpg, jpeg, txt ou doc...)
                     \n ou la taille (taille max : 5Mo)';
-                $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . 'erreur=taille_extension';
+                $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&erreur=extension';
                 
             }
             else{
 
-               /*$fichier = strtr($fichier,
-                    'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-                    'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'); */
-               //On remplace les lettres accentutées par les non accentuées dans $fichier.
-                //Et on récupère le résultat dans fichier
-
-                //En dessous, il y a l'expression régulière qui remplace tout ce qui n'est pas une lettre non accentuées ou un chiffre
-                //dans $fichier par un underscore "_" et qui place le résultat dans $fichier.
-               // $fichier = preg_replace('/([^.a-z0-9]+)/i', '_', $fichier);
+               
                 if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . utf8_decode($fichier))) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
                 {   
 
                     ajouter_fichier_dans_bdd($fichier, $type_fichier, $_SESSION['dossier_ref']);
+                     $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file';
                 }
                 else //Sinon (la fonction renvoie FALSE).
                 {
-                    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file&erreur=ulpoad';
+                    $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file&erreur=upload';
                 }
             }
-            $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file';
-            header($path);
+           
+         
         }
         else $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $_SESSION['dossier_ref'] . '&from=file&erreur=nom';
 

@@ -799,13 +799,13 @@ div#droite_dossier{
     width: 430px;
     margin-left : -4px;
     vertical-align : top;
-    height: 654px;
+    height: 504px;
 }
 div#droite_dossier fieldset{
     height: 100%;
 }
 div#evenement_dossier{
-    height: 600px;
+    height: 450px;
 }
 textarea.comment_rdv{
     width: 372px;
