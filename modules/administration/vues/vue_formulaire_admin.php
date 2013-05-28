@@ -248,7 +248,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                 <?php
                                 $i = 0;
                                 
-                                foreach ($lignes_tableau as &$ligne) {
+                                foreach (array_reverse($lignes_tableau, true) as &$ligne) {
 
                                     if (($i % 2) == 0)
                                         echo "<tr class=\"even\">";
