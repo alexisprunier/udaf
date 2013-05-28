@@ -206,8 +206,9 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     /** On veut utiliser le modele dossier (~/modeles/dossier.php) */
     include CHEMIN_MODELE . 'dossier.php';
     $liste_dossier = lister_dossier_dans_bdd();
+
+
    
-    
     /** On veut utiliser le modele fournisseur (~/modeles/fournisseur.php) */
     include CHEMIN_MODELE . 'fournisseur.php';
     $liste_fournisseur = lister_fournisseur_dans_bdd();
@@ -216,6 +217,23 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     include CHEMIN_MODELE . 'personne.php';
     $liste_personne = lister_personne_dans_bdd();
     
+    $lignes_tableau = array();
+
+    // on récupère les informations tous les dossiers
+    foreach ($liste_dossier as &$dossier) {
+
+        $personne = selectionner_personne_dans_bdd($dossier->personne_id);
+      
+        $ligne = array(
+            'date_creation' => $dossier->date_creation_d,
+            'dossier_ref' => $dossier->dossier_ref,
+            'personne_nom' => $personne['nom'],
+            'personne_prenom' => $personne['prenom'],
+        );
+     //On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
+        array_push($lignes_tableau, $ligne);
+    }
+  
     /** On affiche a nouveau le formulaire dossier */
     include CHEMIN_VUE . 'vue_formulaire_admin.php';
 }
