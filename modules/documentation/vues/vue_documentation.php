@@ -3,6 +3,7 @@
      
       $(".contenu_doc").hide();
       $(".ssmenu_doc").hide();
+      $("#doc_accueil").fadeIn(500);
       
       $(".titre_menu_doc").click(function(){
           $(".titre_menu_doc").removeClass("select_titre");
@@ -14,7 +15,7 @@
             $(this).addClass("select_titre");       
         }            
       });
-      var page_demande;
+      var page_demande= "#doc_accueil";
       $(".ssmenu_doc a").click(function(){
             event.preventDefault();
             $(page_demande).fadeOut(50);            
@@ -87,6 +88,9 @@
 </div>
  
 <div id="contenu_doc">
+    <div id="doc_accueil" class="contenu_doc" style="margin:auto;width : 80%;margin-top: 200px;">
+        <p>Pour consulter la documentation, veuillez choisir la catégorie qui vous intéresse.</p>
+    </div>
     <!--DOC GERER EVENT-->
    <div id="doc_ajouter_evenement" class="contenu_doc">
         <p>L'application offre la possibilité d'ajouter des événement des un dossier dont on est le propriétaire</p> 
@@ -211,8 +215,11 @@
         <img src="images/doc/creation_site.jpg" >
         <p>Dans le cas ou vous validez, le site sera supprimé du dossier.</p>
     </div>
-    <div id="doc_visiter_site" class="contenu_doc"><p>Pour visiter un site web précédemment ajouter au dossier, il suffit de cliquer sur le nom du site</p>
+    <div id="doc_visiter_site" class="contenu_doc">
+        <p>Pour visiter un site web précédemment ajouté au dossier, vous devez vous rendre sur le dossier en question.</p>
+        <p>Une fois fait, vous devez cliquer sur le lien que vous souhaitez.</p>
         <img src="images/doc/clic_site.png">
+        <p>La page web s'ouvre donc dans votre navigateur.</p>
     </div>
     <!--DOC GERER DOSSIER-->
     <div id="doc_creer_dossier" class="contenu_doc">
