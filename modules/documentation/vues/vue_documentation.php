@@ -34,6 +34,11 @@
         <li class='titre_menu_doc'>Gérer un dossier</li>
         <ul class="ssmenu_doc">
             <li><a href="creer_dossier">Créer un nouveau dossier</a></li>
+        <?php
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+        ?>
+            <li><a href="supprimer_dossier">Supprimer un dossier</a></li>
+        <?php } ?>
             <li><a href="suivi_dossier">Modifier les informations d'un de ses dossier</a></li>
             <li><a href="rechercher_dossier">Consulter les informations d'un dossier</a></li>
             <li><a href="transferer_client">Transférer un dossier à un autre utilisateur</a></li>
@@ -51,6 +56,11 @@
             <li><a href="supprimer_site">Supprimer un site internet</a></li>
             <li><a href="visiter_site">Visiter un site internet du dossier</a></li>
         </ul>
+        <li class='titre_menu_doc'>Gérer les événements d'un dossier</li>
+        <ul class="ssmenu_doc">
+            <li><a href="ajouter_evenement">Ajouter un événement</a></li>
+            <li><a href="supprimer_evenement">Supprimer un événement</a></li>
+        </ul>
         <li class='titre_menu_doc'>Générer un rapport annuel</li>
         <ul class="ssmenu_doc">
             <li><a href="afficher_rapport">Afficher le rapport annuel</a></li>
@@ -66,9 +76,13 @@
             <li><a href="supprimer_user">Supprimer un utilisateur</a></li>
         </ul>
             <?php } ?>
-        <li class='titre_menu_doc'>Gérer les évenements</li>
+        <li class='titre_menu_doc'>Consulter le calendrier</li>
         <ul class="ssmenu_doc">
             <li><a href="calendrier">Consulter le calendrier</a></li>
+        </ul>
+        <li class='titre_menu_doc'>Exporter un PDF vierge de dossier</li>
+        <ul class="ssmenu_doc">
+            <li><a href="export_dossier_vide">Exporter un PDF vierge de dossier</a></li>
         </ul>
     </ul>
 </div>
@@ -96,7 +110,7 @@
         <p>Cliquer ensuite sur le bouton "Modifier dossier" pour enregistrer les modifications apportées au dossier.</p>
         
     </div>
-    <div id="export_dossier" class="contenu_doc">
+    <div id="doc_export_dossier" class="contenu_doc">
         <p>Il est possible d'exporter les informations d'un document dans un format pdf.</p> 
         <p>Il faut tout d'abord aller sur le dossier concerné. Pour cela, cliquez sur l'élément du menu "Rechercher Dossier" :</p>
         <img src="images/doc/rechercher_dossier.jpg">
@@ -124,7 +138,7 @@
     <div id="doc_supprimer_fichier" class="contenu_doc">
         <p>Vous pouvez supprimer les fichiers qui sont liés à un dossier.</p>
         <p>Pour cela rendez-vous sur la page du dossier auquel appartient le fichier. Ensuite dans l'espace 
-            "Gestion fichiers" cliquer sur l'icône de suppression de couleur rouge permettant de supprimer le fichier.</p>
+            "Gestion fichiers", cliquez sur l'icône de suppression de couleur rouge permettant de supprimer le fichier.</p>
         <img src="images/doc/doc_fichiers_suppr.jpg" >  
         <p>Une fenêtre s'ouvre pour confirmer la suppression du fichier.</p>
         <p>Dans le cas ou vous validez, le fichier sera supprimé du dossier.</p>
@@ -147,8 +161,22 @@
             <?php } ?>
     
     <!--DOC GERER SITE WEB-->
-    <div id="doc_ajouter_site" class="contenu_doc">CONTENU PAGE AJOUTER SITE</div>
-    <div id="doc_supprimer_site" class="contenu_doc">CONTENU PAGE SUPPRIMER SITE</div>
+    <div id="doc_ajouter_site" class="contenu_doc">
+        <p>L'application offre la possibilité de joindre un site web à un dossier.</p>
+        <p>Pour cela rendez-vous sur le dossier auquel vous voulez ajouter ce site. Ensuite dans l'espace 
+            "Site WEB", cliquez sur le bouton "Ajouter". Vous êtes redirigé sur une page avec un formulaire vous demandant le nom du site web et son lien.</p>
+        <img src="images/doc/ajout_site.jpg">
+        <p>Cliquez ensuite sur le bouton "Valider", vous êtes redirigé vers le dossier auquel le site a été ajouté.</p>
+    </div>
+    <div id="doc_supprimer_site" class="contenu_doc">
+        <p>Vous pouvez supprimer un site web qui est lié à un dossier.</p>
+        <p>Pour cela rendez-vous sur la page du dossier auquel appartient le site. Ensuite dans l'espace 
+            "Site WEB", cliquez sur l'icône de suppression de couleur rouge permettant de supprimer le site.</p>
+        <img src="images/doc/ajout_site_form.jpg" >  
+        <p>Une fenêtre s'ouvre pour confirmer la suppression du site web.</p>
+        <img src="images/doc/creation_site.jpg" >
+        <p>Dans le cas ou vous validez, le site sera supprimé du dossier.</p>
+    </div>
     <div id="doc_visiter_site" class="contenu_doc">CONTENU PAGE VISITER SITE</div>
     
     <!--DOC GERER DOSSIER-->
@@ -156,7 +184,7 @@
         <p>Pour créer un nouveau dossier, il vous suffit de cliquer sur le menu "Créer Dossier".</p>
         <img src="images/doc/creer_dossier.jpg" > 
         <p>Une pop-up s'affichera pour confirmer cette création de dossier.</p>
-        <img src="images/doc/creation_dossier.jpg" width="500px">
+        <img src="images/doc/creation_dossier.jpg">
         <p>Dans le cas où vous confirmerez cette création, vous serez dirigé vers la page de création avec de multiples champs pour enregistrer les informations.</p>
         <p>Une fois les champs remplies, vous pouvez valider votre dossier en cliquant sur le bouton "Modifier le dossier". Les données sont alors enregistrées et vous vous retrouverez sur la page avec les informations du dossier que vous venez de modifier.</p>
     </div>
@@ -190,7 +218,7 @@
         <p>Le rapport annuel peut être exporter au format PDF.</p> 
         <p>Vous devez vous rendre sur la page du rapport annuel en cliquant sur l'élément "Statistiques" du menu.</p>
         <img src="images/doc/statistiques.jpg">
-        <p>Ensuite, cliquez sur le bouton "Exporter au format PDF" et le fichier sera donc sur votre ordinateur</p>
+        <p>Ensuite, cliquez sur le bouton "Exporter au format PDF" et le fichier sera donc sur votre ordinateur.</p>
     </div>
     <!--DOC GESTION UTILISATEURS-->
     <div id="doc_ajouter_user" class="contenu_doc">
@@ -198,7 +226,7 @@
         <img src="images/doc/espace_admin.jpg">
         <p>Remplissez ensuite les champs selon l'utilisateur à ajouter puis cliquez sur "Validez" : </p>
         <img src="images/doc/ajout_user.jpg">        
-        <p>Une fenêtre vous informe que l'utilisateur a bien été créé puis vous le voyer ensuite dans le tableau des utilisateurs</p>
+        <p>Une fenêtre vous informe que l'utilisateur a bien été créé puis vous le voyer ensuite dans le tableau des utilisateurs.</p>
         <img src="images/doc/create_user_success.jpg">
     </div>
     <div id="doc_modifier_user" class="contenu_doc">
@@ -221,9 +249,17 @@
         <p>Une deuxieme fenêtre vous informe que l'utilisateur à bien été supprimé</p>
         <img src="images/doc/suppr_user_success.jpg">
     </div>
-    <div id="calendrier" class="contenu_doc">
-        <p>Vous pouvez consulter l'ensemble de vos évènements sur un calendrier. Si vous être administrateur, vous verrez tous les évènements enregistrés en base.</p>
+    <div id="doc_calendrier" class="contenu_doc">
+        <p>Vous pouvez consulter l'ensemble des évènements enregistrés en base.</p>
         <p>Pour accéder à ce calendrier, vous devez cliquer sur l'élément du menu "Evénements".</p>
         <img src="images/doc/evenements.jpg">
     </div>
+    
+    <div id="doc_export_dossier_vide" class="contenu_doc">
+        <p>Vous pouvez exporter un fichier pdf d'un dossier vide.</p>
+        <p>Il suffit de cliquer sur l'élément du menu "Exporter dossier vierge".</p>
+        <img src="images/doc/dossier_vierge.jpg">
+        <p>Le fichier se trouvera ensuite sur votre ordinateur.</p>
+    </div>
+    
 </div>
