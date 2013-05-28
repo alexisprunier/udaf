@@ -78,7 +78,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
 
                     <div id="login">
                         <label for="id" id="lab_id" class="label_login" aria-label="Identifiant"></label>
-                        <input type="text" name="username" class="inputfield" id="id" required aria-required="true" title="Votre identifiant">
+                        <input type="text" name="username" class="inputfield" id="id" required aria-required="true" title="Votre identifiant" autofocus>
                     </div>
                     <div id="login">
                         <label for="pass" id="lab_pass" class="label_login" aria-label="Mot de passe"></label>
