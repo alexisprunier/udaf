@@ -39,6 +39,88 @@ function lister_fournisseur_dans_bdd() {
     /** je retourne un tableau d'objet news */
     return $tab;
 }
+/**
+ * @brief      Permet l'ajout d'un fournisseur dans la base de donnees
+ * 
+ * @param	$nom				string nom du fournisseur
+ * @param	$prenom				string prenom du fournisseur
+ * @param	$raison				string raison sociale du fournisseur
+ * @param	$adr_postale		string adresse du fournisseur
+ * @param	$code_postal		integer code postal du fournisseur
+ * @param	$ville				string lieu de vie du fournisseur
+ * @param	$mail				string mail du fournisseur
+ * @param	$tel				integer telephone du fournisseur
+ * @param	$commentaire		string commentaire fournisseur
+ * @return   True en cas de succes, False en cas d'echec
+ */
+function ajouter_fournisseur_dans_bdd($date_crea_f, $nom, $prenom, $raison, $adr_postale, $code_postal, $ville, $tel, $mail, $commentaire) {
+    $pdo = PDO2::getInstance();
+
+    $requete = $pdo->prepare("INSERT INTO fournisseur SET
+            date_creation_f = :date_creation_f,
+            nom = :nom,
+            prenom = :prenom,
+            raison_sociale = :raison_sociale,
+            adr_postale = :adr_postale,
+            code_postal = :code_postal,
+            ville = :ville,
+            tel = :tel,
+            mail = :mail,
+            comment_fournisseur = :comment");
+
+    $requete->bindValue(':date_creation_f', $date_crea_f);
+    $requete->bindValue(':nom', $nom);
+    $requete->bindValue(':prenom', $prenom);
+    $requete->bindValue(':raison_sociale', $raison);
+    $requete->bindValue(':adr_postale', $adr_postale);
+    $requete->bindValue(':code_postal', $code_postal);
+    $requete->bindValue(':ville', $ville);
+    $requete->bindValue(':tel', $tel);
+    $requete->bindValue(':mail', $mail);
+    $requete->bindValue(':comment', $commentaire);
+
+    if ($requete->execute()) {
+        /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
+        return $pdo->lastInsertId();
+    }
+    /** sinon elle retourne une erreur */
+    return $requete->errorInfo();
+}
+function modifier_fournisseur_dans_bdd($fournisseur_id, $date_crea_f, $nom, $prenom, $raison, $adr_postale, $code_postal, $ville, $tel, $mail, $commentaire) {
+    $pdo = PDO2::getInstance();
+    
+    $requete = $pdo->prepare("UPDATE fournisseur SET
+            date_creation_f = :date_creation_f,
+            nom = :nom,
+            prenom = :prenom,
+            raison_sociale = :raison_sociale,
+            adr_postale = :adr_postale,
+            code_postal = :code_postal,
+            ville = :ville,
+            tel = :tel,
+            mail = :mail,
+            comment_fournisseur = :comment_fournisseur
+                WHERE fournisseur_id = :fournisseur_id");
+
+    $requete->bindValue(':date_creation_f', $date_crea_f);
+    $requete->bindValue(':nom', $nom);
+    $requete->bindValue(':prenom', $prenom);
+    $requete->bindValue(':raison_sociale', $raison);
+    $requete->bindValue(':adr_postale', $adr_postale);
+    $requete->bindValue(':code_postal', $code_postal);
+    $requete->bindValue(':ville', $ville);
+    $requete->bindValue(':tel', $tel);
+    $requete->bindValue(':mail', $mail);
+    $requete->bindValue(':comment_fournisseur', $commentaire);
+    $requete->bindValue(':fournisseur_id', $fournisseur_id);
+
+    if ($requete->execute()) {
+        /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
+        return $fournisseur_id;
+    }
+    /** sinon elle retourne une erreur */
+    return $requete->errorInfo();
+}
 
 /**
  * @brief      methode de selection des fournisseurs dans la base de donn�es

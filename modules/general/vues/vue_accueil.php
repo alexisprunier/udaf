@@ -14,7 +14,7 @@
                 <table class="tab_alertes">
                     <tbody>
                         <?php foreach ($lignes_tableau as &$ligne) {
-                            if ($ligne['id_utilisateur'] === $_SESSION['id']){
+                            if (($ligne['id_utilisateur'] === $_SESSION['id']) && $ligne['traite'] == 0){
                             ?>
                             <tr>
                                 <td><img src="/images/icon/gray_18/clock.png"/></td>
@@ -40,6 +40,8 @@
                         <tbody>
 
                             <?php foreach ($lignes_tableau as &$ligne) {
+                                if($lignes_tableau['traite'] == 0)
+                                {
                                 ?>
                                     <tr>
                                         <td><img src="/images/icon/gray_18/clock.png"/></td>
@@ -49,7 +51,8 @@
                                         <td><?php echo $ligne['personne_prenom']; ?></td>
                                         <td><?php echo $ligne['utilisateur']; ?></td>
                                     </tr>
-                            <?php } ?>                          
+                                <?php }
+                            } ?>                          
 
                         </tbody>
                     </table>

@@ -1,5 +1,16 @@
 <?php
-
+//Suppression des fichier pdf (dossier)
+if($dossier = opendir('libs/pdf/export'))
+{
+    while(false !== ($fichier = readdir($dossier)))
+        {
+             if($fichier != '.' && $fichier != '..' && $fichier != 'dossier_vierge.pdf')
+            {
+                 unlink('libs/pdf/export/' . $fichier);
+            }
+        }
+}
+      
 /**
  * @file      gestion_administration.php
  * @author    Jocelyn SIMON
@@ -129,8 +140,14 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     /** On veut utiliser le modele du dossier (~/modeles/dossier.php) */
     include CHEMIN_MODELE . 'dossier.php';
     include CHEMIN_MODELE . 'personne.php';
+    include CHEMIN_MODELE . 'fichier.php';
     
     $tab_dossier = selectionner_dossier_dans_bdd($_GET['id']);
+    $tab_fichiers = lister_fichier_dans_bdd();
+    foreach ($tab_fichiers as &$fichier) {
+        if($fichier->dossier_id == $_GET['id'])
+            supprimer_fichier_dans_bdd($fichier->fichier_id);
+    }
     $tab_dossier_personne = selectionner_personne_du_dossier_dans_bdd($tab_dossier['personne_id']);
     if(count($tab_dossier_personne)==1)
     {
