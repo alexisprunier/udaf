@@ -39,7 +39,7 @@
                         <tbody>
 
                             <?php foreach ($lignes_tableau as &$ligne) {
-                                if($lignes_tableau['traite'] == 0)
+                                if($ligne['traite'] == 0)
                                 {
                                 ?>
                                     <tr>
