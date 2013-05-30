@@ -13,7 +13,7 @@ include CHEMIN_MODELE . 'personne.php';
 include CHEMIN_MODELE . 'fournisseur.php';
 include CHEMIN_MODELE . 'theme.php';
 include CHEMIN_MODELE . 'sstheme.php';
-include CHEMIN_MODELE . 'site.php';
+include CHEMIN_MODELE . 'siteweb.php';
 include CHEMIN_MODELE . 'evenement.php';
 include CHEMIN_MODELE . 'utilisateur.php';
 include CHEMIN_MODELE . 'fichier.php';

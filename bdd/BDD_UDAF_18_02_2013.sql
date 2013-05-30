@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `dossier`;
 CREATE TABLE IF NOT EXISTS `dossier` (
-  `dossier_id` int(11) NOT NULL AUTO_INCREMENT,
   `dossier_ref` varchar(8) NOT NULL,
   `date_creation_d` varchar(10) NOT NULL DEFAULT '00/00/0000',
   `problematique` text,
@@ -43,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `dossier` (
   `soustheme_id` int(11) NOT NULL,
   `fournisseur_id` int(11) NOT NULL,
   `personne_id` int(11) NOT NULL,
-  PRIMARY KEY (`dossier_id`)
+  PRIMARY KEY (`dossier_ref`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
@@ -69,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `evenement_id` int(11) NOT NULL AUTO_INCREMENT,
   `date_event` varchar(10) DEFAULT NULL,
   `mode_contact` varchar(30) DEFAULT NULL,
-  `raison_sociale` varchar(30) DEFAULT NULL,
   `traite` tinyint(1) DEFAULT NULL,
   `comm_event` text,
   `user_id` int(11) NOT NULL,
@@ -81,19 +79,19 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 -- Contenu de la table `evenement`
 --
 
-INSERT INTO `evenement` (`evenement_id`, `date_event`, `mode_contact`, `raison_sociale`, `traite`, `comm_event`, `user_id`, `dossier_id`) VALUES
-(1, '12/03/2013', 'Téléphone', NULL, 0, 'Appel téléphonique pour un prochain rdv', 1, 20130001),
-(2, '16/03/2013', 'Mail', NULL, 1, 'Envoie de la facture de concession', 2, 20130001),
-(3, '20/03/2013', 'Rendez-vous', NULL, 1, 'RDV de mis au point', 1, 20130001),
-(4, '20/03/2013', 'e-Mail', NULL, 0, 'Demande d info sur le fournisseur', 3, 20130002),
-(5, '12/03/2013', 'Téléphone', NULL, 0, 'Appel', 1, 20130003),
-(6, '12/04/2013', 'Mail', NULL, 1, 'Mail de rappel', 1, 20130003),
-(7, '12/03/2013', 'Rendez-vous', NULL, 1, 'test event traite', 1, 20130004),
-(8, '20/03/2013', 'e-Mail', NULL, 0, 'Sans commentaire ', 3, 20130005),
-(9, '12/03/2013', 'Téléphone', NULL, 0, '', 1, 20130005),
-(10, '12/03/2013', 'Mail', NULL, 1, 'Demande d info sur le fournisseur', 1, 20130005),
-(11, '12/04/2013', 'Rendez-vous', NULL, 1, '', 1, 20130006),
-(12, '05/04/2013', 'e-Mail', NULL, 0, '', 3, 20130006);
+INSERT INTO `evenement` (`evenement_id`, `date_event`, `mode_contact`, `traite`, `comm_event`, `user_id`, `dossier_id`) VALUES
+(1, '12/03/2013', 'Téléphone', 0, 'Appel téléphonique pour un prochain rdv', 1, 20130001),
+(2, '16/03/2013', 'Mail', 1, 'Envoie de la facture de concession', 2, 20130001),
+(3, '20/03/2013', 'Rendez-vous', 1, 'RDV de mis au point', 1, 20130001),
+(4, '20/03/2013', 'e-Mail', 0, 'Demande d info sur le fournisseur', 3, 20130002),
+(5, '12/03/2013', 'Téléphone', 0, 'Appel', 1, 20130003),
+(6, '12/04/2013', 'Mail', 1, 'Mail de rappel', 1, 20130003),
+(7, '12/03/2013', 'Rendez-vous', 1, 'test event traite', 1, 20130004),
+(8, '20/03/2013', 'e-Mail', 0, 'Sans commentaire ', 3, 20130005),
+(9, '12/03/2013', 'Téléphone', 0, '', 1, 20130005),
+(10, '12/03/2013', 'Mail', 1, 'Demande d info sur le fournisseur', 1, 20130005),
+(11, '12/04/2013', 'Rendez-vous', 1, '', 1, 20130006),
+(12, '05/04/2013', 'e-Mail', 0, '', 3, 20130006);
 
 -- --------------------------------------------------------
 

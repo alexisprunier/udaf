@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file      site.php
+ * @file      siteweb.php
  * @author    Alexis PRUNIER
  * @version   1.0
  * @date      25 mars 2013
