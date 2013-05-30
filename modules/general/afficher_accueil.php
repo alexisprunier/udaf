@@ -1,4 +1,4 @@
-+-<?php
+<?php
 
 /**
  * @file      aficcher_accueil.php
