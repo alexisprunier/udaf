@@ -45,7 +45,7 @@
 
 if (isset($_GET['erreur']) && $_GET['erreur'] == 'differentmdp') {
     ?>	
-   <div class="dialog_admin" title="Attention!">
+   <div class="dialog_admin" title="Attention !">
         <p>
           Les champs 'Mot de passe' et 'Confirmer le mot de passe' sont différents !
         </p>
@@ -110,7 +110,7 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
 ?>
 
 <div id="administration">
-    <div id="dialog-confirm-admin"  title="Attention!">
+    <div id="dialog-confirm-admin"  title="Attention !">
     <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer une ligne. Etes vous sûr?</p>
 </div>
     <div id="gestion_gauche">

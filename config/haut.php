@@ -82,7 +82,7 @@
                 <li class="limenu_first" ><a href="accueil.php?module=general&amp;action=afficher_accueil"><span class="ico gray shadow home" ></span><b>Accueil</b></a></li>
                 <li class="limenu" ><a id="menu_creer_dossier" href="accueil.php?module=dossier&amp;action=creer_dossier&ajout=dossier" ><span class="ico gray shadow file"></span><b>Cr&eacute;er dossier</b></a></li>                               
                 <li class="limenu" ><a href="accueil.php?module=recherche&amp;action=rechercher_dossier"><span class="ico gray shadow zoom" ></span><b>Rechercher dossier</b></a></li>
-                <li class="limenu" ><a href="accueil.php?module=suivi&amp;action=suivi_dossier"><span class="ico gray shadow  bookmark"></span><b>Suivi dossiers</b> </a></li>
+                <li class="limenu" ><a href="accueil.php?module=suivi&amp;action=suivi_dossier"><span class="ico gray shadow  bookmark"></span><b>Suivi dossier</b> </a></li>
                 <li class="limenu" ><a href="libs/pdf/export/dossier_vierge.pdf"><span class="ico gray shadow diskette"></span><b>Exporter dossier vierge</b> </a></li>
                 <li class="limenu" ><a href="accueil.php?module=calendrier&amp;action=afficher_calendrier"><span class="ico gray shadow calendar"></span><b>&eacute;v&eacute;nements</b></a></li>
                 <li class="limenu" ><a href="accueil.php?module=statistique&amp;action=recuperer_stats"><span class="ico gray shadow stats_lines"></span><b>Statistiques</b> </a></li>

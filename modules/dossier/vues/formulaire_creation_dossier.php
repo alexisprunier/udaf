@@ -350,7 +350,7 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
 <!--DIV gérant les popup-->
 <!--PopUp création site web-->
 
-<div id="dialog-confirm-dossier" style="display : none;" title="Attention?">
+<div id="dialog-confirm-dossier" style="display : none;" title="Attention !">
     <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Vous allez supprimer la ligne. Etes vous s&ucirc;r?</p>
 </div>
 
