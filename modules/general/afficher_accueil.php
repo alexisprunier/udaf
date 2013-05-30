@@ -1,4 +1,4 @@
-<?php
++-<?php
 
 /**
  * @file      aficcher_accueil.php
@@ -31,6 +31,7 @@ foreach ($tab_evenement as &$evenement) {
         'personne_nom' => $personne['nom'],
         'personne_prenom' => $personne['prenom'],
         'utilisateur' => $utilisateur['ident'],
+        'traite' => $evenement->traite,
         'id_utilisateur' => $utilisateur['user_id'],
     );
 

@@ -44,6 +44,38 @@ function ajouter_utilisateur_dans_bdd($ident, $nom, $prenom, $pass, $administrat
     /** sinon elle retourne une erreur */
     return $requete->errorInfo();
 }
+/**
+ * @brief      methode de selection de lutilisateur du dossier dans la base de donn�es
+ * 
+ * @param	   $user_id Integer Identifiant de l'utilisateur
+ * @return     un tableau de donn�es d'un client 
+ * 
+ */
+function selectionner_utilisateur_du_dossier_dans_bdd($user_id) {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prepare notre requete avec les valeurs pass�s en parametre */
+    $requete = $pdo->prepare("SELECT * FROM dossier WHERE user_id = :user_id");
+
+    $requete->bindValue(':user_id', $user_id);
+
+    /** j'execute cette requète */
+    $requete->execute();
+    /** j'initialise un tableau */
+    $tab = array();
+
+    /** pour chaque resultat retourné je l'ajoute dans mon tableau */
+    while ($result = $requete->fetch(PDO::FETCH_OBJ)) {
+
+        array_push($tab, $result);
+    }
+
+    $requete->closeCursor();
+
+    /** je retourne un tableau d'objet news */
+    return $tab;
+}
 
 /**
  * @brief      methode de selection des utilisateurs dans la base de donn&eacute;es
