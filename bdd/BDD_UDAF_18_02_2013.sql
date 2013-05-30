@@ -49,13 +49,13 @@ CREATE TABLE IF NOT EXISTS `dossier` (
 -- Contenu de la table `dossier`
 --
 
-INSERT INTO `dossier` (`dossier_id`, `dossier_ref`, `date_creation_d`, `problematique`, `cloture`, `raison_cloture`, `comment_cloture`, `date_cloture`, `dossier_physique`, `user_id`, `theme_id`, `soustheme_id`, `fournisseur_id`, `personne_id`) VALUES
-(1, '20130001', '05/03/2013', 'Probleme avec une concession de voiture', NULL, NULL, NULL, '', NULL, 1, 3, 6, 1, 1),
-(2, '20130002', '06/03/2013', 'Probleme avec une banque', NULL, NULL, NULL, '', NULL, 1, 4, 9, 2, 2),
-(3, '20130003', '10/03/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', NULL, 4, 10, 25, 3, 3),
-(4, '20130004', '14/03/2013', 'Probleme avec une banque', NULL, NULL, NULL, '', NULL, 4, 4, 9, 4, 4),
-(5, '20130005', '03/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 5, 5),
-(6, '20130006', '10/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 6, 6);
+INSERT INTO `dossier` (`dossier_ref`, `date_creation_d`, `problematique`, `cloture`, `raison_cloture`, `comment_cloture`, `date_cloture`, `dossier_physique`, `user_id`, `theme_id`, `soustheme_id`, `fournisseur_id`, `personne_id`) VALUES
+('20130001', '05/03/2013', 'Probleme avec une concession de voiture', NULL, NULL, NULL, '', NULL, 1, 3, 6, 1, 1),
+('20130002', '06/03/2013', 'Probleme avec une banque', NULL, NULL, NULL, '', NULL, 1, 4, 9, 2, 2),
+('20130003', '10/03/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', NULL, 4, 10, 25, 3, 3),
+('20130004', '14/03/2013', 'Probleme avec une banque', NULL, NULL, NULL, '', NULL, 4, 4, 9, 4, 4),
+('20130005', '03/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 5, 5),
+('20130006', '10/04/2013', 'Probleme avec une ...', NULL, NULL, NULL, '', 1, 5, 10, 25, 6, 6);
 
 -- --------------------------------------------------------
 
