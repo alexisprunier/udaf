@@ -148,7 +148,7 @@ function selectionner_fournisseur_dans_bdd($id_fournisseur) {
     }
 
     /** je retourne un tableau d'objet theme */
-    return $tab;
+    return $requete->errorInfo();
 }
 function selectionner_fournisseur_dans_bdd_nom($nom, $prenom, $raison_sociale) {
     /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */

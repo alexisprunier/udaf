@@ -367,9 +367,10 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
 
                     <label for="liste_client" class="lab_txt">Liste clients :</label> 
                     <select id="liste_client" class="inputfield" onChange="changePersonne(this.selectedIndex)">
-                        <option value=""></option> 
+                        <option value="<?php if(isset($_GET['id'])) echo $client['nom'] ?>"><?php if(isset($_GET['id'])) echo ($client['nom'] . ' ' . $client['prenom']); ?></option> 
                         <?php
                         foreach ($tab_personne as $key => $value) {
+                            if($tab_personne[$key]->nom != $client['nom'])
                             echo '<option value="' . $tab_personne[$key]->personne_id . '" >' . $tab_personne[$key]->nom . ' ' . $tab_personne[$key]->prenom . '</option>';
                         }
                         ?>
@@ -433,10 +434,15 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
 
                     <label for="liste_fournisseur" class="lab_txt">Liste fournisseurs :</label> 
                     <select id="liste_fournisseur" class="inputfield" onChange="changeFournisseur(this.selectedIndex)">
-                        <option value=""></option> 
+                        <option value="<?php if(isset($_GET['id'])) echo $client['nom'] ?>"><?php if(isset($_GET['id'])) echo $client['nom'] ?></option>
+                      
+                        
 <?php
 foreach ($tab_fournisseur as $key => $value) {
-    echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '" >' . $tab_fournisseur[$key]->nom . ' ' . $tab_fournisseur[$key]->prenom . ' (' . $tab_fournisseur[$key]->raison_sociale . ')</option>';
+    
+    if($tab_fournisseur[$key]->raison_sociale != null)
+        echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->raison_sociale . '</option>';
+    else echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->nom . ' ' .  $tab_fournisseur[$key]->prenom .  '</option>';
 }
 ?>
                     </select>
@@ -761,7 +767,7 @@ foreach ($tab_user as $key => $value) {
         for(var i=0; i<allOther.length;i++){ allOther[i].style.visibility = hidden; }
       
 
-    <?php } else if(isset($_GET['from'])) { ?>
+    <?php } else if(isset($_GET['from']) || isset($_GET['erreur'])) { ?>
     var checked_radio = readCookie("sexe");
     if ( checked_radio == '0' ){
         document.getElementById('mr').checked = true;

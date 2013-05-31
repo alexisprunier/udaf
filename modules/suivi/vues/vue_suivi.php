@@ -1,12 +1,12 @@
 <div id="recherche">
     <div id="champs_recherche" class="recherche">
         <h3>Recherche des dossiers</h3>
-        <form action="accueil.php?module=recherche&action=rechercher_dossier">
+        <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">
             <div id="col1" class="col">
                 <input type="hidden" name="module" value="recherche"/>
                 <input type="hidden" name="action" value="rechercher_dossier"/>
                 <label for="choix_numero_dossier" class="lab_txt" >N&deg; du dossier : </label>
-                <input type="text" name="choix_numero_dossier" id="choix_numero_dossier" list="numero_dossier" placeholder="ex : 20130001" class="inputfield"/>
+                <input type="text" name="choix_numero_dossier" id="choix_numero_dossier" value="<?php echo $_GET['choix_numero_dossier']; ?>" list="numero_dossier" placeholder="ex : 20130001" class="inputfield"/>
                 <datalist id="numero_dossier">
                     <?php
                     foreach ($datalist_dossier_ref as &$dossier_ref) {
@@ -18,7 +18,8 @@
                 </datalist>
 
                 <label for="choix_nom" class="lab_txt">Nom : </label>
-                <input type="text" name="choix_nom" id="choix_nom" list="nom" placeholder="Nom du client" class="inputfield"/>
+                <input type="text" name="choix_nom" id="choix_nom" list="nom" placeholder="Nom du client" class="inputfield" 
+                    value="<?php echo $_GET['choix_nom']; ?>"/>
                 <datalist id="nom">
                     <?php
                     foreach ($datalist_nom as $nom) {
@@ -30,7 +31,7 @@
                 </datalist>
 
                 <label for="choix_prenom" class="lab_txt">Pr&eacute;nom : </label>
-                <input type="text" name="choix_prenom" id="choix_prenom" list="prenom" placeholder="Pr&eacute;nom du client" class="inputfield"/>
+                <input type="text" name="choix_prenom" id="choix_prenom" list="prenom" value="<?php echo $_GET['choix_prenom']; ?>" placeholder="Pr&eacute;nom du client" class="inputfield"/>
                 <datalist id="prenom">
                     <?php
                     foreach ($datalist_prenom as $prenom) {
@@ -44,7 +45,7 @@
 
             <div id="col2" class="col">
                 <label for="telephone" class="lab_txt" >T&eacute;l&eacute;phone : </label>
-                <input type="text" name="choix_telephone" list="tel" id="telephone" placeholder="T&eacute;l&eacute;phone" class="inputfield"/>
+                <input type="text" name="choix_telephone" list="tel" id="telephone"  value="<?php echo $_GET['choix_telephone']; ?>" placeholder="T&eacute;l&eacute;phone" maxlength="10" class="inputfield"/>
                 <datalist id="tel">
                     <?php
                     foreach ($datalist_tel as $tel) {
@@ -55,14 +56,14 @@
                     ?>
                 </datalist>
                 <label for="choix_mail" class="lab_txt">Adresse mail : </label>
-                <input type="text" name="choix_mail" list="mail" id="choix_mail" placeholder="e-Mail du client" class="inputfield"/>
+                <input type="text" name="choix_mail" list="mail" id="choix_mail" value="<?php echo $_GET['choix_mail']; ?>" placeholder="e-Mail du client" class="inputfield"/>
                 <datalist id="mail">
                     <?php
                     foreach ($datalist_mail as $mail) {
                         ?>
                         <option value="<?php echo $mail; ?>"/>
                         <?php
-                    } //boucle permettant d'afficher toute les noms des clients
+                    } //boucle permettant d'afficher toute les mail des clients
                     ?>
                 </datalist>
 
@@ -70,32 +71,38 @@
 
             <div id="col3" class="col" >
                 <label for="theme" class="lab_txt">Th&egrave;me : </label>
-                <select class="inputfield_liste" id="theme" name="theme" title="Choisir un th&egrave;me">
-                    <option value=""></option> 
+                <select class="inputfield_liste" id="choix_theme" name="choix_theme" title="Choisir un th&egrave;me">
+                    <option value="<?php echo $_GET['choix_theme']; ?>"><?php echo $_GET['choix_theme'];   ?></option> 
                     <?php
                     foreach ($tab_theme as $key => $value) {
-                        echo '<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>';
+                        echo '<option value="' . $tab_theme[$key]->nom . '" >' . $tab_theme[$key]->nom . '</option>';
                     }
                     ?>
                 </select>
                 <label for="choix_fournisseur" class="lab_txt">Fournisseur : </label>
-                <input type="text" name="choix_fournisseur" list="fournisseur"  placeholder="Nom ou Raison sociale" id="choix_fournisseur" class="inputfield"/>
+                <input type="text" name="choix_fournisseur" list="fournisseur"  value="<?php echo $_GET['choix_fournisseur']; ?>" placeholder="Nom ou Raison sociale" id="choix_fournisseur" class="inputfield"/>
                 <datalist id="fournisseur">
                     <?php
-                    echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '" >' . $tab_fournisseur[$key]->nom . ' ' . $tab_fournisseur[$key]->prenom . ' (' . $tab_fournisseur[$key]->raison_sociale . ')</option>';
+                    foreach ($tab_fournisseurs as &$fournisseur) {
+                        if($fournisseur->raison_sociale == null)
+                            echo '<option value="' . $fournisseur->prenom . ' ' . $fournisseur->nom .'" />';
+                        else    
+                            echo '<option value="'.$fournisseur->raison_sociale.'" />';
+
+                     }
                     ?>
                 </datalist>
             </div>
 
             <div id="col4" class="col">
                 <label for="date_debut" class="lab_txt" >De : </label>
-                <input type="text" name="choix_date_debut" class="datepicker inputfield" placeholder="Selectionner date" id="date-debut"/></input>
+                <input type="text" name="choix_date_debut" class="datepicker inputfield" value="<?php echo $_GET['date_debut']; ?>" placeholder="Selectionner date" id="date-debut"/></input>
 
                 <label for="date_fin"class="lab_txt" >&Agrave; : </label>
-                <input type="text" name="choix_date_fin" class="datepicker inputfield" placeholder="Selectionner date" id="date_fin"/></input>
+                <input type="text" name="choix_date_fin" class="datepicker inputfield" value="<?php echo $_GET['date_fin']; ?>" placeholder="Selectionner date" id="date_fin"/></input>
 
 
-                <input type="submit" id="btn_rechercher" value="Appliquer filtres" >
+                <input type="submit" id="btn_rechercher"  value="Appliquer filtres"/>
             </div>
         </form>
     </div>
@@ -103,7 +110,7 @@
         <table class="scroll_tab">
             <thead >
 
-                <tr class="head_result" >
+                <tr class="head_tab" >
                     <th  align="center" >N&deg; dossier</th>
                     <th  align="left" 	>Nom</th>
                     <th  align="left" 	>Pr&eacute;nom</th>
@@ -121,9 +128,10 @@
             <tbody>
 
                 <?php
-                foreach ($lignes_tableau as &$ligne) {
-                    if($ligne['id_user'] === $_SESSION['id']){
+                
+                foreach ($lignes_tableau as $ligne) {
                     ?>
+                
                     <tr class="
                     <?php
                     if ($ligne['cloture'] == 1) {
@@ -144,7 +152,6 @@
                         <td align="center"><a href="accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['n_dossier']; ?>" class="lien_dossier"></a></td>
                     </tr>
                     <?php
-                    }
                 }
                 ?>
             </tbody>
