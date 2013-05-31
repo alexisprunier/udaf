@@ -8,6 +8,7 @@ include CHEMIN_MODELE . 'dossier.php';
 
 $tab_theme = lister_theme_dans_bdd();
 $tab_dossier = lister_dossier_dans_bdd();
+$tab_fournisseurs = lister_fournisseur_dans_bdd();
 
 $lignes_tableau = array();
 
@@ -19,7 +20,9 @@ foreach ($tab_dossier as &$dossier) {
     $theme = selectionner_theme_dans_bdd($dossier->theme_id);
     $fournisseur = selectionner_fournisseur_dans_bdd($dossier->fournisseur_id);
     $user = selectionner_utilisateur_dans_bdd($dossier->user_id);
-  
+    if($fournisseur['raison_sociale'] == null)
+        $nom_fournisseur = ($fournisseur['nom'] . ' ' .  $fournisseur['prenom']);
+    else $nom_fournisseur = $fournisseur['raison_sociale'];
     $ligne = array(
         'n_dossier' => $dossier->dossier_ref,
         'nom' => $personne['nom'],
@@ -27,7 +30,7 @@ foreach ($tab_dossier as &$dossier) {
         'telephone' => $personne['tel_fixe'],
         'mail' => $personne['mail'],
         'theme' => $theme['nom'],
-        'fournisseur' => $fournisseur['nom'],
+        'fournisseur' => $nom_fournisseur,
         'user' => $user['ident'],
         'date' => $dossier->date_creation_d,
         'cloture' => $dossier->cloture,

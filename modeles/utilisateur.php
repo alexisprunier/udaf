@@ -133,7 +133,7 @@ function selectionner_utilisateur_dans_bdd($id_user) {
     }
 
     /** je retourne un tableau d'objet */
-    return $tab;
+    return $requete->errorInfo();
 }
 
 /**

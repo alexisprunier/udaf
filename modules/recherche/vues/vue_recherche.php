@@ -71,11 +71,11 @@
 
             <div id="col3" class="col" >
                 <label for="theme" class="lab_txt">Th&egrave;me : </label>
-                <select class="inputfield_liste" id="theme" name="theme" title="Choisir un th&egrave;me" value="test">
-                    <option value="<?php echo $_GET['theme']; ?>"><?php    ?></option> 
+                <select class="inputfield_liste" id="choix_theme" name="choix_theme" title="Choisir un th&egrave;me">
+                    <option value="<?php echo $_GET['choix_theme']; ?>"><?php echo $_GET['choix_theme'];   ?></option> 
                     <?php
                     foreach ($tab_theme as $key => $value) {
-                        echo '<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>';
+                        echo '<option value="' . $tab_theme[$key]->nom . '" >' . $tab_theme[$key]->nom . '</option>';
                     }
                     ?>
                 </select>
@@ -83,7 +83,13 @@
                 <input type="text" name="choix_fournisseur" list="fournisseur"  value="<?php echo $_GET['choix_fournisseur']; ?>" placeholder="Nom ou Raison sociale" id="choix_fournisseur" class="inputfield"/>
                 <datalist id="fournisseur">
                     <?php
-                    echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '" >' . $tab_fournisseur[$key]->nom . ' ' . $tab_fournisseur[$key]->prenom . ' (' . $tab_fournisseur[$key]->raison_sociale . ')</option>';
+                    foreach ($tab_fournisseurs as &$fournisseur) {
+                        if($fournisseur->raison_sociale == null)
+                            echo '<option value="' . $fournisseur->prenom . ' ' . $fournisseur->nom .'" />';
+                        else    
+                            echo '<option value="'.$fournisseur->raison_sociale.'" />';
+
+                     }
                     ?>
                 </datalist>
             </div>

@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
   `adr_postale` varchar(50) DEFAULT NULL,
   `code_postal` int(5) DEFAULT NULL,
   `ville` varchar(30) DEFAULT NULL,
-  `tel` int(10) DEFAULT NULL,
+  `tel` varchar(10) DEFAULT NULL,
   `mail` varchar(30) DEFAULT NULL,
   `comment_fournisseur` text,
   PRIMARY KEY (`fournisseur_id`)
