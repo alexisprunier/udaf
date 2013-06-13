@@ -41,27 +41,18 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
 
         /** ajouter_utilisateur_dans_bdd() est defini dans ~/modeles/utilisateur.php */
         $id_utilisateur = ajouter_utilisateur_dans_bdd($ident, $nom, $prenom, $pass, $administrateur);
-
+        
         /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
-        if ($id_utilisateur == true) {
+        if (is_int($id_utilisateur)) {
 
             /** On transforme la chaine en entier */
             $id_utilisateur = (int) $id_utilisateur;
 
             /** Affichage de la confirmation d'insertion */
+            
             header('location: accueil.php?module=administration&action=gestion_administration&ajout_utilisateur=ok');
         } else/** Gestion des doublons */ {
-            /** Changement de nom de variable (plus lisible) */
-            $erreur = & $id_utilisateur;
-
-            /** On verifie que l'erreur concerne bien un doublon */
-            if (23000 == $erreur[0])/** Le code d'erreur 23000 siginife "doublon" dans le standard ANSI SQL */ {
-                preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
-                $valeur_probleme = $valeur_probleme[1];
-                $erreurs_ajout_user[] = "Erreur ajout SQL : doublon non identifie present dans la base de donnees.";
-            } else {
-                $erreurs_ajout_user[] = sprintf("Erreur ajout SQL : cas non traite (SQLSTATE = %d).", $erreur[0]);
-            }
+            header('location: accueil.php?module=administration&action=gestion_administration&erreur=doubleident');
         }
     } else {
         header('location: accueil.php?module=administration&action=gestion_administration&erreur=differentmdp');

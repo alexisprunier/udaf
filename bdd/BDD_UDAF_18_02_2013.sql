@@ -295,7 +295,7 @@ INSERT INTO `theme` (`theme_id`, `nom`) VALUES
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ident` varchar(30) DEFAULT NULL,
+  `ident` varchar(30) DEFAULT NULL UNIQUE,
   `nom` varchar(30) DEFAULT NULL,
   `prenom` varchar(30) DEFAULT NULL,
   `pass` varchar(255) DEFAULT NULL,
