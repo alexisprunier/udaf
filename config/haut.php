@@ -13,7 +13,7 @@
 
         <!-- Link css -->
         <link rel="stylesheet" type="text/css" href="css/fixedHeader.css"/>
-        <link rel="stylesheet" type="text/css" href="css/zice.style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/ogconso_style.css"/>
         <!-- Link jquery -->
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type='text/javascript' src='js/evenementiel.js'></script>
