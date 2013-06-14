@@ -102,5 +102,5 @@
             ?>
         </tbody>
     </table>
-    <a href="libs/pdf/export/statistiques.pdf">Exporter au format PDF</a>
+    <a class="btn" href="libs/pdf/export/statistiques.pdf">Exporter au format PDF</a>
 </div>

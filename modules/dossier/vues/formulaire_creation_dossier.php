@@ -54,17 +54,10 @@
       
 
         request.done(function(msg) {
-          $(".check_rdv #"+eventId).fadeOut("fast");
+          /*$(".check_rdv #"+eventId).fadeOut("fast");
           $(msg).load("#evenement_dossier");
-          $(".check_rdv #"+eventId ).fadeIn("fast");
-          /*$( "#dialog_maj_event" ).dialog({
-                                modal: true,
-                                buttons: {
-                                  Ok: function() {
-                                    $( this ).dialog( "close" );
-                                  }
-                                }
-                              });*/
+          $(".check_rdv #"+eventId ).fadeIn("fast");*/
+        
           alert("Événement mis a jour.");
             
           
