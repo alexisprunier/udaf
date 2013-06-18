@@ -210,12 +210,11 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
         include CHEMIN_MODELE . 'dossier.php';
         $liste_dossier = lister_dossier_dans_bdd();
         //Script suppression des dossiers de plus de 5 ans
-        echo $liste_dossier;
+        
         $date_cloture = new DateTime();
         $date_jour = new DateTime("now");
         foreach ($liste_dossier as &$dossier) {
-        echo $date_jour->format("j/m/Y");
-        echo "<br>";
+        
         if($dossier->date_cloture != null)
         {
             $date_cloture = $date_cloture->createFromFormat("j/m/Y",$dossier->date_cloture);          
