@@ -8,15 +8,16 @@
  *
  * @details    Ce fichier est la partie controleur de la vue formulaire_creation_dossier.php.
  */
-include CHEMIN_MODELE . 'dossier.php';
+include CHEMIN_MODELE . 'fichier.php';
 include CHEMIN_MODELE . 'personne.php';
+include CHEMIN_MODELE . 'dossier.php';
 include CHEMIN_MODELE . 'fournisseur.php';
 include CHEMIN_MODELE . 'theme.php';
 include CHEMIN_MODELE . 'sstheme.php';
 include CHEMIN_MODELE . 'siteweb.php';
 include CHEMIN_MODELE . 'evenement.php';
 include CHEMIN_MODELE . 'utilisateur.php';
-include CHEMIN_MODELE . 'fichier.php';
+
 
 
 $tab_personne = lister_personne_dans_bdd();
@@ -240,7 +241,7 @@ if($_GET["suppr"] == "fichier"){
     
     
 
-    unlink("uploads/".$tab_fichier['dossier_id'].'/'.utf8_decode($tab_fichier['nom']));
+    
     /** supprimer_fichier_dans_bdd() est defini dans ~/modeles/fichier.php */
     $id_supp_fichier = supprimer_fichier_dans_bdd($_GET['id']);
 

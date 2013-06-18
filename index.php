@@ -50,7 +50,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
         <!--Compatible .png-->
         <link rel="shortcut icon" type="images/png" href="images/favicon.png" /> 
         <!-- Link css-->
-        <link rel="stylesheet" type="text/css" href="css/zice.style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/ogconso_style.css"/>
         <title>Identification OGconso</title>
         <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

@@ -133,19 +133,7 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     include CHEMIN_MODELE . 'personne.php';
     include CHEMIN_MODELE . 'fichier.php';
     
-    $tab_dossier = selectionner_dossier_dans_bdd($_GET['id']);
-    $tab_fichiers = lister_fichier_dans_bdd();
-    foreach ($tab_fichiers as &$fichier) {
-        if($fichier->dossier_id == $_GET['id'])
-            supprimer_fichier_dans_bdd($fichier->fichier_id);
-    }
-    $tab_dossier_personne = selectionner_personne_du_dossier_dans_bdd($tab_dossier['personne_id']);
-    if(count($tab_dossier_personne)==1)
-    {
-        supprimer_personne_dans_bdd ($tab_dossier['personne_id']);
-    }
-    
-    /** supprimer_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
+   /** supprimer_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
     $id_supp_dossier = supprimer_dossier_dans_bdd($_GET['id']);
 
 
@@ -211,19 +199,34 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     include CHEMIN_MODELE . 'utilisateur.php';
     $liste_utilisateur = lister_utilisateur_dans_bdd();
     
-    /** On veut utiliser le modele dossier (~/modeles/dossier.php) */
-    include CHEMIN_MODELE . 'dossier.php';
-    $liste_dossier = lister_dossier_dans_bdd();
-
-
-   
     /** On veut utiliser le modele fournisseur (~/modeles/fournisseur.php) */
     include CHEMIN_MODELE . 'fournisseur.php';
     $liste_fournisseur = lister_fournisseur_dans_bdd();
     
     /** On veut utiliser le modele personne (~/modeles/personne.php) */
     include CHEMIN_MODELE . 'personne.php';
-    $liste_personne = lister_personne_dans_bdd();
+
+      /** On veut utiliser le modele dossier (~/modeles/dossier.php) */
+        include CHEMIN_MODELE . 'dossier.php';
+        $liste_dossier = lister_dossier_dans_bdd();
+        //Script suppression des dossiers de plus de 5 ans
+        echo $liste_dossier;
+        $date_cloture = new DateTime();
+        $date_jour = new DateTime("now");
+        foreach ($liste_dossier as &$dossier) {
+        echo $date_jour->format("j/m/Y");
+        echo "<br>";
+        if($dossier->date_cloture != null)
+        {
+            $date_cloture = $date_cloture->createFromFormat("j/m/Y",$dossier->date_cloture);          
+            $age_dossier = $date_cloture->diff($date_jour, TRUE);
+            if($age_dossier->format('%a days') >= 1827) // 1827 correspond aux nombre de jours dans 5 ans
+                
+                supprimer_dossier_dans_bdd($dossier->dossier_ref);
+        }
+       
+    }
+        $liste_personne = lister_personne_dans_bdd();
     
     $lignes_tableau = array();
 
@@ -241,7 +244,6 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
      //On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
         array_push($lignes_tableau, $ligne);
     }
-  
     /** On affiche a nouveau le formulaire dossier */
     include CHEMIN_VUE . 'vue_formulaire_admin.php';
 }
