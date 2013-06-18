@@ -647,8 +647,8 @@ foreach ($tab_fournisseur as $key => $value) {
                         <?php if($dossier_select['raison_cloture'] != "Echec") { ?><option valie="Echec">Echec</option><?php } ?>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
-                    <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"/>
-                        <?php if(isset($_GET['id'])) echo $dossier_select['date_cloture']; ?>
+                    <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"
+                        value="<?php if(isset($_GET['id'])) echo $dossier_select['date_cloture']; ?>" />
                     </input>
                     <label for="comment_cloture" class="lab_txt">Commentaire :</label>
                     <textarea id="comment_cloture" name="comment_cloture" placeholder="(facultatif)"><?php if(isset($_GET['id'])) echo $dossier_select['comment_cloture']; ?></textarea>

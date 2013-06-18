@@ -200,7 +200,19 @@ function selectionner_dossier_dans_bdd($dossier_ref) {
  * 
  */
 function supprimer_dossier_dans_bdd($dossier_ref) {
-   
+    $dossier_a_suppr = selectionner_dossier_dans_bdd($dossier_ref);
+    //Suppression des fichiers du dossier
+    $tab_fichiers = lister_fichier_dans_bdd();
+    foreach ($tab_fichiers as &$fichier) {
+        if($fichier->dossier_id == $dossier_ref)
+            supprimer_fichier_dans_bdd($fichier->fichier_id);
+    }
+    //Suppression de la personne du dossier si elle n'appartient a aucun autre dossier
+    $personne = selectionner_personne_du_dossier_dans_bdd($dossier_a_suppr['personne_id']);
+    if(count($personne)==1)
+    {
+        supprimer_personne_dans_bdd ($dossier_a_suppr['personne_id']);
+    }
     /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
     $pdo = PDO2::getInstance();
     /** on prépare notre requete avec les valeurs passés en parametre */

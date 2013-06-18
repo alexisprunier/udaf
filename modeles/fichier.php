@@ -49,6 +49,10 @@ function ajouter_fichier_dans_bdd($nom, $extension, $dossier_id) {
 }
 
 function supprimer_fichier_dans_bdd($id_fichier) {
+    $fichier = selectionner_fichier_dans_bdd($id_fichier);
+  
+    unlink("uploads/".$fichier['dossier_id'].'/'.utf8_decode($fichier['nom'] . $fichier['type']));
+    rmdir("uploads/".$fichier['dossier_id']);
     /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
     $pdo = PDO2::getInstance();
 
