@@ -8,9 +8,17 @@ $(document).ready(function() {
                         right: 'prev,next month,basicWeek,basicDay'
                 },
                 editable: false,
-                events: <?php feed(); ?>
+                events: <?php feed(); ?>,
+                
+                eventClick: function(event) {
+                    if (event.url) {
+                        window.open(event.url);
+                        return false;
+                    }
+                }
         });
-});	
+  });
+	
 </script>
 <div id='calendar'>  
 </div>
@@ -27,10 +35,15 @@ function feed(){
         $utilisateur = selectionner_utilisateur_dans_bdd($evenement->user_id);
 
         $ligne = array(
-            'title' => 'Contact de '.$utilisateur['ident'].' avec '.$personne['nom'].' '.$personne['prenom'].' par '.$evenement->mode_contact,
+            'title' => 'Utilisateur : '.$utilisateur['ident'].'
+                        Client : '.$personne['nom'].' '.$personne['prenom'].'
+                        Mode de contact : '.$evenement->mode_contact,
             'start' => substr($evenement->date_event, 6, 4)."-".substr($evenement->date_event, 3, 2)."-".substr($evenement->date_event, 0, 2)."T00:00:00Z",
             'end' => substr($evenement->date_event, 6, 4)."-".substr($evenement->date_event, 3, 2)."-".substr($evenement->date_event, 0, 2)."T00:00:00Z",
+            'url' => '/accueil.php?module=dossier&action=creer_dossier&id=' . $evenement->dossier_id ,
+            'backgroundColor' => $evenement->traite ? '#577edd' : '#ff9351',
             'allDay' => false
+            
         );
 
         array_push($lignes_tableau, $ligne);

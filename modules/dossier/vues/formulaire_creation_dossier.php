@@ -435,6 +435,7 @@ foreach ($tab_fournisseur as $key => $value) {
     
     if($tab_fournisseur[$key]->raison_sociale != null)
         echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->raison_sociale . '</option>';
+        //sif($tab_fournisseur[$key]->nom != null && $tab_fournisseur[$key]->prenom != null ) echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->nom . ' ' .  $tab_fournisseur[$key]->prenom . ' (' .$tab_fournisseur[$key]->raison_sociale . ') </option>';
     else echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->nom . ' ' .  $tab_fournisseur[$key]->prenom .  '</option>';
 }
 ?>
@@ -629,7 +630,7 @@ foreach ($tab_fournisseur as $key => $value) {
                        </tbody>
                     </table>
                     </div>
-                    <a id="ajouter_site" class="btn desactiver"onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter</a>
+                    <a id="ajouter_site" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_site&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter</a>
                 </fieldset>			
             </div>
 
@@ -672,7 +673,7 @@ foreach ($tab_user as $key => $value) {
 ?>
                     </select>
                     <label for="check_physique" class="lab_txt">Dossier physique :</label>
-                    <input id="check_physique" type="checkbox" title="Existe t-il un dossier physique?" 
+                    <input id="check_physique" name="check_physique" type="checkbox" title="Existe t-il un dossier physique?" 
                            <?php if(isset($_GET['id']) && ($dossier_select['dossier_physique'] == 1)) echo "checked" ?> ></input>
                     <a id="exportPDF" class="btn" href="libs/pdf/export/dossier_<?php echo $_SESSION['dossier_ref'];?>.pdf" >Exporter au format PDF</a>
                     <!-- Bouton validation dossier -->
@@ -757,7 +758,7 @@ foreach ($tab_user as $key => $value) {
         for(var i=0; i<allTextarea.length;i++){ allTextarea[i].disabled = true; }
         for(var i=0; i<allSelect.length;i++){ allSelect[i].disabled = true; }
         for(var i=0; i<allButton.length;i++){ allButton[i].disabled = true; }
-        for(var i=0; i<allOther.length;i++){ allOther[i].style.visibility = hidden; }
+        for(var i=0; i<allOther.length;i++){ allOther[i].onclick = ''; }
       
 
     <?php } else if(isset($_GET['from']) || isset($_GET['erreur'])) { ?>

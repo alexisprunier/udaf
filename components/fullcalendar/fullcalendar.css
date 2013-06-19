@@ -366,7 +366,7 @@ a.fc-event {
 	text-align: right;
 }
 .fc-event-skin {
-	border-color: #37508c !important;
+	border-color: #ddd !important;
 
 
 	color: #eee; 
@@ -384,7 +384,7 @@ a.fc-event {
 	
 }
 .fc-event-time, .fc-event-title {
-	padding: 5px!important;
+	/*padding: 5px!important;*/
 }
 .fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
 	display: block;
