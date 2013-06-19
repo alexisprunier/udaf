@@ -8,7 +8,7 @@
                 <input type="text" class="inputfield" name="name" id="name" required title="Celui qui apparaitra dans le tableau" />
                 <label for="url" class="lab_txt">URL du site : </label>
                 <input type="url" class="inputfield" name="url" id="url" title="http://www.exemple.com" required />
-                <input type="button" value="Retour" onclick="history.go(-1)"/>
+                <input type="button" value="Retour" onclick="location.href='/accueil.php?module=dossier&action=creer_dossier&id='+<?php echo $_SESSION['dossier_ref']; ?>+'&from=site'"/>
                 <button>Valider</button>
                 
             </fieldset>

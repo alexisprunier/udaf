@@ -4656,7 +4656,7 @@ function DayEventRenderer() {
 				">";
 			if (!event.allDay && seg.isStart) {
 				html +=
-					"<span class='fc-event-time'>" +
+					//"<span class='fc-event-time'>" +
 					htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
 					"</span>";
 			}

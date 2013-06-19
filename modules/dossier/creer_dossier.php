@@ -116,10 +116,10 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $raison_cloture = $_POST['list_cloture'];
     $comment_cloture = $_POST['comment_cloture'];
     $date_cloture = $_POST['date_cloture'];
-    $dossier_physique = $_POST['check_physique'];
-  
+    $dossier_physique = $_POST['check_physique'] == 'on' ? 1 : 0;
+    
      
-    $createur_dossier = $_SESSION['id'];
+    $createur_dossier = $_POST['list_users'];
    
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
@@ -176,7 +176,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
 
    
     
-   
+       
     header($path);
 }
 if ($_GET["ajout"] == "fichiers"){
