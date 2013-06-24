@@ -288,7 +288,7 @@ if(isset($_GET['id']))
     $utilisateur = selectionner_utilisateur_dans_bdd($dossier_select['user_id']);
     $theme = selectionner_theme_dans_bdd($dossier_select['theme_id']);
     $sstheme = selectionner_sstheme_dans_bdd($dossier_select['soustheme_id']);
-    //$_SESSION['dossier_ref'] = $_GET['id'];
+    $_SESSION['dossier_ref'] = $_GET['id'];
 
    
 
@@ -296,9 +296,9 @@ if(isset($_GET['id']))
 if(isset($_GET['traite']))
 {
     if($_GET['traite'] === "true"){
-        evenement_traite($_GET['id']);
+        evenement_traite($_GET['id_event']);
     }
-    else evenement_non_traite($_GET['id']); 
+    else evenement_non_traite($_GET['id_event']); 
 }
 
 include CHEMIN_LIB . 'pdf/scripts/Generation_dossier.php';

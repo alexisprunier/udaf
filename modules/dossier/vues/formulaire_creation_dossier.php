@@ -48,7 +48,7 @@
         var request = $.ajax({
           url: "accueil.php?module=dossier&action=creer_dossier",
           type: "GET",
-          data: {traite : val, id : eventId},
+          data: {traite : val, id_event : eventId},
           dataType: "html"
         });
       
@@ -626,9 +626,9 @@ foreach ($tab_fournisseur as $key => $value) {
                         <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
                         <?php } ?>
                         <?php if($dossier_select['raison_cloture'] != "En cours"){ ?><option value="En cours">En cours</option><?php } ?>
-                        <?php if($dossier_select['raison_cloture'] != "Terminé") { ?><option value="Terminé">Termin&eacute;</option><?php } ?>
-                        <?php if($dossier_select['raison_cloture']!= "Transféré") { ?><option value="Transféré">Transfer&eacute;</option><?php } ?> 
-                        <?php if($dossier_select['raison_cloture'] != "Échec") { ?><option valie="Échec">Echec</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture'] != "Terminï¿½") { ?><option value="Terminï¿½">Termin&eacute;</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture']!= "Transfï¿½rï¿½") { ?><option value="Transfï¿½rï¿½">Transfer&eacute;</option><?php } ?> 
+                        <?php if($dossier_select['raison_cloture'] != "ï¿½chec") { ?><option valie="ï¿½chec">Echec</option><?php } ?>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
                     <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"
@@ -721,7 +721,7 @@ foreach ($tab_user as $key => $value) {
                     </tbody>
                 </table>
             </div>
-            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter une action</button>
+            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement&id=<?php echo $_GET['id']; ?>'));">Ajouter une action</button>
         </fieldset>
     </div>
 
