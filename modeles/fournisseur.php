@@ -21,7 +21,7 @@ function lister_fournisseur_dans_bdd() {
     $pdo = PDO2::getInstance();
 
     /** on prepare notre requete avec les valeurs passes en parametre */
-    $requete = $pdo->prepare("SELECT * FROM fournisseur");
+    $requete = $pdo->prepare("SELECT * FROM fournisseur ORDER BY raison_sociale ASC");
 
     /** j'execute cette requète */
     $requete->execute();

@@ -1,4 +1,12 @@
 <?php
+include CHEMIN_MODELE . 'utilisateur.php';
+include CHEMIN_MODELE . 'personne.php';
+include CHEMIN_MODELE . 'fichier.php';
+include CHEMIN_MODELE . 'dossier.php';
+include CHEMIN_MODELE . 'fournisseur.php';
+include CHEMIN_MODELE . 'siteweb.php';
+include CHEMIN_MODELE . 'evenement.php';
+
 //Suppression des fichier pdf (dossier)
 if($dossier = opendir('libs/pdf/export'))
 {
@@ -23,7 +31,7 @@ if($dossier = opendir('libs/pdf/export'))
 /** Validation des champs suivant les regles en utilisant les donnees du tableau $_GET */
 if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     /** On veut utiliser le modele du dossier (~/modeles/utilisateur.php) */
-    include CHEMIN_MODELE . 'utilisateur.php';
+    
 
     // Champs    
     $ident = $_POST['id'];
@@ -63,7 +71,7 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     
 } else if (isset($_GET["act"]) && $_GET["act"] == "supp_user") {
     /** On veut utiliser le modele du dossier (~/modeles/utilisateur.php) */
-    include CHEMIN_MODELE . 'utilisateur.php';
+    
 
     /** ajouter_utilisateur_dans_bdd() est defini dans ~/modeles/utilisateur.php */
     $id_supp_utilisateur = supprimer_utilisateur_dans_bdd($_GET['id']);
@@ -96,7 +104,6 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     }
 } else if (isset($_GET["act"]) && $_GET["act"] == "supp_perso") {
     /** On veut utiliser le modele du personne (~/modeles/personne.php) */
-    include CHEMIN_MODELE . 'personne.php';
 
     /** supprimer_personne_dans_bdd() est defini dans ~/modeles/personne.php */
     $id_supp_personne = supprimer_personne_dans_bdd($_GET['id']);
@@ -129,9 +136,7 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     }
 } else if (isset($_GET["act"]) && $_GET["act"] == "supp_dossier") {
     /** On veut utiliser le modele du dossier (~/modeles/dossier.php) */
-    include CHEMIN_MODELE . 'dossier.php';
-    include CHEMIN_MODELE . 'personne.php';
-    include CHEMIN_MODELE . 'fichier.php';
+    
     
    /** supprimer_dossier_dans_bdd() est defini dans ~/modeles/dossier.php */
     $id_supp_dossier = supprimer_dossier_dans_bdd($_GET['id']);
@@ -163,7 +168,7 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
     }
 } else if (isset($_GET["act"]) && $_GET["act"] == "supp_fournisseur") {
     /** On veut utiliser le modele du fournisseur (~/modeles/fournisseur.php) */
-    include CHEMIN_MODELE . 'fournisseur.php';
+    
 
     /** supprimer_fournisseur_dans_bdd() est defini dans ~/modeles/fournisseur.php */
     $id_supp_fournisseur = supprimer_fournisseur_dans_bdd($_GET['id']);
@@ -195,20 +200,10 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
         include CHEMIN_VUE . 'vue_formulaire_admin.php';
     }
 } else {    
-    /** On veut utiliser le modele utilisateur (~/modeles/utilisateur.php) */
-    include CHEMIN_MODELE . 'utilisateur.php';
-    $liste_utilisateur = lister_utilisateur_dans_bdd();
-    
-    /** On veut utiliser le modele fournisseur (~/modeles/fournisseur.php) */
-    include CHEMIN_MODELE . 'fournisseur.php';
-    $liste_fournisseur = lister_fournisseur_dans_bdd();
-    
-    /** On veut utiliser le modele personne (~/modeles/personne.php) */
-    include CHEMIN_MODELE . 'personne.php';
-
-      /** On veut utiliser le modele dossier (~/modeles/dossier.php) */
-        include CHEMIN_MODELE . 'dossier.php';
-        $liste_dossier = lister_dossier_dans_bdd();
+        $liste_utilisateur = lister_utilisateur_dans_bdd();
+        $liste_fournisseur = lister_fournisseur_dans_bdd();
+        $liste_dossier = lister_dossier_dans_bdd();     
+       
         //Script suppression des dossiers de plus de 5 ans
         
         $date_cloture = new DateTime();

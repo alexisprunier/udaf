@@ -10,13 +10,13 @@
  */
 include CHEMIN_MODELE . 'fichier.php';
 include CHEMIN_MODELE . 'personne.php';
-include CHEMIN_MODELE . 'dossier.php';
 include CHEMIN_MODELE . 'fournisseur.php';
 include CHEMIN_MODELE . 'theme.php';
 include CHEMIN_MODELE . 'sstheme.php';
 include CHEMIN_MODELE . 'siteweb.php';
 include CHEMIN_MODELE . 'evenement.php';
 include CHEMIN_MODELE . 'utilisateur.php';
+include CHEMIN_MODELE . 'dossier.php';
 
 
 
@@ -28,6 +28,7 @@ $tab_site = lister_site_dans_bdd();
 $tab_fichier = lister_fichier_dans_bdd();
 $tab_evenement = lister_evenement_dans_bdd();
 $tab_user = lister_utilisateur_dans_bdd();
+
 
 
 //Permet d'avoir un tableau contenant le identifiant de l'utilisateur en fonction de l'evenement
@@ -119,7 +120,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $dossier_physique = $_POST['check_physique'] == 'on' ? 1 : 0;
     
      
-    $createur_dossier = $_POST['list_users'];
+    $createur_dossier = $_SESSION['id'];
    
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
@@ -162,8 +163,8 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
         $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference . '&info=maj';
      }
      else
-     {
-        $id_dossier = ajouter_dossier_dans_bdd($reference, date("d/m/Y"), $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);
+     {        
+        $id_dossier = ajouter_dossier_dans_bdd($reference, date("d/m/Y"), $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);        
         $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
      }
          
@@ -287,7 +288,7 @@ if(isset($_GET['id']))
     $utilisateur = selectionner_utilisateur_dans_bdd($dossier_select['user_id']);
     $theme = selectionner_theme_dans_bdd($dossier_select['theme_id']);
     $sstheme = selectionner_sstheme_dans_bdd($dossier_select['soustheme_id']);
-    $_SESSION['dossier_ref'] = $_GET['id'];
+    //$_SESSION['dossier_ref'] = $_GET['id'];
 
    
 
