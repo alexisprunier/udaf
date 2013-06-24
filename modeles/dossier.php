@@ -207,6 +207,18 @@ function supprimer_dossier_dans_bdd($dossier_ref) {
         if($fichier->dossier_id == $dossier_ref)
             supprimer_fichier_dans_bdd($fichier->fichier_id);
     }
+    //Suppression des sites du dossier
+    $tab_sites = lister_site_dans_bdd(); 
+    foreach ($tab_sites as &$site) {
+        if($site->dossier_id == $dossier_ref)
+            supprimer_site_dans_bdd($site->site_id);
+    }
+    //Suppression des événements du dossier
+    $tab_evenements = lister_evenement_dans_bdd(); 
+    foreach ($tab_evenements as &$event) {
+        if($event->dossier_id == $dossier_ref)
+            supprimer_evenement_dans_bdd($event->evenement_id);
+    }
     //Suppression de la personne du dossier si elle n'appartient a aucun autre dossier
     $personne = selectionner_personne_du_dossier_dans_bdd($dossier_a_suppr['personne_id']);
     if(count($personne)==1)

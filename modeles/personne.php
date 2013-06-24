@@ -21,7 +21,7 @@ function lister_personne_dans_bdd() {
     $pdo = PDO2::getInstance();
 
     /** on prépare notre requète avec les valeurs passés en paramêtre */
-    $requete = $pdo->prepare("SELECT * FROM personne");
+    $requete = $pdo->prepare("SELECT * FROM personne ORDER BY nom ASC");
 
     /** j'execute cette requète */
     $requete->execute();

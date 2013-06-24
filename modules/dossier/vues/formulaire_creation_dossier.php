@@ -54,13 +54,7 @@
       
 
         request.done(function(msg) {
-          /*$(".check_rdv #"+eventId).fadeOut("fast");
-          $(msg).load("#evenement_dossier");
-          $(".check_rdv #"+eventId ).fadeIn("fast");*/
-        
-          alert("√âv√©nement mis a jour.");
-            
-          
+          alert("√âv√©nement mis a jour.");         
         });
  
         request.fail(function(jqXHR, textStatus) {
@@ -82,19 +76,7 @@
         
     });
     
-    function verifierInfoFournisseur(){
-            
-        }
-           
-           /* if(($("#nom_f").val() == "") && ($("#prenom_f").val() == "") && ($("#raison_social_f").val() == ""))
-            {
-               alert("Vous devez remplir le nom et le pr√©nom du fournisseur ou sa raison sociale");
-               return(false);
-            }
-            if(($("#nom_f").val() != "" && $("#prenom_f").val() != "") || $("#raison_social_f").val() != "")
-            {              
-              return(true);
-            }*/
+    
                     
         
    //Pr√©paration des donn√©es
@@ -371,7 +353,7 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
 
                     <!--<div class="clear_form"></div>-->
                     <label for="id_dossier" class="lab_txt">Num&eacute;ro du dossier :</label>   
-                    <input type="text" class="inputfield" id="id_dossier" name="id_dossier" disabled maxlength="45" value="<?php if (isset($_GET['id'])) echo $dossier_select["dossier_ref"]; else if (isset($_SESSION['dossier_ref'])) echo $_SESSION['dossier_ref'];  ?>"/>
+                    <input type="text" class="inputfield" id="id_dossier" name="id_dossier" disabled maxlength="45" value="<?php echo $_GET["id"];  ?>"/>
 
                     <div id="radio_button">
                         <input type="radio" id="mr" value="1" name="sexe" required  title="Sexe du client" <?php if ((isset($_GET['id'])) && ($client["sexe"] == 1)) echo 'checked="checked"'; else if (isset($_SESSION['sexe']) == '1') echo 'checked="checked"';  ?> />
@@ -431,6 +413,7 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
                       
                         
 <?php
+
 foreach ($tab_fournisseur as $key => $value) {
     
     if($tab_fournisseur[$key]->raison_sociale != null)
@@ -639,13 +622,13 @@ foreach ($tab_fournisseur as $key => $value) {
                     <legend>Cl&ocirc;ture</legend>
                     <label for="list_cloture" class="lab_txt">Raison de la cl&ocirc;ture :</label>
                     <select id="list_cloture" name="list_cloture" class="inputfield_cloture" title="Choisir une cause de cl&ocirc;ture" placeholder="Cause" required>
-<?php if(isset($_GET['id'])) {?>
+<?php if(isset($_GET['id']) && $dossier_select['raison_cloture'] != null ) {?>
                         <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
                         <?php } ?>
                         <?php if($dossier_select['raison_cloture'] != "En cours"){ ?><option value="En cours">En cours</option><?php } ?>
-                        <?php if($dossier_select['raison_cloture'] != "Termin√©") { ?><option value="Termin&eacute;">Termin&eacute;</option><?php } ?>
-                        <?php if($dossier_select['raison_cloture']!= "Transfer√©") { ?><option value="Transfer&eacute;">Transfer&eacute;</option><?php } ?> 
-                        <?php if($dossier_select['raison_cloture'] != "Echec") { ?><option valie="Echec">Echec</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture'] != "TerminÈ") { ?><option value="TerminÈ">Termin&eacute;</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture']!= "TransfÈrÈ") { ?><option value="TransfÈrÈ">Transfer&eacute;</option><?php } ?> 
+                        <?php if($dossier_select['raison_cloture'] != "…chec") { ?><option valie="…chec">Echec</option><?php } ?>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
                     <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"
@@ -664,7 +647,7 @@ foreach ($tab_fournisseur as $key => $value) {
                     <select id="list_users" name="list_users" class="inputfield" required>
                        
 <?php
-if(isset($_GET['id'])) echo '<option value="' . $dossier_select['user_id'] . '" >' . $utilisateur['nom'] . ' ' . $utilisateur['prenom'] . '</option>';
+if(isset($_GET['id']) && $dossier_select['user_id'] != null ) echo '<option value="' . $dossier_select['user_id'] . '" >' . $utilisateur['nom'] . ' ' . $utilisateur['prenom'] . '</option>';
 else echo '<option value="' . $_SESSION['id'] . '" >' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</option>'; 
 foreach ($tab_user as $key => $value) {
     if($tab_user[$key]->user_id != $_SESSION['id'])
@@ -675,7 +658,7 @@ foreach ($tab_user as $key => $value) {
                     <label for="check_physique" class="lab_txt">Dossier physique :</label>
                     <input id="check_physique" name="check_physique" type="checkbox" title="Existe t-il un dossier physique?" 
                            <?php if(isset($_GET['id']) && ($dossier_select['dossier_physique'] == 1)) echo "checked" ?> ></input>
-                    <a id="exportPDF" class="btn" href="libs/pdf/export/dossier_<?php echo $_SESSION['dossier_ref'];?>.pdf" >Exporter au format PDF</a>
+                    <a id="exportPDF" class="btn" target="_blank" href="libs/pdf/export/dossier_<?php echo $_SESSION['dossier_ref'];?>.pdf" >Exporter au format PDF</a>
                     <!-- Bouton validation dossier -->
                         <button type="submit" name="ok" class="submit_button" title="Valider">Enregistrer dossier</button>	
                 </fieldset>

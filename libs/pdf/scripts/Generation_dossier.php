@@ -86,7 +86,7 @@ $pdf->MultiCell(150,7,html_entity_decode(utf8_decode('
 //Pointillés problématique
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(25, 151);
-$pdf->MultiCell(170,7,html_entity_decode(utf8_decode(
+$pdf->MultiCell(160,7,html_entity_decode(utf8_decode(
     $dossier_select['problematique']
 )),0);
 $pdf->AddPage('');
@@ -166,7 +166,7 @@ $pdf->MultiCell(80,5,html_entity_decode(utf8_decode('
 ')),0);
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(20, 210);
-$pdf->MultiCell(80,6,html_entity_decode(utf8_decode('
+$pdf->MultiCell(85,6,html_entity_decode(utf8_decode('
   Fichier 1 :
   Fichier 2 :
   Fichier 3 :
@@ -270,9 +270,9 @@ foreach ($tab_evenement as &$evenement) {
                 '.$evenement->mode_contact.'
                 '.$is_traite.'
             ')),0);
-            $pdf->SetFont('arial','',12);
+            $pdf->SetFont('arial','',10);
             $pdf->SetXY(25, 95);
-            $pdf->MultiCell(175,7,html_entity_decode(utf8_decode($evenement->comm_event)),0);
+            $pdf->MultiCell(160,7,html_entity_decode(utf8_decode($evenement->comm_event)),0);
     }
 }
 $pdf->Output($path);

@@ -108,4 +108,22 @@ function evenement_non_traite($evenement_id)
 
 	return $evenement_id;
 }
+function supprimer_evenement_dans_bdd($id_evenement) {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prépare notre requete avec les valeurs passés en parametre */
+    $requete = $pdo->prepare("DELETE FROM evenement where evenement_id = :id_evenement");
+
+    $requete->bindValue(':id_evenement', $id_evenement);
+    $requete->execute();
+
+    if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+        print_r($result);
+        $requete->closeCursor();
+        return $result;
+    }
+    return $requete->errorInfo();
+}
 ?>
