@@ -555,7 +555,13 @@ div#droite_accueil table{
     color : #535353;
     text-shadow : 0 0 5px #fff;
 }
+tr.alerte_clic:hover{
+    cursor : pointer;
+    background-color: rgba(255,197,120, 1) !important;
+    transition: 0.5s;
+   
 
+}
 
 /*
 ------------------------------------------------------------
@@ -928,16 +934,18 @@ height: 43px;
 margin: -21px 0 0 -290px;
 
 }
+
+/***********************************************************
+***************   FORM AJOUT EVENEMENT SITE FICHIER ********
+************************************************************/
 div#ajouter_site, div#ajouter_evenement, div#ajouter_fichier{
     width: 350px;
     margin: auto;
     
     margin-top: 5%;
 }
-div#ajouter_site input[type=button], 
-div#ajouter_site button,
-div#ajouter_evenement input[type=button], 
-div#ajouter_evenement button{
+div#bouton_form_ajouter input[type=button], 
+div#bouton_form_ajouter button{
     width: 125px;
     height: 30px;
     margin : 15px 0 0 0 ;
@@ -960,10 +968,11 @@ div#ajouter_evenement textarea{
     resize : none;
     width : 318px;
 }
-#bouton_ajouter_evenenement{
+#bouton_form_ajouter{
     width: 254px;
     margin : auto;
 }
+
 
 /*------------------------------------------------------------
                   Administration
@@ -1036,7 +1045,9 @@ div#modifier_utilisateur{
     color : #777;
     margin : 50px auto 22px auto;
 }
-
+div#ajouter_evenement textarea{
+    max-height: 300px;
+}
 div#form_modifier_utilisateur{
     height: 250px;
 }

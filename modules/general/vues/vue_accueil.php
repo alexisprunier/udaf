@@ -15,7 +15,7 @@
                         <?php foreach ($lignes_tableau as &$ligne) {
                             if (($ligne['id_utilisateur'] === $_SESSION['id']) && $ligne['traite'] == 0){
                             ?>
-                            <tr>
+                            <tr class="alerte_clic" onclick="document.location='accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['dossier_id']; ?>'">
                                 <td><img src="/images/icon/gray_18/clock.png"/></td>
                                 <td><?php echo $ligne['date_evenement']; ?></td>
                                 <td><?php echo $ligne['mode_contact']; ?></td>
@@ -42,7 +42,7 @@
                                 if($ligne['traite'] == 0)
                                 {
                                 ?>
-                                    <tr>
+                                    <tr class="alerte_clic" onclick="document.location='accueil.php?module=dossier&amp;action=creer_dossier&id=<?php echo $ligne['dossier_id']; ?>'">
                                         <td><img src="/images/icon/gray_18/clock.png"/></td>
                                         <td><?php echo $ligne['date_evenement']; ?></td>
                                         <td><?php echo $ligne['mode_contact']; ?></td>

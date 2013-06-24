@@ -33,8 +33,8 @@ foreach ($tab_evenement as &$evenement) {
         'utilisateur' => $utilisateur['ident'],
         'traite' => $evenement->traite,
         'id_utilisateur' => $utilisateur['user_id'],
+        'dossier_id' => $evenement->dossier_id
     );
-
 //On ajoute la ligne créé ($ligne) dans le tableau ($ligne_tableau)
     array_push($lignes_tableau, $ligne);
 }
