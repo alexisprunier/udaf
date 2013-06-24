@@ -6,6 +6,17 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
+foreach ($tab_user as &$user) {
+    echo $user->nom;
+    echo $user->user_id;
+}
+echo "<br>";
+echo $_SESSION['id'];
+echo $_SESSION['nom_session'];
+echo $_SESSION['prenom_session'];
+
+echo "<br>";
+echo "<br>";
 ?>
 
 <script type="text/javascript">
@@ -648,10 +659,11 @@ foreach ($tab_fournisseur as $key => $value) {
                        
 <?php
 if(isset($_GET['id']) && $dossier_select['user_id'] != null ) echo '<option value="' . $dossier_select['user_id'] . '" >' . $utilisateur['nom'] . ' ' . $utilisateur['prenom'] . '</option>';
-else echo '<option value="' . $_SESSION['id'] . '" >' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</option>'; 
-foreach ($tab_user as $key => $value) {
-    if($tab_user[$key]->user_id != $_SESSION['id'])
-        echo '<option value="' . $tab_user[$key]->user_id . '" >' . $tab_user[$key]->nom . ' ' . $tab_user[$key]->prenom . '</option>';
+else echo '<option value="' . $_SESSION['id'] . '" >' . $_SESSION['nom_session'] . ' ' . $_SESSION['prenom_session'] . '</option>'; 
+foreach ($tab_user as &$user) {
+    if(($user->user_id != $_SESSION['id'] || $_SESSION['admin']) && $user->user_id != $dossier_select['user_id'])
+
+        echo '<option value="' . $user->user_id . '" >' . $user->nom . ' ' . $user->prenom . '</option>';
 }
 ?>
                     </select>

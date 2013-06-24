@@ -69,7 +69,7 @@
                     <?php } ?>
 
 
-                    <div class="welcome">Bienvenue <br /><b class="red"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></b></div>
+                    <div class="welcome">Bienvenue <br /><b class="red"><?php echo $_SESSION['prenom_session'] . " " . $_SESSION['nom_session']; ?></b></div>
                     <a href="accueil.php?module=general&amp;action=deconnexion"><div class="logout"><b>D&eacute;connexion</b></div><img class="logout_icon" src="images/icon/gray_18/power.png" alt="iconpower"/></a>
                 </div>
             </div>

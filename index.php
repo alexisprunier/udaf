@@ -28,8 +28,8 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
         $_SESSION['auth'] = 1; // enregistrement de la session
         // d&eacute;claration des variables de session
         $_SESSION['id'] = $row['user_id']; // Son id
-        $_SESSION['prenom'] = $row['prenom']; // Son prenom
-        $_SESSION['nom'] = $row['nom']; // Son nom
+        $_SESSION['prenom_session'] = $row['prenom']; // Son prenom
+        $_SESSION['nom_session'] = $row['nom']; // Son nom
         $_SESSION['admin'] = $row['administrateur']; // Si il est admin
 
         header('location: accueil.php?module=general&action=afficher_accueil');
