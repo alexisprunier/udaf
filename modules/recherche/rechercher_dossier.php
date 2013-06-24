@@ -137,15 +137,17 @@ foreach ($all_personne as &$personne) {
     }
 }
 
-// On récupère les données de DATALIST >> les adresses mail
+// On récupère les données de DATALIST >> fournisseur
 
-$datalist_mail = array();
+$datalist_fournisseur = array();
 $i = 0;
-foreach ($all_personne as &$personne) {
-    if (!in_array($personne->mail, $datalist_mail)) {
-        $datalist_mail[$i] = $personne->mail;
-        $i = $i + 1;
-    }
+foreach ($tab_fournisseurs as &$fournisseur) {
+    if($fournisseur->raison_sociale == null)
+        $datalist_fournisseur[$i] = $fournisseur->prenom . ' ' . $fournisseur->nom;
+    else    
+        $datalist_fournisseur[$i] = $fournisseur->raison_sociale;
+    
+    $i = $i + 1;
 }
 
 include CHEMIN_VUE . 'vue_recherche.php';

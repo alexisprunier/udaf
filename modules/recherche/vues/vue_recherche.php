@@ -22,6 +22,7 @@
                     value="<?php echo $_GET['choix_nom']; ?>"/>
                 <datalist id="nom">
                     <?php
+                    asort($datalist_nom);
                     foreach ($datalist_nom as $nom) {
                         ?>
                         <option value="<?php echo $nom; ?>"/>
@@ -34,6 +35,7 @@
                 <input type="text" name="choix_prenom" id="choix_prenom" list="prenom" value="<?php echo $_GET['choix_prenom']; ?>" placeholder="Pr&eacute;nom du client" class="inputfield"/>
                 <datalist id="prenom">
                     <?php
+                    asort($datalist_prenom);
                     foreach ($datalist_prenom as $prenom) {
                         ?>
                         <option value="<?php echo $prenom; ?>"/>
@@ -48,6 +50,7 @@
                 <input type="text" name="choix_telephone" list="tel" id="telephone"  value="<?php echo $_GET['choix_telephone']; ?>" placeholder="T&eacute;l&eacute;phone" maxlength="10" class="inputfield"/>
                 <datalist id="tel">
                     <?php
+                    asort($datalist_tel);
                     foreach ($datalist_tel as $tel) {
                         ?>
                         <option value="<?php echo $tel; ?>"/>
@@ -59,6 +62,7 @@
                 <input type="text" name="choix_mail" list="mail" id="choix_mail" value="<?php echo $_GET['choix_mail']; ?>" placeholder="e-Mail du client" class="inputfield"/>
                 <datalist id="mail">
                     <?php
+                    asort($datalist_mail);
                     foreach ($datalist_mail as $mail) {
                         ?>
                         <option value="<?php echo $mail; ?>"/>
@@ -74,6 +78,7 @@
                 <select class="inputfield_liste" id="choix_theme" name="choix_theme" title="Choisir un th&egrave;me">
                     <option value="<?php echo $_GET['choix_theme']; ?>"><?php echo $_GET['choix_theme'];   ?></option> 
                     <?php
+                    asort($tab_theme);
                     foreach ($tab_theme as $key => $value) {
                         echo '<option value="' . $tab_theme[$key]->nom . '" >' . $tab_theme[$key]->nom . '</option>';
                     }
@@ -83,11 +88,9 @@
                 <input type="text" name="choix_fournisseur" list="fournisseur"  value="<?php echo $_GET['choix_fournisseur']; ?>" placeholder="Nom ou Raison sociale" id="choix_fournisseur" class="inputfield"/>
                 <datalist id="fournisseur">
                     <?php
-                    foreach ($tab_fournisseurs as &$fournisseur) {
-                        if($fournisseur->raison_sociale == null)
-                            echo '<option value="' . $fournisseur->prenom . ' ' . $fournisseur->nom .'" />';
-                        else    
-                            echo '<option value="'.$fournisseur->raison_sociale.'" />';
+                    asort($datalist_fournisseur);
+                    foreach ($datalist_fournisseur as &$fournisseur) {
+                        echo '<option value="'.$fournisseur.'" />';
 
                      }
                     ?>
