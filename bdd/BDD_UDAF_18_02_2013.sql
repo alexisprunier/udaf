@@ -106,7 +106,7 @@ INSERT INTO `evenement` (`evenement_id`, `date_event`, `mode_contact`, `traite`,
 DROP TABLE IF EXISTS `fichier`;
 CREATE TABLE IF NOT EXISTS `fichier` (
   `fichier_id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
   `type_fichier` varchar(5) DEFAULT NULL,
   `dossier_id` int(11) NOT NULL,
   PRIMARY KEY (`fichier_id`)
