@@ -23,6 +23,10 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP DATABASE IF EXISTS `udaf`;
+CREATE DATABASE `udaf`;
+USE `udaf`;
+
 --
 -- Structure de la table `dossier`
 --
@@ -213,7 +217,7 @@ INSERT INTO `soustheme` (`soustheme_id`, `nom`, `theme_id`) VALUES
 (1, 'Produits alimentaire', 1),
 (2, 'Auto', 2),
 (3, 'Habitation', 2),
-(4, 'Responsabilit', 2),
+(4, 'Responsabilité', 2),
 (5, 'Santé', 2),
 (6, 'Automobile', 3),
 (7, 'Transports aérien', 3),
@@ -231,25 +235,26 @@ INSERT INTO `soustheme` (`soustheme_id`, `nom`, `theme_id`) VALUES
 (19, 'Consumérisme', 6),
 (20, 'Médiation-Conciliation', 7),
 (21, 'Recours-Procédures', 7),
-(22, 'Démarches administratives', 8),
-(23, 'Service à la personne', 8),
-(24, 'Société', 8),
-(25, 'Energie (Electricité-Gaz)', 9),
-(26, 'Eau', 10),
-(27, 'Internet', 11),
-(28, 'Multimédia-Image-Son', 11),
-(29, 'Téléphone', 11),
-(30, 'Achat-Vente-Construction', 12),
-(31, 'Copropriété', 12),
-(32, 'Location', 12),
-(33, 'Rénovation', 12),
-(34, 'Voisinage', 12),
-(35, 'Sports', 13),
-(36, 'Vacances (location de vacances)', 13),
-(37, 'Maladie', 14),
-(38, 'Pratique médicales', 14),
-(39, 'Produit de santé', 14),
-(40, 'Sécurité domestique', 15);
+(22, 'Economie', 8),
+(23, 'Démarches administratives', 9),
+(24, 'Service à la personne', 9),
+(25, 'Société', 9),
+(26, 'Energie (Electricité-Gaz)', 10),
+(27, 'Eau', 11),
+(28, 'Internet', 12),
+(29, 'Multimédia-Image-Son', 12),
+(30, 'Téléphone', 12),
+(31, 'Achat-Vente-Construction', 13),
+(32, 'Copropriété', 13),
+(33, 'Location', 13),
+(34, 'Rénovation', 13),
+(35, 'Voisinage', 13),
+(36, 'Sports', 14),
+(37, 'Vacances (location de vacances)', 14),
+(38, 'Maladie', 15),
+(39, 'Pratique médicales', 15),
+(40, 'Produit de santé', 15),
+(41, 'Sécurité domestique', 16);
 
 -- --------------------------------------------------------
 
