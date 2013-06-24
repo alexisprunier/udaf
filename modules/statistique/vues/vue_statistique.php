@@ -43,6 +43,7 @@
         <thead>
             <tr class="head_tab" >
                 <th  align="center">Date</th>
+                <th  align="center">Date clôture</th>
                 <th  align="center">RV</th>
                 <th  align="center">Tel</th>
                 <th  align="center">Mail</th>
@@ -73,10 +74,11 @@
                 $ligne = $tableau[$i];
             ?>
                 <tr>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['date']!=null ? $ligne['date'] : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['rdv']!=null ? $ligne['rdv'] : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['tel']!=null ? $ligne['tel'] : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['mail']!=null ? $ligne['mail'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['date_crea']!=null ? $ligne['date_crea'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['date_clot']!=null ? $ligne['date_clot'] : '' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['Rendez-vous']!=null ? $ligne['Rendez-vous'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['Téléphone']!=null ? $ligne['Téléphone'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['Mail']!=null ? $ligne['Mail'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['total']!=null ? $ligne['total'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['1']!=null ? $ligne['1'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['2']!=null ? $ligne['2'] : '0' ); ?></td>
