@@ -744,7 +744,7 @@ foreach ($tab_user as $key => $value) {
 
 </div>
 <script type="text/javascript">
-     <?php if(($dossier_select['user_id'] != $_SESSION['id']) && $dossier_select['user_id'] != null ) { ?>
+     <?php if(($dossier_select['user_id'] != $_SESSION['id']) && $dossier_select['user_id'] != null && $_SESSION['admin'] != 1 ) { ?>
         var allInput = document.getElementById('creer_dossier').getElementsByTagName('input');
         var allTextarea = document.getElementById('creer_dossier').getElementsByTagName('textarea');
         var allSelect = document.getElementById('creer_dossier').getElementsByTagName('select');
