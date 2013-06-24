@@ -85,15 +85,15 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 
 INSERT INTO `evenement` (`evenement_id`, `date_event`, `mode_contact`, `traite`, `comm_event`, `user_id`, `dossier_id`) VALUES
 (1, '12/03/2013', 'Téléphone', 0, 'Appel téléphonique pour un prochain rdv', 1, 20130001),
-(2, '16/03/2013', 'Mail', 1, 'Envoie de la facture de concession', 2, 20130001),
+(2, '16/03/2013', 'e-Mail', 1, 'Envoie de la facture de concession', 2, 20130001),
 (3, '20/03/2013', 'Rendez-vous', 1, 'RDV de mis au point', 1, 20130001),
 (4, '20/03/2013', 'e-Mail', 0, 'Demande d info sur le fournisseur', 3, 20130002),
 (5, '12/03/2013', 'Téléphone', 0, 'Appel', 1, 20130003),
-(6, '12/04/2013', 'Mail', 1, 'Mail de rappel', 1, 20130003),
+(6, '12/04/2013', 'e-Mail', 1, 'Mail de rappel', 1, 20130003),
 (7, '12/03/2013', 'Rendez-vous', 1, 'test event traite', 1, 20130004),
 (8, '20/03/2013', 'e-Mail', 0, 'Sans commentaire ', 3, 20130005),
 (9, '12/03/2013', 'Téléphone', 0, '', 1, 20130005),
-(10, '12/03/2013', 'Mail', 1, 'Demande d info sur le fournisseur', 1, 20130005),
+(10, '12/03/2013', 'e-Mail', 1, 'Demande d info sur le fournisseur', 1, 20130005),
 (11, '12/04/2013', 'Rendez-vous', 1, '', 1, 20130006),
 (12, '05/04/2013', 'e-Mail', 0, '', 3, 20130006);
 

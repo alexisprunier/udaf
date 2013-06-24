@@ -18,7 +18,7 @@
 
         <div id="col2" class="col">
             5. Commerce</br>
-            6. Consumerisme</br>
+            6. Consumérisme</br>
             7. Droit-Justice</br>
             8. Economie</br>
         </div>
@@ -39,15 +39,16 @@
     </form>
 </div>
 <div id="tab_stats">
+    <a class="btn" href="libs/excel/export/statistiques.xlsx">Exporter au format Excel</a>
     <table class="scroll_tab">
         <thead>
-            <tr class="head_tab" >
+            <tr class="head_tab">
+                <th  align="center">ID</th>
                 <th  align="center">Date</th>
                 <th  align="center">Date clôture</th>
                 <th  align="center">RV</th>
                 <th  align="center">Tel</th>
                 <th  align="center">Mail</th>
-                <th  align="center">Total</th>
                 <th  align="center">1</th>
                 <th  align="center">2</th>
                 <th  align="center">3</th>
@@ -64,8 +65,6 @@
                 <th  align="center">14</th>
                 <th  align="center">15</th>
                 <th  align="center">16</th>
-                <th  align="center">17</th>
-                <th  align="center">18</th>
             </tr>
         </thead>
         <tbody>
@@ -74,12 +73,12 @@
                 $ligne = $tableau[$i];
             ?>
                 <tr>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['dossier_id']!=null ? $ligne['dossier_id'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['date_crea']!=null ? $ligne['date_crea'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['date_clot']!=null ? $ligne['date_clot'] : '' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['Rendez-vous']!=null ? $ligne['Rendez-vous'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['Téléphone']!=null ? $ligne['Téléphone'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['Mail']!=null ? $ligne['Mail'] : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['total']!=null ? $ligne['total'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['1']!=null ? $ligne['1'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['2']!=null ? $ligne['2'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['3']!=null ? $ligne['3'] : '0' ); ?></td>
@@ -96,13 +95,10 @@
                     <td  class="cell_result" align="center"><?php echo ($ligne['14']!=null ? $ligne['14'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['15']!=null ? $ligne['15'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['16']!=null ? $ligne['16'] : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['17']!=null ? $ligne['17'] : '0' ); ?></td>
-                    <td  class="cell_result" align="center"><?php echo ($ligne['18']!=null ? $ligne['18'] : '0' ); ?></td>
                 </tr>
             <?php
             }
             ?>
         </tbody>
     </table>
-    <a class="btn" href="libs/pdf/export/statistiques.pdf">Exporter au format PDF</a>
 </div>

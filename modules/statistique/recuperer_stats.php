@@ -4,7 +4,7 @@
  * @author    Alexis PRUNIER
  * @version   1.0
  * @date      16 Avril 2012
- * @brief     Affichage des statistiques annuelles
+ * @brief     Affichage des statistiques
  */
 
 include CHEMIN_MODELE . 'evenement.php';
@@ -18,10 +18,29 @@ $tableau = array();
 
 foreach ($tab_dossier as &$dossier){
     $nouv_ligne = array(
+        'dossier_id' => $dossier->dossier_ref,
         'date_crea' => $dossier->date_creation_d,
         'date_clot' => $dossier->date_cloture,
-        'total' => 1,
-        $dossier->theme_id => 1);
+        'Rendez-vous' => 0,
+        'Téléphone' => 0,
+        'e-Mail' => 0,
+        '1' => $dossier->theme_id == 1 ? 1 : 0,
+        '2' => $dossier->theme_id == 2 ? 1 : 0,
+        '3' => $dossier->theme_id == 3 ? 1 : 0,
+        '4' => $dossier->theme_id == 4 ? 1 : 0,
+        '5' => $dossier->theme_id == 5 ? 1 : 0,
+        '6' => $dossier->theme_id == 6 ? 1 : 0,
+        '7' => $dossier->theme_id == 7 ? 1 : 0,
+        '8' => $dossier->theme_id == 8 ? 1 : 0,
+        '9' => $dossier->theme_id == 9 ? 1 : 0,
+        '10' => $dossier->theme_id == 10 ? 1 : 0,
+        '11' => $dossier->theme_id == 11 ? 1 : 0,
+        '12' => $dossier->theme_id == 12 ? 1 : 0,
+        '13' => $dossier->theme_id == 13 ? 1 : 0,
+        '14' => $dossier->theme_id == 14 ? 1 : 0,
+        '15' => $dossier->theme_id == 15 ? 1 : 0,
+        '16' => $dossier->theme_id == 16 ? 1 : 0, 
+    );
 
     foreach ($tab_evenement as &$evenement){
         if ($dossier->dossier_ref == $evenement->dossier_id){
@@ -32,29 +51,55 @@ foreach ($tab_dossier as &$dossier){
     $tableau[count($tableau)] = $nouv_ligne;
 }
 
-// CREATE PDF FILE
+// CREATE XSL FILE
 
-require_once(CHEMIN_LIB.'pdf/phpToPDF.php');
-require_once(CHEMIN_LIB.'pdf/fpdf.php');
-require_once(CHEMIN_LIB.'pdf/pdfclass_stats.php');
+include CHEMIN_LIB . 'excel/PHPExcel.php';
+include CHEMIN_LIB . 'excel/PHPExcel/Writer/Excel5.php';
+require_once CHEMIN_LIB . 'excel/PHPExcel/IOFactory.php';
 
-$path = 'libs/pdf/export/statistiques.pdf';
+$objPHPExcel = new PHPExcel();
 
-$pdf = new PDF();
-$pdf->AddPage('L');
-$pdf->SetFont('Arial','',20);
+//– On nomme notre feuille
+$objPHPExcel->setActiveSheetIndex(0);
+$sheet=$objPHPExcel->getActiveSheet();
+$sheet->setTitle('Statistiques OGconso');
 
-$header = array('Date', 'RV', 'Tel', 'Mail', 'Total', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16');
-$pdf->Write(30, "                                         Statistiques de ".$year." au ".date(d."-".m."-".Y)."\n");
-$pdf->SetFont('courier','',9);
-$pdf->Write(5, html_entity_decode(utf8_decode("1. Alimentation-Agriculture     5. Commerce                 9. Education-Société                         13. Logement-Immobilier\n")));
-$pdf->Write(5, html_entity_decode(utf8_decode("2. Assurance                    6. Consumerisme             10 Energie(Electricité-Gaz)                  14. Loisir-tourisme\n")));
-$pdf->Write(5, html_entity_decode(utf8_decode("3. Automobile-Transport         7. Droit-Justice            11. Environnement-Développement durable      15. Santé\n")));
-$pdf->Write(5, html_entity_decode(utf8_decode("4. Banque-Argent                8. Economie                 12. Internet-Image-Son                       16. Sécurité Domestique\n")));
-$pdf->Write(5, "\n");
-$pdf->SetFont('Arial','',10);
-$pdf->FancyTable($header, $tableau);
-$pdf->Output($path);
+$sheet->SetCellValue('B1', 'ID');
+$sheet->SetCellValue('C1', 'Date de création');
+$sheet->SetCellValue('D1', 'Date de clôture');
+$sheet->SetCellValue('E1', 'Rendez-vous');
+$sheet->SetCellValue('F1', 'Téléphone');
+$sheet->SetCellValue('G1', 'Mail');
+$sheet->SetCellValue('H1', 'Alimentation-Agriculture');
+$sheet->SetCellValue('I1', 'Assurance');
+$sheet->SetCellValue('J1', 'Automobile-Transport');
+$sheet->SetCellValue('K1', 'Banque-Argent');
+$sheet->SetCellValue('L1', 'Commerce');
+$sheet->SetCellValue('M1', 'Consumérisme');
+$sheet->SetCellValue('N1', 'Droit-Justice');
+$sheet->SetCellValue('O1', 'Economie');
+$sheet->SetCellValue('P1', 'Education-Société');
+$sheet->SetCellValue('Q1', 'Energie(Electricité-Gaz)');
+$sheet->SetCellValue('R1', 'Environnement-Dévelopement durable');
+$sheet->SetCellValue('S1', 'Internet-Image-Son');
+$sheet->SetCellValue('T1', 'Logement-Immobilier');
+$sheet->SetCellValue('U1', 'Loisir-Tourisme');
+$sheet->SetCellValue('V1', 'Santé');
+$sheet->SetCellValue('W1', 'Sécurité domestique');
+
+$i=0;
+foreach($tableau as $key => $value){
+    $sheet->SetCellValue('A'.($i+2), $key);
+    $j=B;
+    foreach($value as $k => $v){
+        $sheet->SetCellValue($j.($i+2), $v);
+        $j++;
+    }
+    $i++;
+}
+
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+$objWriter->save(CHEMIN_LIB . 'excel/export/statistiques.xlsx');
 
 include CHEMIN_VUE . 'vue_statistique.php';
 ?>
