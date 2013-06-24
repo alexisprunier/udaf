@@ -677,11 +677,7 @@ foreach ($tab_user as $key => $value) {
                            <?php if(isset($_GET['id']) && ($dossier_select['dossier_physique'] == 1)) echo "checked" ?> ></input>
                     <a id="exportPDF" class="btn" href="libs/pdf/export/dossier_<?php echo $_SESSION['dossier_ref'];?>.pdf" >Exporter au format PDF</a>
                     <!-- Bouton validation dossier -->
-<?php if (isset($_GET['id'])) { ?>
-                        <button type="submit" name="ok" class="submit_button" title="Valider">Modifier le dossier</button>
-<?php } else { ?>
                         <button type="submit" name="ok" class="submit_button" title="Valider">Enregistrer dossier</button>	
-<?php } ?>					
                 </fieldset>
             </div> 
         </div>
@@ -742,7 +738,7 @@ foreach ($tab_user as $key => $value) {
                     </tbody>
                 </table>
             </div>
-            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter rendez-vous</button>
+            <button id="ajouter_evenement" class="btn desactiver" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement&id=<?php echo $_SESSION['dossier_ref']; ?>'));">Ajouter une action</button>
         </fieldset>
     </div>
 
