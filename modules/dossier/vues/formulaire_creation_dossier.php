@@ -6,17 +6,6 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
-foreach ($tab_user as &$user) {
-    echo $user->nom;
-    echo $user->user_id;
-}
-echo "<br>";
-echo $_SESSION['id'];
-echo $_SESSION['nom_session'];
-echo $_SESSION['prenom_session'];
-
-echo "<br>";
-echo "<br>";
 ?>
 
 <script type="text/javascript">

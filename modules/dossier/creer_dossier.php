@@ -78,7 +78,6 @@ if ($_GET["ajout"] == "evenement"){
 
 if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     // Choix du nouvel ID du dossier si l'on arrive sur la page creer dossier sans vouloir effectuer un ajout
-   //print_r($_POST);
     if(!isset($_GET['modifier'])) 
     { 
         unset($_SESSION['dossier_ref']);
@@ -87,7 +86,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
         if($dossier_max[0]==0) $_SESSION['dossier_ref']= $annee_en_cours . "0001";
         else $_SESSION['dossier_ref'] = $dossier_max[0]->dossier_ref+1;
     }    
-// Personne    
+    // Personne    
     $sexe = $_POST['sexe'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -108,8 +107,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $mail_f = $_POST['mail_f'];
     $tel_f = $_POST['telephone_f'];
     $commentaire_f = htmlspecialchars(stripslashes($_POST['commentaire_f']));
-    //echo $tel_f;
-    //echo $commentaire_f;
+
     // Traitement Dossier
     $reference = $_SESSION['dossier_ref'];
     $problematique = htmlspecialchars(stripslashes($_POST['txt_problematique']));   

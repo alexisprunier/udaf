@@ -53,6 +53,7 @@ $pdf->MultiCell(170,5,html_entity_decode(utf8_decode('
 $pdf->SetFont('arial','B',10);
 $pdf->SetXY(20, 115);
 $pdf->MultiCell(170,7,html_entity_decode(utf8_decode('
+  Date de création :
   Propriétaire :
   Thème :
   Sous-thème :
@@ -74,18 +75,18 @@ $pdf->MultiCell(170,7,html_entity_decode(utf8_decode('
 
 
 
-
 ')),1);
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(55, 115);
 $pdf->MultiCell(150,7,html_entity_decode(utf8_decode('
+  '.$dossier_select['date_creation_d'].'
   '.$utilisateur['prenom'].' '.$utilisateur['nom'].'
   '.$theme['nom'].'
   '.$sstheme['nom'].'
 ')),0);
 //Pointillés problématique
 $pdf->SetFont('arial','',10);
-$pdf->SetXY(25, 151);
+$pdf->SetXY(25, 161);
 $pdf->MultiCell(160,7,html_entity_decode(utf8_decode(
     $dossier_select['problematique']
 )),0);
@@ -226,11 +227,9 @@ foreach ($tab_evenement as &$evenement) {
         $pdf->MultiCell(80,5,html_entity_decode(utf8_decode('
               Evénements :
         ')),0);
-
-
-            $pdf->SetFont('arial','',12);
-            $pdf->SetXY(20, 50);
-            $pdf->MultiCell(170,7,html_entity_decode(utf8_decode('
+        $pdf->SetFont('arial','',12);
+        $pdf->SetXY(20, 50);
+        $pdf->MultiCell(170,7,html_entity_decode(utf8_decode('
           Date :
           Utilisateur :
           Mode de contact :
