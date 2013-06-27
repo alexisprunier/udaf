@@ -52,6 +52,15 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'differentmdp') {
     </div> 
    <?php
 }
+if (isset($_GET['erreur']) && $_GET['erreur'] == 'doubleident') {
+    ?>	
+   <div class="dialog_admin" title="Attention !">
+        <p>
+          Il existe déja un utilisateur avec le même identifiant...
+        </p>
+    </div> 
+   <?php
+}
 if (isset($_GET['ajout_utilisateur']) && $_GET['ajout_utilisateur'] == 'ok') {
     ?>	
     <div class="dialog_admin" title="Utilisateur créé">
@@ -162,21 +171,25 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
 
             <div id="modifier_utilisateur">
                 <h3>Ajouter utilisateur</h3>
-
+                
                 <form id="form_creer_utililisateur" action="accueil.php?module=administration&amp;action=gestion_administration&amp;act=ajout_user" method="post" enctype="multipart/form-data">	  
                     <div class="form_user">
                         <label for="id" class="lab_txt" >Identifiant :</label>   
-                        <input type="text" class="inputfield" id="id" name="id" required="required" maxlength="45" title="Saisir l'identifiant pour l'utilisateur"/>
+                        <input type="text" class="inputfield" id="id" name="id" required="required" maxlength="45" title="Saisir l'identifiant pour l'utilisateur"
+                               />
                         <label for="nom" class="lab_txt">Nom :</label>   
-                        <input type="text" class="inputfield" id="nom" name="nom" required="required" maxlength="45" title="Saisir le nom de l'utilisateur"/>
+                        <input type="text" class="inputfield" id="nom" name="nom" required="required" maxlength="45" title="Saisir le nom de l'utilisateur"
+                               >
                         <label for="prenom" class="lab_txt">Pr&eacute;nom :</label>   
-                        <input type="text" class="inputfield" id="prenom" name="prenom" required="required" maxlength="45" title="Saisir le pr&eacute;nom de l'utilisateur"/>
+                        <input type="text" class="inputfield" id="prenom" name="prenom" required="required" maxlength="45" title="Saisir le pr&eacute;nom de l'utilisateur"
+                               >
                         <label for="pass" class="lab_txt">Mot de passe :</label>   
                         <input type="password" class="inputfield" id="pass" name="pass" required="required" maxlength="45" title="Saisir un mot de passe pour l'utilisateur"/>
                         <label for="repass" class="lab_txt">Confirmer le mot de passe :</label>   
                         <input type="password" class="inputfield" id="repass" name="repass" required="required" maxlength="45" title="Saisir a nouveau le mot de passe"/>
                         <label for="administrator" class="lab_txt">Administrateur :</label>   
-                        <input type="checkbox" class="inputfield" id="administrator" name="administrator"/>
+                        <input type="checkbox" class="inputfield" id="administrator" name="administrator"
+                               />
                     </div>
                     <div class="btn_form_user">
                         <button id="valider_user" onClick="ajouter_user" type="submit">Ajouter l'utilisateur</button>

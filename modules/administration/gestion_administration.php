@@ -49,17 +49,17 @@ if (isset($_GET["act"]) && $_GET["act"] == "ajout_user") {
 
         /** ajouter_utilisateur_dans_bdd() est defini dans ~/modeles/utilisateur.php */
         $id_utilisateur = ajouter_utilisateur_dans_bdd($ident, $nom, $prenom, $pass, $administrateur);
-        
         /** Si la base de donnees a bien voulu ajouter le dossier (pas de doublons) */
-        if (is_int($id_utilisateur)) {
+        if (is_numeric($id_utilisateur)) {
 
             /** On transforme la chaine en entier */
             $id_utilisateur = (int) $id_utilisateur;
 
-            /** Affichage de la confirmation d'insertion */
             
             header('location: accueil.php?module=administration&action=gestion_administration&ajout_utilisateur=ok');
         } else/** Gestion des doublons */ {
+            
+            
             header('location: accueil.php?module=administration&action=gestion_administration&erreur=doubleident');
         }
     } else {
