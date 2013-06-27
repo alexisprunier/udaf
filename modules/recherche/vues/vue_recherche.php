@@ -99,10 +99,10 @@
 
             <div id="col4" class="col">
                 <label for="date_debut" class="lab_txt" >De : </label>
-                <input type="text" name="choix_date_debut" class="datepicker inputfield" value="<?php echo $_GET['date_debut']; ?>" placeholder="Selectionner date" id="date-debut"/></input>
+                <input type="text" name="choix_date_debut" class="datepicker inputfield" value="<?php echo $_GET['choix_date_debut']; ?>" placeholder="Selectionner date" id="date-debut"/></input>
 
                 <label for="date_fin"class="lab_txt" >&Agrave; : </label>
-                <input type="text" name="choix_date_fin" class="datepicker inputfield" value="<?php echo $_GET['date_fin']; ?>" placeholder="Selectionner date" id="date_fin"/></input>
+                <input type="text" name="choix_date_fin" class="datepicker inputfield" value="<?php echo $_GET['choix_date_fin'] ?>" placeholder="Selectionner date" id="date_fin"/></input>
 
 
                 <input type="submit" id="btn_rechercher"  value="Appliquer filtres"/>
