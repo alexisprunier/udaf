@@ -744,7 +744,8 @@ div#gestion_fichier{
 div#liste_fichiers{
     display : inline-block;
     width : 320px;
-    height: 111px;
+    height: 136px;
+    margin-top: -20px;
 }
 
 table#tab_fichier{
