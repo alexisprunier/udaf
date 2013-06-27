@@ -118,7 +118,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
     $dossier_physique = $_POST['check_physique'] == 'on' ? 1 : 0;
     
      
-    $createur_dossier = $_SESSION['id'];
+    $createur_dossier = $_POST['list_users'];
    
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
