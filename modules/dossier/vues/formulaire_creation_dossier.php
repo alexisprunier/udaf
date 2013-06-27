@@ -409,7 +409,13 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
 
                     <label for="liste_fournisseur" class="lab_txt">Liste fournisseurs :</label> 
                     <select id="liste_fournisseur" class="inputfield" onChange="changeFournisseur(this.selectedIndex)">
-                        <option value="<?php if(isset($_GET['id'])) echo $client['nom'] ?>"><?php if(isset($_GET['id'])) echo $client['nom'] ?></option>
+                        <option value="<?php if(isset($_GET['id'])) echo $fournisseur['id'];?>">         
+                            <?php 
+                                if($fournisseur['raison_sociale'] != null) 
+                                   echo $fournisseur['raison_sociale'];
+                                else echo $fournisseur['nom'] . " " . $fournisseur['prenom'];?>
+                           
+                        </option>
                       
                         
 <?php
