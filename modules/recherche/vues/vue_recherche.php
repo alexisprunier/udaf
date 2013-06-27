@@ -131,7 +131,6 @@
             <tbody>
 
                 <?php
-                
                 foreach ($lignes_tableau as $ligne) {
                     ?>
                 

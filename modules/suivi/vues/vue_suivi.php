@@ -1,10 +1,10 @@
 <div id="recherche">
     <div id="champs_recherche" class="recherche">
         <h3>Recherche des dossiers</h3>
-        <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">
+        <form method="GET" action="accueil.php?module=suivi&action=suivi_dossier">
             <div id="col1" class="col">
-                <input type="hidden" name="module" value="recherche"/>
-                <input type="hidden" name="action" value="rechercher_dossier"/>
+                <input type="hidden" name="module" value="suivi"/>
+                <input type="hidden" name="action" value="suivi_dossier"/>
                 <label for="choix_numero_dossier" class="lab_txt" >N&deg; du dossier : </label>
                 <input type="text" name="choix_numero_dossier" id="choix_numero_dossier" value="<?php echo $_GET['choix_numero_dossier']; ?>" list="numero_dossier" placeholder="ex : 20130001" class="inputfield"/>
                 <datalist id="numero_dossier">
@@ -96,6 +96,7 @@
                     ?>
                 </datalist>
             </div>
+
             <div id="col4" class="col">
                 <label for="date_debut" class="lab_txt" >De : </label>
                 <input type="text" name="choix_date_debut" class="datepicker inputfield" value="<?php echo $_GET['choix_date_debut']; ?>" placeholder="Selectionner date" id="date-debut"/></input>
@@ -130,7 +131,6 @@
             <tbody>
 
                 <?php
-                
                 foreach ($lignes_tableau as $ligne) {
                     ?>
                 

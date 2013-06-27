@@ -41,43 +41,48 @@ foreach ($tab_dossier as &$dossier) {
 
     array_push($lignes_tableau, $ligne);
 }
-
+//Permet de trier par ordre alpha sur le nom
+function cmp($a, $b)
+{
+    return strcmp($a["nom"], $b["nom"]);
+}
+usort($lignes_tableau, "cmp");
 // On filtre les dossiers
 
 foreach ($lignes_tableau as $key => $ligne) {
     if (!empty($_GET['choix_numero_dossier']) && $_GET['choix_numero_dossier'] != $ligne['n_dossier']) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_nom']) && $_GET['choix_nom'] != $ligne['nom']) {
+    if (!empty($_GET['choix_nom']) && ( strtoupper($_GET['choix_nom']) != strtoupper($ligne['nom']))) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_prenom']) && $_GET['choix_prenom'] != $ligne['prenom']) {
+    if (!empty($_GET['choix_prenom']) && ( strtoupper($_GET['choix_prenom']) != strtoupper($ligne['prenom']))) {
         unset($lignes_tableau[$key]);
     }
     if (!empty($_GET['choix_telephone']) && $_GET['choix_telephone'] != $ligne['telephone']) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_mail']) && $_GET['choix_mail'] != $ligne['mail']) {
+    if (!empty($_GET['choix_mail']) && ( strtoupper($_GET['choix_mail']) != strtoupper($ligne['mail']))) {
         unset($lignes_tableau[$key]);
     }
     if (!empty($_GET['choix_theme']) && $_GET['choix_theme'] != $ligne['theme']) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_fournisseur']) && $_GET['choix_fournisseur'] != $ligne['fournisseur']) {
+    if (!empty($_GET['choix_fournisseur']) && ( strtoupper($_GET['choix_fournisseur']) != strtoupper($ligne['fournisseur']))) {
         unset($lignes_tableau[$key]);
     }
 
-    $date_creation = substr($ligne['date'], 6, 4) . substr($ligne['date'], 3, 2) . substr($ligne['date'], 0, 2);
+    $date_creation_d = substr($ligne['date'], 6, 4) . substr($ligne['date'], 3, 2) . substr($ligne['date'], 0, 2);
 
     if (!empty($_GET['choix_date_debut'])) {
         $date_debut = substr($_GET['choix_date_debut'], 6, 4) . substr($_GET['choix_date_debut'], 3, 2) . substr($_GET['choix_date_debut'], 0, 2);
-        if ($date_creation <= $date_debut) {
+        if ($date_creation_d <= $date_debut) {
             unset($lignes_tableau[$key]);
         }
     }
     if (!empty($_GET['choix_date_fin'])) {
         $date_fin = substr($_GET['choix_date_fin'], 6, 4) . substr($_GET['choix_date_fin'], 3, 2) . substr($_GET['choix_date_fin'], 0, 2);
-        if ($date_creation >= $date_fin) {
+        if ($date_creation_d >= $date_fin) {
             unset($lignes_tableau[$key]);
         }
     }

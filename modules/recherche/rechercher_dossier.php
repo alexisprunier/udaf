@@ -38,6 +38,12 @@ foreach ($tab_dossier as &$dossier) {
 
     array_push($lignes_tableau, $ligne);
 }
+//Permet de trier par ordre alpha sur le nom
+function cmp($a, $b)
+{
+    return strcmp($a["nom"], $b["nom"]);
+}
+usort($lignes_tableau, "cmp");
 
 // On filtre les dossiers
 
@@ -45,22 +51,22 @@ foreach ($lignes_tableau as $key => $ligne) {
     if (!empty($_GET['choix_numero_dossier']) && $_GET['choix_numero_dossier'] != $ligne['n_dossier']) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_nom']) && $_GET['choix_nom'] != $ligne['nom']) {
+    if (!empty($_GET['choix_nom']) && ( strtoupper($_GET['choix_nom']) != strtoupper($ligne['nom']))) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_prenom']) && $_GET['choix_prenom'] != $ligne['prenom']) {
+    if (!empty($_GET['choix_prenom']) && ( strtoupper($_GET['choix_prenom']) != strtoupper($ligne['prenom']))) {
         unset($lignes_tableau[$key]);
     }
     if (!empty($_GET['choix_telephone']) && $_GET['choix_telephone'] != $ligne['telephone']) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_mail']) && $_GET['choix_mail'] != $ligne['mail']) {
+    if (!empty($_GET['choix_mail']) && ( strtoupper($_GET['choix_mail']) != strtoupper($ligne['mail']))) {
         unset($lignes_tableau[$key]);
     }
     if (!empty($_GET['choix_theme']) && $_GET['choix_theme'] != $ligne['theme']) {
         unset($lignes_tableau[$key]);
     }
-    if (!empty($_GET['choix_fournisseur']) && $_GET['choix_fournisseur'] != $ligne['fournisseur']) {
+    if (!empty($_GET['choix_fournisseur']) && ( strtoupper($_GET['choix_fournisseur']) != strtoupper($ligne['fournisseur']))) {
         unset($lignes_tableau[$key]);
     }
 
