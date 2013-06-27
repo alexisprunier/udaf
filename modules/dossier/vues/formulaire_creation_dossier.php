@@ -545,7 +545,7 @@ foreach ($tab_fournisseur as $key => $value) {
 
                                  ?>
                                     
-                                        <td align="left"><a href="uploads/<?php echo $_SESSION['dossier_ref'] . '/' .  $fichier->nom?>" target="_blank"><?php echo $fichier->nom ?></a></td>
+                                        <td align="left"><a href="uploads/<?php echo $_SESSION['dossier_ref'] . '/' .  ($fichier->nom)?>" target="_blank"><?php echo $fichier->nom; ?></a></td>
                                         <td align="left"><?php echo $fichier->type_fichier ?></td>
                                         <td align="center">
                                             <a class="supprimer_ligne" href="accueil.php?module=dossier&amp;action=creer_dossier&amp;suppr=fichier&id=<?php echo $id_fichier; ?>"><img src="images/icon/icon_delete.png"/></a>

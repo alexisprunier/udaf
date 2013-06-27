@@ -213,7 +213,11 @@ if ($_GET["ajout"] == "fichiers"){
             }
             else{
 
-               
+                $fichier = htmlentities($fichier, ENT_NOQUOTES, 'utf-8');
+    
+                $fichier = preg_replace('#&([A-za-z])(?:acute|cedil|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $fichier);
+                $fichier = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $fichier); // pour les ligatures e.g. '&oelig;'
+                $fichier = preg_replace('#&[^;]+;#', '', $fichier); // supprime les autres caractères
                 if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . utf8_decode($fichier))) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
                 {   
 
