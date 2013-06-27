@@ -848,8 +848,20 @@ div#droite_dossier{
 div#droite_dossier fieldset{
     height: 100%;
 }
+div#date_creation{
+    text-align: center;
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: bold;
+    color : #333;
+    background: rgba(255,130,54,0.8);
+    border-radius: 3px;
+    margin: 10px auto;
+    box-shadow: inset 0px 8px 2px 1px rgba(255,130,54,0.45), 0 0 0px 1px #aaa;
+    width: 310px;
+}
 div#evenement_dossier{
-    height: 450px;
+    height: 410px;
 }
 textarea.comment_rdv{
     width: 372px;

@@ -213,7 +213,7 @@ function supprimer_dossier_dans_bdd($dossier_ref) {
         if($site->dossier_id == $dossier_ref)
             supprimer_site_dans_bdd($site->site_id);
     }
-    //Suppression des événements du dossier
+    //Suppression des ï¿½vï¿½nements du dossier
     $tab_evenements = lister_evenement_dans_bdd(); 
     foreach ($tab_evenements as &$event) {
         if($event->dossier_id == $dossier_ref)

@@ -8,9 +8,10 @@
             <label for="mode" class="lab_txt">Mode de contact <span class="require">*</span> :</label>   
             
             <select id="mode" name="mode" class="inputfield" required title="Mode de contact">
-                <option value="e-Mail">e-Mail</option>
+                <option value="Téléphone">Courrier</option>
+                <option value="e-Mail">e-Mail</option>  
                 <option value="Rendez-vous">Rendez-vous</option>
-                <option value="Téléphone">Téléphone</option>
+                <option value="Téléphone">Téléphone</option>               
             </select>
             <label for="liste_utilisateur" class="lab_txt">Utilisateur concerné(e) <span class="require">*</span> :</label> 
             

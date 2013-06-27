@@ -676,7 +676,11 @@ foreach ($tab_user as &$user) {
     <div id="droite_dossier">
         <fieldset class="ogconso">
             <legend>Ev&eacute;nement</legend>
+            <div id="date_creation">
+                    Date d'ouverture du dossier : <?php echo $dossier_select["date_creation_d"]; ?>
+                </div>
             <div id="evenement_dossier">
+                
                 <table id="tab_event" class="scroll_tab">
                     <thead>
                         <tr id="head_tab_rdv">
