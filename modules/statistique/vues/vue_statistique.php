@@ -49,6 +49,7 @@
                 <th  align="center">RV</th>
                 <th  align="center">Tel</th>
                 <th  align="center">Mail</th>
+                <th  align="center">Courrier</th>
                 <th  align="center">1</th>
                 <th  align="center">2</th>
                 <th  align="center">3</th>
@@ -79,6 +80,7 @@
                     <td  class="cell_result" align="center"><?php echo ($ligne['Rendez-vous']!=null ? $ligne['Rendez-vous'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['Téléphone']!=null ? $ligne['Téléphone'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['Mail']!=null ? $ligne['Mail'] : '0' ); ?></td>
+                    <td  class="cell_result" align="center"><?php echo ($ligne['Courrier']!=null ? $ligne['Courrier'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['1']!=null ? $ligne['1'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['2']!=null ? $ligne['2'] : '0' ); ?></td>
                     <td  class="cell_result" align="center"><?php echo ($ligne['3']!=null ? $ligne['3'] : '0' ); ?></td>

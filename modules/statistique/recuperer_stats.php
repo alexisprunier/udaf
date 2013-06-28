@@ -24,6 +24,7 @@ foreach ($tab_dossier as &$dossier){
         'Rendez-vous' => 0,
         'Téléphone' => 0,
         'e-Mail' => 0,
+        'Courrier' => 0,
         '1' => $dossier->theme_id == 1 ? 1 : 0,
         '2' => $dossier->theme_id == 2 ? 1 : 0,
         '3' => $dossier->theme_id == 3 ? 1 : 0,
@@ -70,22 +71,23 @@ $sheet->SetCellValue('D1', 'Date de clôture');
 $sheet->SetCellValue('E1', 'Rendez-vous');
 $sheet->SetCellValue('F1', 'Téléphone');
 $sheet->SetCellValue('G1', 'Mail');
-$sheet->SetCellValue('H1', 'Alimentation-Agriculture');
-$sheet->SetCellValue('I1', 'Assurance');
-$sheet->SetCellValue('J1', 'Automobile-Transport');
-$sheet->SetCellValue('K1', 'Banque-Argent');
-$sheet->SetCellValue('L1', 'Commerce');
-$sheet->SetCellValue('M1', 'Consumérisme');
-$sheet->SetCellValue('N1', 'Droit-Justice');
-$sheet->SetCellValue('O1', 'Economie');
-$sheet->SetCellValue('P1', 'Education-Société');
-$sheet->SetCellValue('Q1', 'Energie(Electricité-Gaz)');
-$sheet->SetCellValue('R1', 'Environnement-Dévelopement durable');
-$sheet->SetCellValue('S1', 'Internet-Image-Son');
-$sheet->SetCellValue('T1', 'Logement-Immobilier');
-$sheet->SetCellValue('U1', 'Loisir-Tourisme');
-$sheet->SetCellValue('V1', 'Santé');
-$sheet->SetCellValue('W1', 'Sécurité domestique');
+$sheet->SetCellValue('H1', 'Courrier');
+$sheet->SetCellValue('I1', 'Alimentation-Agriculture');
+$sheet->SetCellValue('J1', 'Assurance');
+$sheet->SetCellValue('K1', 'Automobile-Transport');
+$sheet->SetCellValue('L1', 'Banque-Argent');
+$sheet->SetCellValue('M1', 'Commerce');
+$sheet->SetCellValue('N1', 'Consumérisme');
+$sheet->SetCellValue('O1', 'Droit-Justice');
+$sheet->SetCellValue('P1', 'Economie');
+$sheet->SetCellValue('Q1', 'Education-Société');
+$sheet->SetCellValue('R1', 'Energie(Electricité-Gaz)');
+$sheet->SetCellValue('S1', 'Environnement-Dévelopement durable');
+$sheet->SetCellValue('T1', 'Internet-Image-Son');
+$sheet->SetCellValue('U1', 'Logement-Immobilier');
+$sheet->SetCellValue('V1', 'Loisir-Tourisme');
+$sheet->SetCellValue('W1', 'Santé');
+$sheet->SetCellValue('X1', 'Sécurité domestique');
 
 $i=0;
 foreach($tableau as $key => $value){
