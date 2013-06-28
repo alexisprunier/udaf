@@ -162,7 +162,7 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
      }
      else
      {        
-        $id_dossier = ajouter_dossier_dans_bdd($reference, date("d/m/Y"), $problematique, 0, "En cours", $comment_cloture, "", $dossier_physique, $createur_dossier, 0, 0, 0, 0);        
+        $id_dossier = ajouter_dossier_dans_bdd($reference, date("d/m/Y"), "", 0, "En cours", "", "", 0, $_SESSION['id'], 0, 0, 0, 0);        
         $path = 'Location: /accueil.php?module=dossier&action=creer_dossier&id=' . $reference;
      }
          
