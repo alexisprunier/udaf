@@ -72,13 +72,12 @@ if ($_GET["ajout"] == "evenement" || $_GET["modifier"] == "evenement"){
                 $_POST['liste_utilisateur'],
                 $_GET['id']);
     else if(isset($_GET['modifier'])) 
-       modifier_evenement_dans_bdd(
+        modifier_evenement_dans_bdd(
                 $_POST['date'],
                 $_POST['mode'],
                 $_POST['commentaire_event'],
                 $_POST['liste_utilisateur'],
                 $_GET['event']);
-              
     
     $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'] . '&from=event';
     header($path);

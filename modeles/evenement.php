@@ -153,9 +153,8 @@ function modifier_evenement_dans_bdd($date_event, $mode_contact, $comm_event, $u
                         date_event = :date_event,
                         mode_contact = :mode_contact,
                         comm_event = :comm_event,
-                        user_id = :user_id,
-                            WHERE evenement_id = :evenement_id"
-                                                    
+                        user_id = :user_id
+                        WHERE evenement_id = :evenement_id"
     );
 
     $requete->bindValue(':date_event', $date_event);

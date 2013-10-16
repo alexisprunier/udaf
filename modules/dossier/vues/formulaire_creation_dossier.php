@@ -97,11 +97,13 @@ print_r($_POST["commentaire_event"]);
     
    
      function changeSousTheme(selectedInd) {
+         alert(selectedInd);
         var form1 = document.getElementById("form_creer_dossier");
         document.form_creer_dossier.soustheme.options.length = 0;
         y = 0;
         for (var i = 0; i < soustheme.length; i++) {
             if (soustheme[i].theme_id == selectedInd) {
+                alert(soustheme[i].theme_id);
                 form1.soustheme.options[y] = new Option(soustheme[i].nom, soustheme[i].soustheme_id);
                 y++;
             }
