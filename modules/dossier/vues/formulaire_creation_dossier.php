@@ -6,12 +6,21 @@
  * @date      30 janvier 2013
  * @brief     Definit l'IHM de la page d'ajout d'un client.
  */
+print_r($_POST["commentaire_event"]);
 ?>
 
 <script type="text/javascript">
     
     $(document).ready( function () {
+        
+        $("a#click_modifier_event").click(function(e){
+            e.preventDefault();
+            window.location.href = $(this).attr("href");
+        });
+        
+        
         var theHREF;
+        
         $( "#dialog-confirm-dossier" ).dialog({
             resizable: false,
             height:200,
@@ -689,6 +698,7 @@ foreach ($tab_user as &$user) {
                             <th align="left">Mode de contact</th>
                             <th align="left">Utilisateur</th>
                             <th>D&eacute;tails</th>
+                            <th>Modifier</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -712,7 +722,9 @@ foreach ($tab_user as &$user) {
                                     <td id="date_rdv" class="ligne_rdv"><?php echo $ligne_evenement['date_evenement']; ?></td>
                                     <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
                                     <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
-                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>                
+                                    <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>  
+                                    <td class="ligne_rdv"><a href="accueil.php?module=dossier&action=modifier_evenement&id=<?php echo $ligne_evenement['id_evenement']; ?>" id="click_modifier_event"></a></td>                
+
                                 </tr>
                                 <?php
                                 if (($i % 2) == 0)
@@ -720,7 +732,7 @@ foreach ($tab_user as &$user) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="5" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
+                                    <td colspan="6" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
                                 </tr>
                         <?php
                         

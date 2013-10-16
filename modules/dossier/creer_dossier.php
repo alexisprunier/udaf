@@ -63,14 +63,22 @@ if ($_GET["ajout"] == "site"){
     header($path);
 }
 
-if ($_GET["ajout"] == "evenement"){
-    ajouter_evenement_dans_bdd(
-            $_POST['date'],
-            $_POST['mode'],
-            $_POST['commentaire_event'],
-            $_POST['liste_utilisateur'],
-            $_GET['id']);
-  
+if ($_GET["ajout"] == "evenement" || $_GET["modifier"] == "evenement"){
+    if(isset($_GET['ajout'])) 
+        ajouter_evenement_dans_bdd(
+                $_POST['date'],
+                $_POST['mode'],
+                $_POST['commentaire_event'],
+                $_POST['liste_utilisateur'],
+                $_GET['id']);
+    else if(isset($_GET['modifier'])) 
+       modifier_evenement_dans_bdd(
+                $_POST['date'],
+                $_POST['mode'],
+                $_POST['commentaire_event'],
+                $_POST['liste_utilisateur'],
+                $_GET['event']);
+              
     
     $path = "Location: /accueil.php?module=dossier&action=creer_dossier&id=". $_GET['id'] . '&from=event';
     header($path);
