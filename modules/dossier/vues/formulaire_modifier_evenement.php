@@ -1,5 +1,3 @@
-<?php echo $_GET["id"];?>
-
 <div id="ajouter_evenement">
     <h3> Modifier l'événement du dossier <?php echo $_SESSION['dossier_ref']; ?></h3>
     <form id="form_creer_dossier" action="accueil.php?module=dossier&action=creer_dossier&modifier=evenement&id=<?php echo $_SESSION['dossier_ref']; ?>&event=<?php echo $_GET['id']; ?>&info=remplir" method="post" enctype="multipart/form-data">
