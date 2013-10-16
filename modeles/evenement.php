@@ -126,4 +126,49 @@ function supprimer_evenement_dans_bdd($id_evenement) {
     }
     return $requete->errorInfo();
 }
+function selectionner_evenement_dans_bdd($evenement_id) {
+    /** on instancie une nouvelle connexion a la base de donnees via la classe PDO2 */
+    $pdo = PDO2::getInstance();
+
+    /** on prepare notre requete avec les valeurs pass�s en parametre */
+    $requete = $pdo->prepare("SELECT * FROM evenement WHERE evenement_id = :evenement_id");
+
+    $requete->bindValue(':evenement_id', $evenement_id);
+
+    /** j'execute cette requete */
+    $requete->execute();
+
+    if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+        $requete->closeCursor();
+        return $result;
+    }
+
+    return $requete->errorInfo();
+}
+function modifier_evenement_dans_bdd($date_event, $mode_contact, $comm_event, $user_id, $evenement_id) {
+    $pdo = PDO2::getInstance();
+
+    $requete = $pdo->prepare("UPDATE evenement SET                        
+                        date_event = :date_event,
+                        mode_contact = :mode_contact,
+                        comm_event = :comm_event,
+                        user_id = :user_id,
+                            WHERE evenement_id = :evenement_id"
+                                                    
+    );
+
+    $requete->bindValue(':date_event', $date_event);
+    $requete->bindValue(':mode_contact', $mode_contact);
+    $requete->bindValue(':comm_event', $comm_event);
+    $requete->bindValue(':user_id', $user_id);
+    $requete->bindValue(':evenement_id', $evenement_id);
+
+    if ($requete->execute()) {
+        /** si l'insertion c'est bien passe la methode retourne le dernier id de la news inseree */
+        return $id;
+    }
+    /** sinon elle retourne une erreur */
+    return $requete->errorInfo();
+}
 ?>

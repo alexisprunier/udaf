@@ -952,6 +952,11 @@ height: 43px;
 margin: -21px 0 0 -290px;
 
 }
+a#click_modifier_event{
+    background : url('../images/icon/icon_edit.png') no-repeat 50% 50%;
+    display : block;
+    height : 20px;
+}
 
 /***********************************************************
 ***************   FORM AJOUT EVENEMENT SITE FICHIER ********
