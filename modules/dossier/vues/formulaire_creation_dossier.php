@@ -10,7 +10,7 @@ print_r($_POST["commentaire_event"]);
 ?>
 
 <script type="text/javascript">
-    
+
     $(document).ready( function () {
         
         $("a#click_modifier_event").click(function(e){
@@ -82,28 +82,22 @@ print_r($_POST["commentaire_event"]);
             }
             return(true);
         });
-        
+
     });
-    
-    
-                    
+                        
         
    //Préparation des données
-    
     
     personnes = <?php  echo json_encode($tab_personne) ?>;
     fournisseurs = <?php echo json_encode($tab_fournisseur) ?>;
     soustheme = <?php echo json_encode($tab_sstheme) ?>;
     
-   
      function changeSousTheme(selectedInd) {
-         alert(selectedInd);
         var form1 = document.getElementById("form_creer_dossier");
         document.form_creer_dossier.soustheme.options.length = 0;
         y = 0;
         for (var i = 0; i < soustheme.length; i++) {
-            if (soustheme[i].theme_id == selectedInd) {
-                alert(soustheme[i].theme_id);
+            if (soustheme[i].theme_id == parseInt(selectedInd) + 1) {
                 form1.soustheme.options[y] = new Option(soustheme[i].nom, soustheme[i].soustheme_id);
                 y++;
             }
@@ -233,6 +227,7 @@ print_r($_POST["commentaire_event"]);
         } else {
             document.cookie = "commentaire_f=";
         }
+
 	if (document.getElementById("theme").selectedIndex != null) {
             document.cookie = "theme=" + document.getElementById("theme").selectedIndex;
         } else {
@@ -494,13 +489,13 @@ foreach ($tab_fournisseur as $key => $value) {
                         <label id="lab_theme" class="lab_txt">Th&egrave;me :</label>
                         <div id="div_theme">
                             <select class="liste_problematique" id="theme" name="theme" title="Choisir un th&egrave;me" onChange="changeSousTheme(this.selectedIndex)" required >
-                                <option value="<?php
-                                    if (isset($_GET['id'])){echo $dossier_select["theme_id"];}?>">
-                                        <?php if (isset($_GET['id'])){echo $theme["nom"];}?>
-                                </option> 
                                     <?php
                                     foreach ($tab_theme as $key => $value) {
-                                        echo '<option value="' . $tab_theme[$key]->theme_id . '" >' . $tab_theme[$key]->nom . '</option>';
+                                        echo '<option value="' . $tab_theme[$key]->theme_id . '" ';
+                                        if ($tab_theme[$key]->theme_id == $dossier_select['theme_id']){
+                                            echo ' selected="selected"';
+                                        }
+                                        echo '>' . $tab_theme[$key]->nom . '</option>';
                                     }
                                     ?>
                             </select>
@@ -509,12 +504,25 @@ foreach ($tab_fournisseur as $key => $value) {
                         <label id="lab_soustheme" class="lab_txt">Sous-Th&egrave;me :</label>
                         <div id="div_soustheme">
                             <select class="liste_problematique" id="soustheme" name="soustheme" title="Choisir un sous-th&egrave;me" >
-                                <option value="<?php if (isset($_GET['id'])){echo $dossier_select["soustheme_id"];}?>">
-                                        <?php if (isset($_GET['id'])){echo $sstheme["nom"];}?>                                        
-                                </option> 
-                                
-
-}
+                                <?php
+                                foreach ($tab_sstheme as $key => $value) {
+                                    if ($tab_sstheme[$key]->theme_id == $dossier_select['theme_id']){
+                                        echo '<option value="';
+                                        if (isset($_GET['id'])){
+                                            echo $tab_sstheme[$key]->nom;
+                                        }
+                                        echo '"';
+                                        if ($tab_sstheme[$key]->soustheme_id == $dossier_select['soustheme_id']){
+                                            echo ' selected="selected"';
+                                        }
+                                        echo ">";
+                                        if (isset($_GET['id'])){
+                                            echo $tab_sstheme[$key]->nom;
+                                        }                                 
+                                        echo '</option>'; 
+                                    }
+                                }
+                                ?> 
                             </select>
                         </div>
                     </div>
