@@ -76,13 +76,13 @@ foreach ($lignes_tableau as $key => $ligne) {
 
     if (!empty($_GET['choix_date_debut'])) {
         $date_debut = substr($_GET['choix_date_debut'], 6, 4) . substr($_GET['choix_date_debut'], 3, 2) . substr($_GET['choix_date_debut'], 0, 2);
-        if ($date_creation_d <= $date_debut) {
+        if ($date_creation_d < $date_debut) {
             unset($lignes_tableau[$key]);
         }
     }
     if (!empty($_GET['choix_date_fin'])) {
         $date_fin = substr($_GET['choix_date_fin'], 6, 4) . substr($_GET['choix_date_fin'], 3, 2) . substr($_GET['choix_date_fin'], 0, 2);
-        if ($date_creation_d >= $date_fin) {
+        if ($date_creation_d > $date_fin) {
             unset($lignes_tableau[$key]);
         }
     }

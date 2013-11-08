@@ -947,9 +947,9 @@ td#deplier_ok:hover{
 
 a#lien_detail{
     position: absolute;
-width: 342px;
+width: 290px;
 height: 43px;
-margin: -21px 0 0 -290px;
+margin: -21px 0 0 -250px;
 
 }
 a#click_modifier_event{

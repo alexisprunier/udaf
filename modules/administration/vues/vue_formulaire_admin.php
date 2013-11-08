@@ -312,10 +312,8 @@ if (isset($_GET['sup_fournisseur']) && $_GET['sup_fournisseur'] == 'ok') {
                                     ?>
                                     <td align="center"><?php echo $liste_fournisseur[$key]->date_creation_f; ?></td>
                                     <td><?php
-                                if ($liste_fournisseur[$key]->nom == null)
-                                    echo $liste_fournisseur[$key]->raison_sociale;
-                                else
-                                    echo $liste_fournisseur[$key]->nom . " " . $liste_fournisseur[$key]->prenom;
+                                                               
+                                    echo $liste_fournisseur[$key]->nom . " " . $liste_fournisseur[$key]->prenom . '(' . $liste_fournisseur[$key]->raison_sociale . ')';
                                     ?></td>
                                     <td align="center"><a class="supprimer_ligne" href="accueil.php?module=administration&amp;action=gestion_administration&amp;act=supp_fournisseur&id=<?php echo $id_fournisseur; ?>"><img src="images/icon/icon_delete.png"/></a></td>
                                 </tr>

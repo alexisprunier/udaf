@@ -1,4 +1,4 @@
-<div id="recherche">
+<div id="recherche">   
     <div id="champs_recherche" class="recherche">
         <h3>Recherche des dossiers</h3>
         <form method="GET" action="accueil.php?module=recherche&action=rechercher_dossier">

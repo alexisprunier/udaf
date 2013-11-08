@@ -417,9 +417,7 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
                     <select id="liste_fournisseur" class="inputfield" onChange="changeFournisseur(this.selectedIndex)">
                         <option value="<?php if(isset($_GET['id'])) echo $fournisseur['id'];?>">         
                             <?php 
-                                if($fournisseur['raison_sociale'] != null) 
-                                   echo $fournisseur['raison_sociale'];
-                                else echo $fournisseur['nom'] . " " . $fournisseur['prenom'];?>
+                                echo $fournisseur['nom'] . " " . $fournisseur['prenom'] . '(' . $fournisseur['raison_sociale'] . ')';?>
                            
                         </option>
                       
@@ -427,11 +425,7 @@ if (isset($_GET['erreur']) && $_GET['erreur']=="extension") {
 <?php
 
 foreach ($tab_fournisseur as $key => $value) {
-    
-    if($tab_fournisseur[$key]->raison_sociale != null)
-        echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->raison_sociale . '</option>';
-        //sif($tab_fournisseur[$key]->nom != null && $tab_fournisseur[$key]->prenom != null ) echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->nom . ' ' .  $tab_fournisseur[$key]->prenom . ' (' .$tab_fournisseur[$key]->raison_sociale . ') </option>';
-    else echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->nom . ' ' .  $tab_fournisseur[$key]->prenom .  '</option>';
+    echo '<option value="' . $tab_fournisseur[$key]->fournisseur_id . '">' . $tab_fournisseur[$key]->nom . ' ' .  $tab_fournisseur[$key]->prenom . '(' . $tab_fournisseur[$key]->raison_sociale . ')</option>';
 }
 ?>
                     </select>
@@ -733,7 +727,7 @@ foreach ($tab_user as &$user) {
                                     <td id="mode_rdv" class="ligne_rdv"><?php echo $ligne_evenement['mode_contact']; ?></td>
                                     <td id="user_rdv" class="ligne_rdv"><?php echo $ligne_evenement['utilisateur']; ?></td>
                                     <td id="deplier" class="ligne_rdv"><a href="#" id="lien_detail" class="click_event"></a></td>  
-                                    <td class="ligne_rdv"><a href="accueil.php?module=dossier&action=modifier_evenement&id=<?php echo $ligne_evenement['id_evenement']; ?>" id="click_modifier_event"></a></td>                
+                                    <td class="ligne_rdv"><a href="accueil.php?module=dossier&action=modifier_evenement&id=<?php echo $ligne_evenement['id_evenement']; ?>" id="click_modifier_event" onClick="javascript:void(save_fields('accueil.php?module=dossier&action=creer_evenement&id=<?php echo $_GET['id']; ?>'));"></a></td>                
 
                                 </tr>
                                 <?php
