@@ -24,7 +24,7 @@
             </select>
             
             <label for="commentaire_event" class="lab_txt">Commentaire :</label>   
-            <textarea id="commentaire_event" name="commentaire_event" title="Commentaire sur l'évènement"><?php echo $event['comm_event'];?></textarea>
+            <textarea id="commentaire_event" name="commentaire_event" title="Commentaire sur l'évènement"><?php echo stripslashes($event['comm_event']);?></textarea>
             <div id="bouton_form_ajouter">
                 <input type="button" value="Retour" onclick="location.href='/accueil.php?module=dossier&action=creer_dossier&id='+<?php echo $_SESSION['dossier_ref']; ?>+'&from=event'"/>
                 <button type="submit">Valider</button>
