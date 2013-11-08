@@ -742,7 +742,7 @@ foreach ($tab_user as &$user) {
                                     else
                                         echo "<tr class=\"odd cacher\">";
                               ?>
-                                    <td colspan="6" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous"><?php echo $ligne_evenement['commentaire']; ?></textarea></td>
+                                    <td colspan="6" ><textarea class="comment_rdv" placeholder="D&eacute;tails du rendez vous" readonly><?php echo stripslashes($ligne_evenement['commentaire']); ?></textarea></td>
                                 </tr>
                         <?php
                         

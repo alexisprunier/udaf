@@ -5,6 +5,8 @@ require_once(CHEMIN_LIB.'pdf/phpToPDF.php');
 require_once(CHEMIN_LIB.'pdf/fpdf.php');
 require_once(CHEMIN_LIB.'pdf/pdfclass.php');
 
+setlocale(LC_CTYPE, 'fr_FR.UTF-8');
+
 $path = 'libs/pdf/export/dossier_'.$_SESSION['dossier_ref'].'.pdf';
 
 $pdf = new PDF();
@@ -266,7 +268,7 @@ foreach ($tab_evenement as &$evenement) {
             ')),0);
             $pdf->SetFont('arial','',10);
             $pdf->SetXY(25, 95);
-            $pdf->MultiCell(160,7,html_entity_decode(utf8_decode($evenement->comm_event)),0);
+            $pdf->MultiCell(160,7,iconv('UTF-8','ISO-8859-1//TRANSLIT',stripslashes($evenement->comm_event)),0);
             
             $bas_page = true;
         }else{
@@ -305,7 +307,7 @@ foreach ($tab_evenement as &$evenement) {
             ')),0);
             $pdf->SetFont('arial','',10);
             $pdf->SetXY(25, 215);
-            $pdf->MultiCell(160,7,html_entity_decode(utf8_decode($evenement->comm_event)),0);
+            $pdf->MultiCell(160,7,iconv('UTF-8','ISO-8859-1//TRANSLIT',  stripslashes($evenement->comm_event)),0);
             
             $bas_page = false;
         }
