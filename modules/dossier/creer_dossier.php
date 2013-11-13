@@ -299,8 +299,6 @@ if(isset($_GET['id']))
     $sstheme = selectionner_sstheme_dans_bdd($dossier_select['soustheme_id']);
     $_SESSION['dossier_ref'] = $_GET['id'];
 
-   
-
 }
 if(isset($_GET['traite']))
 {

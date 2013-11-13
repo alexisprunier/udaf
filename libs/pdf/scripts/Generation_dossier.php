@@ -68,6 +68,7 @@ $pdf->MultiCell(170,6,html_entity_decode(utf8_decode('
   Mail :
   Téléphone :
   Commentaire :
+  
 
 ')),1);
 $pdf->SetFont('arial','',12);
@@ -82,7 +83,12 @@ $pdf->MultiCell(150,6,html_entity_decode(utf8_decode('
   '.$fournisseur['mail'].'
   '.$fournisseur['tel'].'
   '.$fournisseur['tel_port'].'
-  '.$fournisseur['comment_fournisseur'].'
+')),0);
+
+$pdf->SetFont('arial','',10);
+$pdf->SetXY(60, 180);
+$pdf->MultiCell(130,5,html_entity_decode(utf8_decode('
+  '.str_replace("€", "EUR", $fournisseur['comment_fournisseur']).'
 ')),0);
 
 $pdf->SetFont('arial','B',14);
@@ -174,7 +180,7 @@ $pdf->MultiCell(170,7,html_entity_decode(utf8_decode('
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(20, 76);
 $pdf->MultiCell(170,7,html_entity_decode(utf8_decode(
-$dossier_select['comment_cloture']
+str_replace("€", "EUR", $dossier_select['comment_cloture'])
 )),0);
 
 $pdf->SetFont('arial','B',14);
@@ -220,7 +226,7 @@ $pdf->MultiCell(150,7,html_entity_decode(utf8_decode('
 $pdf->SetFont('arial','',10);
 $pdf->SetXY(25, 161);
 $pdf->MultiCell(160,7,html_entity_decode(utf8_decode(
-    $dossier_select['problematique']
+    str_replace("€", "EUR", $dossier_select['problematique'])
 )),0);
 
 // PAGE POUR LES EVENEMENTS
@@ -268,7 +274,7 @@ foreach ($tab_evenement as &$evenement) {
             ')),0);
             $pdf->SetFont('arial','',10);
             $pdf->SetXY(25, 95);
-            $pdf->MultiCell(160,7,iconv('UTF-8','ISO-8859-1//TRANSLIT',stripslashes($evenement->comm_event)),0);
+            $pdf->MultiCell(160,7,iconv('UTF-8','ISO-8859-1//TRANSLIT',stripslashes(str_replace("€", "EUR", $evenement->comm_event))),0);
             
             $bas_page = true;
         }else{
@@ -307,7 +313,7 @@ foreach ($tab_evenement as &$evenement) {
             ')),0);
             $pdf->SetFont('arial','',10);
             $pdf->SetXY(25, 215);
-            $pdf->MultiCell(160,7,iconv('UTF-8','ISO-8859-1//TRANSLIT',  stripslashes($evenement->comm_event)),0);
+            $pdf->MultiCell(160,7,iconv('UTF-8','ISO-8859-1//TRANSLIT',  stripslashes(str_replace("€", "EUR", $evenement->comm_event))),0);
             
             $bas_page = false;
         }
