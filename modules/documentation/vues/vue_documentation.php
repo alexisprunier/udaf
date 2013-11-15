@@ -16,12 +16,11 @@
         }            
       });
       var page_demande= "#doc_accueil";
-      $(".ssmenu_doc a").click(function(){
-            event.preventDefault();
+      $(".ssmenu_doc li").click(function(){
             $(page_demande).fadeOut(50);            
-            $(".ssmenu_doc a").removeClass("select_sstitre");
+            $(".ssmenu_doc li").removeClass("select_sstitre");
             $(this).addClass("select_sstitre");
-            page_demande = "#doc_" + $(this).attr("href");
+            page_demande = "#doc_" + $(this).attr("id");
             $(page_demande).fadeIn(500);
       });
       
@@ -34,55 +33,55 @@
     <ul id="menu_doc">
         <li class='titre_menu_doc'>Gérer un dossier</li>
         <ul class="ssmenu_doc">
-            <li><a href="creer_dossier">Créer un nouveau dossier</a></li>
+            <li id="nouveau_dossier">Créer un nouveau dossier</li>
         <?php
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         ?>
-            <li><a href="supprimer_dossier">Supprimer un dossier</a></li>
+            <li id="supprimer_dossier">Supprimer un dossier</li>
         <?php } ?>
-            <li><a href="suivi_dossier">Modifier les informations d'un de ses dossier</a></li>
-            <li><a href="rechercher_dossier">Consulter les informations d'un dossier</a></li>
-            <li><a href="transferer_client">Transférer un dossier à un autre utilisateur</a></li>
-            <li><a href="export_dossier">Exporter un dossier en PDF</a></li>
+            <li id="suivi_dossier">Modifier les informations d'un de ses dossier</li>
+            <li id="rechercher_dossier">Consulter les informations d'un dossier</li>
+            <li id="transferer_client">Transférer un dossier à un autre utilisateur</li>
+            <li id="export_dossier">Exporter un dossier en PDF</li>
         </ul>
         <li class='titre_menu_doc'>Gérer les fichiers liés à un dossier</li>
         <ul class="ssmenu_doc">
-            <li><a href="stocker_fichier">Stocker un fichier</a></li>
-            <li><a href="supprimer_fichier">Supprimer un fichier</a></li>
-            <li><a href="telecharger_fichier">Télécharger un fichier</a></li>
+            <li id="stocker_fichier">Stocker un fichier</li>
+            <li id="supprimer_fichier">Supprimer un fichier</li>
+            <li id="telecharger_fichier">Télécharger un fichier</li>
         </ul>
         <li class='titre_menu_doc'>Gérer les sites internet d'un dossier</li>
         <ul class="ssmenu_doc">
-            <li><a href="ajouter_site">Ajouter un site internet</a></li>
-            <li><a href="supprimer_site">Supprimer un site internet</a></li>
-            <li><a href="visiter_site">Visiter un site internet du dossier</a></li>
+            <li id="ajouter_site">Ajouter un site internet</li>
+            <li id="supprimer_site">Supprimer un site internet</li>
+            <li id="visiter_site">Visiter un site internet du dossier</li>
         </ul>
         <li class='titre_menu_doc'>Gérer les événements d'un dossier</li>
         <ul class="ssmenu_doc">
-            <li><a href="ajouter_evenement">Ajouter un événement</a></li>
+            <li id="ajouter_evenement">Ajouter un événement</li>
         </ul>
         <li class='titre_menu_doc'>Générer un rapport annuel</li>
         <ul class="ssmenu_doc">
-            <li><a href="afficher_rapport">Afficher le rapport annuel</a></li>
-            <li><a href="exporter_rapport">Exporter le rapport annuel</a></li>
+            <li id="afficher_rapport">Afficher le rapport annuel</li>
+            <li id="exporter_rapport">Exporter le rapport annuel</li>
         </ul>
          <?php
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
             ?>
         <li class='titre_menu_doc'>Gérer les utilisateurs</li>
         <ul class="ssmenu_doc">
-            <li><a href="ajouter_user">Ajouter un utilisateur</a></li>
-            <li><a href="modifier_user">Modifier un utilisateur</a></li>
-            <li><a href="supprimer_user">Supprimer un utilisateur</a></li>
+            <li id="ajouter_user">Ajouter un utilisateur</li>
+            <li id="modifier_user">Modifier un utilisateur</li>
+            <li id="supprimer_user">Supprimer un utilisateur</li>
         </ul>
             <?php } ?>
         <li class='titre_menu_doc'>Consulter le calendrier</li>
         <ul class="ssmenu_doc">
-            <li><a href="calendrier">Consulter le calendrier</a></li>
+            <li id="calendrier">Consulter le calendrier</li>
         </ul>
         <li class='titre_menu_doc'>Exporter un PDF vierge de dossier</li>
         <ul class="ssmenu_doc">
-            <li><a href="export_dossier_vide">Exporter un PDF vierge de dossier</a></li>
+            <li id="export_dossier_vide">Exporter un PDF vierge de dossier</li>
         </ul>
     </ul>
 </div>
@@ -222,7 +221,7 @@
         <p>La page web s'ouvre donc dans votre navigateur.</p>
     </div>
     <!--DOC GERER DOSSIER-->
-    <div id="doc_creer_dossier" class="contenu_doc">
+    <div id="doc_nouveau_dossier" class="contenu_doc">
         <p>Pour créer un nouveau dossier, il vous suffit de cliquer sur le menu "Créer Dossier".</p>
         <img src="images/doc/creer_dossier.jpg" > 
         <p>Une pop-up s'affichera pour confirmer cette création de dossier.</p>

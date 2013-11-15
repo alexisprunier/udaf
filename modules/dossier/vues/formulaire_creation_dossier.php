@@ -645,9 +645,9 @@ foreach ($tab_fournisseur as $key => $value) {
                         <option value="<?php echo $dossier_select['raison_cloture'];?>"><?php echo $dossier_select['raison_cloture'];?></option>
                         <?php } ?>
                         <?php if($dossier_select['raison_cloture'] != "En cours"){ ?><option value="En cours">En cours</option><?php } ?>
-                        <?php if($dossier_select['raison_cloture'] != "Termin�") { ?><option value="Termin�">Termin&eacute;</option><?php } ?>
-                        <?php if($dossier_select['raison_cloture']!= "Transf�r�") { ?><option value="Transf�r�">Transfer&eacute;</option><?php } ?> 
-                        <?php if($dossier_select['raison_cloture'] != "�chec") { ?><option valie="�chec">Echec</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture'] != "Terminé") { ?><option value="Terminé">Terminé</option><?php } ?>
+                        <?php if($dossier_select['raison_cloture']!= "Transféré") { ?><option value="Transféré">Transféré</option><?php } ?> 
+                        <?php if($dossier_select['raison_cloture'] != "échec") { ?><option valie="échec">Echec</option><?php } ?>
                     </select>
                     <label for="date_cloture" class="lab_txt">Date de cl&ocirc;ture :</label>
                     <input type="text" class="datepicker inputfield_cloture" placeholder="Selectionner date" id="date_cloture" name="date_cloture"
