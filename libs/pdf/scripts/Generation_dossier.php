@@ -178,7 +178,7 @@ $pdf->MultiCell(170,7,html_entity_decode(utf8_decode('
 ')),0);
 //Pointilés commentaire de cloture
 $pdf->SetFont('arial','',10);
-$pdf->SetXY(20, 76);
+$pdf->SetXY(25, 85);
 $pdf->MultiCell(170,7,html_entity_decode(utf8_decode(
 str_replace("€", "EUR", $dossier_select['comment_cloture'])
 )),0);
