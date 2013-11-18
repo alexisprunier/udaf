@@ -223,7 +223,7 @@ print_r($_POST["commentaire_event"]);
             document.cookie = "telephone_f=";
         }
         if (document.getElementById('commentaire_f').value != null) {
-            document.cookie = "commentaire_f=" + document.getElementById('commentaire_f').value;
+            document.cookie = "commentaire_f=" + escape(document.getElementById('commentaire_f').value);
         } else {
             document.cookie = "commentaire_f=";
         }
@@ -239,7 +239,7 @@ print_r($_POST["commentaire_event"]);
             document.cookie = "soustheme=";
         }
         if (document.getElementById('txt_problematique').value != null) {
-            document.cookie = "txt_problematique=" + document.getElementById('txt_problematique').value;
+            document.cookie = "txt_problematique=" + escape(document.getElementById('txt_problematique').value);
         } else {
             document.cookie = "txt_problematique=";
         }
@@ -254,7 +254,7 @@ print_r($_POST["commentaire_event"]);
             while (c.charAt(0) == ' ')
                 c = c.substring(1, c.length);
             if (c.indexOf(nameEQ) == 0)
-                return c.substring(nameEQ.length, c.length);
+                return unescape(c.substring(nameEQ.length, c.length));
         }
         return null;
     }
