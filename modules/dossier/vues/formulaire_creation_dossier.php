@@ -482,8 +482,9 @@ foreach ($tab_fournisseur as $key => $value) {
                     <div id="form_problematique">
                         <label id="lab_theme" class="lab_txt">Th&egrave;me :</label>
                         <div id="div_theme">
-                            <select class="liste_problematique" id="theme" name="theme" title="Choisir un th&egrave;me" onChange="changeSousTheme(this.selectedIndex)" required >
+                            <select class="liste_problematique" id="theme" name="theme" title="Choisir un th&egrave;me" onChange="changeSousTheme(this.selectedIndex-1)" required >
                                     <?php
+                                    echo '<option value=""></option>';
                                     foreach ($tab_theme as $key => $value) {
                                         echo '<option value="' . $tab_theme[$key]->theme_id . '" ';
                                         if ($tab_theme[$key]->theme_id == $dossier_select['theme_id']){
