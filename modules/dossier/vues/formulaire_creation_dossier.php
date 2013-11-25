@@ -795,7 +795,7 @@ foreach ($tab_user as &$user) {
     document.getElementById("commentaire_f").value = readCookie("commentaire_f");
     document.getElementById("theme").selectedIndex = readCookie("theme");
     if ( readCookie("theme") != null ){
-        changeSousTheme(readCookie("theme"));
+        changeSousTheme(readCookie("theme")-1);
     }
     document.getElementById("soustheme").selectedIndex = readCookie("soustheme");
     document.getElementById("mail_f").value = readCookie("mail_f");
