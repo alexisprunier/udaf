@@ -129,7 +129,6 @@ if ($_GET["ajout"] == "dossier" || $_GET["modifier"] == "dossier" ){
    
     $theme = $_POST['theme'];
     $sstheme = $_POST['soustheme'];
-    
     $date_crea_p = date("d/m/Y");
     $date_crea_d = date("d/m/Y");
     $date_crea_f = date("d/m/Y");
