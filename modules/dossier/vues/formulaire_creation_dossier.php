@@ -504,7 +504,7 @@ foreach ($tab_fournisseur as $key => $value) {
                                     if ($tab_sstheme[$key]->theme_id == $dossier_select['theme_id']){
                                         echo '<option value="';
                                         if (isset($_GET['id'])){
-                                            echo $tab_sstheme[$key]->nom;
+                                            echo $tab_sstheme[$key]->soustheme_id;
                                         }
                                         echo '"';
                                         if ($tab_sstheme[$key]->soustheme_id == $dossier_select['soustheme_id']){
