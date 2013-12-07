@@ -990,6 +990,7 @@ div#ajouter_evenement #mode
 div#ajouter_evenement textarea{
     resize : none;
     width : 318px;
+    height : 200px;
 }
 #bouton_form_ajouter{
     width: 254px;
@@ -1068,9 +1069,7 @@ div#modifier_utilisateur{
     color : #777;
     margin : 50px auto 22px auto;
 }
-div#ajouter_evenement textarea{
-    max-height: 300px;
-}
+
 div#form_modifier_utilisateur{
     height: 250px;
 }

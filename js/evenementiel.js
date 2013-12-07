@@ -64,7 +64,7 @@ jQuery(function($){
                         showOtherMonths: true,
                         selectOtherMonths: true
                         });
-                $('textarea').elastic();
+                $('textarea.comment, textarea.comment_cloture').elastic();
 
 
 
