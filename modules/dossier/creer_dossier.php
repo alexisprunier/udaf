@@ -298,6 +298,8 @@ if(isset($_GET['id']))
     $theme = selectionner_theme_dans_bdd($dossier_select['theme_id']);
     $sstheme = selectionner_sstheme_dans_bdd($dossier_select['soustheme_id']);
     $_SESSION['dossier_ref'] = $_GET['id'];
+    ($dossier_select['raison_cloture'] == "En cours") ? $is_cloture = "Oui" : $is_cloture = "Non"; 
+    
 
 }
 if(isset($_GET['traite']))
@@ -310,4 +312,5 @@ if(isset($_GET['traite']))
 
 include CHEMIN_LIB . 'pdf/scripts/Generation_dossier.php';
 include CHEMIN_VUE . 'formulaire_creation_dossier.php';
+echo $sstheme;
 ?>
